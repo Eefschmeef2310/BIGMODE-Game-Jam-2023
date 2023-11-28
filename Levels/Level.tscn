@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dkv131dc6s6dr"]
+[gd_scene load_steps=34 format=3 uid="uid://dkv131dc6s6dr"]
 
 [ext_resource type="Material" uid="uid://bpm06t71l4mv3" path="res://Materials/grassMat.tres" id="1_4n4jo"]
 [ext_resource type="Material" uid="uid://b4i0cps0lllg8" path="res://addons/ply/materials/debug_material_light.tres" id="2_e1sd3"]
@@ -184,6 +184,9 @@ data = PackedVector3Array(2.5, 0, 2.5, 2.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, -0.
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n3xis"]
 height = 1.9
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4er7"]
+size = Vector3(11, 6, 11)
+
 [node name="Level" type="Node3D"]
 
 [node name="CameraManager" type="Node3D" parent="." node_paths=PackedStringArray("fpsCamera", "transCamera", "topDownCamera", "fpsRotHelper", "playerObj", "directionLight")]
@@ -323,6 +326,12 @@ radius = 1.92
 
 [node name="bulletSpawn" type="Node3D" parent="Vehicle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="physCube" type="Area3D" parent="Vehicle"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Vehicle/physCube"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+shape = SubResource("BoxShape3D_t4er7")
 
 [node name="transCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.617, 11.767, 22.549)
