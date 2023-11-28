@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dkv131dc6s6dr"]
+[gd_scene load_steps=33 format=3 uid="uid://dkv131dc6s6dr"]
 
 [ext_resource type="Material" uid="uid://bpm06t71l4mv3" path="res://Materials/grassMat.tres" id="1_4n4jo"]
 [ext_resource type="Material" uid="uid://b4i0cps0lllg8" path="res://addons/ply/materials/debug_material_light.tres" id="2_e1sd3"]
@@ -16,7 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="14_cpcr1"]
 [ext_resource type="Script" path="res://Scripts/CameraManager.gd" id="15_vgwm2"]
 [ext_resource type="Script" path="res://Scripts/TankControls.gd" id="16_a03xo"]
+[ext_resource type="PackedScene" uid="uid://2fl0o7xhiry5" path="res://bullet.tscn" id="16_tdui4"]
 [ext_resource type="PackedScene" uid="uid://dynkaqsnlra72" path="res://lil_light.tscn" id="17_73s0m"]
+[ext_resource type="Material" uid="uid://c5dsqu124mwqw" path="res://Materials/light.tres" id="18_5nje3"]
+[ext_resource type="Script" path="res://Scripts/test32Dcursor.gd" id="18_k7lh7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7bwil"]
 sky_top_color = Color(0.372549, 0.235294, 0, 1)
@@ -241,10 +244,13 @@ script = ExtResource("3_lp4ec")
 ply_mesh = SubResource("Resource_dimgu")
 materials = Array[Material]([ExtResource("13_fv7u8"), ExtResource("5_4ium1"), ExtResource("6_pbw1v"), ExtResource("7_omaex"), ExtResource("8_l00gh"), ExtResource("9_yj1n8"), ExtResource("10_stihn"), ExtResource("11_p0wqd"), ExtResource("12_aiuaa")])
 
-[node name="Vehicle" type="Node3D" parent="."]
+[node name="Vehicle" type="Node3D" parent="." node_paths=PackedStringArray("bulletSpawn", "tankCamera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2, 7)
 script = ExtResource("16_a03xo")
 speed = 20
+bulletSpawn = NodePath("bulletSpawn")
+bulletPrefab = ExtResource("16_tdui4")
+tankCamera = NodePath("topDownCamera")
 
 [node name="Tank" type="StaticBody3D" parent="Vehicle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3.5)
@@ -287,6 +293,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.08438, -5)
 
 [node name="lilLight3" parent="Vehicle" instance=ExtResource("17_73s0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.08438, 5)
+material_override = ExtResource("1_4n4jo")
 
 [node name="lilLight4" parent="Vehicle" instance=ExtResource("17_73s0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6.08438, 5)
@@ -302,6 +309,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.94922, -4)
 
 [node name="lilLight8" parent="Vehicle" instance=ExtResource("17_73s0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.94922, 4)
+
+[node name="Node3D" type="Node3D" parent="Vehicle" node_paths=PackedStringArray("topDownCam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -2, -7)
+visible = false
+script = ExtResource("18_k7lh7")
+topDownCam = NodePath("../topDownCamera")
+
+[node name="pointerTest" type="CSGSphere3D" parent="Vehicle/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21, 0)
+material_override = ExtResource("18_5nje3")
+radius = 1.92
+
+[node name="bulletSpawn" type="Node3D" parent="Vehicle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
 [node name="transCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.617, 11.767, 22.549)

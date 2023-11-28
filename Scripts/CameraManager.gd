@@ -9,6 +9,8 @@ extends Node3D
 
 @export var directionLight : DirectionalLight3D
 
+
+
 var startPos : Vector3
 var startRot : Vector3
 var endPos : Vector3
