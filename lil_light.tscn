@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dynkaqsnlra72"]
+
+[ext_resource type="Material" uid="uid://c5dsqu124mwqw" path="res://Materials/light.tres" id="1_ld2h6"]
+
+[node name="lilLight" type="CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6.08438, -5)
+material_override = ExtResource("1_ld2h6")
+radius = 0.2
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.917647, 0, 1)
+light_energy = 2.0

@@ -7,6 +7,8 @@ extends Node3D
 @export var fpsRotHelper : Node3D #get x
 @export var playerObj : Node3D #get y
 
+@export var directionLight : DirectionalLight3D
+
 var startPos : Vector3
 var startRot : Vector3
 var endPos : Vector3
@@ -30,7 +32,7 @@ var currentMode = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	topDownReady.emit()
-	
+	directionLight.shadow_enabled = false # makes the first mode switch more special/surprising!
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,6 +47,7 @@ func _process(delta):
 	if(currentMode == 1): 
 		transCamera.make_current()
 		topDownDisable.emit()
+		directionLight.shadow_enabled = true
 	if(currentMode == 2): 
 		fpsCamera.make_current()
 		fpsReady.emit()

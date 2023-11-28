@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bmteq1j2uc433" path="res://grass.png" id="1_vcunk"]
 
 [resource]
+albedo_color = Color(0, 0.694118, 0.678431, 1)
 albedo_texture = ExtResource("1_vcunk")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
 texture_filter = 2

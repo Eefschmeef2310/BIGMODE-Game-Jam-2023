@@ -98,8 +98,10 @@ func _physics_process(delta):
 func _on_camera_manager_fps_disable():
 	MOUSE_SENSITIVITY = 0
 	SPEED = 0
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
-func _on_camera_manager_fps_ready():
+func _on_camera_manager_fps_ready(): #seems to constantly activate?
 	MOUSE_SENSITIVITY = savedSens
 	SPEED = savedSpeed
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) 

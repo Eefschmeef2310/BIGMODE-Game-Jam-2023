@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkv131dc6s6dr"]
+[gd_scene load_steps=30 format=3 uid="uid://dkv131dc6s6dr"]
 
 [ext_resource type="Material" uid="uid://bpm06t71l4mv3" path="res://Materials/grassMat.tres" id="1_4n4jo"]
 [ext_resource type="Material" uid="uid://b4i0cps0lllg8" path="res://addons/ply/materials/debug_material_light.tres" id="2_e1sd3"]
@@ -16,35 +16,42 @@
 [ext_resource type="PackedScene" uid="uid://dgpjxoygnvyy4" path="res://assets/simple_fpsplayer/Player.tscn" id="14_cpcr1"]
 [ext_resource type="Script" path="res://Scripts/CameraManager.gd" id="15_vgwm2"]
 [ext_resource type="Script" path="res://Scripts/TankControls.gd" id="16_a03xo"]
+[ext_resource type="PackedScene" uid="uid://dynkaqsnlra72" path="res://lil_light.tscn" id="17_73s0m"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cnbh8"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7bwil"]
+sky_top_color = Color(0.372549, 0.235294, 0, 1)
+sky_horizon_color = Color(0.603922, 0.356863, 0, 1)
+sky_energy_multiplier = 2.0
+sun_angle_max = 12.0
+sun_curve = 1.27456
 
 [sub_resource type="Sky" id="Sky_sp16x"]
-sky_material = SubResource("ProceduralSkyMaterial_cnbh8")
+sky_material = SubResource("ProceduralSkyMaterial_7bwil")
 
 [sub_resource type="Environment" id="Environment_tkd8j"]
 background_mode = 2
+background_color = Color(0.466667, 0, 0, 1)
 sky = SubResource("Sky_sp16x")
 tonemap_mode = 2
+ssao_enabled = true
 glow_enabled = true
+adjustment_enabled = true
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qg0t8"]
 _surfaces = [{
-"aabb": AABB(0, 0, -0.5, 200.5, 1.00001, 200.5),
-"attribute_data": PackedByteArray(255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 128, 72, 67, 0, 0, 0, 0, 255, 255, 255, 255, 0, 128, 72, 67, 0, 128, 72, 195, 255, 255, 255, 255, 0, 0, 0, 0, 0, 128, 72, 195, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 128, 72, 195, 0, 0, 0, 0, 255, 255, 255, 255, 0, 128, 72, 195, 0, 128, 72, 67, 255, 255, 255, 255, 0, 0, 0, 0, 0, 128, 72, 67, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 128, 72, 67, 0, 0, 0, 0, 255, 255, 255, 255, 0, 128, 72, 67, 0, 0, 128, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 128, 72, 67, 0, 0, 0, 0, 255, 255, 255, 255, 0, 128, 72, 67, 0, 0, 128, 63, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0),
+"aabb": AABB(-1427.21, 0, -947.702, 4759.65, 1.00001, 4080.8),
+"attribute_data": PackedByteArray(255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 59, 189, 148, 69, 0, 0, 0, 0, 255, 255, 255, 255, 59, 189, 148, 69, 199, 12, 127, 197, 255, 255, 255, 255, 0, 0, 0, 0, 199, 12, 127, 197, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 199, 12, 127, 197, 0, 0, 0, 0, 255, 255, 255, 255, 199, 12, 127, 197, 59, 189, 148, 69, 255, 255, 255, 255, 0, 0, 0, 0, 59, 189, 148, 69, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 59, 189, 148, 69, 0, 0, 0, 0, 255, 255, 255, 255, 59, 189, 148, 69, 0, 0, 128, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 63, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 59, 189, 148, 69, 0, 0, 0, 0, 255, 255, 255, 255, 59, 189, 148, 69, 0, 0, 128, 63, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0, 255, 255, 255, 255, 0, 0, 128, 191, 0, 0, 0, 0),
 "format": 4123,
 "index_count": 36,
 "index_data": PackedByteArray(2, 0, 3, 0, 0, 0, 0, 0, 1, 0, 2, 0, 6, 0, 7, 0, 4, 0, 4, 0, 5, 0, 6, 0, 10, 0, 11, 0, 8, 0, 8, 0, 9, 0, 10, 0, 14, 0, 15, 0, 12, 0, 12, 0, 13, 0, 14, 0, 18, 0, 19, 0, 16, 0, 16, 0, 17, 0, 18, 0, 22, 0, 23, 0, 20, 0, 20, 0, 21, 0, 22, 0),
 "primitive": 3,
 "vertex_count": 24,
-"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 191, 255, 127, 255, 255, 0, 128, 72, 67, 0, 0, 128, 63, 0, 0, 0, 191, 255, 127, 255, 255, 0, 128, 72, 67, 0, 0, 128, 63, 0, 0, 72, 67, 255, 127, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 72, 67, 255, 127, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 191, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 67, 255, 127, 0, 0, 0, 128, 72, 67, 0, 0, 0, 0, 0, 0, 72, 67, 255, 127, 0, 0, 0, 128, 72, 67, 0, 0, 0, 0, 0, 0, 0, 191, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 191, 255, 255, 255, 255, 0, 128, 72, 67, 0, 0, 0, 0, 0, 0, 0, 191, 255, 255, 255, 255, 0, 128, 72, 67, 0, 0, 128, 63, 0, 0, 0, 191, 255, 255, 255, 255, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 191, 255, 255, 255, 255, 0, 128, 72, 67, 0, 0, 0, 0, 0, 0, 0, 191, 255, 255, 255, 127, 0, 128, 72, 67, 0, 0, 0, 0, 0, 0, 72, 67, 255, 255, 255, 127, 0, 128, 72, 67, 0, 0, 128, 63, 0, 0, 72, 67, 255, 255, 255, 127, 0, 128, 72, 67, 0, 0, 128, 63, 0, 0, 0, 191, 255, 255, 255, 127, 0, 128, 72, 67, 0, 0, 0, 0, 0, 0, 72, 67, 255, 127, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 67, 255, 127, 255, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 72, 67, 255, 127, 255, 127, 0, 128, 72, 67, 0, 0, 128, 63, 0, 0, 72, 67, 255, 127, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 72, 67, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 191, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 191, 0, 0, 255, 127, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 72, 67, 0, 0, 255, 127)
+"vertex_data": PackedByteArray(164, 102, 178, 196, 0, 0, 128, 63, 240, 236, 108, 196, 255, 127, 255, 255, 36, 71, 80, 69, 0, 0, 128, 63, 240, 236, 108, 196, 255, 127, 255, 255, 36, 71, 80, 69, 0, 0, 128, 63, 139, 209, 67, 69, 255, 127, 255, 255, 164, 102, 178, 196, 0, 0, 128, 63, 139, 209, 67, 69, 255, 127, 255, 255, 164, 102, 178, 196, 0, 0, 0, 0, 240, 236, 108, 196, 255, 127, 0, 0, 164, 102, 178, 196, 0, 0, 0, 0, 139, 209, 67, 69, 255, 127, 0, 0, 36, 71, 80, 69, 0, 0, 0, 0, 139, 209, 67, 69, 255, 127, 0, 0, 36, 71, 80, 69, 0, 0, 0, 0, 240, 236, 108, 196, 255, 127, 0, 0, 164, 102, 178, 196, 0, 0, 0, 0, 240, 236, 108, 196, 255, 255, 255, 255, 36, 71, 80, 69, 0, 0, 0, 0, 240, 236, 108, 196, 255, 255, 255, 255, 36, 71, 80, 69, 0, 0, 128, 63, 240, 236, 108, 196, 255, 255, 255, 255, 164, 102, 178, 196, 0, 0, 128, 63, 240, 236, 108, 196, 255, 255, 255, 255, 36, 71, 80, 69, 0, 0, 0, 0, 240, 236, 108, 196, 255, 255, 255, 127, 36, 71, 80, 69, 0, 0, 0, 0, 139, 209, 67, 69, 255, 255, 255, 127, 36, 71, 80, 69, 0, 0, 128, 63, 139, 209, 67, 69, 255, 255, 255, 127, 36, 71, 80, 69, 0, 0, 128, 63, 240, 236, 108, 196, 255, 255, 255, 127, 36, 71, 80, 69, 0, 0, 0, 0, 139, 209, 67, 69, 255, 127, 255, 127, 164, 102, 178, 196, 0, 0, 0, 0, 139, 209, 67, 69, 255, 127, 255, 127, 164, 102, 178, 196, 0, 0, 128, 63, 139, 209, 67, 69, 255, 127, 255, 127, 36, 71, 80, 69, 0, 0, 128, 63, 139, 209, 67, 69, 255, 127, 255, 127, 164, 102, 178, 196, 0, 0, 0, 0, 139, 209, 67, 69, 0, 0, 255, 127, 164, 102, 178, 196, 0, 0, 0, 0, 240, 236, 108, 196, 0, 0, 255, 127, 164, 102, 178, 196, 0, 0, 128, 63, 240, 236, 108, 196, 0, 0, 255, 127, 164, 102, 178, 196, 0, 0, 128, 63, 139, 209, 67, 69, 0, 0, 255, 127)
 }]
 
 [sub_resource type="Resource" id="Resource_tu1l8"]
 script = ExtResource("4_sx5mc")
-vertexes = PackedVector3Array(0, 0, -0.5, 200.5, 0, -0.5, 200.5, 0, 200, 0, 0, 200, 0, 1, -0.5, 200.5, 1, -0.5, 200.5, 1, 200, 0, 1, 200)
+vertexes = PackedVector3Array(-1427.21, 0, -947.702, 3332.45, 0, -947.702, 3332.45, 0, 3133.1, -1427.21, 0, 3133.1, -1427.21, 1, -947.702, 3332.45, 1, -947.702, 3332.45, 1, 3133.1, -1427.21, 1, 3133.1)
 vertex_edges = PackedInt32Array(0, 1, 2, 3, 4, 5, 6, 7)
 vertex_colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 edge_vertexes = PackedInt32Array(0, 1, 1, 2, 2, 3, 3, 0, 4, 0, 5, 1, 6, 2, 7, 3, 5, 4, 6, 5, 7, 6, 4, 7)
@@ -54,8 +61,8 @@ face_edges = PackedInt32Array(11, 0, 4, 5, 6, 7)
 face_surfaces = PackedInt32Array(0, 0, 0, 0, 0, 0)
 face_colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uih3u"]
-data = PackedVector3Array(200.5, 1, 200, 0, 1, 200, 0, 1, -0.5, 0, 1, -0.5, 200.5, 1, -0.5, 200.5, 1, 200, 200.5, 0, 200, 200.5, 0, -0.5, 0, 0, -0.5, 0, 0, -0.5, 0, 0, 200, 200.5, 0, 200, 200.5, 1, -0.5, 0, 1, -0.5, 0, 0, -0.5, 0, 0, -0.5, 200.5, 0, -0.5, 200.5, 1, -0.5, 200.5, 1, 200, 200.5, 1, -0.5, 200.5, 0, -0.5, 200.5, 0, -0.5, 200.5, 0, 200, 200.5, 1, 200, 0, 1, 200, 200.5, 1, 200, 200.5, 0, 200, 200.5, 0, 200, 0, 0, 200, 0, 1, 200, 0, 1, -0.5, 0, 1, 200, 0, 0, 200, 0, 0, 200, 0, 0, -0.5, 0, 1, -0.5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_65qhk"]
+data = PackedVector3Array(3332.45, 1, 3133.1, -1427.21, 1, 3133.1, -1427.21, 1, -947.702, -1427.21, 1, -947.702, 3332.45, 1, -947.702, 3332.45, 1, 3133.1, 3332.45, 0, 3133.1, 3332.45, 0, -947.702, -1427.21, 0, -947.702, -1427.21, 0, -947.702, -1427.21, 0, 3133.1, 3332.45, 0, 3133.1, 3332.45, 1, -947.702, -1427.21, 1, -947.702, -1427.21, 0, -947.702, -1427.21, 0, -947.702, 3332.45, 0, -947.702, 3332.45, 1, -947.702, 3332.45, 1, 3133.1, 3332.45, 1, -947.702, 3332.45, 0, -947.702, 3332.45, 0, -947.702, 3332.45, 0, 3133.1, 3332.45, 1, 3133.1, -1427.21, 1, 3133.1, 3332.45, 1, 3133.1, 3332.45, 0, 3133.1, 3332.45, 0, 3133.1, -1427.21, 0, 3133.1, -1427.21, 1, 3133.1, -1427.21, 1, -947.702, -1427.21, 1, 3133.1, -1427.21, 0, 3133.1, -1427.21, 0, 3133.1, -1427.21, 0, -947.702, -1427.21, 1, -947.702)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_8184n"]
 _surfaces = [{
@@ -176,19 +183,26 @@ height = 1.9
 
 [node name="Level" type="Node3D"]
 
-[node name="CameraManager" type="Node3D" parent="." node_paths=PackedStringArray("fpsCamera", "transCamera", "topDownCamera", "fpsRotHelper", "playerObj")]
+[node name="CameraManager" type="Node3D" parent="." node_paths=PackedStringArray("fpsCamera", "transCamera", "topDownCamera", "fpsRotHelper", "playerObj", "directionLight")]
 script = ExtResource("15_vgwm2")
 fpsCamera = NodePath("../Vehicle/Player/rotation_helper/Camera3D")
 transCamera = NodePath("../transCamera")
 topDownCamera = NodePath("../Vehicle/topDownCamera")
 fpsRotHelper = NodePath("../Vehicle/Player/rotation_helper")
 playerObj = NodePath("../Vehicle/Player")
+directionLight = NodePath("../DirectionalLight3D")
 
 [node name="SwitchManager" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+transform = Transform3D(0.595962, 0.290599, 0.748586, -0.510095, 0.856979, 0.0734186, -0.620187, -0.425605, 0.65896, 0, 0, 0)
+light_color = Color(1, 1, 0.705882, 1)
 shadow_enabled = true
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+shadow_transmittance_bias = -9.174
+shadow_opacity = 0.5
+shadow_blur = 10.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tkd8j")
@@ -206,7 +220,7 @@ materials = Array[Material]([ExtResource("2_e1sd3"), ExtResource("5_4ium1"), Ext
 [node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_uih3u")
+shape = SubResource("ConcavePolygonShape3D_65qhk")
 
 [node name="Tank2" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 2, 7)
@@ -255,6 +269,7 @@ shape = SubResource("ConcavePolygonShape3D_8i38u")
 [node name="topDownCamera" type="Camera3D" parent="Vehicle"]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 69.225, 0)
 projection = 1
+fov = 37.8493
 size = 100.0
 
 [node name="Player" parent="Vehicle" instance=ExtResource("14_cpcr1")]
@@ -265,12 +280,36 @@ MOUSE_SENSITIVITY = 0.2
 [node name="body" parent="Vehicle/Player" index="0"]
 shape = SubResource("CapsuleShape3D_n3xis")
 
+[node name="lilLight" parent="Vehicle" instance=ExtResource("17_73s0m")]
+
+[node name="lilLight2" parent="Vehicle" instance=ExtResource("17_73s0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.08438, -5)
+
+[node name="lilLight3" parent="Vehicle" instance=ExtResource("17_73s0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 6.08438, 5)
+
+[node name="lilLight4" parent="Vehicle" instance=ExtResource("17_73s0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 6.08438, 5)
+
+[node name="lilLight5" parent="Vehicle" instance=ExtResource("17_73s0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.94922, 4)
+
+[node name="lilLight6" parent="Vehicle" instance=ExtResource("17_73s0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 3.94922, -4)
+
+[node name="lilLight7" parent="Vehicle" instance=ExtResource("17_73s0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.94922, -4)
+
+[node name="lilLight8" parent="Vehicle" instance=ExtResource("17_73s0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3.94922, 4)
+
 [node name="transCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.617, 11.767, 22.549)
+current = true
 
 [connection signal="fpsDisable" from="CameraManager" to="Vehicle/Player" method="_on_camera_manager_fps_disable"]
-[connection signal="fpsReady" from="CameraManager" to="Vehicle/Player" method="_on_camera_manager_fps_ready"]
 [connection signal="fpsReady" from="CameraManager" to="Vehicle" method="_on_camera_manager_fps_ready"]
+[connection signal="fpsReady" from="CameraManager" to="Vehicle/Player" method="_on_camera_manager_fps_ready"]
 [connection signal="topDownDisable" from="CameraManager" to="Vehicle" method="_on_camera_manager_top_down_disable"]
 [connection signal="topDownReady" from="CameraManager" to="Vehicle" method="_on_camera_manager_top_down_ready"]
 

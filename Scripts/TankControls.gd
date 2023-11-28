@@ -15,7 +15,7 @@ func _process(delta):
 		position += Vector3( input_dir.y*-1, 0 , input_dir.x )   *delta*speed
 	elif (mode == "AI"): # "ai mode" 
 		var input_dir = Vector2(1,-1)
-		position += Vector3( input_dir.y*-1, 0 , input_dir.x )   *delta*(speed/10)
+		position += Vector3( input_dir.y*-1, 0 , input_dir.x )   *delta*(speed/5)
 
 
 func _on_camera_manager_top_down_disable():
