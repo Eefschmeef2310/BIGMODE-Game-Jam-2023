@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6coygnvcqjhy"]
+
+[ext_resource type="PackedScene" uid="uid://b84i6t20cq5s6" path="res://floor.tscn" id="2_07p7f"]
+[ext_resource type="PackedScene" uid="uid://b3e2ulqrvcf1q" path="res://tank.tscn" id="2_67j30"]
+
+[node name="World" type="Node2D"]
+
+[node name="Floor2" parent="." instance=ExtResource("2_07p7f")]
+position = Vector2(704, 320)
+
+[node name="Floor" parent="." instance=ExtResource("2_07p7f")]
+position = Vector2(-1, 320)
+
+[node name="Tank" parent="." instance=ExtResource("2_67j30")]
+position = Vector2(0, 144)
+
+[node name="Camera2D" type="Camera2D" parent="Tank"]
+position_smoothing_enabled = true
