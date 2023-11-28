@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bpm06t71l4mv3"]
+
+[ext_resource type="Texture2D" uid="uid://bmteq1j2uc433" path="res://grass.png" id="1_vcunk"]
+
+[resource]
+albedo_texture = ExtResource("1_vcunk")
+uv1_triplanar = true
+texture_filter = 2
