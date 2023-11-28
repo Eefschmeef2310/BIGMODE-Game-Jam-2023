@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://gfr8mma8hu1k"]
+[gd_scene load_steps=5 format=3 uid="uid://gfr8mma8hu1k"]
 
 [ext_resource type="Texture2D" uid="uid://di6fw1oopw47v" path="res://Car Test/b95da6e1a193d8736908ac0d7c3e4159065ca8d1.png" id="1_4fb7m"]
+[ext_resource type="Script" path="res://Car Test/Player.gd" id="1_oie10"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iyybu"]
 radius = 4.0
@@ -11,6 +12,9 @@ radius = 33.0
 height = 130.0
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_oie10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -27,3 +31,8 @@ debug_color = Color(0.701961, 0.0509804, 0, 0.419608)
 position = Vector2(0, -75)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("1_4fb7m")
+
+[node name="EndOfGun" type="Marker2D" parent="."]
+position = Vector2(51, -86)
+
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
