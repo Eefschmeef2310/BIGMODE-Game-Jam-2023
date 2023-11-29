@@ -2,6 +2,7 @@ extends Node3D
 
 var mode = "Control" #Modes: Control, AI, Off
 @export var speed = 5
+var speedMult = 1
 
 @export var bulletSpawn : Node3D
 @export var bulletPrefab : PackedScene
@@ -17,7 +18,12 @@ func _ready():
 func _process(delta):
 	if(mode == "Control"):
 		var input_dir = Input.get_vector("left", "right", "up", "down")
-		position += Vector3( input_dir.y*-1, 0 , input_dir.x )   *delta*speed
+		
+		if Input.is_key_pressed(KEY_SHIFT):
+			speedMult = 2
+		else:
+			speedMult = 1
+		position += Vector3( input_dir.y*-1, 0 , input_dir.x )   *delta*speed*speedMult
 		
 #		if(Input.get_vector("aleft", "aright", "aup", "adown").length() > 0):
 #			var attack_dir = Input.get_vector("aleft", "aright", "aup", "adown")
