@@ -19,7 +19,6 @@ func _process(_delta):
 		
 	if Input.is_action_just_pressed("Fire"):
 		var bullet = bullet_scene.instantiate() as Area2D
-#		$"../Projectiles".add_child(bullet)
 		addBullet.emit(bullet)
 		bullet.position = $EndOfGun.global_position
 		var direction = (get_global_mouse_position() - $EndOfGun.global_position).normalized()
