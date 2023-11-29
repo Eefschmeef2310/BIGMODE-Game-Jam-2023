@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c63hioglvigxs"]
+
+[ext_resource type="Script" path="res://Scripts/BigEnemy.gd" id="1_w2h7f"]
+[ext_resource type="Texture2D" uid="uid://dmch2lrug37hq" path="res://Sprites/BIGMAN.png" id="2_0sj2e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mm6vs"]
+size = Vector2(681, 217)
+
+[node name="BigEnemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_w2h7f")
+
+[node name="Bigman" type="Sprite2D" parent="."]
+texture = ExtResource("2_0sj2e")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="hitbox" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-348, 81, -336, 55, -334, 41, -310, 1, -271, -35, -205, -87, -178, -99, -135, -109, -151, -99, -158, -72, -130, -71, -85, -89, -50, -95, -15, -95, -40, -86, -57, -73, -60, -60, -38, -52, -11, -55, 17, -55, 38, -46, 22, -41, 14, -32, 39, -21, 57, -20, 72, -26, 88, -26, 106, -19, 98, -17, 82, -7, 78, 1, 95, 7, 110, 6, 138, 8, 145, 14, 134, 14, 125, 21, 125, 29, 143, 41, 166, 38, 183, 40, 172, 48, 168, 54, 178, 56, 184, 62, 197, 67, 206.25, 66.75, 228, 74, 242, 89, 262, 95, 285, 95, 318, 93, 345, 101, 347, 107, 345, 110, 175, 110, 161, 105, 22, 105, -1, 109, -12, 106, -51, 110, -146, 110, -155, 108, -222, 108, -229, 109, -316, 110, -337, 106)
+
+[node name="physicscollider" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_mm6vs")
+
+[node name="healthbar" type="ProgressBar" parent="."]
+offset_left = -265.0
+offset_top = -125.0
+offset_right = 45.0
+offset_bottom = -117.0
+show_percentage = false

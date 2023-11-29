@@ -1,21 +1,22 @@
 extends CharacterBody2D
 
-
-const SPEED = 200.0
-const JUMP_VELOCITY = -400.0
-
 var root
 var tank
 
+var health = 100
+
+const SPEED = 100.0
+const JUMP_VELOCITY = -400.0
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
 
 func _ready():
 	root = get_parent()
 	tank = root.get_node("Tank")
 
 func _physics_process(delta):
+	update_health()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -25,17 +26,18 @@ func _physics_process(delta):
 	if distance_to_tank < 0:
 		DIR = -1
 	velocity.x = DIR * SPEED
-	
-#	# Get the input direction and handle the movement/deceleration.
-#	# As good practice, you should replace UI actions with custom gameplay actions.
-#	var direction = Input.get_axis("ui_left", "ui_right")
-#	if direction:
-#		velocity.x = direction * SPEED
-#	else:
-#		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+
 	move_and_slide()
-
-
-func _on_area_2d_area_entered(area):
-	print(area)
 	
+func update_health():
+	var healthbar = $healthbar
+	healthbar.value = health
+	#hides the healthbar if at 100%
+	if health >= 100:
+		healthbar.visible = false
+	else: 
+		healthbar.visible = true
+		
+	if health < 0:
+		self.queue_free()

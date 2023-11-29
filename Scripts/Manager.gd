@@ -18,14 +18,19 @@ var smooth_zoom = 0.5
 var rng = RandomNumberGenerator.new()
 
 const enemySmallPath = preload("res://enemy_small.tscn")
+const enemyBigPath = preload("res://big_enemy.tscn")
 
 func spawn_enemy_small():
 	var enemy_small = enemySmallPath.instantiate()
 	root.add_child(enemy_small)
 	var distance_from_tank = rng.randf_range(500.0, 1000.0)
-	var negative_multiplier = rng.randi_range(-1,0)
-	if negative_multiplier == 0:
-		negative_multiplier = 1
+	
+	#allows for spawning enemies behind the player (disabled right now)
+	#var negative_multiplier = rng.randi_range(-1,0)
+	#if negative_multiplier == 0:
+	#	negative_multiplier = 1
+	var negative_multiplier = 1
+	
 	var enemy_small_spawn_position = tank.position.x + distance_from_tank*negative_multiplier
 	if enemy_small_spawn_position < 120:
 		enemy_small_spawn_position = 120
@@ -34,6 +39,26 @@ func spawn_enemy_small():
 	print("Spawned enemy at " + str(enemy_small_spawn_position))
 	enemy_small.position.x = enemy_small_spawn_position
 	enemy_small.position.y = tank.position.y - 5
+	
+func spawn_enemy_big():
+	var enemy_big = enemyBigPath.instantiate()
+	root.add_child(enemy_big)
+	var distance_from_tank = 1500.0
+	
+	#allows for spawning enemies behind the player (disabled right now)
+	#var negative_multiplier = rng.randi_range(-1,0)
+	#if negative_multiplier == 0:
+	#	negative_multiplier = 1
+	var negative_multiplier = 1
+	
+	var enemy_big_spawn_position = tank.position.x + distance_from_tank*negative_multiplier
+	if enemy_big_spawn_position < 120:
+		enemy_big_spawn_position = 120
+		if tank.position.x < 616:
+			enemy_big_spawn_position = tank.position.x + distance_from_tank
+	print("Spawned big enemy at " + str(enemy_big_spawn_position))
+	enemy_big.position.x = enemy_big_spawn_position
+	enemy_big.position.y = tank.position.y - 5
 
 # Called when the node enters the scene tree for the first time.d
 func _ready():
@@ -78,12 +103,16 @@ func zoom_camera(zoom, delta):
 	else:
 		camera_lerping = false
 
-#function accessed by the tank to check if the current mode is tankmode or not
+#function accessed by other things to check if the current mode is tankmode or not
 func is_tank_mode() -> bool:
 	return tank_mode
 
 
 
 func _on_enemy_spawn_timer_timeout():
-	$enemy_spawn_timer.wait_time = rng.randf_range(5.0, 10.0)
+	$enemy_spawn_timer.wait_time = rng.randf_range(1.0, 10.0)
 	spawn_enemy_small()
+
+
+func _on_big_enemy_spawner_timeout():
+	spawn_enemy_big()
