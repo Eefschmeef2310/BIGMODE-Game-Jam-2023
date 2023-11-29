@@ -3,7 +3,7 @@ extends CharacterBody2D
 var root
 const SPEED = 100.0
 const JUMP_VELOCITY = -300.0
-const bulletPath = preload("res://bullet.tscn")
+const bulletPath = preload("res://Objects/Projectiles/bullet.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")

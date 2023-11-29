@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dnv6af3e12u26"]
 
-[ext_resource type="Script" path="res://Scripts/enemy_small.gd" id="1_uralm"]
+[ext_resource type="Script" path="res://Objects/Enemies/enemy_small.gd" id="1_uralm"]
 [ext_resource type="Texture2D" uid="uid://c6mufoml00gs8" path="res://Sprites/miniEnemy.png" id="1_vo0ef"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fkowo"]

@@ -1,22 +1,32 @@
 extends CharacterBody2D
 
+signal addBullet(bullet)
+
 var root
 var manager
-var health := 100
+var health := 100:
+	#introduce a setter that automatically clamps the health
+	set(value):
+		health = value
+		health = clamp(health, 0, 100)
 
 const SPEED = 200.0
-const bulletPath = preload("res://bullet.tscn")
+const bulletPath = preload("res://Objects/Projectiles/bullet.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+@onready var healthbar = $healthbar
+
 func _ready():
-	root = get_parent()
-	manager = root.get_node("Manager")
+	manager = get_parent().get_node("Manager")
 
 func _physics_process(delta):
 	update_health()
-	if manager.is_tank_mode():
+	
+	GameManager.tank_position = global_position
+	
+	if GameManager.tank_mode:
 		#handle bullet firing
 		if Input.is_action_just_pressed("fire"):
 			shoot()
@@ -34,32 +44,18 @@ func _physics_process(delta):
 #spawns bullet
 func shoot():
 	var bullet = bulletPath.instantiate()
-	root.add_child(bullet)
+	addBullet.emit(bullet)
 	bullet.position = $Marker2D.global_position
 
 #updates the health to the health bar
 func update_health():
-	var healthbar = $healthbar
 	healthbar.value = health
 	#hides the healthbar if at 100%
-	if health >= 100:
-		healthbar.visible = false
-	else: 
-		healthbar.visible = true
+	healthbar.visible = health < 100
 
 #there is a timer attached to the tank, everytime it times out, decrease/increase health
 func _on_regen_timer_timeout():
-	if manager.is_tank_mode():
-		if health > 0:
-			health = health - 2
-			#print("decreasing health")
-		else:
-			health = 0
+	if GameManager.tank_mode:
+		health -= 2
 	else:
-		if health < 100:
-			health = health + 1
-			#print("increasing health")
-		else:
-			health = 100
-	if health <= 0:
-		health = 0
+		health += 1

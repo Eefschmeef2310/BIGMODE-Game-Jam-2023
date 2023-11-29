@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 var root
-var tank
 
 var health = 100
 
@@ -13,7 +12,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	root = get_parent()
-	tank = root.get_node("Tank")
 
 func _physics_process(delta):
 	update_health()
@@ -21,7 +19,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	var distance_to_tank = tank.position.x - position.x
+	var distance_to_tank = GameManager.tank_position.x - position.x
 	var DIR = 1
 	if distance_to_tank < 0:
 		DIR = -1

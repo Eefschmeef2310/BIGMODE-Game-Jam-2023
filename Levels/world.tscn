@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6coygnvcqjhy"]
+[gd_scene load_steps=9 format=3 uid="uid://b6coygnvcqjhy"]
 
-[ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://floor.tscn" id="1_ksgnp"]
-[ext_resource type="PackedScene" uid="uid://b3e2ulqrvcf1q" path="res://tank.tscn" id="2_rl7f6"]
-[ext_resource type="PackedScene" uid="uid://da3xngc1i1jtg" path="res://manager.tscn" id="3_m25uf"]
+[ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
+[ext_resource type="PackedScene" uid="uid://b3e2ulqrvcf1q" path="res://PlayerAndTank/tank.tscn" id="2_rl7f6"]
+[ext_resource type="Script" path="res://PlayerAndTank/PlayerCamera.gd" id="3_5e64h"]
+[ext_resource type="PackedScene" uid="uid://da3xngc1i1jtg" path="res://Managers/manager.tscn" id="3_m25uf"]
 [ext_resource type="Script" path="res://Levels/End.gd" id="4_hwmng"]
+[ext_resource type="Script" path="res://Managers/Projectiles.gd" id="5_k70kx"]
+[ext_resource type="Script" path="res://Levels/EnemySpawner.gd" id="6_jebxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
 size = Vector2(20, 215)
@@ -63,9 +66,10 @@ position = Vector2(10569, 0)
 [node name="Tank" parent="." instance=ExtResource("2_rl7f6")]
 position = Vector2(456, 160)
 
-[node name="Camera2D" type="Camera2D" parent="Tank"]
+[node name="PlayerCamera" type="Camera2D" parent="Tank"]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+script = ExtResource("3_5e64h")
 
 [node name="Invisible Wall 1" type="StaticBody2D" parent="."]
 position = Vector2(88, 155)
@@ -82,21 +86,15 @@ position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_af7rv")
 
 [node name="Manager" parent="." instance=ExtResource("3_m25uf")]
-
-[node name="enemy_spawn_timer" type="Timer" parent="Manager"]
-autostart = true
-
-[node name="big_enemy_spawner" type="Timer" parent="Manager"]
-wait_time = 20.0
-autostart = true
+visible = false
 
 [node name="End" type="Marker2D" parent="."]
 position = Vector2(10408, 176)
 script = ExtResource("4_hwmng")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 472.0
@@ -105,5 +103,21 @@ max_value = 9536.0
 fill_mode = 1
 show_percentage = false
 
-[connection signal="timeout" from="Manager/enemy_spawn_timer" to="Manager" method="_on_enemy_spawn_timer_timeout"]
-[connection signal="timeout" from="Manager/big_enemy_spawner" to="Manager" method="_on_big_enemy_spawner_timeout"]
+[node name="Timers" type="Node" parent="."]
+
+[node name="enemy_spawn_timer" type="Timer" parent="Timers"]
+autostart = true
+
+[node name="big_enemy_spawner" type="Timer" parent="Timers"]
+wait_time = 20.0
+autostart = true
+
+[node name="Projectiles" type="Node2D" parent="."]
+script = ExtResource("5_k70kx")
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("6_jebxi")
+
+[connection signal="addBullet" from="Tank" to="Projectiles" method="_on_tank_add_bullet"]
+[connection signal="timeout" from="Timers/enemy_spawn_timer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
+[connection signal="timeout" from="Timers/big_enemy_spawner" to="Enemies" method="_on_big_enemy_spawner_timeout"]
