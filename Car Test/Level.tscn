@@ -1,0 +1,92 @@
+[gd_scene load_steps=14 format=3 uid="uid://dym68e1ku56fm"]
+
+[ext_resource type="Texture2D" uid="uid://o7ivp2afxm5t" path="res://Car Test/360_F_123606607_Za4NHO4cn2akt1gToVCFFStsGSluacsz.jpg" id="1_gvi0b"]
+[ext_resource type="Shader" path="res://Car Test/LevelScroll.gdshader" id="1_yv4yv"]
+[ext_resource type="Script" path="res://Car Test/Score.gd" id="4_og6dl"]
+[ext_resource type="Script" path="res://Car Test/CarHealth.gd" id="5_qanjb"]
+[ext_resource type="Script" path="res://Car Test/BackgroundSprite.gd" id="5_ynnxf"]
+[ext_resource type="Script" path="res://Car Test/PlayerHealth.gd" id="6_sutfu"]
+[ext_resource type="Script" path="res://Car Test/DebrisSpawner.gd" id="6_tu8mv"]
+[ext_resource type="Script" path="res://Car Test/Projectiles.gd" id="7_biep4"]
+[ext_resource type="Script" path="res://Car Test/EnemySpawner.gd" id="7_gojrr"]
+[ext_resource type="Script" path="res://Car Test/GameSpeedManager.gd" id="8_r8iyo"]
+[ext_resource type="PackedScene" uid="uid://b17tvoyoaulpk" path="res://Car Test/player_and_car.tscn" id="10_st4jk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87pwo"]
+shader = ExtResource("1_yv4yv")
+shader_parameter/direction = Vector2(1, 0)
+shader_parameter/speed = 0.08
+
+[sub_resource type="Curve" id="Curve_2rq5j"]
+_data = [Vector2(0, 0.08), 0.0, 0.1, 0, 0, Vector2(1, 1), 3.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Level" type="Node2D"]
+
+[node name="Background" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Background"]
+polygon = PackedVector2Array(-1, 412, 1156, 409, 1156, 678, 1245, 408, 1154, -1, 1, 0, -176, 739, 1153, 674, -1, 674)
+
+[node name="BackgroundSprite" type="Sprite2D" parent="Background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_87pwo")
+position = Vector2(577.5, 325)
+scale = Vector2(2.15918, 1.8)
+texture = ExtResource("1_gvi0b")
+script = ExtResource("5_ynnxf")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Score" type="Label" parent="UI"]
+offset_left = 3.0
+offset_right = 64.0
+offset_bottom = 26.0
+text = "Score: 0"
+script = ExtResource("4_og6dl")
+metadata/_edit_use_anchors_ = true
+
+[node name="CarHealth" type="Label" parent="UI"]
+offset_left = 4.0
+offset_top = 28.0
+offset_right = 74.0
+offset_bottom = 54.0
+text = "Car Health: 0"
+script = ExtResource("5_qanjb")
+
+[node name="PlayerHealth" type="Label" parent="UI"]
+offset_left = 4.0
+offset_top = 60.0
+offset_right = 126.0
+offset_bottom = 86.0
+text = "Player Health: 0"
+script = ExtResource("6_sutfu")
+
+[node name="Projectiles" type="Node2D" parent="."]
+script = ExtResource("7_biep4")
+
+[node name="DebrisSpawner" type="Timer" parent="."]
+autostart = true
+script = ExtResource("6_tu8mv")
+
+[node name="EnemySpawner" type="Timer" parent="."]
+wait_time = 3.0
+script = ExtResource("7_gojrr")
+
+[node name="GameSpeedManager" type="Node" parent="."]
+script = ExtResource("8_r8iyo")
+difficultyCurve = SubResource("Curve_2rq5j")
+metadata/_edit_pinned_properties_ = [&"difficultyCurve"]
+
+[node name="PlayerAndCar" parent="." instance=ExtResource("10_st4jk")]
+
+[connection signal="timeout" from="DebrisSpawner" to="DebrisSpawner" method="_on_timeout"]
+[connection signal="timeout" from="EnemySpawner" to="EnemySpawner" method="_on_timeout"]
+[connection signal="carBreakdown" from="PlayerAndCar/Car" to="DebrisSpawner" method="_on_car_car_breakdown"]
+[connection signal="carBreakdown" from="PlayerAndCar/Car" to="EnemySpawner" method="_on_car_car_breakdown"]
+[connection signal="carBreakdown" from="PlayerAndCar/Car" to="GameSpeedManager" method="_on_car_car_breakdown"]
+[connection signal="carReturn" from="PlayerAndCar/Car" to="DebrisSpawner" method="_on_car_car_return"]
+[connection signal="carReturn" from="PlayerAndCar/Car" to="EnemySpawner" method="_on_car_car_return"]
+[connection signal="addBullet" from="PlayerAndCar/Player" to="Projectiles" method="_on_player_add_bullet"]
+
+[editable path="PlayerAndCar"]

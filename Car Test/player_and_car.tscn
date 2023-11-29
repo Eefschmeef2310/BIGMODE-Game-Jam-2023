@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b17tvoyoaulpk"]
+
+[ext_resource type="Script" path="res://Car Test/CarController.gd" id="1_l63l7"]
+[ext_resource type="Texture2D" uid="uid://cg2m3t5s7ut8a" path="res://Car Test/ezgif-4-20cd899a47.png" id="2_fo2e6"]
+[ext_resource type="Script" path="res://Car Test/CarCollisions.gd" id="3_2recs"]
+[ext_resource type="PackedScene" uid="uid://gfr8mma8hu1k" path="res://Car Test/Player.tscn" id="4_4kb4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54jp1"]
+size = Vector2(90, 288)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okbws"]
+radius = 42.0
+height = 254.0
+
+[node name="PlayerAndCar" type="Node2D"]
+
+[node name="Car" type="CharacterBody2D" parent="."]
+position = Vector2(500, 483)
+script = ExtResource("1_l63l7")
+
+[node name="Car" type="Sprite2D" parent="Car"]
+position = Vector2(0, -10)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_fo2e6")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car"]
+position = Vector2(-6.10352e-05, 29)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_54jp1")
+metadata/_edit_lock_ = true
+
+[node name="Hitbox" type="Area2D" parent="Car"]
+position = Vector2(0, -9.535)
+script = ExtResource("3_2recs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Car/Hitbox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_okbws")
+debug_color = Color(0.701961, 0, 0.0156863, 0.419608)
+
+[node name="Player" parent="." instance=ExtResource("4_4kb4i")]
+position = Vector2(496, 569)
+
+[connection signal="startCar" from="Player" to="Car" method="_on_player_start_car"]
