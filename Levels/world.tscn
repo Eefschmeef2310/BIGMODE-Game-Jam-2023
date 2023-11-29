@@ -9,23 +9,58 @@ size = Vector2(20, 215)
 
 [node name="World" type="Node2D"]
 
-[node name="Floor2" parent="." instance=ExtResource("1_ksgnp")]
-position = Vector2(704, 320)
-
-[node name="Floor3" parent="." instance=ExtResource("1_ksgnp")]
-position = Vector2(1410, 320)
-
-[node name="Floor4" parent="." instance=ExtResource("1_ksgnp")]
-position = Vector2(2116, 320)
-
-[node name="Floor5" parent="." instance=ExtResource("1_ksgnp")]
-position = Vector2(2822, 320)
-
-[node name="Floor" parent="." instance=ExtResource("1_ksgnp")]
+[node name="Floor Pieces" type="Node2D" parent="."]
 position = Vector2(-1, 320)
 
+[node name="Floor" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+
+[node name="Floor2" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(705, 0)
+
+[node name="Floor3" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(1411, 0)
+
+[node name="Floor4" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(2117, 0)
+
+[node name="Floor5" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(2823, 0)
+
+[node name="Floor6" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(3529, 0)
+
+[node name="Floor7" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(4233, 0)
+
+[node name="Floor8" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(4937, 0)
+
+[node name="Floor9" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(5641, 0)
+
+[node name="Floor10" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(6345, 0)
+
+[node name="Floor11" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(7049, 0)
+
+[node name="Floor12" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(7753, 0)
+
+[node name="Floor13" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(8457, 0)
+
+[node name="Floor14" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(9161, 0)
+
+[node name="Floor15" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(9865, 0)
+
+[node name="Floor16" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
+position = Vector2(10569, 0)
+
 [node name="Tank" parent="." instance=ExtResource("2_rl7f6")]
-position = Vector2(840, 160)
+position = Vector2(1152, 160)
 
 [node name="Camera2D" type="Camera2D" parent="Tank"]
 zoom = Vector2(0.5, 0.5)
@@ -39,10 +74,16 @@ position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_af7rv")
 
 [node name="Invisible Wall 2" type="StaticBody2D" parent="."]
-position = Vector2(2712, 155)
+position = Vector2(10448, 155)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Wall 2"]
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_af7rv")
 
 [node name="Manager" parent="." instance=ExtResource("3_m25uf")]
+
+[node name="enemy_spawn_timer" type="Timer" parent="Manager"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="Manager/enemy_spawn_timer" to="Manager" method="_on_enemy_spawn_timer_timeout"]
