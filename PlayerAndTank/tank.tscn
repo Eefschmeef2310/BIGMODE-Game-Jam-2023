@@ -22,7 +22,7 @@ polygon = PackedVector2Array(-23, 0, 23, 0, 8, -31, 39, -31, 39, -34, 7, -34, 7,
 position = Vector2(-2.5, -29)
 shape = SubResource("RectangleShape2D_kisji")
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="MuzzleMarker" type="Marker2D" parent="."]
 position = Vector2(39, -33)
 
 [node name="healthbar" type="ProgressBar" parent="."]

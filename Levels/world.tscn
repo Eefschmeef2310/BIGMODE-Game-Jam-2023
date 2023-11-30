@@ -110,6 +110,7 @@ metadata/_edit_lock_ = true
 script = ExtResource("6_jebxi")
 metadata/_edit_lock_ = true
 
+[connection signal="addBullet" from="Player_and_Tank/Tank" to="Projectiles" method="_on_tank_add_bullet"]
 [connection signal="area_entered" from="Player_and_Tank/Tank/PlayerHatch" to="Player_and_Tank/Player" method="_on_player_hatch_area_entered" flags=18]
 [connection signal="timeout" from="Timers/enemy_spawn_timer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="Timers/big_enemy_spawner" to="Enemies" method="_on_big_enemy_spawner_timeout"]

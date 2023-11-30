@@ -54,8 +54,13 @@ func createPlayer():
 #spawns bullet
 func shoot():
 	var bullet = bulletPath.instantiate()
+	
+	var direction = (get_global_mouse_position() - $MuzzleMarker.global_position).normalized()
+	bullet.position = $MuzzleMarker.global_position
+	bullet.direction = direction
+	bullet.rotation_degrees = rad_to_deg(direction.angle())
+	
 	addBullet.emit(bullet)
-	bullet.position = $Marker2D.global_position
 
 #updates the health to the health bar
 func update_health():
