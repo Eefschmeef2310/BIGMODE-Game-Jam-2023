@@ -46,7 +46,7 @@ func spawn_enemy_big():
 
 func _on_big_enemy_spawner_timeout():
 	$"../Timers/enemy_spawn_timer".wait_time = randf_range(1.0, 10.0)
-	spawn_enemy_small()
+	spawn_enemy_big()
 
 func _on_enemy_spawn_timer_timeout():
-	spawn_enemy_big()
+	spawn_enemy_small()
