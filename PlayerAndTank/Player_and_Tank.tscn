@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://3ux5lcf5kbhs"]
+
+[ext_resource type="PackedScene" uid="uid://b3e2ulqrvcf1q" path="res://PlayerAndTank/tank.tscn" id="1_4q17n"]
+[ext_resource type="PackedScene" uid="uid://c80x2lpbryx6j" path="res://PlayerAndTank/player.tscn" id="2_30v2w"]
+[ext_resource type="Script" path="res://PlayerAndTank/PlayerCamera.gd" id="3_37i13"]
+[ext_resource type="Script" path="res://PlayerAndTank/PlayerHatch.gd" id="3_hi7kq"]
+
+[node name="Player_and_Tank" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_30v2w")]
+position = Vector2(-3, -36)
+
+[node name="Tank" parent="." instance=ExtResource("1_4q17n")]
+metadata/_edit_lock_ = true
+
+[node name="PlayerHatch" parent="Tank" index="2"]
+script = ExtResource("3_hi7kq")
+
+[node name="Player Camera" type="Camera2D" parent="Tank"]
+position_smoothing_enabled = true
+script = ExtResource("3_37i13")
+metadata/_edit_lock_ = true
+
+[connection signal="toTankControl" from="Player" to="Tank/Player Camera" method="_on_player_to_tank_control"]
+[connection signal="toPlayerControl" from="Tank" to="Tank/Player Camera" method="_on_tank_to_player_control"]
+[connection signal="body_entered" from="Tank/PlayerHatch" to="Tank/PlayerHatch" method="_on_body_entered"]
+
+[editable path="Tank"]

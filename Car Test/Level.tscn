@@ -82,11 +82,5 @@ metadata/_edit_pinned_properties_ = [&"difficultyCurve"]
 
 [connection signal="timeout" from="DebrisSpawner" to="DebrisSpawner" method="_on_timeout"]
 [connection signal="timeout" from="EnemySpawner" to="EnemySpawner" method="_on_timeout"]
-[connection signal="carBreakdown" from="PlayerAndCar/Car" to="DebrisSpawner" method="_on_car_car_breakdown"]
-[connection signal="carBreakdown" from="PlayerAndCar/Car" to="EnemySpawner" method="_on_car_car_breakdown"]
-[connection signal="carBreakdown" from="PlayerAndCar/Car" to="GameSpeedManager" method="_on_car_car_breakdown"]
-[connection signal="carReturn" from="PlayerAndCar/Car" to="DebrisSpawner" method="_on_car_car_return"]
-[connection signal="carReturn" from="PlayerAndCar/Car" to="EnemySpawner" method="_on_car_car_return"]
-[connection signal="addBullet" from="PlayerAndCar/Player" to="Projectiles" method="_on_player_add_bullet"]
 
 [editable path="PlayerAndCar"]

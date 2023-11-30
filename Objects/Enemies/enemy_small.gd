@@ -1,26 +1,17 @@
 extends CharacterBody2D
 
-
 const SPEED = 200.0
 const JUMP_VELOCITY = -400.0
 
-var root
-var tank
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-
-func _ready():
-	root = get_parent()
-	tank = root.get_node("Tank")
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	var distance_to_tank = tank.position.x - position.x
+	var distance_to_tank = GameManager.tank_position.x - position.x
 	var DIR = 1
 	if distance_to_tank < 0:
 		DIR = -1
@@ -35,7 +26,5 @@ func _physics_process(delta):
 #		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
 
-
 func _on_area_2d_area_entered(area):
 	print(area)
-	

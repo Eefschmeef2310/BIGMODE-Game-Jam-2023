@@ -1,12 +1,7 @@
 extends Marker2D
 
 @onready var distance: float
-var tank 
 @onready var progress = $"../UI/ProgressBar"
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	tank = $"../Tank"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 signal addBullet(bullet)
+signal toPlayerControl()
 
 var root
 var manager
@@ -10,16 +11,14 @@ var health := 100:
 		health = value
 		health = clamp(health, 0, 100)
 
-const SPEED = 200.0
-const bulletPath = preload("res://Objects/Projectiles/bullet.tscn")
+@export var SPEED = 200.0
+const bulletPath: PackedScene = preload("res://Objects/Projectiles/bullet.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var healthbar = $healthbar
-
-func _ready():
-	manager = get_parent().get_node("Manager")
+@onready var player = $"../Player"
 
 func _physics_process(delta):
 	update_health()
@@ -40,6 +39,17 @@ func _physics_process(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		move_and_slide()
+		
+		#Toggle
+		if Input.is_action_just_pressed("swap_mode"):
+			GameManager.tank_mode = false
+			GameManager.camera_lerping = true
+			toPlayerControl.emit()
+			createPlayer()
+			
+func createPlayer():
+	player.toggle(true)
+	player.position = position + Vector2(-3,-36)
 
 #spawns bullet
 func shoot():

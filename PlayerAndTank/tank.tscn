@@ -3,28 +3,33 @@
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://byqbnbtyrcewf" path="res://Sprites/Tank.png" id="1_ifu3s"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4ojg"]
-size = Vector2(44, 35)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kisji"]
+size = Vector2(19, 6)
 
 [node name="Tank" type="CharacterBody2D"]
 script = ExtResource("1_6erhe")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 14.5)
-shape = SubResource("RectangleShape2D_g4ojg")
-one_way_collision = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(7, -32)
 texture = ExtResource("1_ifu3s")
 
+[node name="MainHitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-23, 0, 23, 0, 8, -31, 39, -31, 39, -34, 7, -34, 7, -26, -12, -26, -12, -35, -23, -35)
+
+[node name="PlayerHatch" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
+position = Vector2(-2.5, -29)
+shape = SubResource("RectangleShape2D_kisji")
+
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(32, -1)
+position = Vector2(39, -33)
 
 [node name="healthbar" type="ProgressBar" parent="."]
-offset_left = -32.0
-offset_top = -15.0
-offset_right = 70.0
-offset_bottom = -8.0
+offset_left = -25.0
+offset_top = -41.0
+offset_right = 77.0
+offset_bottom = -34.0
 scale = Vector2(0.5, 0.5)
 show_percentage = false
 

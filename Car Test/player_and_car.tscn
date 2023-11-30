@@ -41,5 +41,3 @@ debug_color = Color(0.701961, 0, 0.0156863, 0.419608)
 
 [node name="Player" parent="." instance=ExtResource("4_4kb4i")]
 position = Vector2(496, 569)
-
-[connection signal="startCar" from="Player" to="Car" method="_on_player_start_car"]
