@@ -26,6 +26,6 @@ func hit():
 		#Create a gear
 		var gear = gear_scene.instantiate()
 		gear.position = global_position
-		get_parent().add_child(gear)
+		get_parent().call_deferred("add_child", gear)
 		
 		queue_free()
