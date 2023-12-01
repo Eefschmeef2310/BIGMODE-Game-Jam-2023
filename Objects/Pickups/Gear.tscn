@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddppnopenktf7"]
+
+[ext_resource type="Texture2D" uid="uid://c87yma35ntky1" path="res://Sprites/gear-1119298_1280.png" id="1_bl5j7"]
+[ext_resource type="Script" path="res://Objects/Pickups/Gear.gd" id="1_oou22"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5gwrl"]
+radius = 6.08276
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wo1q1"]
+radius = 6.0
+
+[node name="Gear" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_oou22")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.01, 0.01)
+texture = ExtResource("1_bl5j7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5gwrl")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_wo1q1")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

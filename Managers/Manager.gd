@@ -5,3 +5,5 @@ var tank_mode := true:
 		return tank_mode
 
 var tank_position: Vector2
+
+var gears: float

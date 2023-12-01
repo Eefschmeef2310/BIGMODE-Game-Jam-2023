@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+signal addGear(gear)
+
+var gear_scene: PackedScene = preload("res://Objects/Pickups/Gear.tscn")
+
 @export var SPEED = 200.0
 @export var health = 20
 
@@ -19,4 +23,9 @@ func hit():
 	health -= 10
 	$HealthBar.value = health
 	if(health <= 0):
+		#Create a gear
+		var gear = gear_scene.instantiate()
+		gear.position = global_position
+		get_parent().add_child(gear)
+		
 		queue_free()
