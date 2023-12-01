@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
+#region signals
 signal addBullet(bullet)
 signal toPlayerControl()
+#endregion
 
-var root
-var manager
+#region variables
 var health := 100:
 	#introduce a setter that automatically clamps the health
 	set(value):
@@ -19,10 +20,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var healthbar = $healthbar
 @onready var player = $"../Player"
+#endregion
 
-func _physics_process(delta):
-	update_health()
-	
+func _physics_process(delta):	
 	GameManager.tank_position = global_position
 	
 	if GameManager.tank_mode:
@@ -43,7 +43,6 @@ func _physics_process(delta):
 		#Toggle
 		if Input.is_action_just_pressed("swap_mode"):
 			GameManager.tank_mode = false
-			GameManager.camera_lerping = true
 			toPlayerControl.emit()
 			createPlayer()
 			
@@ -51,7 +50,7 @@ func createPlayer():
 	player.toggle(true)
 	player.position = position + Vector2(-3,-36)
 
-#spawns bullet
+#region shooting
 func shoot():
 	var bullet = bulletPath.instantiate()
 	
@@ -61,7 +60,9 @@ func shoot():
 	bullet.rotation_degrees = rad_to_deg(direction.angle())
 	
 	addBullet.emit(bullet)
+#endregion
 
+#region healthAndDamage
 #updates the health to the health bar
 func update_health():
 	healthbar.value = health
@@ -74,3 +75,11 @@ func _on_regen_timer_timeout():
 		health -= 2
 	else:
 		health += 1
+
+#Enemy hitbox
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("Enemy"):
+		#TODO Refactor so each enemy has their own damage amount
+		health -= 10
+		update_health()
+#endregion

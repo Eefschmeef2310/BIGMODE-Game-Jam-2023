@@ -17,6 +17,7 @@ metadata/_edit_lock_ = true
 script = ExtResource("3_hi7kq")
 
 [node name="Player Camera" type="Camera2D" parent="Tank"]
+offset = Vector2(0, -70)
 position_smoothing_enabled = true
 script = ExtResource("3_37i13")
 metadata/_edit_lock_ = true

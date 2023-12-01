@@ -13,20 +13,17 @@ var smooth_zoom = 0.5
 @onready var player = $"../../Player"
 
 func _process(delta):
-	if GameManager.camera_lerping:
-		if GameManager.tank_mode:
-			camera_target_zoom = camera_outer_zoom
-		else:
-			camera_target_zoom = camera_inner_zoom
-		zoom_camera(camera_target_zoom, delta)
+	if GameManager.tank_mode:
+		camera_target_zoom = camera_outer_zoom
+	else:
+		camera_target_zoom = camera_inner_zoom
+	zoom_camera(camera_target_zoom, delta)
 		
 #function for camera zoom lerp
 func zoom_camera(zoomTarget, delta):
 	smooth_zoom = lerp(smooth_zoom, zoomTarget, camera_zoom_speed * delta)
 	if smooth_zoom != camera_inner_zoom:
 		set_zoom(Vector2(smooth_zoom, smooth_zoom))
-	else:
-		GameManager.camera_lerping = false
 
 func _on_player_to_tank_control():
 	reparent(tank)

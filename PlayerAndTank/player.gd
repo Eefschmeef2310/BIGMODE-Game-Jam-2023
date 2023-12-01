@@ -34,5 +34,4 @@ func toggle(activate: bool):
 func toTank():
 	toTankControl.emit()
 	GameManager.tank_mode = true
-	GameManager.camera_lerping = true
 	toggle(false)

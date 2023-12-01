@@ -23,6 +23,7 @@ func _process(delta):
 #				hit.queue_free()
 #				self.queue_free()
 
-
-
-
+func _on_body_entered(body):
+	if "hit" in body:
+		body.hit()
+		queue_free()

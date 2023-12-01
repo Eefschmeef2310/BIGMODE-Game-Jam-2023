@@ -1,30 +1,22 @@
 extends CharacterBody2D
 
-const SPEED = 200.0
-const JUMP_VELOCITY = -400.0
+@export var SPEED = 200.0
+@export var health = 20
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+func _ready():
+	$HealthBar.max_value = health
+	$HealthBar.value = health
 
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y += gravity * delta
-
+func _physics_process(_delta):
 	var distance_to_tank = GameManager.tank_position.x - position.x
 	var DIR = 1
 	if distance_to_tank < 0:
 		DIR = -1
 	velocity.x = DIR * SPEED
-	
-#	# Get the input direction and handle the movement/deceleration.
-#	# As good practice, you should replace UI actions with custom gameplay actions.
-#	var direction = Input.get_axis("ui_left", "ui_right")
-#	if direction:
-#		velocity.x = direction * SPEED
-#	else:
-#		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
-
-func _on_area_2d_area_entered(area):
-	print(area)
+	
+func hit():
+	health -= 10
+	$HealthBar.value = health
+	if(health <= 0):
+		queue_free()
