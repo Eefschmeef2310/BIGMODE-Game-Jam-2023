@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=8 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
-[ext_resource type="Texture2D" uid="uid://byqbnbtyrcewf" path="res://Sprites/Tank.png" id="1_ifu3s"]
+[ext_resource type="Texture2D" uid="uid://drtc3s07vw4pq" path="res://Sprites/TankBase.png" id="2_31f2s"]
+[ext_resource type="Texture2D" uid="uid://b16ka4fsdh1gf" path="res://Sprites/Turret.png" id="3_4it8k"]
+[ext_resource type="Script" path="res://PlayerAndTank/Turret.gd" id="4_oud1o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
 size = Vector2(32, 3)
@@ -29,19 +31,12 @@ one_way_collision = true
 position = Vector2(-2.5, -29)
 shape = SubResource("RectangleShape2D_kisji")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(7, -32)
-texture = ExtResource("1_ifu3s")
-
 [node name="Hitbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(8, -13)
 shape = SubResource("RectangleShape2D_0pocb")
 debug_color = Color(0.701961, 0.0431373, 0, 0.419608)
-
-[node name="MuzzleMarker" type="Marker2D" parent="."]
-position = Vector2(39, -33)
 
 [node name="healthbar" type="ProgressBar" parent="."]
 offset_left = -25.0
@@ -54,5 +49,20 @@ show_percentage = false
 [node name="regen_timer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Tank" type="Sprite2D" parent="Sprites"]
+position = Vector2(7, -13)
+texture = ExtResource("2_31f2s")
+
+[node name="Turret" type="Sprite2D" parent="Sprites"]
+position = Vector2(-3, -26)
+texture = ExtResource("3_4it8k")
+offset = Vector2(10, -19)
+script = ExtResource("4_oud1o")
+
+[node name="MuzzleMarker" type="Marker2D" parent="Sprites/Turret"]
+position = Vector2(42, -7)
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
