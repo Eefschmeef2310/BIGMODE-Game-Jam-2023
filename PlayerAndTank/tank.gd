@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends RigidBody2D
 
 #region signals
 signal addBullet(bullet)
@@ -20,7 +20,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 @onready var healthbar = $healthbar
 @onready var player = $"../Player"
+
+
+@export var Wheels : Array[PinJoint2D] #add all the wheel prefabs to this array
+var WheelsRB : Array[RigidBody2D]
 #endregion
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	for i in range(0, Wheels.size()): #get the actual rigidbody of each wheel
+		WheelsRB.push_back(Wheels[i].get_node("wheel"))
 
 func _physics_process(delta):	
 	GameManager.tank_position = global_position
@@ -29,16 +38,30 @@ func _physics_process(delta):
 		#handle bullet firing
 		if Input.is_action_just_pressed("fire"):
 			shoot()
-		# Add the gravity.
-		if not is_on_floor():
-			velocity.y += gravity * delta
-		# Get the input direction and handle the movement/deceleration.
-		var direction = Input.get_axis("left", "right")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-		move_and_slide()
+		#region old_code
+		## Add the gravity.
+		#if not is_on_floor():
+			#velocity.y += gravity * delta
+		## Get the input direction and handle the movement/deceleration.
+		#var direction = Input.get_axis("left", "right")
+		#if direction:
+			#velocity.x = direction * SPEED
+		#else:
+			#velocity.x = move_toward(velocity.x, 0, SPEED)
+		#move_and_slide()
+		#endregion
+		#TODO ^remove
+		
+		var direction = Input.get_axis("left", "right") as float
+	
+		for i in range(0, WheelsRB.size()):
+			WheelsRB[i].apply_torque(direction * SPEED * delta * 10000)
+			if(direction == 0):
+				#HACK: if we can find a way to do this without completely locking the rotation (eg variable brakes) that might be better, but this is good enough for now
+				WheelsRB[i].lock_rotation = true
+			else:
+				WheelsRB[i].lock_rotation = false
+				pass
 		
 		#Toggle
 		if Input.is_action_just_pressed("swap_mode"):

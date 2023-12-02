@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://i0koi4kmr50i"]
 
 [ext_resource type="Script" path="res://Scripts/TankControls.gd" id="1_smu4j"]
-[ext_resource type="Texture2D" uid="uid://dd1wrn3y1tysi" path="res://Sprites/Tank.png" id="2_2obp8"]
+[ext_resource type="Texture2D" uid="uid://byqbnbtyrcewf" path="res://Sprites/Tank.png" id="2_2obp8"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="3_c8wm8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t53wy"]
@@ -10,12 +10,11 @@
 size = Vector2(15, 35)
 
 [node name="TankRB" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
-position = Vector2(-312, -160)
 mass = 0.01
-center_of_mass_mode = 1
-center_of_mass = Vector2(-7, 60)
 physics_material_override = SubResource("PhysicsMaterial_t53wy")
 gravity_scale = 0.0
+center_of_mass_mode = 1
+center_of_mass = Vector2(-7, 60)
 script = ExtResource("1_smu4j")
 Force = 150.0
 Wheels = [null, null]

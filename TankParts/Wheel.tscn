@@ -8,11 +8,11 @@
 radius = 6.0
 
 [node name="PinJoint2D2" type="PinJoint2D"]
-position = Vector2(9, 26)
 node_b = NodePath("wheel")
 softness = 1.69
 
 [node name="wheel" type="RigidBody2D" parent="."]
+collision_layer = 2
 physics_material_override = SubResource("PhysicsMaterial_rgirr")
 angular_damp = 100.0
 
