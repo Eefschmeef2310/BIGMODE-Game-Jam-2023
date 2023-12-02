@@ -1,68 +1,113 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=12 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
-[ext_resource type="Texture2D" uid="uid://drtc3s07vw4pq" path="res://Sprites/TankBase.png" id="2_31f2s"]
-[ext_resource type="Texture2D" uid="uid://b16ka4fsdh1gf" path="res://Sprites/Turret.png" id="3_4it8k"]
+[ext_resource type="Texture2D" uid="uid://ces6ff6ebgtbo" path="res://Sprites/placeholder_tank_body.png" id="2_xenx7"]
+[ext_resource type="Texture2D" uid="uid://rjva1dtluki3" path="res://Sprites/placeholder_tank_top.png" id="3_q5j3k"]
+[ext_resource type="Texture2D" uid="uid://gr6oq4cighxr" path="res://Sprites/placeholder_gun.png" id="4_2c6ie"]
 [ext_resource type="Script" path="res://PlayerAndTank/Turret.gd" id="4_oud1o"]
+[ext_resource type="Texture2D" uid="uid://fikg8mgpa6u7" path="res://Sprites/place_holder_wheels.png" id="6_dy75o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
-size = Vector2(32, 3)
+size = Vector2(50, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3ia6"]
+size = Vector2(84, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlvrk"]
+size = Vector2(18, 3)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kisji"]
-size = Vector2(19, 6)
+size = Vector2(29, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pocb"]
-size = Vector2(62, 26)
+size = Vector2(30.5, 29)
 
 [node name="Tank" type="CharacterBody2D"]
 script = ExtResource("1_6erhe")
 
-[node name="MainCollision" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-23, 0, 23, 0, 8, -31, 7, -34, 7, -26, -12, -26, -12, -35)
+[node name="Sprites" type="Node2D" parent="."]
 
-[node name="Muzzle" type="CollisionShape2D" parent="."]
-position = Vector2(23, -32.5)
+[node name="Tank" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -51.57)
+scale = Vector2(0.02, 0.02)
+texture = ExtResource("2_xenx7")
+
+[node name="PlaceholderTankTop" type="Sprite2D" parent="Sprites"]
+position = Vector2(-10, -70)
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("3_q5j3k")
+
+[node name="Turret" type="StaticBody2D" parent="Sprites"]
+position = Vector2(5, -70)
+scale = Vector2(0.03, 0.03)
+script = ExtResource("4_oud1o")
+rotation_speed = 2.0
+
+[node name="Sprite" type="Sprite2D" parent="Sprites/Turret"]
+position = Vector2(866.667, 0)
+scale = Vector2(1, 1)
+texture = ExtResource("4_2c6ie")
+
+[node name="MuzzleMarker" type="Marker2D" parent="Sprites/Turret"]
+position = Vector2(1666.67, -3.05176e-05)
+
+[node name="Muzzle" type="CollisionShape2D" parent="Sprites/Turret"]
+position = Vector2(833.333, 0)
+scale = Vector2(33.3333, 33.3333)
 shape = SubResource("RectangleShape2D_yy0e3")
 one_way_collision = true
 
+[node name="Wheels" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -17)
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("6_dy75o")
+
+[node name="Treads" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_t3ia6")
+one_way_collision = true
+
+[node name="Left Platform" type="CollisionShape2D" parent="."]
+position = Vector2(-24, -47.5)
+shape = SubResource("RectangleShape2D_vlvrk")
+one_way_collision = true
+
+[node name="Right Platform" type="CollisionShape2D" parent="."]
+position = Vector2(5, -48)
+shape = SubResource("RectangleShape2D_vlvrk")
+one_way_collision = true
+
+[node name="HatchOuter" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-25, -76, -26, -76, -26, -65, 5, -65, 5, -76, 4, -76, 4, -66, -25, -66)
+
 [node name="PlayerHatch" type="Area2D" parent="."]
 
+[node name="PlayerSpawnPos" type="Marker2D" parent="PlayerHatch"]
+position = Vector2(-10, -80)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
-position = Vector2(-2.5, -29)
+position = Vector2(-10.5, -75)
 shape = SubResource("RectangleShape2D_kisji")
+debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 
 [node name="Hitbox" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(8, -13)
+position = Vector2(57.25, -16)
 shape = SubResource("RectangleShape2D_0pocb")
 debug_color = Color(0.701961, 0.0431373, 0, 0.419608)
 
 [node name="healthbar" type="ProgressBar" parent="."]
-offset_left = -25.0
-offset_top = -41.0
-offset_right = 77.0
-offset_bottom = -34.0
+offset_left = -34.0
+offset_top = -80.0
+offset_right = 62.0
+offset_bottom = -76.0
 scale = Vector2(0.5, 0.5)
 show_percentage = false
 
 [node name="regen_timer" type="Timer" parent="."]
 wait_time = 0.2
 autostart = true
-
-[node name="Sprites" type="Node2D" parent="."]
-
-[node name="Tank" type="Sprite2D" parent="Sprites"]
-position = Vector2(7, -13)
-texture = ExtResource("2_31f2s")
-
-[node name="Turret" type="Sprite2D" parent="Sprites"]
-position = Vector2(-3, -26)
-texture = ExtResource("3_4it8k")
-offset = Vector2(10, -19)
-script = ExtResource("4_oud1o")
-
-[node name="MuzzleMarker" type="Marker2D" parent="Sprites/Turret"]
-position = Vector2(42, -7)
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

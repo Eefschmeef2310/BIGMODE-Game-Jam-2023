@@ -48,8 +48,7 @@ func _physics_process(delta):
 			
 func createPlayer():
 	player.toggle(true)
-	player.position = position + Vector2(-3,-36)
-
+	player.position = position + $PlayerHatch/PlayerSpawnPos.position
 #region shooting
 func shoot():
 	var bullet = bulletPath.instantiate()
