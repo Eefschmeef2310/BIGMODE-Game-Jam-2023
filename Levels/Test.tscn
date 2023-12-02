@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://snrrv7ahv2g0"]
+
+[ext_resource type="Texture2D" uid="uid://cvpjheeof2cup" path="res://Sprites/floor.png" id="1_h4lni"]
+[ext_resource type="Texture2D" uid="uid://r058g6pejv10" path="res://Sprites/circle.png" id="2_lclex"]
+[ext_resource type="PackedScene" uid="uid://i0koi4kmr50i" path="res://TankParts/TankPrefab.tscn" id="3_ksw5v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ds4s5"]
+size = Vector2(706, 248)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_get4i"]
+
+[node name="Test" type="Node2D"]
+
+[node name="test env" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="test env"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test env/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ds4s5")
+
+[node name="Sprite2D" type="Sprite2D" parent="test env/StaticBody2D"]
+texture = ExtResource("1_h4lni")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="test env"]
+position = Vector2(-113, -42)
+scale = Vector2(14.065, 14.065)
+
+[node name="Sprite2D" type="Sprite2D" parent="test env/StaticBody2D2"]
+z_index = -1
+scale = Vector2(0.066, 0.066)
+texture = ExtResource("2_lclex")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="test env/StaticBody2D2"]
+shape = SubResource("CircleShape2D_get4i")
+
+[node name="TankRB" parent="." node_paths=PackedStringArray("Wheels") instance=ExtResource("3_ksw5v")]
+Wheels = [null, null]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-112, -199)
