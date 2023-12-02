@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://r058g6pejv10" path="res://Sprites/circle.png" id="1_sm4hu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rgirr"]
-absorbent = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56kwn"]
 radius = 6.0
@@ -15,11 +14,11 @@ softness = 1.69
 
 [node name="wheel" type="RigidBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_rgirr")
+angular_damp = 100.0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="wheel"]
 shape = SubResource("CircleShape2D_56kwn")
 
 [node name="Sprite2D" type="Sprite2D" parent="wheel"]
-visible = false
 scale = Vector2(0.04, 0.04)
 texture = ExtResource("1_sm4hu")

@@ -21,11 +21,11 @@ func _process(delta):
 	for i in range(0, WheelsRB.size()):
 		WheelsRB[i].apply_torque(direction * Force * delta * 10000)
 		if(direction == 0):
-			WheelsRB[i].angular_damp = 100000000000
-			WheelsRB[i].freeze = true
+			#WheelsRB[i].angular_damp = 100000000000
+			WheelsRB[i].lock_rotation = true
 		else:
-			WheelsRB[i].angular_damp = 100
-			WheelsRB[i].freeze = false
+			#WheelsRB[i].angular_damp = 100
+			WheelsRB[i].lock_rotation = false
 			pass
 	
 
