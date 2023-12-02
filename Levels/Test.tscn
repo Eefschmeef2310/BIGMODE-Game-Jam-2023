@@ -1,20 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://snrrv7ahv2g0"]
+[gd_scene load_steps=6 format=3 uid="uid://snrrv7ahv2g0"]
 
 [ext_resource type="Texture2D" uid="uid://cvpjheeof2cup" path="res://Sprites/floor.png" id="1_h4lni"]
 [ext_resource type="Texture2D" uid="uid://r058g6pejv10" path="res://Sprites/circle.png" id="2_lclex"]
-[ext_resource type="Script" path="res://Scripts/TankControls.gd" id="3_bxgkt"]
-[ext_resource type="Texture2D" uid="uid://dd1wrn3y1tysi" path="res://Sprites/Tank.png" id="3_udv10"]
-[ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="5_m8sdx"]
+[ext_resource type="PackedScene" uid="uid://i0koi4kmr50i" path="res://TankParts/TankPrefab.tscn" id="3_ksw5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ds4s5"]
 size = Vector2(706, 248)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_get4i"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t53wy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nsdr"]
-size = Vector2(15, 35)
 
 [node name="Test" type="Node2D"]
 
@@ -40,34 +33,8 @@ texture = ExtResource("2_lclex")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="test env/StaticBody2D2"]
 shape = SubResource("CircleShape2D_get4i")
 
-[node name="TankRB" type="RigidBody2D" parent="." node_paths=PackedStringArray("Wheels")]
-position = Vector2(-312, -160)
-mass = 0.01
-center_of_mass_mode = 1
-center_of_mass = Vector2(-7, 60)
-physics_material_override = SubResource("PhysicsMaterial_t53wy")
-gravity_scale = 0.0
-script = ExtResource("3_bxgkt")
-Force = 150.0
-Wheels = [NodePath("RWheel"), NodePath("LWheel")]
-
-[node name="Tank" type="Sprite2D" parent="TankRB"]
-texture = ExtResource("3_udv10")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TankRB"]
-position = Vector2(-7.5, 13.5)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_2nsdr")
-
-[node name="Node2D" type="Node2D" parent="TankRB"]
-position = Vector2(-7, 59)
-
-[node name="RWheel" parent="TankRB" instance=ExtResource("5_m8sdx")]
-node_a = NodePath("..")
-
-[node name="LWheel" parent="TankRB" instance=ExtResource("5_m8sdx")]
-position = Vector2(-24, 26)
-node_a = NodePath("..")
+[node name="TankRB" parent="." node_paths=PackedStringArray("Wheels") instance=ExtResource("3_ksw5v")]
+Wheels = [null, null]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-112, -199)

@@ -8,23 +8,17 @@ var WheelsRB : Array[RigidBody2D]
 func _ready():
 	for i in range(0, Wheels.size()):
 		WheelsRB.push_back(Wheels[i].get_node("wheel"))
-		
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var direction = Input.get_axis("left", "right") as float
 	
-	
-	
 	for i in range(0, WheelsRB.size()):
 		WheelsRB[i].apply_torque(direction * Force * delta * 10000)
 		if(direction == 0):
-			#WheelsRB[i].angular_damp = 100000000000
+			#HACK: if we can find a way to do this without completely locking the rotation (eg variable brakes) that might be better, but this is good enough for now
 			WheelsRB[i].lock_rotation = true
 		else:
-			#WheelsRB[i].angular_damp = 100
 			WheelsRB[i].lock_rotation = false
 			pass
 	

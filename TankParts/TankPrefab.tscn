@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://i0koi4kmr50i"]
+
+[ext_resource type="Script" path="res://Scripts/TankControls.gd" id="1_smu4j"]
+[ext_resource type="Texture2D" uid="uid://dd1wrn3y1tysi" path="res://Sprites/Tank.png" id="2_2obp8"]
+[ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="3_c8wm8"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t53wy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nsdr"]
+size = Vector2(15, 35)
+
+[node name="TankRB" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
+position = Vector2(-312, -160)
+mass = 0.01
+center_of_mass_mode = 1
+center_of_mass = Vector2(-7, 60)
+physics_material_override = SubResource("PhysicsMaterial_t53wy")
+gravity_scale = 0.0
+script = ExtResource("1_smu4j")
+Force = 150.0
+Wheels = [null, null]
+
+[node name="Tank" type="Sprite2D" parent="."]
+texture = ExtResource("2_2obp8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7.5, 13.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_2nsdr")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-7, 59)
+
+[node name="RWheel" parent="." instance=ExtResource("3_c8wm8")]
+node_a = NodePath("..")
+
+[node name="LWheel" parent="." instance=ExtResource("3_c8wm8")]
+position = Vector2(-24, 26)
+node_a = NodePath("..")

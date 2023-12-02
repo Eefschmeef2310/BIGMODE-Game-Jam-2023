@@ -34,7 +34,7 @@ project/assembly_name="BIGMODE Game Jam 2023"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 [input]
 
