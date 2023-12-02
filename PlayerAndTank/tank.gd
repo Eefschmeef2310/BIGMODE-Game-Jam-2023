@@ -54,10 +54,11 @@ func createPlayer():
 func shoot():
 	var bullet = bulletPath.instantiate()
 	
-	var direction = (get_global_mouse_position() - $MuzzleMarker.global_position).normalized()
-	bullet.position = $MuzzleMarker.global_position
+	var angle = $Sprites/Turret.rotation
+	var direction = Vector2(cos(angle), sin(angle))
+	bullet.position = $Sprites/Turret/MuzzleMarker.global_position
 	bullet.direction = direction
-	bullet.rotation_degrees = rad_to_deg(direction.angle())
+	bullet.rotation_degrees = rad_to_deg(angle)
 	
 	addBullet.emit(bullet)
 #endregion
