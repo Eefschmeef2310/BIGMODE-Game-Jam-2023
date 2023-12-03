@@ -1,33 +1,23 @@
 extends Node
 
-
 @export var modules: Array[PackedScene]
-var count : float
+var count : int
 signal moduleGenerated
-
-
- 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	count = modules.size()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func GenerateNextModule(spawnPos:Vector2):
-	#print("i want to generate")
-	var selectedModule = randi_range(0, count-1)
-	print(selectedModule)
-	var newModule = modules[selectedModule].instantiate()
-	newModule.position = spawnPos
-	add_child(newModule)
-	moduleGenerated.emit()
-
-
-
+	if GameManager.current_module_count <= GameManager.max_module_count:
+		GameManager.current_module_count += 1
+		#print("i want to generate")
+		var selectedModule = randi_range(0, count-1)
+		#print(selectedModule)
+		var newModule = modules[selectedModule].instantiate()
+		newModule.position = spawnPos
+		add_child(newModule)
+		moduleGenerated.emit()
 
 ### Module Manager Plan
 # aka level generator

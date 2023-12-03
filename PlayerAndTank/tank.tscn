@@ -24,6 +24,7 @@ size = Vector2(29, 2)
 size = Vector2(3, 29)
 
 [node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
+collision_mask = 9
 script = ExtResource("1_6erhe")
 Wheels = [NodePath("PinJoint2D3"), NodePath("PinJoint2D4")]
 
@@ -43,7 +44,7 @@ texture = ExtResource("3_q5j3k")
 position = Vector2(5, -70)
 scale = Vector2(0.03, 0.03)
 script = ExtResource("4_oud1o")
-rotation_speed = 2.0
+rotation_speed = 1e+14
 
 [node name="Sprite" type="Sprite2D" parent="Sprites/Turret"]
 position = Vector2(866.667, 0)

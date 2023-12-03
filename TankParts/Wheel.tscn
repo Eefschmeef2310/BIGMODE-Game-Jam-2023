@@ -13,6 +13,7 @@ softness = 1.69
 
 [node name="wheel" type="RigidBody2D" parent="."]
 collision_layer = 2
+collision_mask = 9
 physics_material_override = SubResource("PhysicsMaterial_rgirr")
 angular_damp = 100.0
 

@@ -72,11 +72,12 @@ func _physics_process(delta):
 func createPlayer():
 	player.toggle(true)
 	player.position = position + $PlayerHatch/PlayerSpawnPos.position
+
 #region shooting
 func shoot():
 	var bullet = bulletPath.instantiate()
 	
-	var angle = $Sprites/Turret.rotation
+	var angle = $Sprites/Turret.global_rotation
 	var direction = Vector2(cos(angle), sin(angle))
 	bullet.position = $Sprites/Turret/MuzzleMarker.global_position
 	bullet.direction = direction

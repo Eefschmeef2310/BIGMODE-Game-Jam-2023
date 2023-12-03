@@ -7,12 +7,13 @@
 
 [node name="Player_and_Tank" type="Node2D"]
 
-[node name="Tank" parent="." groups=["Player"] instance=ExtResource("1_4q17n")]
+[node name="Tank" parent="." groups=["PlayerAndTank"] instance=ExtResource("1_4q17n")]
 scale = Vector2(1.5, 1.5)
 metadata/_edit_lock_ = true
 
 [node name="Turret" parent="Tank/Sprites" index="2"]
 position = Vector2(3, -70)
+rotation_speed = 1.0
 
 [node name="PlayerHatch" parent="Tank" index="5"]
 script = ExtResource("3_hi7kq")

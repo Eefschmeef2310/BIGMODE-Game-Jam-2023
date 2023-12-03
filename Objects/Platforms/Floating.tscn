@@ -1,13 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://82dky6mc6iq2"]
 
 [ext_resource type="Texture2D" uid="uid://blagxwi1ira48" path="res://Sprites/23461859b0e66a4.png" id="1_di5hm"]
-[ext_resource type="PackedScene" uid="uid://ddppnopenktf7" path="res://Objects/Pickups/Gear.tscn" id="2_5thnb"]
+[ext_resource type="Script" path="res://Objects/Platforms/FloatingPlatform.gd" id="1_qshq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3qt7"]
 size = Vector2(54, 25)
 
 [node name="Floating" type="StaticBody2D"]
 editor_description = "Just needs to be thinner"
+collision_layer = 8
+script = ExtResource("1_qshq8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 0.5)
@@ -18,6 +20,3 @@ texture = ExtResource("1_di5hm")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_n3qt7")
 one_way_collision = true
-
-[node name="Gear" parent="." instance=ExtResource("2_5thnb")]
-position = Vector2(0, -20)

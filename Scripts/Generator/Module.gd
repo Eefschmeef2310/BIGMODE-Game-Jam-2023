@@ -4,17 +4,24 @@ extends Node2D
 @onready var connector := $connector #every module must have a connector
 var activated = false #prevent a connector from spawning more than 1 module if it appears on screen again
 
+var platform_scene: PackedScene = preload("res://Objects/Platforms/Floating.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if($connector/VisibleOnScreenNotifier2D.is_on_screen()):
 		manager.GenerateNextModule(connector.global_position)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+		
+	spawnPlatform()
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	if (!activated):
 		manager.GenerateNextModule(connector.global_position)
 		activated = true
+		
+func spawnPlatform():
+	var platform = platform_scene.instantiate()
+	
+	var randomX = randf_range(-$Floor/CollisionShape2D.shape.get_rect().size.x/2, $Floor/CollisionShape2D.shape.get_rect().size.x/2)
+	#TODO HACK may need to change y value - E
+	platform.position = Vector2(randomX, -100)
+	add_child(platform)

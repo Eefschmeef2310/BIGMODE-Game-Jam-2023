@@ -7,7 +7,8 @@
 radius = 3.0
 height = 16.0
 
-[node name="Player" type="CharacterBody2D" groups=["Man"]]
+[node name="Player" type="CharacterBody2D" groups=["Man", "PlayerAndTank"]]
+collision_mask = 9
 script = ExtResource("1_8qa3g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
