@@ -35,6 +35,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 
 folder_colors={
 "res://Car Test/": "red",
+"res://Objects/Platforms/": "blue",
 "res://PlayerAndTank/": "green"
 }
 
