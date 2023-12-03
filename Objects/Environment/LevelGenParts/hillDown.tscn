@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://pl2lvebrge43"]
+
+[ext_resource type="Script" path="res://Scripts/Generator/Module.gd" id="1_nnpvt"]
+[ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="2_6s1cl"]
+
+[node name="Module" type="Node2D"]
+script = ExtResource("1_nnpvt")
+
+[node name="connector" type="Node2D" parent="."]
+position = Vector2(540.807, 453.862)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="connector"]
+
+[node name="Floor" parent="." instance=ExtResource("2_6s1cl")]
+position = Vector2(190.719, 321.947)
+rotation = 0.698132
+
+[connection signal="screen_entered" from="connector/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]

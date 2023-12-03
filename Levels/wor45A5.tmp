@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6coygnvcqjhy"]
+[gd_scene load_steps=11 format=3 uid="uid://b6coygnvcqjhy"]
 
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
 [ext_resource type="PackedScene" uid="uid://3ux5lcf5kbhs" path="res://PlayerAndTank/Player_and_Tank.tscn" id="3_ha84d"]
@@ -8,9 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ddppnopenktf7" path="res://Objects/Pickups/Gear.tscn" id="6_0myel"]
 [ext_resource type="Script" path="res://Managers/EnemySpawner.gd" id="6_jebxi"]
 [ext_resource type="Script" path="res://Scripts/Generator/ModuleManager.gd" id="8_0qon8"]
-[ext_resource type="PackedScene" uid="uid://crb14fbsx1j3x" path="res://Objects/Environment/LevelGenParts/baseModule.tscn" id="9_p6epm"]
-[ext_resource type="PackedScene" uid="uid://bo5i4lpd0057t" path="res://Objects/Environment/LevelGenParts/hillUp.tscn" id="10_p4x1w"]
-[ext_resource type="PackedScene" uid="uid://pl2lvebrge43" path="res://Objects/Environment/LevelGenParts/hillDown.tscn" id="11_7ju7l"]
+[ext_resource type="Script" path="res://Scripts/Generator/Module.gd" id="9_dhlj8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
 size = Vector2(20, 215)
@@ -18,8 +16,6 @@ size = Vector2(20, 215)
 [node name="World" type="Node2D"]
 
 [node name="Floor Pieces" type="Node2D" parent="."]
-process_mode = 4
-visible = false
 position = Vector2(-1, 320)
 
 [node name="Floor" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
@@ -129,10 +125,11 @@ position = Vector2(236, 177)
 
 [node name="ModuleManager" type="Node" parent="."]
 script = ExtResource("8_0qon8")
-modules = Array[PackedScene]([ExtResource("9_p6epm"), ExtResource("10_p4x1w"), ExtResource("11_7ju7l")])
 
-[node name="Module" parent="ModuleManager" instance=ExtResource("9_p6epm")]
-position = Vector2(-67, 189)
+[node name="Module" type="Node2D" parent="ModuleManager"]
+script = ExtResource("9_dhlj8")
+
+[node name="connector" type="Node2D" parent="ModuleManager/Module"]
 
 [connection signal="addBullet" from="Player_and_Tank/Tank" to="Projectiles" method="_on_tank_add_bullet"]
 [connection signal="area_entered" from="Player_and_Tank/Tank/PlayerHatch" to="Player_and_Tank/Player" method="_on_player_hatch_area_entered"]
