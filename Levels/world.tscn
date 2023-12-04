@@ -88,6 +88,7 @@ position = Vector2(176, -2312)
 
 [node name="Tank" parent="Player_and_Tank" index="0"]
 scale = Vector2(1, 1)
+SPEED = 200.0
 
 [node name="End" type="Marker2D" parent="."]
 position = Vector2(10408, 176)
