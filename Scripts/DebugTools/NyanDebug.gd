@@ -10,11 +10,14 @@ var active = false as bool
 @onready var outputBox : TextEdit =  $CanvasLayer/TextEdit
 @export var freeCam : Camera2D
 @export var gameCam : Camera2D
+#var lastCommand : String #redundant?
+var command : String
 
 signal cmdFreecam
 signal cmdGamecam
 signal cmdStonks
 signal cmdGodmode
+signal cmdStuck
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,11 +30,12 @@ func _process(delta):
 	if Input.is_action_just_pressed("toggleConsole"):
 		active = !active
 		setDisplay(active)
-		
+	if Input.is_key_pressed(KEY_UP):
+		inputBox.text = command
 
 
 func _on_line_edit_text_submitted(new_text):
-	var command = new_text as String
+	command = new_text
 	command = command.to_lower()
 	inputBox.clear()
 	match command:
@@ -65,8 +69,14 @@ func _on_line_edit_text_submitted(new_text):
 			cmdStonks.emit()
 		"godmode":
 			# infinite health
+			meow("NOT YET IMPLEMENTED")
 			cmdGodmode.emit()
 			meow("Life, it never die")
+		"stuck":
+			#teleport player up like 1 units or smething to get them unstuck
+			meow("door stuck!")
+			cmdStuck.emit()
+			
 		_: #wildcard
 			meow("command: '" + command + "' not found" )
 		
