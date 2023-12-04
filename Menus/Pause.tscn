@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvj7cfv05cen7"]
+
+[ext_resource type="Shader" path="res://Menus/PauseBlur.gdshader" id="1_4faak"]
+[ext_resource type="Script" path="res://Menus/Pause.gd" id="2_mpsc5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jfno"]
+resource_local_to_scene = true
+shader = ExtResource("1_4faak")
+shader_parameter/blur = 0.5
+shader_parameter/brightness = 0.9
+
+[node name="Pause" type="ColorRect"]
+material = SubResource("ShaderMaterial_5jfno")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_mpsc5")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_right = 31.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 85
+text = "PAUSED"
+
+[node name="ContinueButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Continue"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.0
+offset_top = 39.0
+offset_right = 40.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

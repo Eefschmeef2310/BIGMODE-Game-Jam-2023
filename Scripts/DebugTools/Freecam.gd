@@ -1,14 +1,14 @@
 extends Camera2D
 
-@export var baseSpeed = 1
-@export var baseZoom = 1
+@export var baseSpeed = 1.0
+@export var baseZoom = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# Called every frame. 'delta' is the elapsed time since the previousframe.
 func _process(delta):
 	if Input.is_key_pressed(KEY_W):
 		position.y -= (baseSpeed/baseZoom) * delta

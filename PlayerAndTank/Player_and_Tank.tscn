@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerHatch.gd" id="3_hi7kq"]
 
 [node name="Player_and_Tank" type="Node2D"]
+process_mode = 3
 
 [node name="Tank" parent="." groups=["PlayerAndTank"] instance=ExtResource("1_4q17n")]
 scale = Vector2(1.5, 1.5)
