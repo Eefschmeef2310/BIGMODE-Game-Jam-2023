@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjqjkw2sayu38"]
 
-[ext_resource type="Texture2D" uid="uid://cflk882kxh1tl" path="res://Sprites/floor.png" id="1_wdejm"]
+[ext_resource type="Texture2D" uid="uid://bdyhkiwgoaala" path="res://Sprites/placeholder_floor.png" id="1_4wlhc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyeup"]
-size = Vector2(706, 248)
+size = Vector2(9800, 3840)
 
 [node name="Floor" type="StaticBody2D"]
 light_mask = 3
@@ -16,5 +16,5 @@ light_mask = 3
 visibility_layer = 3
 shape = SubResource("RectangleShape2D_cyeup")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_wdejm")
+[node name="PlaceholderFloor" type="Sprite2D" parent="."]
+texture = ExtResource("1_4wlhc")

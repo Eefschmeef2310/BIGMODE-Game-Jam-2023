@@ -77,9 +77,9 @@ func createPlayer():
 func shoot():
 	var bullet = bulletPath.instantiate()
 	
-	var angle = $Sprites/Turret.global_rotation
+	var angle = $TopOfTank/Turret.global_rotation
 	var direction = Vector2(cos(angle), sin(angle))
-	bullet.position = $Sprites/Turret/MuzzleMarker.global_position
+	bullet.position = $TopOfTank/Turret/MuzzleMarker.global_position
 	bullet.direction = direction
 	bullet.rotation_degrees = rad_to_deg(angle)
 	

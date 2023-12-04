@@ -70,7 +70,7 @@ position = Vector2(9865, 0)
 position = Vector2(10569, 0)
 
 [node name="Invisible Wall 1" type="StaticBody2D" parent="."]
-position = Vector2(88, 155)
+position = Vector2(-4104, -2040)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Wall 1"]
 position = Vector2(0, -1.5)
@@ -84,13 +84,10 @@ position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_af7rv")
 
 [node name="Player_and_Tank" parent="." instance=ExtResource("3_ha84d")]
-position = Vector2(174, 123)
+position = Vector2(176, -2312)
 
-[node name="Sprite2D" parent="Player_and_Tank/Tank/PinJoint2D3/wheel" index="1"]
-visible = true
-
-[node name="Sprite2D" parent="Player_and_Tank/Tank/PinJoint2D4/wheel" index="1"]
-visible = true
+[node name="Tank" parent="Player_and_Tank" index="0"]
+scale = Vector2(1, 1)
 
 [node name="End" type="Marker2D" parent="."]
 position = Vector2(10408, 176)
@@ -147,7 +144,6 @@ maxModules = 20
 endNode = NodePath("../End")
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]
-position = Vector2(-354, 196)
 
 [node name="NyanDebug" parent="." node_paths=PackedStringArray("freeCamNode", "gameCamNode") instance=ExtResource("10_epaai")]
 freeCamNode = NodePath("../Freecam Camera")

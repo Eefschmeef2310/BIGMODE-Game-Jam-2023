@@ -1,20 +1,19 @@
 [gd_scene load_steps=4 format=3 uid="uid://c80x2lpbryx6j"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/player.gd" id="1_8qa3g"]
-[ext_resource type="Texture2D" uid="uid://22t5opnfvt4j" path="res://Sprites/Player.png" id="1_skamq"]
+[ext_resource type="Texture2D" uid="uid://bq0r8pyskxjsp" path="res://Sprites/placeholder_guy.png" id="3_tflxq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7qord"]
-radius = 3.0
-height = 16.0
+radius = 44.0
+height = 294.0
 
 [node name="Player" type="CharacterBody2D" groups=["Man", "PlayerAndTank"]]
 collision_mask = 9
 script = ExtResource("1_8qa3g")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
-texture = ExtResource("1_skamq")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_7qord")
+
+[node name="PlaceholderGuy" type="Sprite2D" parent="."]
+texture = ExtResource("3_tflxq")
