@@ -8,7 +8,7 @@ size = Vector2(54, 25)
 
 [node name="Floating" type="StaticBody2D"]
 editor_description = "Just needs to be thinner"
-scale = Vector2(10, 10)
+scale = Vector2(5, 5)
 collision_layer = 8
 script = ExtResource("1_qshq8")
 

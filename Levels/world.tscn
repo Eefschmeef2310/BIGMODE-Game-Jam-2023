@@ -84,7 +84,7 @@ position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_af7rv")
 
 [node name="Player_and_Tank" parent="." instance=ExtResource("3_ha84d")]
-position = Vector2(176, -2312)
+position = Vector2(440, -840)
 
 [node name="Tank" parent="Player_and_Tank" index="0"]
 scale = Vector2(1, 1)
@@ -162,5 +162,5 @@ baseSpeed = 200
 
 [editable path="Player_and_Tank"]
 [editable path="Player_and_Tank/Tank"]
-[editable path="Player_and_Tank/Tank/PinJoint2D3"]
 [editable path="Player_and_Tank/Tank/PinJoint2D4"]
+[editable path="Player_and_Tank/Tank/PinJoint2D3"]

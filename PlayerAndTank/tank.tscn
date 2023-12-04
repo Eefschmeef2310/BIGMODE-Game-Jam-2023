@@ -10,22 +10,22 @@
 [ext_resource type="Texture2D" uid="uid://4w5p7eyghj1w" path="res://Sprites/placeholder_tank_platform.png" id="7_pt4i0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
-size = Vector2(27.3, 1.89)
+size = Vector2(10.8899, 0.752185)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kisji"]
-size = Vector2(572, 65)
+size = Vector2(222, 17)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t3ia6"]
-size = Vector2(1241, 48)
+size = Vector2(501, 8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s0u1m"]
-size = Vector2(47, 498.327)
+size = Vector2(7.83454, 211.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlvrk"]
-size = Vector2(440, 55)
+size = Vector2(176, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pocb"]
-size = Vector2(61, 431)
+size = Vector2(9.34982, 202.192)
 
 [node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
 collision_mask = 9
@@ -34,22 +34,23 @@ SPEED = 2000.0
 Wheels = [NodePath("PinJoint2D3"), NodePath("PinJoint2D4")]
 
 [node name="TopOfTank" type="Node2D" parent="."]
-position = Vector2(-29, -761)
+position = Vector2(-15, -307)
 
 [node name="Turret" type="StaticBody2D" parent="TopOfTank"]
+position = Vector2(0, 26)
 rotation = -0.000200383
 script = ExtResource("4_oud1o")
 rotation_speed = 1e+14
 
 [node name="Sprite" type="Sprite2D" parent="TopOfTank/Turret"]
-position = Vector2(462.5, -2.5)
+position = Vector2(175.011, -41.5556)
 texture = ExtResource("4_2c6ie")
 
 [node name="MuzzleMarker" type="Marker2D" parent="TopOfTank/Turret"]
-position = Vector2(919.833, -4.49997)
+position = Vector2(358.512, -43.9261)
 
 [node name="Muzzle" type="CollisionShape2D" parent="TopOfTank/Turret"]
-position = Vector2(462.833, -3)
+position = Vector2(175.011, -41.463)
 scale = Vector2(33.3333, 33.3333)
 shape = SubResource("RectangleShape2D_yy0e3")
 one_way_collision = true
@@ -58,43 +59,42 @@ one_way_collision = true
 texture = ExtResource("3_q5j3k")
 
 [node name="HatchOuter" type="CollisionPolygon2D" parent="."]
-position = Vector2(0, -697)
-polygon = PackedVector2Array(-289, -125, -307, -127, -308, 28, 268, 29, 266, -126, 252, -127, 251, 15, -293, 14)
+position = Vector2(48, -269)
+polygon = PackedVector2Array(-169, -70, -176, -72, -177, -23, 52, -24, 50, -72, 42, -72, 44, -30, -169, -30)
 
 [node name="PlayerHatch" type="Area2D" parent="."]
-position = Vector2(0, -914)
+position = Vector2(-16, -352)
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="PlayerHatch"]
-position = Vector2(-19, 22)
+position = Vector2(-6, -19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
-position = Vector2(-20, 56.5)
 shape = SubResource("RectangleShape2D_kisji")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 
 [node name="Tank" type="Sprite2D" parent="."]
-position = Vector2(68, -290)
+position = Vector2(28, -124)
 texture = ExtResource("2_xenx7")
 
 [node name="PlaceholderWheels" type="Sprite2D" parent="."]
 texture = ExtResource("6_3bhpo")
 
 [node name="Treads" type="CollisionShape2D" parent="."]
-position = Vector2(169, -184)
+position = Vector2(68.5, -82)
 shape = SubResource("RectangleShape2D_t3ia6")
 one_way_collision = true
 
 [node name="TreadsSide" type="CollisionShape2D" parent="."]
-position = Vector2(-607, -10)
+position = Vector2(-252.179, -6.79529)
 rotation = 0.762076
 shape = SubResource("RectangleShape2D_s0u1m")
 
 [node name="PlaceholderTankPlatform" type="Sprite2D" parent="."]
-position = Vector2(0, -351)
+position = Vector2(2, -141.5)
 texture = ExtResource("7_pt4i0")
 
 [node name="Platform1" type="CollisionShape2D" parent="."]
-position = Vector2(0, -351.5)
+position = Vector2(2, -141.5)
 shape = SubResource("RectangleShape2D_vlvrk")
 one_way_collision = true
 
@@ -102,16 +102,16 @@ one_way_collision = true
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(690, 28)
-rotation = 0.680817
+position = Vector2(256, 1.00001)
+rotation = 0.724428
 shape = SubResource("RectangleShape2D_0pocb")
 debug_color = Color(0.701961, 0.0431373, 0, 0.419608)
 
 [node name="healthbar" type="ProgressBar" parent="."]
-offset_left = -476.0
-offset_top = -1015.0
-offset_right = 1574.0
-offset_bottom = -967.0
+offset_left = -299.0
+offset_top = -427.0
+offset_right = 1021.0
+offset_bottom = -379.0
 scale = Vector2(0.5, 0.5)
 show_percentage = false
 
@@ -119,13 +119,13 @@ show_percentage = false
 wait_time = 0.2
 autostart = true
 
-[node name="PinJoint2D3" parent="." instance=ExtResource("7_pbp42")]
-position = Vector2(389, 25)
+[node name="PinJoint2D4" parent="." instance=ExtResource("7_pbp42")]
+position = Vector2(-139, 0)
 node_a = NodePath("..")
 softness = 1.0
 
-[node name="PinJoint2D4" parent="." instance=ExtResource("7_pbp42")]
-position = Vector2(-347, 25)
+[node name="PinJoint2D3" parent="." instance=ExtResource("7_pbp42")]
+position = Vector2(146, 0)
 node_a = NodePath("..")
 softness = 1.0
 
