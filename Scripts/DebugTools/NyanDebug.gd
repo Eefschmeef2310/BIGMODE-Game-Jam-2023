@@ -41,7 +41,7 @@ func _on_line_edit_text_submitted(new_text):
 		"nya":
 			# actual help command
 			meow("Available commands:")
-			meow("help, nya, freecam, gamecam")
+			meow("help, nya, freecam, gamecam, stonks, godmode")
 		"meow":
 			# nya nya~!
 			meow("the console meows back happily :3")
@@ -60,10 +60,13 @@ func _on_line_edit_text_submitted(new_text):
 			cmdGamecam.emit()
 		"stonks":
 			#infinite gears
+			GameManager.gears += 9999
+			meow("money go up!!!")
 			cmdStonks.emit()
 		"godmode":
-			# Life, it never die
+			# infinite health
 			cmdGodmode.emit()
+			meow("Life, it never die")
 		_: #wildcard
 			meow("command: '" + command + "' not found" )
 		
