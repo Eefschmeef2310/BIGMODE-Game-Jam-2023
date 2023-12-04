@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpbpujpdtw8ga"]
+
+[ext_resource type="Script" path="res://Scripts/DebugTools/NyanDebug.gd" id="1_acnrx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fxgyk"]
+bg_color = Color(0, 0, 0, 0)
+
+[node name="NyanDebug" type="Node"]
+script = ExtResource("1_acnrx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LineEdit" type="LineEdit" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+offset_right = 480.0
+grow_vertical = 0
+theme_override_colors/font_placeholder_color = Color(0.662745, 0.00392157, 0.858824, 0.494118)
+theme_override_colors/caret_color = Color(0.854902, 0, 0.882353, 1)
+theme_override_colors/clear_button_color = Color(0.54902, 0, 0.54902, 1)
+theme_override_colors/clear_button_color_pressed = Color(0.854902, 0, 0.882353, 1)
+placeholder_text = "enter command >:3"
+context_menu_enabled = false
+clear_button_enabled = true
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 156.0
+offset_right = 479.0
+offset_bottom = 239.0
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 0.678431)
+theme_override_constants/line_spacing = -2
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_fxgyk")
+text = "NyanConsole Version 0.1
+============================================
+"
+editable = false
+context_menu_enabled = false
+
+[connection signal="text_submitted" from="CanvasLayer/LineEdit" to="." method="_on_line_edit_text_submitted"]

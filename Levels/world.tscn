@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=15 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
 [ext_resource type="PackedScene" uid="uid://3ux5lcf5kbhs" path="res://PlayerAndTank/Player_and_Tank.tscn" id="3_ha84d"]
@@ -9,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cqxji5svxqxq6" path="res://Sprites/wave-pattern-desert-landscape--oman-886145780-5c45542046e0fb00012ebabf.jpg" id="7_7kt0t"]
 [ext_resource type="Script" path="res://Scripts/Generator/ModuleManager.gd" id="8_0xg68"]
 [ext_resource type="PackedScene" uid="uid://crb14fbsx1j3x" path="res://Objects/Environment/LevelGenParts/baseModule.tscn" id="8_xfebb"]
+[ext_resource type="PackedScene" uid="uid://cpbpujpdtw8ga" path="res://Scripts/DebugTools/nyan_debug_tools.tscn" id="10_epaai"]
+[ext_resource type="PackedScene" uid="uid://bo5i4lpd0057t" path="res://Objects/Environment/LevelGenParts/hillUp.tscn" id="10_focc3"]
+[ext_resource type="PackedScene" uid="uid://pl2lvebrge43" path="res://Objects/Environment/LevelGenParts/hillDown.tscn" id="11_qns1m"]
+[ext_resource type="Script" path="res://Scripts/DebugTools/Freecam.gd" id="11_v8eno"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
 size = Vector2(20, 215)
@@ -139,13 +143,22 @@ texture = ExtResource("7_7kt0t")
 
 [node name="ModuleManager" type="Node" parent="." node_paths=PackedStringArray("endNode")]
 script = ExtResource("8_0xg68")
-modules = Array[PackedScene]([ExtResource("8_xfebb")])
+modules = Array[PackedScene]([ExtResource("8_xfebb"), ExtResource("10_focc3"), ExtResource("11_qns1m")])
 fullGenerate = true
-maxModules = 20
+maxModules = 50
 endNode = NodePath("../End")
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]
 position = Vector2(-354, 196)
+
+[node name="NyanDebug" parent="." node_paths=PackedStringArray("freeCamNode", "gameCamNode") instance=ExtResource("10_epaai")]
+freeCamNode = NodePath("../Freecam Camera")
+gameCamNode = NodePath("../Player_and_Tank/Tank/Player Camera")
+
+[node name="Freecam Camera" type="Camera2D" parent="."]
+process_mode = 4
+script = ExtResource("11_v8eno")
+baseSpeed = 200
 
 [connection signal="addBullet" from="Player_and_Tank/Tank" to="Projectiles" method="_on_tank_add_bullet"]
 [connection signal="area_entered" from="Player_and_Tank/Tank/PlayerHatch" to="Player_and_Tank/Player" method="_on_player_hatch_area_entered"]
