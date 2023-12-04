@@ -149,9 +149,7 @@ endNode = NodePath("../End")
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]
 position = Vector2(-354, 196)
 
-[node name="NyanDebug" parent="." node_paths=PackedStringArray("freeCamNode", "gameCamNode") instance=ExtResource("10_epaai")]
-freeCamNode = NodePath("../Freecam Camera")
-gameCamNode = NodePath("../Player_and_Tank/Tank/Player Camera")
+[node name="NyanDebug" parent="." instance=ExtResource("10_epaai")]
 
 [node name="Freecam Camera" type="Camera2D" parent="."]
 process_mode = 4
