@@ -1,7 +1,11 @@
 extends Node
 
 @export var modules: Array[PackedScene]
+@export var fullGenerate : bool = false 
+@export var maxModules: int = 999
+var currrentModules: int = 0
 var count : int
+@export var endNode : Node2D #HACK probably shouldnt reference it like this (module manager should be compeltely standalone)
 signal moduleGenerated
 
 # Called when the node enters the scene tree for the first time.
@@ -9,15 +13,18 @@ func _ready():
 	count = modules.size()
 
 func GenerateNextModule(spawnPos:Vector2):
-	if GameManager.current_module_count <= GameManager.max_module_count:
-		GameManager.current_module_count += 1
+	if currrentModules <= maxModules:
+		currrentModules += 1
 		#print("i want to generate")
 		var selectedModule = randi_range(0, count-1)
 		#print(selectedModule)
 		var newModule = modules[selectedModule].instantiate()
 		newModule.position = spawnPos
-		add_child(newModule)
+		add_child.call_deferred(newModule)
 		moduleGenerated.emit()
+		
+	if currrentModules == maxModules:
+		endNode.position = spawnPos
 
 ### Module Manager Plan
 # aka level generator

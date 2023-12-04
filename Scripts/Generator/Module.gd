@@ -8,15 +8,16 @@ var platform_scene: PackedScene = preload("res://Objects/Platforms/Floating.tscn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if(manager.fullGenerate):
+		GenNextModule()
+	
 	if($connector/VisibleOnScreenNotifier2D.is_on_screen()):
-		manager.GenerateNextModule(connector.global_position)
+		GenNextModule()
 		
 	spawnPlatform()
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
-	if (!activated):
-		manager.GenerateNextModule(connector.global_position)
-		activated = true
+	GenNextModule()
 		
 func spawnPlatform():
 	var platform = platform_scene.instantiate()
@@ -25,3 +26,8 @@ func spawnPlatform():
 	#TODO HACK may need to change y value - E
 	platform.position = Vector2(randomX, -100)
 	add_child(platform)
+	
+func GenNextModule():
+	if (!activated):
+		manager.GenerateNextModule(connector.global_position)
+		activated = true
