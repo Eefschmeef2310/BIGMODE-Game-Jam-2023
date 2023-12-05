@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://budcjfvebkecj"]
+
+[ext_resource type="Shader" path="res://Menus/PauseBlur.gdshader" id="1_01wr5"]
+[ext_resource type="Script" path="res://Menus/WinScreen.gd" id="2_uweae"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2y1q3"]
+shader = ExtResource("1_01wr5")
+shader_parameter/blur = 0.5
+shader_parameter/brightness = 0.9
+
+[node name="WinScreen" type="ColorRect"]
+material = SubResource("ShaderMaterial_2y1q3")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_uweae")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 90
+text = "YOU WIN"
+
+[node name="Menu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu"
+
+[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
