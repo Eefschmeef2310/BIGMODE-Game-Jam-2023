@@ -1,6 +1,7 @@
 extends Node2D
 
 signal toggle_is_game_paused(isPaused: bool)
+signal game_over_signal()
 
 var tank_mode := true:
 	get:
@@ -8,16 +9,22 @@ var tank_mode := true:
 
 var tank_position: Vector2
 
-var gears: float
+var gears: int
 
 var game_paused : bool = false:
 	set(value):
 		game_paused = value
 		get_tree().paused = game_paused
 		toggle_is_game_paused.emit(game_paused)
+		
+var game_over : bool = false:
+	set(value):
+		game_over = value
+		get_tree().paused = game_over
+		game_over_signal.emit()
 
 func _input(_event):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and !game_over:
 		game_paused = !game_paused
 
 func _ready():
