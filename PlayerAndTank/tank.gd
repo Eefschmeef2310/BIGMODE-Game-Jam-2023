@@ -107,3 +107,7 @@ func _on_hitbox_area_entered(area):
 		health -= 10
 		update_health()
 #endregion
+
+
+func _on_nyan_debug_cmd_stuck():
+	position.y -= 100

@@ -1,6 +1,7 @@
 extends Camera2D
 
 var camera_lerping := false
+var freecamActive = false
 
 #variables for handling the smooth zooming in/out
 var camera_zoom_speed := 2.0
@@ -13,6 +14,8 @@ var smooth_zoom = 0.5
 @onready var player = $"../../Player"
 
 func _process(delta):
+	if (!freecamActive):
+		make_current()
 	if GameManager.tank_mode:
 		camera_target_zoom = camera_outer_zoom
 	else:
@@ -26,7 +29,17 @@ func zoom_camera(zoomTarget, delta):
 		set_zoom(Vector2(smooth_zoom, smooth_zoom))
 
 func _on_player_to_tank_control():
+	
 	reparent(tank)
 
 func _on_tank_to_player_control():
+	
 	reparent(player)
+
+
+func _on_nyan_debug_cmd_freecam():
+	freecamActive = true
+
+
+func _on_nyan_debug_cmd_gamecam():
+	freecamActive = false

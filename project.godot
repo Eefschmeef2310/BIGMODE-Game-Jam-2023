@@ -18,11 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://Managers/Manager.gd"
+UpgradeManager="*res://Managers/upgrade_manager.tscn"
 
 [display]
 
-window/size/viewport_width=960
-window/size/viewport_height=540
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/always_on_top=true
 window/size/window_width_override=960
 window/size/window_height_override=540
 window/stretch/mode="canvas_items"
@@ -83,3 +85,7 @@ toggleConsole={
 [layer_names]
 
 2d_physics/layer_4="Floor"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

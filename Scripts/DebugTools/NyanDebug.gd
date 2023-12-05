@@ -5,11 +5,19 @@
 
 extends Node
 
-var active = false
+var active = false as bool
 @onready var inputBox : LineEdit = $CanvasLayer/LineEdit
 @onready var outputBox : TextEdit =  $CanvasLayer/TextEdit
-@export var freeCamNode : Camera2D
-@export var gameCamNode : Camera2D
+@export var freeCam : Camera2D
+@export var gameCam : Camera2D
+#var lastCommand : String #redundant?
+var command : String
+
+signal cmdFreecam
+signal cmdGamecam
+signal cmdStonks
+signal cmdGodmode
+signal cmdStuck
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,28 +30,54 @@ func _process(delta):
 	if Input.is_action_just_pressed("toggleConsole"):
 		active = !active
 		setDisplay(active)
-		
+	if Input.is_key_pressed(KEY_UP):
+		inputBox.text = command
 
 
 func _on_line_edit_text_submitted(new_text):
-	var command = new_text
+	command = new_text
+	command = command.to_lower()
 	inputBox.clear()
 	match command:
 		"help":
+			# standard "help" command
 			meow("use 'nya' to view the list of commands")
 		"nya":
+			# actual help command
 			meow("Available commands:")
-			meow("help, nya, freecam, gamecam")
+			meow("help, nya, freecam, gamecam, stonks, godmode")
+		"meow":
+			# nya nya~!
+			meow("the console meows back happily :3")
 		"freecam":
-			freeCamNode.make_current()
-			freeCamNode.process_mode = Node.PROCESS_MODE_INHERIT
+			#enter freecam mode 
+			freeCam.make_current()
+			freeCam.process_mode = Node.PROCESS_MODE_INHERIT
 			meow("entered freecam mode")
 			meow("use WASD to pan, Q to zoom out and E to zoom in")
+			cmdFreecam.emit()
 		"gamecam":
-			gameCamNode.make_current()
-			freeCamNode.process_mode = Node.PROCESS_MODE_DISABLED
+			#return camera to normal mode
+			gameCam.make_current()
+			freeCam.process_mode = Node.PROCESS_MODE_DISABLED
 			meow("switched to normal camera")
-		_:
+			cmdGamecam.emit()
+		"stonks":
+			#infinite gears
+			GameManager.gears += 9999
+			meow("money go up!!!")
+			cmdStonks.emit()
+		"godmode":
+			# infinite health
+			meow("NOT YET IMPLEMENTED")
+			cmdGodmode.emit()
+			meow("Life, it never die")
+		"stuck":
+			#teleport player up like 1 units or smething to get them unstuck
+			meow("door stuck!")
+			cmdStuck.emit()
+			
+		_: #wildcard
 			meow("command: '" + command + "' not found" )
 		
 

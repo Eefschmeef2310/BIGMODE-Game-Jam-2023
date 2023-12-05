@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b3ts1cd21cchf"]
+
+[ext_resource type="Script" path="res://Managers/UpgradeManager.gd" id="1_1qutk"]
+[ext_resource type="Script" path="res://Upgrades/Upgrade.gd" id="2_aqrcm"]
+
+[sub_resource type="Resource" id="Resource_cjetl"]
+script = ExtResource("2_aqrcm")
+name = "Armor"
+category = "Tank"
+descriptions = PackedStringArray("Greater durability.", "Even greater durability.", "Indestructable from the front.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_g23me"]
+script = ExtResource("2_aqrcm")
+name = "Extra Artillery"
+category = "Tank"
+descriptions = PackedStringArray("Shoot 3 bullets at once.", "Shoot 5 bullets at once.", "Shoot 7 bullets at once.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_g1j5o"]
+script = ExtResource("2_aqrcm")
+name = "Frequent Artillery"
+category = "Tank"
+descriptions = PackedStringArray("Shoot faster.", "Shoot even faster.", "Aerospray fire rate.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_ggh3g"]
+script = ExtResource("2_aqrcm")
+name = "Roller Blades"
+category = "Man"
+descriptions = PackedStringArray("Move faster.", "Move even faster.", "Move blazing fast.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_olqn2"]
+script = ExtResource("2_aqrcm")
+name = "Air Compressors"
+category = "Man"
+descriptions = PackedStringArray("Get 1 midair jump.", "Get 2 midair jumps.", "Get 3 midair jumps.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_78wkc"]
+script = ExtResource("2_aqrcm")
+name = "Jetpack"
+category = "Man"
+descriptions = PackedStringArray("Hold jump to hover.", "Hover for longer.", "Hover for even longer.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[node name="UpgradeManager" type="Node2D"]
+script = ExtResource("1_1qutk")
+upgrades = Array[ExtResource("2_aqrcm")]([SubResource("Resource_cjetl"), SubResource("Resource_g23me"), SubResource("Resource_g1j5o"), SubResource("Resource_ggh3g"), SubResource("Resource_olqn2"), SubResource("Resource_78wkc")])
