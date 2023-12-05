@@ -28,13 +28,13 @@ var WheelsRB : Array[RigidBody2D]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.tank_mode = true
 	for i in range(0, Wheels.size()): #get the actual rigidbody of each wheel
 		WheelsRB.push_back(Wheels[i].get_node("wheel"))
 
 func _physics_process(delta):	
-	GameManager.tank_position = global_position
-	
 	if GameManager.tank_mode:
+		GameManager.tank_position = global_position
 		#handle bullet firing
 		if Input.is_action_just_pressed("fire"):
 			shoot()

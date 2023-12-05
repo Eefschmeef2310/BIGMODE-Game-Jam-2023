@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://dup55gjcom4n8"]
+
+[ext_resource type="Shader" path="res://Menus/PauseBlur.gdshader" id="1_gkr0g"]
+[ext_resource type="Script" path="res://Menus/GameOverScreen.gd" id="2_pc3my"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3xsxe"]
+resource_local_to_scene = true
+shader = ExtResource("1_gkr0g")
+shader_parameter/blur = 0.5
+shader_parameter/brightness = 0.9
+
+[node name="GameOver" type="ColorRect"]
+material = SubResource("ShaderMaterial_3xsxe")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_pc3my")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -46.0
+offset_right = 46.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 80
+text = "GAME OVER"
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.5
+offset_top = 33.475
+offset_right = 32.5
+offset_bottom = 64.475
+grow_horizontal = 2
+grow_vertical = 2
+text = "Menu
+"
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
