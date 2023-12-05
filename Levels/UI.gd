@@ -19,7 +19,7 @@ func _on_game_paused(isPaused):
 	if isPaused:
 		pause_screen = pause_screen_scene.instantiate()
 		add_child(pause_screen)
-	else:
+	elif pause_screen:
 		pause_screen.queue_free()
 
 func _on_game_over():

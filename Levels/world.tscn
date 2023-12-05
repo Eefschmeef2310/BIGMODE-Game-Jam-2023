@@ -78,13 +78,6 @@ position = Vector2(88, 155)
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_af7rv")
 
-[node name="Invisible Wall 2" type="StaticBody2D" parent="."]
-position = Vector2(10448, 155)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Wall 2"]
-position = Vector2(0, -1.5)
-shape = SubResource("RectangleShape2D_af7rv")
-
 [node name="Player_and_Tank" parent="." instance=ExtResource("3_ha84d")]
 position = Vector2(174, 123)
 
@@ -146,7 +139,7 @@ texture = ExtResource("7_7kt0t")
 script = ExtResource("8_0xg68")
 modules = Array[PackedScene]([ExtResource("8_xfebb")])
 fullGenerate = true
-maxModules = 20
+maxModules = 10
 endNode = NodePath("../End")
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]

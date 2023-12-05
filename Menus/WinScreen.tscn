@@ -29,7 +29,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 90
 text = "YOU WIN"
 
-[node name="Menu" type="Button" parent="."]
+[node name="MenuButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -44,4 +44,4 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Menu"
 
-[connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
