@@ -2,6 +2,7 @@ extends Node2D
 
 signal toggle_is_game_paused(isPaused: bool)
 signal game_over_signal()
+signal end_reached_signal()
 
 var tank_mode := true:
 	get:
@@ -22,6 +23,12 @@ var game_over : bool = false:
 		game_over = value
 		get_tree().paused = game_over
 		game_over_signal.emit()
+
+var end_reached : bool = false:
+	set(value):
+		end_reached = value
+		get_tree().paused = end_reached
+		end_reached_signal.emit()
 
 func _input(_event):
 	if Input.is_action_just_pressed("pause") and !game_over:
