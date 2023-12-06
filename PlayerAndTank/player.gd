@@ -2,14 +2,52 @@ extends CharacterBody2D
 
 signal toTankControl()
 
-@export var SPEED = 100.0
+@export var SPEED = 200.0
 @export var JUMP_VELOCITY = -300.0
+
+@export var midair_buffer = 100
+var is_falling = false
+var is_landing = true
+
+@onready var _animated_sprite = $AnimatedSprite2D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	toggle(false)
+
+#handles all animations
+func _process(_delta):
+	if Input.is_action_pressed("right"):
+		_animated_sprite.flip_h = 0
+	if Input.is_action_pressed("left"):
+		_animated_sprite.flip_h = 1
+	#jumping animations
+	if not is_on_floor():
+		if (velocity.y < (midair_buffer*(-1))):
+			_animated_sprite.play("jumping")
+		elif (velocity.y > midair_buffer):
+			_animated_sprite.play("falling")
+			is_falling = true
+		else:
+			_animated_sprite.play("midair")
+	else:
+		if (is_falling == true):
+			is_falling = false
+			is_landing = true
+			_animated_sprite.play("land")
+		else:
+			if Input.is_action_pressed("right") or Input.is_action_pressed("left"):
+					_animated_sprite.play("run")
+					is_landing = false
+			elif not (is_landing):
+				_animated_sprite.play("idle")
+					
+func _on_animated_sprite_2d_animation_finished():
+	if (is_landing == true):
+		is_landing = false
+
 
 func _physics_process(delta):
 	GameManager.tank_position = global_position
@@ -42,3 +80,5 @@ func toTank():
 func _on_enemy_hit_box_area_entered(area):
 	if area.is_in_group("Enemy"):
 		GameManager.game_over = true
+
+
