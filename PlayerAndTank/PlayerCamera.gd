@@ -21,6 +21,7 @@ func _process(delta):
 	else:
 		camera_target_zoom = camera_inner_zoom
 	zoom_camera(camera_target_zoom, delta)
+	position = Vector2.ZERO
 		
 #function for camera zoom lerp
 func zoom_camera(zoomTarget, delta):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=13 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://c4pdlov7yyjec" path="res://Sprites/dec6 assets/placeholder_tank_body.png" id="2_y3a5o"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://PlayerAndTank/Turret.gd" id="4_oud1o"]
 [ext_resource type="Texture2D" uid="uid://c3wpkx68adbuv" path="res://Sprites/dec6 assets/placeholder_gun.png" id="5_3jgrq"]
 [ext_resource type="Texture2D" uid="uid://y6gjks7e7g38" path="res://Sprites/dec6 assets/placeholder_wheels.png" id="6_xdfsf"]
+[ext_resource type="Script" path="res://PlayerAndTank/PlayerHatch.gd" id="7_i8vdx"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="7_pbp42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
@@ -39,7 +40,7 @@ texture = ExtResource("2_y3a5o")
 [node name="Turret" type="StaticBody2D" parent="Sprites"]
 z_index = -1
 position = Vector2(-34, -398)
-collision_layer = 0
+collision_layer = 16
 script = ExtResource("4_oud1o")
 
 [node name="Sprite" type="Sprite2D" parent="Sprites/Turret"]
@@ -79,9 +80,10 @@ polygon = PackedVector2Array(-10, -71, -27, -51, -27, -12, 205, -12, 205, -50, 1
 
 [node name="PlayerHatch" type="Area2D" parent="."]
 position = Vector2(-78, -368)
+script = ExtResource("7_i8vdx")
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="PlayerHatch"]
-position = Vector2(258, -81)
+position = Vector2(295.489, -147.817)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
 position = Vector2(38, -53)
@@ -98,11 +100,11 @@ shape = SubResource("RectangleShape2D_0pocb")
 debug_color = Color(0.701961, 0.0431373, 0, 0.419608)
 
 [node name="healthbar" type="ProgressBar" parent="."]
-offset_left = -34.0
-offset_top = -80.0
-offset_right = 62.0
-offset_bottom = -76.0
-scale = Vector2(0.5, 0.5)
+offset_left = -320.356
+offset_top = -470.502
+offset_right = -224.356
+offset_bottom = -466.502
+scale = Vector2(7.00508, 3.12247)
 show_percentage = false
 
 [node name="regen_timer" type="Timer" parent="."]
@@ -119,4 +121,5 @@ position = Vector2(-311, -14)
 node_a = NodePath("..")
 softness = 1.0
 
+[connection signal="body_entered" from="PlayerHatch" to="PlayerHatch" method="_on_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
