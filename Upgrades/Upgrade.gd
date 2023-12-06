@@ -7,9 +7,6 @@ class_name Upgrade
 @export var costs: Array[int]
 @export var level: int
 
-# Make sure that every parameter has a default value.
-# Otherwise, there will be problems with creating and editing
-# your resource via the inspector.
 func _init(p_name = "Upgrade", p_category = "None", p_descriptions = [], p_costs: Array[int] = [], p_level = 0):
 	name = p_name
 	category = p_category

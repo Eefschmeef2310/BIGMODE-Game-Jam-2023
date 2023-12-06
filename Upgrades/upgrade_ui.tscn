@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://irvh438hrwvk"]
+
+[ext_resource type="Texture2D" uid="uid://c3r5uye382dmr" path="res://Upgrades/nine_patch_frame.png" id="1_i6aaw"]
+[ext_resource type="Script" path="res://Upgrades/upgrade_ui.gd" id="2_xi6ok"]
+[ext_resource type="PackedScene" uid="uid://cq71qu21kneda" path="res://Upgrades/upgrade_button.tscn" id="3_yci1b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_f7flk"]
+font_size = 8
+font_color = Color(0, 0, 0, 1)
+
+[node name="Upgrade UI" type="NinePatchRect"]
+offset_right = 140.0
+offset_bottom = 204.0
+texture = ExtResource("1_i6aaw")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+script = ExtResource("2_xi6ok")
+upgrade_scene = ExtResource("3_yci1b")
+
+[node name="Category" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -43.0
+offset_top = 6.0
+offset_right = 43.0
+offset_bottom = 24.0
+grow_horizontal = 2
+texture = ExtResource("1_i6aaw")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Name" type="Label" parent="Category"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -6.0
+offset_right = 64.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Tank"
+label_settings = SubResource("LabelSettings_f7flk")
+horizontal_alignment = 1
+
+[node name="Category Left" type="NinePatchRect" parent="."]
+layout_mode = 1
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 24.0
+offset_bottom = 24.0
+texture = ExtResource("1_i6aaw")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="Category Right" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -24.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = 24.0
+grow_horizontal = 0
+texture = ExtResource("1_i6aaw")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_top = 28.0
+offset_right = 64.0
+offset_bottom = 198.0
+grow_horizontal = 2
+vertical_scroll_mode = 3
+
+[node name="Upgrades" type="VBoxContainer" parent="ScrollContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
