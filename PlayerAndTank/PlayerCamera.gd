@@ -5,8 +5,8 @@ var freecamActive = false
 
 #variables for handling the smooth zooming in/out
 var camera_zoom_speed := 2.0
-var camera_outer_zoom := 0.5
-var camera_inner_zoom := 1.5
+var camera_outer_zoom := 0.1
+var camera_inner_zoom := 0.5
 var camera_target_zoom
 var smooth_zoom = 0.5
 
