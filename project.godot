@@ -42,6 +42,7 @@ enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
 folder_colors={
 "res://Car Test/": "red",
 "res://Menus/": "yellow",
+"res://Objects/Enemies/": "orange",
 "res://Objects/Platforms/": "blue",
 "res://PlayerAndTank/": "green"
 }
@@ -92,6 +93,7 @@ pause={
 
 2d_physics/layer_2="Enemies"
 2d_physics/layer_4="Floor"
+2d_physics/layer_6="Bomb"
 
 [rendering]
 

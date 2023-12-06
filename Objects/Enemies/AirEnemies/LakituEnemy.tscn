@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://biq18qtxqbqev"]
+
+[ext_resource type="PackedScene" uid="uid://buxhim8gwxlt6" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.tscn" id="1_p31vu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2cvw0"]
+radius = 27.0185
+
+[node name="AirEnemyBase" instance=ExtResource("1_p31vu")]
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_2cvw0")
+
+[node name="DropMarker" type="Marker2D" parent="." index="3"]
+position = Vector2(0, 28)
+
+[node name="DropTimer" type="Timer" parent="." index="4"]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="DropTimer" to="." method="_on_drop_timer_timeout"]
