@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://byu8s5u0d52k2"]
+
+[ext_resource type="Script" path="res://Objects/Enemies/GroundEnemies/GroundEnemyBase.gd" id="1_dpjwj"]
+[ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="1_ieeiq"]
+[ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="2_m0oqv"]
+
+[node name="EnemyBase" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
+collision_layer = 2
+collision_mask = 8
+mass = 2.0
+script = ExtResource("1_dpjwj")
+SPEED = 100.0
+Wheels = [NodePath("PinJoint2D2"), NodePath("PinJoint2D3")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_ieeiq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+debug_color = Color(0.701961, 0.054902, 0, 0.419608)
+
+[node name="PinJoint2D2" parent="." instance=ExtResource("2_m0oqv")]
+position = Vector2(18, 18)
+node_a = NodePath("..")
+softness = 1.0
+
+[node name="PinJoint2D3" parent="." instance=ExtResource("2_m0oqv")]
+position = Vector2(-18, 18)
+node_a = NodePath("..")
+softness = 1.0
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -28.0
+offset_top = -28.0
+offset_right = 28.0
+offset_bottom = -23.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

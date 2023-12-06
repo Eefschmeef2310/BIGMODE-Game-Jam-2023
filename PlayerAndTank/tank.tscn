@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=14 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://ces6ff6ebgtbo" path="res://Sprites/placeholder_tank_body.png" id="2_xenx7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://gr6oq4cighxr" path="res://Sprites/placeholder_gun.png" id="4_2c6ie"]
 [ext_resource type="Script" path="res://PlayerAndTank/Turret.gd" id="4_oud1o"]
 [ext_resource type="Texture2D" uid="uid://fikg8mgpa6u7" path="res://Sprites/place_holder_wheels.png" id="6_dy75o"]
+[ext_resource type="Script" path="res://PlayerAndTank/TankHitbox.gd" id="7_klgat"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="7_pbp42"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
@@ -93,6 +94,7 @@ shape = SubResource("RectangleShape2D_kisji")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 
 [node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("7_klgat")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
@@ -123,5 +125,3 @@ position = Vector2(-30, -14)
 scale = Vector2(2, 2)
 node_a = NodePath("..")
 softness = 1.0
-
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

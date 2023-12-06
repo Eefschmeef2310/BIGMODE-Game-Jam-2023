@@ -31,7 +31,7 @@ func _physics_process(delta):
 	
 func toggle(activate: bool):
 	visible = activate
-	set_process(activate)
+	set_physics_process(activate)
 
 func toTank():
 	toTankControl.emit()

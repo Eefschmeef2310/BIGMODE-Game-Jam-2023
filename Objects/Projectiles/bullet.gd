@@ -1,6 +1,7 @@
 extends Area2D
 
 @export var speed = 400
+@export var damage: float = 10
 var direction
 
 func _process(delta):
@@ -25,5 +26,5 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if "hit" in body:
-		body.hit()
+		body.hit(damage)
 		queue_free()
