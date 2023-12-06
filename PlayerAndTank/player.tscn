@@ -233,7 +233,6 @@ height = 94.0
 [node name="Player" type="CharacterBody2D" groups=["Man", "PlayerAndTank"]]
 collision_mask = 25
 script = ExtResource("1_8qa3g")
-JUMP_VELOCITY = -500.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false

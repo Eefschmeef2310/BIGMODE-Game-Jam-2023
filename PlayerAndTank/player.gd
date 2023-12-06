@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 signal toTankControl()
 
-@export var SPEED = 200.0
-@export var JUMP_VELOCITY = -300.0
+@export var SPEED = 300.0
+@export var JUMP_VELOCITY = -600.0
 
 @export var midair_buffer = 100
 var is_falling = false

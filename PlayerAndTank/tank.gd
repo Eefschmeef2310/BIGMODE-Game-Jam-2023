@@ -12,7 +12,7 @@ var health := 100:
 		health = value
 		health = clamp(health, 0, 100)
 
-@export var SPEED = 200.0
+@export var SPEED = 400.0
 const bulletPath: PackedScene = preload("res://Objects/Projectiles/bullet.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -70,7 +70,9 @@ func _physics_process(delta):
 			
 func createPlayer():
 	player.toggle(true)
+	print($PlayerHatch/PlayerSpawnPos.position)
 	player.position = position + $PlayerHatch/PlayerSpawnPos.position
+	print(player.position)
 
 #region shooting
 func shoot():
