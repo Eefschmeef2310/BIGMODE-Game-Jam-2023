@@ -152,6 +152,7 @@ gameCam = NodePath("../Player_and_Tank/Tank/Player Camera")
 [node name="Freecam Camera" type="Camera2D" parent="."]
 process_mode = 4
 script = ExtResource("11_v8eno")
+baseSpeed = 200.0
 
 [node name="enemy_small" parent="." instance=ExtResource("14_fw418")]
 position = Vector2(627, 83)

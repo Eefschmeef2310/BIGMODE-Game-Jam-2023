@@ -34,10 +34,9 @@ theme_override_colors/font_readonly_color = Color(1, 1, 1, 0.678431)
 theme_override_constants/line_spacing = -2
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxFlat_fxgyk")
-text = "NyanConsole Version 0.1
-============================================
-"
 editable = false
 context_menu_enabled = false
+scroll_smooth = true
+scroll_v_scroll_speed = 40.0
 
 [connection signal="text_submitted" from="CanvasLayer/LineEdit" to="." method="_on_line_edit_text_submitted"]

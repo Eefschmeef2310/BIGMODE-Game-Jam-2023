@@ -1,9 +1,20 @@
-# NyanConsole by Tom v0.1
+# NyanConsole by Tom v0.3
 # need to do:
 #	add more commands 
-#	add support for commands with arguments
+
 
 extends Node
+
+const VERSION = "0.3"
+const HELP ="Available commands:
+help
+nya
+freecam - switch to freecam mode and fly around the scene
+gamecam - revert to normal camera functionality (doesnt always work)
+stonks [amount] - adds [amount] to the plaeyers gears
+godmode - NOT YET IMPLEMENTED
+stuck - teleport the tank up to get it unstuck
+upgrade <name> - apply the supplied upgrade to the tank/player"
 
 var active = false as bool
 @onready var inputBox : LineEdit = $CanvasLayer/LineEdit
@@ -13,6 +24,7 @@ var active = false as bool
 #var lastCommand : String #redundant?
 var command : String
 
+
 signal cmdFreecam
 signal cmdGamecam
 signal cmdStonks
@@ -21,6 +33,9 @@ signal cmdStuck
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	meow("NyanConsole Version " + VERSION)
+	meow("============================================")
+	meow("type 'help' for a list of commands")
 	setDisplay(false)
 	pass # Replace with function body.
 
@@ -37,52 +52,67 @@ func _process(_delta):
 func _on_line_edit_text_submitted(new_text):
 	command = new_text
 	command = command.to_lower()
+	var argCount = command.get_slice_count(" ")
+	var arg = command.split(" ", false, 0) as PackedStringArray
 	inputBox.clear()
-	match command:
-		"help":
-			# standard "help" command
-			meow("use 'nya' to view the list of commands")
-		"nya":
-			# actual help command
-			meow("Available commands:")
-			meow("help, nya, freecam, gamecam, stonks, godmode")
-		"meow":
-			# nya nya~!
-			meow("the console meows back happily :3")
-		"freecam":
-			#enter freecam mode 
-			freeCam.make_current()
-			freeCam.process_mode = Node.PROCESS_MODE_INHERIT
-			meow("entered freecam mode")
-			meow("use WASD to pan, Q to zoom out and E to zoom in")
-			cmdFreecam.emit()
-		"gamecam":
-			#return camera to normal mode
-			gameCam.make_current()
-			freeCam.process_mode = Node.PROCESS_MODE_DISABLED
-			meow("switched to normal camera")
-			cmdGamecam.emit()
-		"stonks":
-			#infinite gears
-			GameManager.gears += 9999
-			meow("money go up!!!")
-			cmdStonks.emit()
-		"godmode":
-			# infinite health
-			meow("NOT YET IMPLEMENTED")
-			cmdGodmode.emit()
-			meow("Life, it never die")
-		"stuck":
-			#teleport player up like 1 units or smething to get them unstuck
-			meow("door stuck!")
-			cmdStuck.emit()
+	if(argCount > 0):
+		match arg[0]:
 			
-		_: #wildcard
-			meow("command: '" + command + "' not found" )
+			"help":
+				# standard "help" command
+				meow("hehehe, use 'nya' to view the list of commands")
+			"nya":
+				# actual help command
+				meow(HELP)
+			"meow":
+				# nya nya~!
+				meow("the console meows back happily :3")
+			"freecam":
+				#enter freecam mode 
+				freeCam.make_current()
+				freeCam.process_mode = Node.PROCESS_MODE_INHERIT
+				meow("entered freecam mode")
+				meow("use WASD to pan, Q to zoom out and E to zoom in")
+				cmdFreecam.emit()
+			"gamecam":
+				#return camera to normal mode
+				gameCam.make_current()
+				freeCam.process_mode = Node.PROCESS_MODE_DISABLED
+				meow("switched to normal camera")
+				cmdGamecam.emit()
+			"stonks":
+				if argCount > 1:
+					GameManager.gears += int(arg[1])
+				else:
+					#infinite gears
+					GameManager.gears += 9999
+				meow("money go up!!!")
+				cmdStonks.emit()
+			"godmode":
+				# infinite health
+				meow("NOT YET IMPLEMENTED")
+				cmdGodmode.emit()
+				meow("Life, it never die")
+			"stuck":
+				#teleport player up like 1 units or smething to get them unstuck
+				meow("door stuck!")
+				cmdStuck.emit()
+			"upgrade": #TODO xander implement upgrade command 
+				meow("NOT YET IMPLEMENTED") #remove this once you're done
+				if argCount>1:
+					print(arg[1]) # arg[1] is the 1st argument of the command, in this case the upgrade name
+					pass # do whatever matching logic you want here 
+				else:
+					meow("the name of an upgrade must be given!")
+					meow("usage: upgrade <name>")
+			_: #wildcard
+				meow("command: '" + command + "' not found" )
+	else:
+		meow("0w0 please enter a command! - use 'help' for a list")
 		
 
 func meow(text):
-	outputBox.text += text + "\n"
+	outputBox.text += "\n" + text
 	outputBox.scroll_vertical = 9999
 
 func setDisplay(active):
