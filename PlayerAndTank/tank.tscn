@@ -21,6 +21,7 @@ size = Vector2(171.5, 10)
 size = Vector2(25.5, 106.5)
 
 [node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
+scale = Vector2(1.02074, 1.03719)
 collision_mask = 9
 script = ExtResource("1_6erhe")
 Wheels = [NodePath("PinJoint2D3"), NodePath("PinJoint2D4")]
@@ -38,6 +39,7 @@ texture = ExtResource("2_y3a5o")
 [node name="Turret" type="StaticBody2D" parent="Sprites"]
 z_index = -1
 position = Vector2(-34, -398)
+collision_layer = 0
 script = ExtResource("4_oud1o")
 
 [node name="Sprite" type="Sprite2D" parent="Sprites/Turret"]
@@ -90,7 +92,7 @@ debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(256.25, -52.75)
+position = Vector2(265.493, -71.3465)
 rotation = 0.798195
 shape = SubResource("RectangleShape2D_0pocb")
 debug_color = Color(0.701961, 0.0431373, 0, 0.419608)

@@ -9,14 +9,10 @@
 [node name="Tank" parent="." groups=["PlayerAndTank"] instance=ExtResource("1_4q17n")]
 metadata/_edit_lock_ = true
 
-[node name="Player Camera" type="Camera2D" parent="Tank"]
-offset = Vector2(0, -70)
-position_smoothing_enabled = true
+[node name="Camera2D" type="Camera2D" parent="Tank"]
+zoom = Vector2(0.1, 0.1)
 script = ExtResource("3_37i13")
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_30v2w")]
-position = Vector2(-20, -156)
-
-[connection signal="toPlayerControl" from="Tank" to="Tank/Player Camera" method="_on_tank_to_player_control"]
-[connection signal="toTankControl" from="Player" to="Tank/Player Camera" method="_on_player_to_tank_control"]
+position = Vector2(-36, -453)

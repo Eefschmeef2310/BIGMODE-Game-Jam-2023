@@ -21,7 +21,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var healthbar = $healthbar
 @onready var player = $"../Player"
 
-
 @export var Wheels : Array[PinJoint2D] #add all the wheel prefabs to this array
 var WheelsRB : Array[RigidBody2D]
 #endregion
