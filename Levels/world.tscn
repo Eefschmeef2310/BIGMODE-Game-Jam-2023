@@ -1,6 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
+[ext_resource type="Texture2D" uid="uid://c3i8efnoj72m0" path="res://Sprites/dec6 assets/placeholder_floor.png" id="2_cnx4y"]
 [ext_resource type="PackedScene" uid="uid://3ux5lcf5kbhs" path="res://PlayerAndTank/Player_and_Tank.tscn" id="3_ha84d"]
 [ext_resource type="Script" path="res://Managers/GearsLabel.gd" id="4_36cw3"]
 [ext_resource type="Script" path="res://Levels/End.gd" id="4_hwmng"]
@@ -12,10 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://crb14fbsx1j3x" path="res://Objects/Environment/LevelGenParts/baseModule.tscn" id="8_xfebb"]
 [ext_resource type="PackedScene" uid="uid://cpbpujpdtw8ga" path="res://Scripts/DebugTools/nyan_debug_tools.tscn" id="10_epaai"]
 [ext_resource type="Script" path="res://Scripts/DebugTools/Freecam.gd" id="11_v8eno"]
-[ext_resource type="PackedScene" uid="uid://biq18qtxqbqev" path="res://Objects/Enemies/AirEnemies/LakituEnemy.tscn" id="13_cyqkm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
-size = Vector2(20, 215)
+size = Vector2(46, 962)
 
 [node name="World" type="Node2D"]
 
@@ -53,6 +53,9 @@ position = Vector2(5641, 0)
 [node name="Floor10" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
 position = Vector2(6345, 0)
 
+[node name="Sprite2D2" type="Sprite2D" parent="Floor Pieces/Floor10"]
+texture = ExtResource("2_cnx4y")
+
 [node name="Floor11" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
 position = Vector2(7049, 0)
 
@@ -72,23 +75,17 @@ position = Vector2(9865, 0)
 position = Vector2(10569, 0)
 
 [node name="Invisible Wall 1" type="StaticBody2D" parent="."]
-position = Vector2(88, 155)
+position = Vector2(1736, 152)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Wall 1"]
-position = Vector2(0, -1.5)
+position = Vector2(33, -375)
 shape = SubResource("RectangleShape2D_af7rv")
 
 [node name="Player_and_Tank" parent="." instance=ExtResource("3_ha84d")]
-position = Vector2(174, 123)
-
-[node name="Sprite2D" parent="Player_and_Tank/Tank/PinJoint2D3/wheel" index="1"]
-visible = true
-
-[node name="Sprite2D" parent="Player_and_Tank/Tank/PinJoint2D4/wheel" index="1"]
-visible = true
+position = Vector2(2176, 128)
 
 [node name="End" type="Marker2D" parent="."]
-position = Vector2(10408, 176)
+position = Vector2(14240, 176)
 script = ExtResource("4_hwmng")
 
 [node name="UI" type="CanvasLayer" parent="."]
@@ -100,6 +97,7 @@ offset_top = 8.0
 offset_right = 472.0
 offset_bottom = 16.0
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [node name="GearsLabel" type="Label" parent="UI"]
 offset_top = 23.0
@@ -107,6 +105,7 @@ offset_right = 40.0
 offset_bottom = 46.0
 text = "Gears: 0"
 script = ExtResource("4_36cw3")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timers" type="Node" parent="."]
 
@@ -132,44 +131,30 @@ motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(480, 268)
+position = Vector2(4913, -1543)
+scale = Vector2(6.91067, 4.626)
 texture = ExtResource("7_7kt0t")
 
 [node name="ModuleManager" type="Node" parent="." node_paths=PackedStringArray("endNode")]
 script = ExtResource("8_0xg68")
 modules = Array[PackedScene]([ExtResource("8_xfebb")])
 fullGenerate = true
-maxModules = 0
+maxModules = 10
 endNode = NodePath("../End")
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]
 position = Vector2(-354, 196)
 
-[node name="NyanDebug" parent="." node_paths=PackedStringArray("freeCam", "gameCam") instance=ExtResource("10_epaai")]
+[node name="NyanDebug" parent="." node_paths=PackedStringArray("freeCam") instance=ExtResource("10_epaai")]
 freeCam = NodePath("../Freecam Camera")
-gameCam = NodePath("../Player_and_Tank/Tank/Player Camera")
 
 [node name="Freecam Camera" type="Camera2D" parent="."]
 process_mode = 4
 script = ExtResource("11_v8eno")
-baseSpeed = 200.0
-
-[node name="Floor" parent="." instance=ExtResource("1_ksgnp")]
-position = Vector2(1340, 283)
-rotation = -0.44855
-
-[node name="AirEnemyBase" parent="." instance=ExtResource("13_cyqkm")]
-position = Vector2(458, -47)
 
 [connection signal="addBullet" from="Player_and_Tank/Tank" to="Projectiles" method="_on_tank_add_bullet"]
-[connection signal="area_entered" from="Player_and_Tank/Tank/PlayerHatch" to="Player_and_Tank/Player" method="_on_player_hatch_area_entered"]
 [connection signal="timeout" from="Timers/enemy_spawn_timer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="Timers/big_enemy_spawner" to="Enemies" method="_on_big_enemy_spawner_timeout"]
-[connection signal="cmdFreecam" from="NyanDebug" to="Player_and_Tank/Tank/Player Camera" method="_on_nyan_debug_cmd_freecam"]
-[connection signal="cmdGamecam" from="NyanDebug" to="Player_and_Tank/Tank/Player Camera" method="_on_nyan_debug_cmd_gamecam"]
 [connection signal="cmdStuck" from="NyanDebug" to="Player_and_Tank/Tank" method="_on_nyan_debug_cmd_stuck"]
 
 [editable path="Player_and_Tank"]
-[editable path="Player_and_Tank/Tank"]
-[editable path="Player_and_Tank/Tank/PinJoint2D3"]
-[editable path="Player_and_Tank/Tank/PinJoint2D4"]
