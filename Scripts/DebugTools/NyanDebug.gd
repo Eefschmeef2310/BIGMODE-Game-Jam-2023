@@ -5,7 +5,7 @@
 
 extends Node
 
-const VERSION = "0.3"
+const VERSION = "0.4"
 const HELP ="Available commands:
 help
 nya
@@ -14,7 +14,8 @@ gamecam - revert to normal camera functionality (doesnt always work)
 stonks [amount] - adds [amount] to the plaeyers gears
 godmode - NOT YET IMPLEMENTED
 stuck - teleport the tank up to get it unstuck
-upgrade <name> - apply the supplied upgrade to the tank/player"
+upgrade <name> - apply the supplied upgrade to the tank/player
+upload <DATA> <+> - upload the argume"
 
 var active = false as bool
 @onready var inputBox : LineEdit = $CanvasLayer/LineEdit
@@ -30,6 +31,7 @@ signal cmdGamecam
 signal cmdStonks
 signal cmdGodmode
 signal cmdStuck
+signal cmdUpload(username, score, version)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -53,7 +55,7 @@ func _on_line_edit_text_submitted(new_text):
 	command = new_text
 	command = command.to_lower()
 	var argCount = command.get_slice_count(" ")
-	var arg = command.split(" ", false, 0) as PackedStringArray
+	var arg = new_text.split(" ", false, 0) as PackedStringArray
 	inputBox.clear()
 	if(argCount > 0):
 		match arg[0]:
@@ -105,6 +107,15 @@ func _on_line_edit_text_submitted(new_text):
 				else:
 					meow("the name of an upgrade must be given!")
 					meow("usage: upgrade <name>")
+			"upload":
+				meow("usage: upload <username> <score> <version>")
+				
+				if argCount>=4:
+					cmdUpload.emit(arg[1], arg[2], arg[3])
+					meow("attempted to send data, make sure the arguments are correct")
+				else:
+					meow("too few arguments!")
+				
 			_: #wildcard
 				meow("command: '" + command + "' not found" )
 	else:
