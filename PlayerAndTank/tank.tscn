@@ -23,7 +23,6 @@ size = Vector2(171.5, 10)
 size = Vector2(25.5, 106.5)
 
 [node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
-scale = Vector2(1.02074, 1.03719)
 collision_mask = 9
 script = ExtResource("1_6erhe")
 Wheels = [NodePath("PinJoint2D3"), NodePath("PinJoint2D4")]

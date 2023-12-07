@@ -1,11 +1,10 @@
 extends StaticBody2D
 
-var drop_scene: PackedScene = preload("res://Objects/Enemies/AirEnemies/LakituDrop.tscn")
-
 @export var SPEED = 200.0
 @export var health = 20
 
-@export var height: float = 250
+@export var tank_height: float = 750
+@export var player_height: float = 200
 @export var lerp_speed: float = 0.5
 
 var xPos: float
@@ -17,11 +16,11 @@ func _ready():
 
 func _process(delta):
 	xPos = lerp(position.x, GameManager.tank_position.x, lerp_speed * delta)
-	yPos = GameManager.tank_position.y - height
-	if GameManager.tank_mode and $DropTimer.is_stopped():
-		$DropTimer.start()
-	elif !GameManager.tank_mode:
-		$DropTimer.stop()
+	#yPos = GameManager.tank_position.y - height
+	if GameManager.tank_mode:
+		yPos = GameManager.camera.get_screen_center_position().y - tank_height
+	else:
+		yPos = GameManager.camera.get_screen_center_position().y - player_height
 	
 	position = Vector2(xPos, yPos)
 	
@@ -33,14 +32,5 @@ func hit(damage):
 	if(health <= 0):
 		queue_free()
 
-#region dropping
-func _on_drop_timer_timeout():
-	spawnDrop()
-	if GameManager.tank_mode:
-		$DropTimer.start()
-	
-func spawnDrop():
-	var drop = drop_scene.instantiate()
-	drop.position = $DropMarker.global_position
-	get_parent().add_child(drop)
-#endregion
+func _on_drop_timer_add_item(item):
+	get_parent().add_child(item)
