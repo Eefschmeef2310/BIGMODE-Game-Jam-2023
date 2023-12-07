@@ -5,22 +5,13 @@ signal addBullet(bullet)
 signal toPlayerControl()
 #endregion
 
-#region variables
-var health := 100:
-	#introduce a setter that automatically clamps the health
-	set(value):
-		health = value
-		health = clamp(health, 0, 100)
-
 @export var SPEED = 200.0
 const bulletPath: PackedScene = preload("res://Objects/Projectiles/bullet.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-@onready var healthbar = $healthbar
 @onready var player = $"../Player"
-
 
 @export var Wheels : Array[PinJoint2D] #add all the wheel prefabs to this array
 var WheelsRB : Array[RigidBody2D]
@@ -85,29 +76,6 @@ func shoot():
 	
 	addBullet.emit(bullet)
 #endregion
-
-#region healthAndDamage
-#updates the health to the health bar
-func update_health():
-	healthbar.value = health
-	#hides the healthbar if at 100%
-	healthbar.visible = health < 100
-
-#there is a timer attached to the tank, everytime it times out, decrease/increase health
-func _on_regen_timer_timeout():
-	if GameManager.tank_mode:
-		health -= 2
-	else:
-		health += 1
-
-#Enemy hitbox
-func _on_hitbox_area_entered(area):
-	if area.is_in_group("Enemy"):
-		#TODO Refactor so each enemy has their own damage amount
-		health -= 10
-		update_health()
-#endregion
-
 
 func _on_nyan_debug_cmd_stuck():
 	position.y -= 100
