@@ -32,6 +32,7 @@ signal cmdStonks
 signal cmdGodmode
 signal cmdStuck
 signal cmdUpload(username, score, version)
+signal cmdUpgrade(upgrade)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -103,6 +104,7 @@ func _on_line_edit_text_submitted(new_text):
 				meow("NOT YET IMPLEMENTED") #remove this once you're done
 				if argCount>1:
 					print(arg[1]) # arg[1] is the 1st argument of the command, in this case the upgrade name
+					cmdUpgrade.emit(arg[1]) #optonally use this signal!
 					pass # do whatever matching logic you want here 
 				else:
 					meow("the name of an upgrade must be given!")
