@@ -5,7 +5,7 @@
 
 extends Node
 
-const VERSION = "0.4"
+const VERSION = "0.4.1"
 const HELP ="Available commands:
 help
 nya
@@ -135,3 +135,7 @@ func setDisplay(active):
 	inputBox.select()
 	if active:
 		inputBox.grab_focus()
+
+
+func _on_http_request_response(string):
+	meow("Uplaod response: " + string)

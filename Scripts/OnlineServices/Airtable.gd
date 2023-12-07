@@ -4,11 +4,11 @@ var headers = ["Content-Type: application/json", "Authorization: Bearer patA9a9D
 var url = "https://api.airtable.com/v0/appyatJwaYPKtsdCM/Table%201"
 #var base = Airtable({apiKey: 'YOUR_SECRET_API_TOKEN'}).base('appyatJwaYPKtsdCM').new()
 
-
+signal response(string)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	request_completed.connect(_on_request_completed)
 	#Upload()
 	pass # Replace with function body.
 
@@ -39,3 +39,9 @@ func Upload(username, score, version):
 func _on_nyan_debug_cmd_upload(username, score, version):
 	Upload(username, score, version)
 	pass # Replace with function body.
+
+func _on_request_completed(result, response_code, headers, body):
+	var json = JSON.parse_string(body.get_string_from_utf8())
+	print(JSON.stringify(json))
+	response.emit(JSON.stringify(json))
+	#print(str(json[1]))
