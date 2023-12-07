@@ -15,7 +15,7 @@ stonks [amount] - adds [amount] to the plaeyers gears
 godmode - NOT YET IMPLEMENTED
 stuck - teleport the tank up to get it unstuck
 upgrade <name> - apply the supplied upgrade to the tank/player
-upload <DATA> <+> - upload the argume"
+upload <username> <score> <version> - upload a record to the leaderboard"
 
 var active = false as bool
 @onready var inputBox : LineEdit = $CanvasLayer/LineEdit
