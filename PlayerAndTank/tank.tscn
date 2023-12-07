@@ -92,7 +92,7 @@ position = Vector2(-78, -368)
 script = ExtResource("7_i8vdx")
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="PlayerHatch"]
-position = Vector2(460.076, -137.211)
+position = Vector2(275.896, -75.506)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
 position = Vector2(38, -53)

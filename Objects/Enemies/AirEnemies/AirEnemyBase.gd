@@ -18,6 +18,10 @@ func _ready():
 func _process(delta):
 	xPos = lerp(position.x, GameManager.tank_position.x, lerp_speed * delta)
 	yPos = GameManager.tank_position.y - height
+	if GameManager.tank_mode and $DropTimer.is_stopped():
+		$DropTimer.start()
+	elif !GameManager.tank_mode:
+		$DropTimer.stop()
 	
 	position = Vector2(xPos, yPos)
 	
@@ -31,9 +35,9 @@ func hit(damage):
 
 #region dropping
 func _on_drop_timer_timeout():
-	print('test')
 	spawnDrop()
-	$DropTimer.start()
+	if GameManager.tank_mode:
+		$DropTimer.start()
 	
 func spawnDrop():
 	var drop = drop_scene.instantiate()
