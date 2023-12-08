@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://6uqsv1wcbv5b"]
+
+[ext_resource type="Script" path="res://Upgrades/change_category.gd" id="1_f77mw"]
+[ext_resource type="Texture2D" uid="uid://c3r5uye382dmr" path="res://Upgrades/nine_patch_frame.png" id="2_gd4cx"]
+[ext_resource type="Texture2D" uid="uid://bjnd3jiqjdqw4" path="res://Upgrades/nine_patch_frame_hover.png" id="3_tg3ig"]
+[ext_resource type="Texture2D" uid="uid://8k2cay000iis" path="res://Upgrades/nine_patch_frame_locked.png" id="4_lai1u"]
+
+[node name="CategoryLeft" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 24.0
+offset_bottom = 24.0
+script = ExtResource("1_f77mw")
+texture_default = ExtResource("2_gd4cx")
+texture_hover = ExtResource("3_tg3ig")
+texture_locked = ExtResource("4_lai1u")
+
+[node name="bg" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gd4cx")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -10,7 +10,7 @@ var tank_mode := true:
 
 var tank_position: Vector2
 
-var gears: int = 99999
+var gears: int = 50
 
 var game_paused : bool = false:
 	set(value):

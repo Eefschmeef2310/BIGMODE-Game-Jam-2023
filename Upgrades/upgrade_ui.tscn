@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://irvh438hrwvk"]
+[gd_scene load_steps=6 format=3 uid="uid://irvh438hrwvk"]
 
 [ext_resource type="Texture2D" uid="uid://c3r5uye382dmr" path="res://Upgrades/nine_patch_frame.png" id="1_i6aaw"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_ui.gd" id="2_xi6ok"]
 [ext_resource type="PackedScene" uid="uid://cq71qu21kneda" path="res://Upgrades/upgrade_button.tscn" id="3_yci1b"]
+[ext_resource type="PackedScene" uid="uid://6uqsv1wcbv5b" path="res://Upgrades/category_change.tscn" id="4_jxigx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f7flk"]
 font_size = 8
@@ -52,33 +53,12 @@ text = "Tank"
 label_settings = SubResource("LabelSettings_f7flk")
 horizontal_alignment = 1
 
-[node name="Category Left" type="NinePatchRect" parent="."]
-layout_mode = 1
-offset_left = 6.0
-offset_top = 6.0
-offset_right = 24.0
-offset_bottom = 24.0
-texture = ExtResource("1_i6aaw")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+[node name="CategoryLeft" parent="." instance=ExtResource("4_jxigx")]
+scroll_direction = -1
 
-[node name="Category Right" type="NinePatchRect" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -24.0
-offset_top = 6.0
-offset_right = -6.0
-offset_bottom = 24.0
-grow_horizontal = 0
-texture = ExtResource("1_i6aaw")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+[node name="CategoryRight" parent="." instance=ExtResource("4_jxigx")]
+offset_left = 116.0
+offset_right = 134.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -96,3 +76,14 @@ vertical_scroll_mode = 3
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Gears" type="Label" parent="."]
+layout_mode = 0
+offset_left = 143.0
+offset_top = 3.0
+offset_right = 183.0
+offset_bottom = 26.0
+text = "Gears: 0"
+
+[connection signal="scroll_category" from="CategoryLeft" to="." method="scroll_category"]
+[connection signal="scroll_category" from="CategoryRight" to="." method="scroll_category"]
