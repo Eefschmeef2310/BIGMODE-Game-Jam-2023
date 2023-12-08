@@ -24,7 +24,7 @@ func spawnPlatform():
 	
 	var randomX = randf_range(-$Floor/CollisionShape2D.shape.get_rect().size.x/2, $Floor/CollisionShape2D.shape.get_rect().size.x/2)
 	#TODO HACK may need to change y value - E
-	platform.position = Vector2(randomX, -100)
+	platform.position = Vector2(randomX, -600)
 	add_child(platform)
 	
 func GenNextModule():
