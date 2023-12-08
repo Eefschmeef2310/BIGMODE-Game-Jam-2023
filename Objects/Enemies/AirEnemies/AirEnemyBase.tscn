@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.gd" id="1_rbcr8"]
 [ext_resource type="Texture2D" uid="uid://dqgbksjoliri2" path="res://Sprites/b9e8ae5957995b3ecf206d863ec4c7ed.jpg" id="1_v3kpo"]
 
-[node name="AirEnemyBase" type="Area2D"]
+[node name="AirEnemyBase" type="Area2D" groups=["Enemy"]]
+collision_layer = 2
 script = ExtResource("1_rbcr8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

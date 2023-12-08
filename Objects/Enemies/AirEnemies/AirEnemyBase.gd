@@ -35,7 +35,7 @@ func hit(damage):
 
 func _on_drop_timer_add_item(item):
 	get_parent().add_child(item)
-	
+
 func _on_area_entered(area):
 	if "deal_damage" in area:
 		area.deal_damage(tank_damage)

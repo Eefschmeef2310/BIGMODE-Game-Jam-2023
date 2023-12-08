@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=17 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
 [ext_resource type="Texture2D" uid="uid://c3i8efnoj72m0" path="res://Sprites/dec6 assets/placeholder_floor.png" id="2_cnx4y"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cpbpujpdtw8ga" path="res://Scripts/DebugTools/nyan_debug_tools.tscn" id="10_epaai"]
 [ext_resource type="Script" path="res://Scripts/DebugTools/Freecam.gd" id="11_v8eno"]
 [ext_resource type="PackedScene" uid="uid://cffpvw5cm4kv2" path="res://Objects/Enemies/AirEnemies/SwoopingEnemy.tscn" id="14_l68b1"]
+[ext_resource type="PackedScene" uid="uid://ox6l51q21040" path="res://Objects/Enemies/GroundEnemies/SmallGroundEnemy.tscn" id="15_1s331"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
 size = Vector2(46, 962)
@@ -153,9 +154,11 @@ freeCam = NodePath("../Freecam Camera")
 process_mode = 4
 script = ExtResource("11_v8eno")
 
-[node name="AirEnemyBase" parent="." instance=ExtResource("14_l68b1")]
-position = Vector2(2859, -446)
-lerp_speed = 100.0
+[node name="EnemyBase" parent="." instance=ExtResource("15_1s331")]
+position = Vector2(3550, 40)
+
+[node name="Swooping" parent="." instance=ExtResource("14_l68b1")]
+position = Vector2(2413, -744)
 
 [connection signal="addBullet" from="Player_and_Tank/Tank" to="Projectiles" method="_on_tank_add_bullet"]
 [connection signal="timeout" from="Timers/enemy_spawn_timer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
