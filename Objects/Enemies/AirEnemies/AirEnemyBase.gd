@@ -1,7 +1,8 @@
-extends StaticBody2D
+extends Area2D
 
 @export var SPEED = 200.0
 @export var health = 20
+@export var tank_damage = 10
 
 @export var tank_height: float = 750
 @export var player_height: float = 200
@@ -15,14 +16,14 @@ func _ready():
 	$HealthBar.value = health
 
 func _process(delta):
-	xPos = lerp(position.x, GameManager.tank_position.x, lerp_speed * delta)
+	xPos = GameManager.tank_position.x
 	#yPos = GameManager.tank_position.y - height
 	if GameManager.tank_mode:
 		yPos = GameManager.camera.get_screen_center_position().y - tank_height
 	else:
 		yPos = GameManager.camera.get_screen_center_position().y - player_height
 	
-	position = Vector2(xPos, yPos)
+	position = lerp(position, Vector2(xPos, yPos), delta)
 	
 #Apply damage on projectile hit
 func hit(damage):
@@ -34,3 +35,7 @@ func hit(damage):
 
 func _on_drop_timer_add_item(item):
 	get_parent().add_child(item)
+	
+func _on_area_entered(area):
+	if "deal_damage" in area:
+		area.deal_damage(tank_damage)
