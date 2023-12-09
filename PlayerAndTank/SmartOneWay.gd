@@ -12,5 +12,5 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	disabled = (target.position.y - offset) > position.y
-	print(disabled)
+	#print(disabled)
 	
