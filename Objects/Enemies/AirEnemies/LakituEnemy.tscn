@@ -6,6 +6,8 @@
 radius = 27.0185
 
 [node name="AirEnemyBase" instance=ExtResource("1_p31vu")]
+scale = Vector2(5, 5)
+health = 50
 height = 400.0
 
 [node name="CollisionShape2D" parent="." index="1"]
