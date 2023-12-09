@@ -141,6 +141,7 @@ motion_mirroring = Vector2(1500, 0)
 position = Vector2(4913, -1543)
 scale = Vector2(6.91067, 4.626)
 texture = ExtResource("7_7kt0t")
+metadata/_edit_lock_ = true
 
 [node name="ModuleManager" type="Node" parent="." node_paths=PackedStringArray("endNode")]
 script = ExtResource("8_0xg68")
