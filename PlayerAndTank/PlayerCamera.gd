@@ -31,9 +31,11 @@ func zoom_camera(zoomTarget, delta):
 
 func _on_player_to_tank_control():
 	reparent(tank)
+	offset.y = -500
 
 func _on_tank_to_player_control():
 	reparent(player)
+	offset.y = 0
 
 func _on_nyan_debug_cmd_freecam():
 	freecamActive = true

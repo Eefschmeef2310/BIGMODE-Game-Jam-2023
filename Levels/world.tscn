@@ -1,5 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=18 format=3 uid="uid://bea12rpy2tt50"]
 
+[ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="1_h5ix2"]
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
 [ext_resource type="Texture2D" uid="uid://c3i8efnoj72m0" path="res://Sprites/dec6 assets/placeholder_floor.png" id="2_cnx4y"]
 [ext_resource type="PackedScene" uid="uid://3ux5lcf5kbhs" path="res://PlayerAndTank/Player_and_Tank.tscn" id="3_ha84d"]
@@ -20,6 +21,12 @@
 size = Vector2(46, 962)
 
 [node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(6984, -2424)
+scale = Vector2(3.73246, 2.92615)
+texture = ExtResource("1_h5ix2")
 
 [node name="Floor Pieces" type="Node2D" parent="."]
 process_mode = 4
@@ -125,6 +132,7 @@ script = ExtResource("6_jebxi")
 metadata/_edit_lock_ = true
 
 [node name="Parallax" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax"]
 
