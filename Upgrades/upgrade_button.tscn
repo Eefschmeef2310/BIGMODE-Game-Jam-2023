@@ -16,11 +16,11 @@ font_size = 6
 font_color = Color(0, 0, 0, 1)
 
 [node name="Upgrade" type="Control"]
-custom_minimum_size = Vector2(0, 45)
+custom_minimum_size = Vector2(0, 42)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 130.0
-offset_bottom = 45.0
+offset_bottom = 40.0
 script = ExtResource("2_tmi7p")
 texture_default = ExtResource("1_qplsf")
 texture_hover = ExtResource("3_qmls2")
