@@ -62,7 +62,7 @@ texture = ExtResource("6_xdfsf")
 
 [node name="Treads" type="CollisionPolygon2D" parent="."]
 position = Vector2(70.25, -126)
-polygon = PackedVector2Array(-256.25, -42, 276.75, -42, 136.75, 106, -394.25, 107)
+polygon = PackedVector2Array(-256.25, -42, 276.75, -42, 136.463, 104.789, -392.565, 102.861)
 one_way_collision = true
 
 [node name="Platform" parent="." instance=ExtResource("7_pntxg")]
@@ -76,10 +76,11 @@ polygon = PackedVector2Array(-10, -71, -27, -51, -27, -12, 0.661743, -56.6893, 1
 
 [node name="PlayerHatch" type="Area2D" parent="."]
 position = Vector2(-40.1669, -426.151)
+collision_mask = 32
 script = ExtResource("7_i8vdx")
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="PlayerHatch"]
-position = Vector2(235.124, -42.4223)
+position = Vector2(-0.97972, -216.933)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
 shape = SubResource("RectangleShape2D_kisji")
@@ -89,16 +90,16 @@ debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(265.493, -71.3465)
+position = Vector2(274.311, -68.4542)
 rotation = 0.798195
 shape = SubResource("RectangleShape2D_0pocb")
 debug_color = Color(0.701961, 0.0431373, 0, 0.419608)
 
 [node name="healthbar" type="ProgressBar" parent="."]
 offset_left = -320.356
-offset_top = -470.502
+offset_top = -486.627
 offset_right = -224.356
-offset_bottom = -466.502
+offset_bottom = -482.627
 scale = Vector2(7.00508, 3.12247)
 show_percentage = false
 
@@ -114,18 +115,19 @@ wait_time = 0.2
 autostart = true
 
 [node name="PinJoint2D3" parent="." instance=ExtResource("7_pbp42")]
-position = Vector2(181, -17)
+position = Vector2(186.139, -12.5339)
 node_a = NodePath("..")
 softness = 1.0
 
 [node name="PinJoint2D4" parent="." instance=ExtResource("7_pbp42")]
-position = Vector2(-311, -14)
+position = Vector2(-315.457, -9.64144)
 node_a = NodePath("..")
 softness = 1.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-39.7279, -401.263)
 scale = Vector2(11.7123, 3.48884)
+metadata/_edit_lock_ = true
 
 [connection signal="toPlayerControl" from="." to="JumpInSprite" method="_on_tank_to_player_control"]
 [connection signal="body_entered" from="PlayerHatch" to="PlayerHatch" method="_on_body_entered"]

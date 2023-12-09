@@ -78,6 +78,5 @@ func toTank():
 
 #TODO So far, this is a single hit kill, and doesn't account for jumping on enemies (if we're going for that) - E
 func _on_enemy_hit_box_area_entered(area):
-	print(area)
 	if area.is_in_group("Enemy"):
 		GameManager.game_over = true
