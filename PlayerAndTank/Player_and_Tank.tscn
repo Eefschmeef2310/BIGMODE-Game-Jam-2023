@@ -16,7 +16,6 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_30v2w")]
 position = Vector2(-36, -453)
-collision_layer = 32
 
 [connection signal="toPlayerControl" from="Tank" to="Tank/Camera2D" method="_on_tank_to_player_control"]
 [connection signal="toTankControl" from="Player" to="Tank/Camera2D" method="_on_player_to_tank_control"]
