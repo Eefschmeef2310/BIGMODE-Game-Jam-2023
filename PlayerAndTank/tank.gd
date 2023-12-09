@@ -99,14 +99,5 @@ func _on_regen_timer_timeout():
 	else:
 		health += 1
 
-#Enemy hitbox
-func _on_hitbox_area_entered(area):
-	if area.is_in_group("Enemy"):
-		#TODO Refactor so each enemy has their own damage amount
-		health -= 10
-		update_health()
-#endregion
-
-
 func _on_nyan_debug_cmd_stuck():
 	position.y -= 100

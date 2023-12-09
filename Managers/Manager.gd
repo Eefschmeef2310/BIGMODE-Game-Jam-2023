@@ -9,6 +9,7 @@ var tank_mode := true:
 		return tank_mode
 
 var tank_position: Vector2
+var camera: Camera2D
 
 var gears: int = 50
 

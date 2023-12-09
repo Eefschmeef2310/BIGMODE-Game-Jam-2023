@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cffpvw5cm4kv2"]
+
+[ext_resource type="PackedScene" uid="uid://buxhim8gwxlt6" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.tscn" id="1_bg1r0"]
+[ext_resource type="Texture2D" uid="uid://dnwoj7i0sq0sr" path="res://Sprites/Angry_Sun_SMB3.png" id="2_q3vv5"]
+[ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/SwoopTimer.gd" id="3_ajncj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8ixjm"]
+radius = 26.0192
+
+[node name="Swooping" instance=ExtResource("1_bg1r0")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_q3vv5")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_8ixjm")
+
+[node name="SwoopTimer" type="Timer" parent="." index="2"]
+wait_time = 3.0
+one_shot = true
+autostart = true
+script = ExtResource("3_ajncj")
+
+[connection signal="timeout" from="SwoopTimer" to="SwoopTimer" method="_on_timeout"]

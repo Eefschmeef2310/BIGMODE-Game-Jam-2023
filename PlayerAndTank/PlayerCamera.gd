@@ -13,6 +13,9 @@ var smooth_zoom = 0.5
 @onready var tank = $".."
 @onready var player = $"../../Player"
 
+func _ready():
+	GameManager.camera = self
+
 func _process(delta):
 	if (!freecamActive):
 		make_current()

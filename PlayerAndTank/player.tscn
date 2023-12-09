@@ -248,6 +248,7 @@ animation = &"land"
 shape = SubResource("CapsuleShape2D_7qord")
 
 [node name="EnemyHitBox" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
 shape = SubResource("CapsuleShape2D_lvild")

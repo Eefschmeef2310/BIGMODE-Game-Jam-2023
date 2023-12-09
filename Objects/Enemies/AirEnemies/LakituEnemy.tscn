@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://biq18qtxqbqev"]
+[gd_scene load_steps=4 format=3 uid="uid://biq18qtxqbqev"]
 
 [ext_resource type="PackedScene" uid="uid://buxhim8gwxlt6" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.tscn" id="1_p31vu"]
+[ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/DropTimer.gd" id="2_t13ko"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2cvw0"]
 radius = 27.0185
 
-[node name="AirEnemyBase" instance=ExtResource("1_p31vu")]
-scale = Vector2(5, 5)
-health = 50
-height = 400.0
+[node name="Lakitu" instance=ExtResource("1_p31vu")]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_2cvw0")
@@ -19,5 +19,7 @@ position = Vector2(0, 28)
 [node name="DropTimer" type="Timer" parent="." index="4"]
 wait_time = 2.0
 autostart = true
+script = ExtResource("2_t13ko")
 
-[connection signal="timeout" from="DropTimer" to="." method="_on_drop_timer_timeout"]
+[connection signal="addItem" from="DropTimer" to="." method="_on_drop_timer_add_item"]
+[connection signal="timeout" from="DropTimer" to="DropTimer" method="_on_timeout"]
