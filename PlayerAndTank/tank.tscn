@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=17 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://c4pdlov7yyjec" path="res://Sprites/dec6 assets/placeholder_tank_body.png" id="2_y3a5o"]
@@ -14,6 +14,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
 size = Vector2(362, 24)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m0p3h"]
+polygon = PackedVector2Array(0, -12, 362, -12, 362, 12, 0, 12)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlvrk"]
 size = Vector2(174.383, 19.4601)
 
@@ -22,6 +25,9 @@ size = Vector2(171.5, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pocb"]
 size = Vector2(25.5, 106.5)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cdkcm"]
+polygon = PackedVector2Array(-313, -292, -258, -292, -188, -367, -156, -367, -155, -411, -129, -431, 48, -431, 64, -420, 76, -404, 76, -368, 104, -368, 190, -295, 319, -294, 279, -169, 317, -167, 323, -159, 321, -141, 189, -4, -314, -1, -325, -14, -317, -29)
 
 [node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
 collision_mask = 9
@@ -35,11 +41,11 @@ position = Vector2(-40, -373)
 texture = ExtResource("3_ii4us")
 
 [node name="Tank" type="Sprite2D" parent="Sprites"]
-position = Vector2(0, -196)
+position = Vector2(0, -184.25)
+scale = Vector2(1, 0.931884)
 texture = ExtResource("2_y3a5o")
 
 [node name="Turret" type="StaticBody2D" parent="Sprites"]
-z_index = -1
 position = Vector2(-34, -398)
 collision_layer = 16
 script = ExtResource("4_oud1o")
@@ -55,6 +61,10 @@ position = Vector2(362, -3.05176e-05)
 position = Vector2(181, -3.05176e-05)
 shape = SubResource("RectangleShape2D_yy0e3")
 one_way_collision = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprites/Turret"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_m0p3h")
 
 [node name="Wheels" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, -84)
@@ -130,5 +140,13 @@ softness = 1.0
 position = Vector2(-311, -14)
 node_a = NodePath("..")
 softness = 1.0
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
+occluder = SubResource("OccluderPolygon2D_cdkcm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-62, -216.5)
+scale = Vector2(25.2, 21.55)
 
 [connection signal="body_entered" from="PlayerHatch" to="PlayerHatch" method="_on_body_entered"]
