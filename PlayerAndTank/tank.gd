@@ -70,7 +70,7 @@ func _physics_process(delta):
 			
 func createPlayer():
 	player.toggle(true)
-	player.position = position + $PlayerHatch/PlayerSpawnPos.position
+	player.global_position =  $PlayerHatch/PlayerSpawnPos.global_position
 
 #region shooting
 func shoot():
