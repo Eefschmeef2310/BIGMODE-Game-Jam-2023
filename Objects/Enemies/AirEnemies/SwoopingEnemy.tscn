@@ -1,15 +1,102 @@
-[gd_scene load_steps=5 format=3 uid="uid://cffpvw5cm4kv2"]
+[gd_scene load_steps=18 format=3 uid="uid://cffpvw5cm4kv2"]
 
 [ext_resource type="PackedScene" uid="uid://buxhim8gwxlt6" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.tscn" id="1_bg1r0"]
 [ext_resource type="Texture2D" uid="uid://dnwoj7i0sq0sr" path="res://Sprites/Angry_Sun_SMB3.png" id="2_q3vv5"]
 [ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/SwoopTimer.gd" id="3_ajncj"]
+[ext_resource type="Texture2D" uid="uid://c0chgdk0tamor" path="res://Sprites/spritesheets/flying_sketch.png" id="4_g6kbv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ixjm"]
-radius = 26.0192
+radius = 149.003
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egvjl"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(0, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66cfe"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(513, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1v6l4"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(1026, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_berbc"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(1539, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udoyk"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(2052, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4idl3"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(2565, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klvg3"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(3078, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyeoh"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(3591, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yog0e"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(4104, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2c7a"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(4617, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2sd5"]
+atlas = ExtResource("4_g6kbv")
+region = Rect2(5130, 0, 513, 437)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2f7mj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egvjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66cfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1v6l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_berbc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udoyk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4idl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klvg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyeoh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yog0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2c7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2sd5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [node name="Swooping" instance=ExtResource("1_bg1r0")]
 
 [node name="Sprite2D" parent="." index="0"]
+visible = false
 texture = ExtResource("2_q3vv5")
 
 [node name="CollisionShape2D" parent="." index="1"]
@@ -20,5 +107,12 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 script = ExtResource("3_ajncj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="4"]
+position = Vector2(12, 7)
+scale = Vector2(0.864109, 0.864109)
+sprite_frames = SubResource("SpriteFrames_2f7mj")
+autoplay = "default"
+frame_progress = 0.498412
 
 [connection signal="timeout" from="SwoopTimer" to="SwoopTimer" method="_on_timeout"]

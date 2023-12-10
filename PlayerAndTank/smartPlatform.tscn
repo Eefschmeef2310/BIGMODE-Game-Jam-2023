@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d232q35nqwknu" path="res://Sprites/dec6 assets/placeholder_tank_platform.png" id="2_h4exc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vlvrk"]
-size = Vector2(174.383, 19.4601)
+size = Vector2(174.383, 20.2913)
 
 [node name="Platform" type="CollisionShape2D"]
 position = Vector2(113.472, -225.804)
