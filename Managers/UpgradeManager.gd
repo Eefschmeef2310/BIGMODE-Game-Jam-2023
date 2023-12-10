@@ -22,7 +22,7 @@ func _ready():
 func purchase_upgrade(upgrade_name: String):
 	for upgrade in upgrades:
 		if upgrade.name == upgrade_name:
-			if upgrade.level <= upgrade.costs.size() and GameManager.gears >= upgrade.costs[upgrade.level]:
+			if upgrade.level < upgrade.costs.size() and GameManager.gears >= upgrade.costs[upgrade.level]:
 				# Purchase upgrade
 				GameManager.gears -= upgrade.costs[upgrade.level]
 				upgrade.level += 1
@@ -38,3 +38,9 @@ func get_upgrade_level(upgrade_name: String):
 		if upgrade.name == upgrade_name:
 			return upgrade.level
 	return 0
+
+func get_upgrade(upgrade_name: String):
+	for upgrade in upgrades:
+		if upgrade.name == upgrade_name:
+			return upgrade
+	return null

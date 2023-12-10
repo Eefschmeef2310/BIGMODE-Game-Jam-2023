@@ -13,6 +13,9 @@ var smooth_zoom = 0.5
 @onready var tank = $".."
 @onready var player = $"../../Player"
 
+func _ready():
+	GameManager.camera = self
+
 func _process(delta):
 	if (!freecamActive):
 		make_current()
@@ -22,7 +25,7 @@ func _process(delta):
 		camera_target_zoom = camera_inner_zoom
 	zoom_camera(camera_target_zoom, delta)
 	position = Vector2.ZERO
-		
+	
 #function for camera zoom lerp
 func zoom_camera(zoomTarget, delta):
 	smooth_zoom = lerp(smooth_zoom, zoomTarget, camera_zoom_speed * delta)

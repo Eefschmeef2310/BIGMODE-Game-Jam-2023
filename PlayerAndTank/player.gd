@@ -80,5 +80,3 @@ func toTank():
 func _on_enemy_hit_box_area_entered(area):
 	if area.is_in_group("Enemy"):
 		GameManager.game_over = true
-
-

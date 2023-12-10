@@ -27,6 +27,7 @@ wait_time = 2.0
 autostart = true
 
 [node name="Area2D" type="Area2D" parent="."]
+process_mode = 4
 
 [node name="ExplosionHitbox" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_bawh1")

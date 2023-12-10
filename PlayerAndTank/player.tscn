@@ -231,7 +231,9 @@ radius = 24.0
 height = 94.0
 
 [node name="Player" type="CharacterBody2D" groups=["Man", "PlayerAndTank"]]
+collision_layer = 64
 collision_mask = 25
+floor_max_angle = 0.872665
 script = ExtResource("1_8qa3g")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -247,6 +249,7 @@ animation = &"land"
 shape = SubResource("CapsuleShape2D_7qord")
 
 [node name="EnemyHitBox" type="Area2D" parent="."]
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
 shape = SubResource("CapsuleShape2D_lvild")

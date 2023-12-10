@@ -9,8 +9,9 @@ var tank_mode := true:
 		return tank_mode
 
 var tank_position: Vector2
+var camera: Camera2D
 
-var gears: int
+var gears: int = 50
 
 var game_paused : bool = false:
 	set(value):
