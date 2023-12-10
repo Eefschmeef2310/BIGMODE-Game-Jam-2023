@@ -43,7 +43,10 @@ func _process(_delta):
 					is_landing = false
 			elif not (is_landing):
 				_animated_sprite.play("idle")
-					
+	
+	if Input.is_action_just_pressed("upgradeToggle"):
+		print(global_position.distance_to($"../Upgrade UI/UpgradeMarker".global_position))
+	
 func _on_animated_sprite_2d_animation_finished():
 	if (is_landing == true):
 		is_landing = false

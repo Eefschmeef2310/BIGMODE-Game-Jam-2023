@@ -41,6 +41,5 @@ func _on_tank_to_player_control():
 func _on_nyan_debug_cmd_freecam():
 	freecamActive = true
 
-
 func _on_nyan_debug_cmd_gamecam():
 	freecamActive = false

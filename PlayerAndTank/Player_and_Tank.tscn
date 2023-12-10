@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3ux5lcf5kbhs"]
+[gd_scene load_steps=5 format=3 uid="uid://3ux5lcf5kbhs"]
 
 [ext_resource type="PackedScene" uid="uid://b3e2ulqrvcf1q" path="res://PlayerAndTank/tank.tscn" id="1_4q17n"]
 [ext_resource type="PackedScene" uid="uid://c80x2lpbryx6j" path="res://PlayerAndTank/player.tscn" id="2_30v2w"]
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerCamera.gd" id="3_37i13"]
+[ext_resource type="PackedScene" uid="uid://irvh438hrwvk" path="res://Upgrades/upgrade_ui.tscn" id="4_dlss7"]
 
 [node name="Player_and_Tank" type="Node2D"]
 
@@ -17,8 +18,20 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("2_30v2w")]
 position = Vector2(-36, -453)
 
+[node name="Upgrade UI" parent="." instance=ExtResource("4_dlss7")]
+visible = false
+offset_left = -318.0
+offset_top = -520.0
+offset_right = -178.0
+offset_bottom = -316.0
+
+[node name="UpgradeMarker" type="Marker2D" parent="Upgrade UI"]
+
 [connection signal="toPlayerControl" from="Tank" to="Tank/Camera2D" method="_on_tank_to_player_control"]
 [connection signal="toTankControl" from="Player" to="Tank/Camera2D" method="_on_player_to_tank_control"]
+[connection signal="scroll_category" from="Upgrade UI/CategoryLeft" to="Upgrade UI" method="scroll_category"]
+[connection signal="scroll_category" from="Upgrade UI/CategoryRight" to="Upgrade UI" method="scroll_category"]
 
 [editable path="Tank"]
 [editable path="Player"]
+[editable path="Upgrade UI"]
