@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=21 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="1_33unv"]
 [ext_resource type="Script" path="res://Levels/BackgroundParallaxStuff.gd" id="1_fxphu"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cpbpujpdtw8ga" path="res://Scripts/DebugTools/nyan_debug_tools.tscn" id="10_epaai"]
 [ext_resource type="Script" path="res://Scripts/DebugTools/Freecam.gd" id="11_v8eno"]
 [ext_resource type="Script" path="res://Scripts/OnlineServices/Airtable.gd" id="15_y5w66"]
+[ext_resource type="PackedScene" uid="uid://cffpvw5cm4kv2" path="res://Objects/Enemies/AirEnemies/SwoopingEnemy.tscn" id="18_uh366"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
 size = Vector2(46, 962)
@@ -139,6 +140,9 @@ metadata/_edit_lock_ = true
 [node name="Enemies" type="Node2D" parent="."]
 script = ExtResource("6_jebxi")
 metadata/_edit_lock_ = true
+
+[node name="Swooping" parent="Enemies" instance=ExtResource("18_uh366")]
+position = Vector2(3208, -752)
 
 [node name="Parallax" type="CanvasLayer" parent="."]
 visible = false
