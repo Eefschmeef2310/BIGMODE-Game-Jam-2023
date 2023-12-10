@@ -1,17 +1,28 @@
-[gd_scene load_steps=6 format=3 uid="uid://irvh438hrwvk"]
+[gd_scene load_steps=9 format=3 uid="uid://irvh438hrwvk"]
 
 [ext_resource type="Texture2D" uid="uid://c3r5uye382dmr" path="res://Upgrades/nine_patch_frame.png" id="1_i6aaw"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_ui.gd" id="2_xi6ok"]
 [ext_resource type="PackedScene" uid="uid://cq71qu21kneda" path="res://Upgrades/upgrade_button.tscn" id="3_yci1b"]
 [ext_resource type="PackedScene" uid="uid://6uqsv1wcbv5b" path="res://Upgrades/category_change.tscn" id="4_jxigx"]
+[ext_resource type="Shader" path="res://Shaders/GlitchShader.gdshader" id="5_bgf4m"]
+[ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="6_big3t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f7flk"]
 font_size = 8
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1o53k"]
+shader = ExtResource("5_bgf4m")
+shader_parameter/shake_power = 0.001
+shader_parameter/shake_rate = 0.1
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.0
+shader_parameter/shake_color_rate = 0.001
+
 [node name="Upgrade UI" type="NinePatchRect"]
-offset_right = 140.0
-offset_bottom = 204.0
+offset_right = 236.0
+offset_bottom = 275.0
+scale = Vector2(1, 0.982456)
 texture = ExtResource("1_i6aaw")
 patch_margin_left = 4
 patch_margin_top = 4
@@ -57,18 +68,19 @@ horizontal_alignment = 1
 scroll_direction = -1
 
 [node name="CategoryRight" parent="." instance=ExtResource("4_jxigx")]
-offset_left = 116.0
-offset_right = 134.0
+layout_mode = 1
+offset_left = 212.0
+offset_right = 230.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -64.0
+offset_left = -112.0
 offset_top = 28.0
-offset_right = 64.0
-offset_bottom = 198.0
+offset_right = 112.0
+offset_bottom = 269.0
 grow_horizontal = 2
 vertical_scroll_mode = 3
 
@@ -78,12 +90,20 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Gears" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 143.0
 offset_top = 3.0
 offset_right = 183.0
 offset_bottom = 26.0
 text = "Gears: 0"
+
+[node name="GlitchShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_1o53k")
+position = Vector2(118, 137.473)
+scale = Vector2(1.84375, 2.14607)
+texture = ExtResource("6_big3t")
+metadata/_edit_lock_ = true
 
 [connection signal="scroll_category" from="CategoryLeft" to="." method="scroll_category"]
 [connection signal="scroll_category" from="CategoryRight" to="." method="scroll_category"]

@@ -12,6 +12,7 @@ var smooth_zoom = 0.5
 
 @onready var tank = $".."
 @onready var player = $"../../Player"
+@onready var upgrade = $"../Upgrade UI/UpgradeMarker"
 
 func _ready():
 	GameManager.camera = self
@@ -43,3 +44,9 @@ func _on_nyan_debug_cmd_freecam():
 
 func _on_nyan_debug_cmd_gamecam():
 	freecamActive = false
+
+func _on_upgrade_ui_to_upgrade_screen(screenActive):
+	if screenActive:
+		reparent(upgrade)
+	else:
+		reparent(player)
