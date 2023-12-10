@@ -6,11 +6,12 @@ signal toPlayerControl()
 #endregion
 
 #region variables
-var health := 100:
+var max_health : int = 100
+var health := max_health:
 	#introduce a setter that automatically clamps the health
 	set(value):
 		health = value
-		health = clamp(health, 0, 100)
+		health = clamp(health, 0, max_health)
 
 @export var SPEED = 400.0
 const bulletPath: PackedScene = preload("res://Objects/Projectiles/bullet.tscn")
@@ -88,9 +89,9 @@ func shoot():
 #region healthAndDamage
 #updates the health to the health bar
 func update_health():
-	healthbar.value = health
+	healthbar.value = health / max_health
 	#hides the healthbar if at 100%
-	healthbar.visible = health < 100
+	healthbar.visible = health < max_health
 
 #there is a timer attached to the tank, everytime it times out, decrease/increase health
 func _on_regen_timer_timeout():
