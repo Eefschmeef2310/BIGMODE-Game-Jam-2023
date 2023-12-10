@@ -9,14 +9,21 @@ var explosion_radius: int = 400
 
 func _ready():
 	$Area2D/ExplosionHitbox.visible = false
-	$Area2D.set_process(false)
 
 func _on_explosion_timer_timeout():
+	#one timer for settign explosion, second for removal
+	#TODO Make this all animation - E
 	if !explosion_active:
 		explosion_active = true
 		$ExplosionTimer.start()
 		$Area2D/ExplosionHitbox.visible = true
-		$Area2D.set_process(true)
+		$Area2D.process_mode = Node.PROCESS_MODE_INHERIT
+		
+		var areas = $Area2D.get_overlapping_areas()
+		for area in areas:
+			print(area.name)
+			if "deal_damage" in area:
+				area.deal_damage(damage)
 	else:
 		queue_free()
 

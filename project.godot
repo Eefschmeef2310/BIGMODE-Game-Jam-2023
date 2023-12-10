@@ -44,7 +44,8 @@ folder_colors={
 "res://Menus/": "yellow",
 "res://Objects/Enemies/": "orange",
 "res://Objects/Platforms/": "blue",
-"res://PlayerAndTank/": "green"
+"res://PlayerAndTank/": "green",
+"res://Upgrades/": "purple"
 }
 
 [input]

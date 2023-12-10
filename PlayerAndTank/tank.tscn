@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=16 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://c4pdlov7yyjec" path="res://Sprites/dec6 assets/placeholder_tank_body.png" id="2_y3a5o"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerHatch.gd" id="7_i8vdx"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="7_pbp42"]
 [ext_resource type="PackedScene" uid="uid://d2gg81spyrtbu" path="res://PlayerAndTank/smartPlatform.tscn" id="7_pntxg"]
+[ext_resource type="Script" path="res://PlayerAndTank/TankHitbox.gd" id="9_1ogle"]
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="9_2iki1"]
 [ext_resource type="Script" path="res://PlayerAndTank/JumpInSprite.gd" id="10_6t4ks"]
 
@@ -87,6 +88,7 @@ shape = SubResource("RectangleShape2D_kisji")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 
 [node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("9_1ogle")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
