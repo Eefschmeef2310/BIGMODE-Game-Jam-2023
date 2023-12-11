@@ -53,7 +53,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_ggh3g"]
 script = ExtResource("2_aqrcm")
-name = "Roller Blades"
+name = "Frictionless Soles"
 category = "Man"
 descriptions = PackedStringArray("Move faster.", "Move even faster.", "Move blazing fast.")
 costs = Array[int]([10, 15, 20])
@@ -93,7 +93,7 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_3ry55"]
 script = ExtResource("2_aqrcm")
-name = "Last Upgrade"
+name = "Invisibility Cloak"
 category = "Man"
 descriptions = PackedStringArray("Either invisibility or decoy.", "We haven\'t decided yet.", "We should probably decide very soon.")
 costs = Array[int]([10, 15, 20])
