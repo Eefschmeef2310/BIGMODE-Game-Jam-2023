@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal toTankControl()
 
-@export var SPEED = 300.0
+var max_speed = 300.0
 @export var JUMP_VELOCITY = -600.0
 
 @export var midair_buffer = 100
@@ -65,7 +65,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
-	velocity.x = direction * SPEED
+	velocity.x = direction * max_speed
 
 	move_and_slide()
 	
