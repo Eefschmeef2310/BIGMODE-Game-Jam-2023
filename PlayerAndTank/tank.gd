@@ -6,14 +6,19 @@ signal toPlayerControl()
 #endregion
 
 #region variables
-var health := 100:
+var max_health : int = 100
+var health := max_health:
 	#introduce a setter that automatically clamps the health
 	set(value):
 		health = value
-		health = clamp(health, 0, 100)
+		health = clamp(health, 0, max_health)
 
 @export var SPEED = 400.0
 const bulletPath: PackedScene = preload("res://Objects/Projectiles/bullet.tscn")
+var extra_bullets: int = 0
+var extra_bullet_angle_offset = 0
+var fire_rate: float = 0.5
+var time_until_next_shot: float = 0.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -34,8 +39,11 @@ func _ready():
 func _physics_process(delta):	
 	if GameManager.tank_mode:
 		GameManager.tank_position = global_position
+		
 		#handle bullet firing
-		if Input.is_action_just_pressed("fire"):
+		time_until_next_shot -= delta
+		if time_until_next_shot <= 0.0 and Input.is_action_pressed("fire"):
+			time_until_next_shot = fire_rate
 			shoot()
 		#region old_code
 		## Add the gravity.
@@ -74,9 +82,16 @@ func createPlayer():
 
 #region shooting
 func shoot():
+	var middle_angle = $Sprites/Turret.global_rotation
+	spawn_bullet(middle_angle)
+	for i in extra_bullets:
+		print(i)
+		spawn_bullet(middle_angle + (extra_bullet_angle_offset * (i + 1)))
+		spawn_bullet(middle_angle - (extra_bullet_angle_offset * (i + 1))) 
+
+func spawn_bullet(angle: float):
 	var bullet = bulletPath.instantiate()
 	
-	var angle = $Sprites/Turret.global_rotation
 	var direction = Vector2(cos(angle), sin(angle))
 	bullet.position = $Sprites/Turret/MuzzleMarker.global_position
 	bullet.direction = direction
@@ -88,9 +103,9 @@ func shoot():
 #region healthAndDamage
 #updates the health to the health bar
 func update_health():
-	healthbar.value = health
+	healthbar.value = health / max_health
 	#hides the healthbar if at 100%
-	healthbar.visible = health < 100
+	healthbar.visible = health < max_health
 
 #there is a timer attached to the tank, everytime it times out, decrease/increase health
 func _on_regen_timer_timeout():

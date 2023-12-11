@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=17 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://c4pdlov7yyjec" path="res://Sprites/dec6 assets/placeholder_tank_body.png" id="2_y3a5o"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://PlayerAndTank/TankHitbox.gd" id="9_1ogle"]
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="9_2iki1"]
 [ext_resource type="Script" path="res://PlayerAndTank/JumpInSprite.gd" id="10_6t4ks"]
+[ext_resource type="Script" path="res://Upgrades/upgrade_updater_tank.gd" id="13_wspcb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
 size = Vector2(362, 24)
@@ -130,6 +131,13 @@ softness = 1.0
 position = Vector2(-39.7279, -401.263)
 scale = Vector2(11.7123, 3.48884)
 metadata/_edit_lock_ = true
+
+[node name="UpgradeUpdater" type="Node" parent="."]
+script = ExtResource("13_wspcb")
+health_values = Array[int]([100, 150, 200, 200])
+extra_bullets_values = Array[int]([0, 1, 2, 3])
+extra_bullet_angle_offset_values = Array[float]([0.0, 0.2, 0.15, 0.1])
+fire_rate_values = Array[float]([0.0, 0.3, 0.15, 0.05])
 
 [connection signal="toPlayerControl" from="." to="JumpInSprite" method="_on_tank_to_player_control"]
 [connection signal="body_entered" from="PlayerHatch" to="PlayerHatch" method="_on_body_entered"]

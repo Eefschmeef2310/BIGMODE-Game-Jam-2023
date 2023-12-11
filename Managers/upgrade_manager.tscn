@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3ts1cd21cchf"]
+[gd_scene load_steps=15 format=3 uid="uid://b3ts1cd21cchf"]
 
 [ext_resource type="Script" path="res://Managers/UpgradeManager.gd" id="1_1qutk"]
 [ext_resource type="Script" path="res://Upgrades/Upgrade.gd" id="2_aqrcm"]
@@ -27,6 +27,30 @@ descriptions = PackedStringArray("Shoot faster.", "Shoot even faster.", "Aerospr
 costs = Array[int]([10, 15, 20])
 level = 0
 
+[sub_resource type="Resource" id="Resource_mxlkd"]
+script = ExtResource("2_aqrcm")
+name = "Explosive Artillery"
+category = "Tank"
+descriptions = PackedStringArray("Right click for explosive rockets.", "Bigger explosions.", "Explosions explode upon explosion.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_3h1mr"]
+script = ExtResource("2_aqrcm")
+name = "Ramming Artillery"
+category = "Tank"
+descriptions = PackedStringArray("Add spikes to the front of the tank.", "Add rotary blades to the front of the tank.", "Add a vaccuum to the front of the tank.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_hq80k"]
+script = ExtResource("2_aqrcm")
+name = "Extra Footing"
+category = "Tank"
+descriptions = PackedStringArray("Add extra platforms above the tank.", "More platforms.", "Even more platforms.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
 [sub_resource type="Resource" id="Resource_ggh3g"]
 script = ExtResource("2_aqrcm")
 name = "Roller Blades"
@@ -51,6 +75,30 @@ descriptions = PackedStringArray("Hold jump to hover.", "Hover for longer.", "Ho
 costs = Array[int]([10, 15, 20])
 level = 0
 
+[sub_resource type="Resource" id="Resource_pbui3"]
+script = ExtResource("2_aqrcm")
+name = "Scrap Magnet"
+category = "Man"
+descriptions = PackedStringArray("Attract nearby scrap.", "Bigger magnet range.", "Even bigger magnet range.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_fp6bg"]
+script = ExtResource("2_aqrcm")
+name = "Defensive Shockwave"
+category = "Man"
+descriptions = PackedStringArray("Click to knock enemies back.", "Further knockback.", "Even further knockback.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
+[sub_resource type="Resource" id="Resource_3ry55"]
+script = ExtResource("2_aqrcm")
+name = "Last Upgrade"
+category = "Man"
+descriptions = PackedStringArray("Either invisibility or decoy.", "We haven\'t decided yet.", "We should probably decide very soon.")
+costs = Array[int]([10, 15, 20])
+level = 0
+
 [node name="UpgradeManager" type="Node2D"]
 script = ExtResource("1_1qutk")
-upgrades = Array[ExtResource("2_aqrcm")]([SubResource("Resource_cjetl"), SubResource("Resource_g23me"), SubResource("Resource_g1j5o"), SubResource("Resource_ggh3g"), SubResource("Resource_olqn2"), SubResource("Resource_78wkc")])
+upgrades = Array[ExtResource("2_aqrcm")]([SubResource("Resource_cjetl"), SubResource("Resource_g23me"), SubResource("Resource_g1j5o"), SubResource("Resource_mxlkd"), SubResource("Resource_3h1mr"), SubResource("Resource_hq80k"), SubResource("Resource_ggh3g"), SubResource("Resource_olqn2"), SubResource("Resource_78wkc"), SubResource("Resource_pbui3"), SubResource("Resource_fp6bg"), SubResource("Resource_3ry55")])
