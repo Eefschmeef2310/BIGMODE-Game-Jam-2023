@@ -100,12 +100,14 @@ func _on_line_edit_text_submitted(new_text):
 				#teleport player up like 1 units or smething to get them unstuck
 				meow("door stuck!")
 				cmdStuck.emit()
-			"upgrade": #TODO xander implement upgrade command 
-				meow("NOT YET IMPLEMENTED") #remove this once you're done
+			"upgrade":
 				if argCount>1:
 					print(arg[1]) # arg[1] is the 1st argument of the command, in this case the upgrade name
 					cmdUpgrade.emit(arg[1]) #optonally use this signal!
-					pass # do whatever matching logic you want here 
+					
+					UpgradeManager.purchase_upgrade(arg[1].replace("_", " "))
+					meow(arg[1].replace("_", " ") + " upgrade attempted!")
+					
 				else:
 					meow("the name of an upgrade must be given!")
 					meow("usage: upgrade <name>")
