@@ -8,6 +8,7 @@ extends Area2D
 @export var player_height: float = 200
 @export var lerp_speed: float = 0.5
 
+var dead: bool = false
 var xPos: float
 var yPos: float
 
@@ -16,22 +17,25 @@ func _ready():
 	$HealthBar.value = health
 
 func _process(delta):
-	xPos = GameManager.tank_position.x
-	#yPos = GameManager.tank_position.y - height
-	if GameManager.tank_mode:
-		yPos = GameManager.camera.get_screen_center_position().y - tank_height
-	else:
-		yPos = GameManager.camera.get_screen_center_position().y - player_height
-	
-	position = lerp(position, Vector2(xPos, yPos), delta)
+	if !dead:
+		xPos = GameManager.tank_position.x
+		#yPos = GameManager.tank_position.y - height
+		if GameManager.tank_mode:
+			yPos = GameManager.camera.get_screen_center_position().y - tank_height
+		else:
+			yPos = GameManager.camera.get_screen_center_position().y - player_height
+		
+		position = lerp(position, Vector2(xPos, yPos), delta)
 	
 #Apply damage on projectile hit
 func hit(damage):
+	print("bingus")
 	health -= damage
 	$HealthBar.value = health
 	
 	if(health <= 0):
-		queue_free()
+		dead = true
+		$AnimationPlayer.play("Death")
 
 func _on_drop_timer_add_item(item):
 	get_parent().add_child(item)
