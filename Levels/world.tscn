@@ -142,7 +142,7 @@ script = ExtResource("6_jebxi")
 metadata/_edit_lock_ = true
 
 [node name="Swooping" parent="Enemies" instance=ExtResource("18_uh366")]
-position = Vector2(3208, -752)
+position = Vector2(3112, -720)
 
 [node name="Parallax" type="CanvasLayer" parent="."]
 visible = false

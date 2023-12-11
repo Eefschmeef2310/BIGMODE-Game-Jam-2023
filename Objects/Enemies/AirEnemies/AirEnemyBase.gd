@@ -8,6 +8,8 @@ extends Area2D
 @export var player_height: float = 200
 @export var lerp_speed: float = 0.5
 
+@onready var _animated_sprite = $AnimatedSprite2D
+
 var xPos: float
 var yPos: float
 
@@ -16,6 +18,12 @@ func _ready():
 	$HealthBar.value = health
 
 func _process(delta):
+	#handles making sure the sprite is facing the correct way
+	var distance_to_tank = GameManager.tank_position.x - position.x
+	_animated_sprite.flip_h = 0
+	if distance_to_tank < 0:
+		_animated_sprite.flip_h = 1
+		
 	xPos = GameManager.tank_position.x
 	#yPos = GameManager.tank_position.y - height
 	if GameManager.tank_mode:
