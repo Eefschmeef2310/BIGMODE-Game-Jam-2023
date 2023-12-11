@@ -110,6 +110,7 @@ shape = SubResource("RectangleShape2D_kisji")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 
 [node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 2
 script = ExtResource("9_tcudc")
 metadata/_edit_lock_ = true
 
@@ -150,3 +151,4 @@ position = Vector2(-62, -216.5)
 scale = Vector2(25.2, 21.55)
 
 [connection signal="body_entered" from="PlayerHatch" to="PlayerHatch" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="Hitbox" method="_on_body_entered"]

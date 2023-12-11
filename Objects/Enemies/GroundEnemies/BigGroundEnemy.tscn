@@ -14,16 +14,36 @@ health = 40
 tank_damage = 20.0
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(1, 1)
+position = Vector2(0, -60.23)
+scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, -61.515)
+scale = Vector2(2, 2)
 shape = SubResource("CircleShape2D_jhl4n")
+
+[node name="Hitbox" parent="." index="2"]
+position = Vector2(0, -61.76)
+scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_jvw14")
 
 [node name="PinJoint2D2" parent="." index="3"]
-position = Vector2(63, 63)
+position = Vector2(100, 63)
 
 [node name="PinJoint2D3" parent="." index="4"]
-position = Vector2(-63, 63)
+position = Vector2(-100, 63)
+
+[node name="HealthBar" parent="." index="5"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -219.0
+offset_right = 82.09
+offset_bottom = -200.0
+grow_horizontal = 2
+grow_vertical = 2
