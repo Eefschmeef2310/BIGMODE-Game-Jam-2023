@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="6_big3t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f7flk"]
-font_size = 8
+font_size = 12
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1o53k"]
@@ -19,27 +19,37 @@ shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.0
 shader_parameter/shake_color_rate = 0.001
 
-[node name="Upgrade UI" type="NinePatchRect"]
+[node name="Upgrade UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 236.0
 offset_bottom = 275.0
 scale = Vector2(1, 0.982456)
+script = ExtResource("2_xi6ok")
+upgrade_scene = ExtResource("3_yci1b")
+
+[node name="bg" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("1_i6aaw")
 patch_margin_left = 4
 patch_margin_top = 4
 patch_margin_right = 4
 patch_margin_bottom = 4
-script = ExtResource("2_xi6ok")
-upgrade_scene = ExtResource("3_yci1b")
 
 [node name="Category" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -43.0
+offset_left = -83.0
 offset_top = 6.0
-offset_right = 43.0
-offset_bottom = 24.0
+offset_right = 83.0
+offset_bottom = 30.0
 grow_horizontal = 2
 texture = ExtResource("1_i6aaw")
 patch_margin_left = 4
@@ -69,7 +79,7 @@ scroll_direction = -1
 
 [node name="CategoryRight" parent="." instance=ExtResource("4_jxigx")]
 layout_mode = 1
-offset_left = 212.0
+offset_left = 206.0
 offset_right = 230.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
@@ -78,7 +88,7 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -112.0
-offset_top = 28.0
+offset_top = 34.0
 offset_right = 112.0
 offset_bottom = 269.0
 grow_horizontal = 2

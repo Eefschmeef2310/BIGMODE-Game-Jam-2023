@@ -7,20 +7,20 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_slaft"]
 line_spacing = 0.0
-font_size = 8
+font_size = 12
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3juat"]
 line_spacing = -1.0
-font_size = 6
+font_size = 8
 font_color = Color(0, 0, 0, 1)
 
 [node name="Upgrade" type="Control"]
-custom_minimum_size = Vector2(0, 42)
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 130.0
-offset_bottom = 40.0
+offset_right = 170.0
+offset_bottom = 64.0
 script = ExtResource("2_tmi7p")
 texture_default = ExtResource("1_qplsf")
 texture_hover = ExtResource("3_qmls2")
@@ -51,9 +51,9 @@ label_settings = SubResource("LabelSettings_slaft")
 [node name="Description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 7.0
-offset_top = 16.0
+offset_top = 22.0
 offset_right = 122.0
-offset_bottom = 26.0
+offset_bottom = 34.0
 text = "Upgrade description."
 label_settings = SubResource("LabelSettings_3juat")
 autowrap_mode = 2
