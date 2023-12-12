@@ -7,10 +7,10 @@ var acceleration = 300.0
 var deceleration = 300.0
 
 # Jumping and gravity
-var jump_speed = -600.0
+var jump_speed = -650.0
 var air_jump_speed = -400.0
 var rise_factor = 1
-var fall_factor = 1.75
+var fall_factor = 2
 var jump_phase = 0
 var max_air_jumps = 0;
 var jump_requested = false
@@ -20,6 +20,12 @@ var coyote_time = 0.2
 var coyote_counter = 0.0
 var jump_buffer_time = 0.2
 var jump_buffer_counter = 0.0
+
+# Jetpack params
+var hover_factor = 0.1
+var max_hover_velocity = 10
+var max_hover_time = 0
+var hover_counter = 0
 
 # Global movement scales
 var move_factor = 1
@@ -68,9 +74,10 @@ func _physics_process(delta):
 		update_direction()
 		
 	# Handle jumping.
-	if is_on_floor() and velocity.y == 0:
+	if is_on_floor():
 		jump_phase = 0
 		coyote_counter = coyote_time
+		hover_counter = max_hover_time
 		is_jumping = false
 	else:
 		coyote_counter -= delta
@@ -79,9 +86,17 @@ func _physics_process(delta):
 		jump_buffer_counter -= delta
 		try_jump()
 		
+	# Handle hovering.
+	if !is_on_floor() and velocity.y > 0 and jump_is_held and hover_counter > 0:
+		hover_counter -= delta
+		if velocity.y > max_hover_velocity:
+			velocity.y = lerpf(velocity.y, max_hover_velocity, 0.1)
+		
 	# Add the gravity.
 	if jump_is_held and velocity.y < 0:
 		velocity.y += gravity * delta * rise_factor
+	elif jump_is_held and velocity.y > 0 and hover_counter > 0:
+		velocity.y += gravity * delta * hover_factor
 	elif !jump_is_held or velocity.y > 0:
 		velocity.y += gravity * delta * fall_factor
 	elif velocity.y == 0:
