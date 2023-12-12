@@ -39,12 +39,15 @@ var is_falling = false
 var is_landing = true
 signal toTankControl()
 
+var killY = 9999
+
 func _ready():
 	toggle(false)
 
 func _process(_delta):
 	GameManager.tank_position = global_position
-	
+	if position.y > killY || GameManager.tank_position.y > killY:
+		GameManager.game_over = true
 	#Input
 	move_direction = Input.get_axis("left", "right")
 	if Input.is_action_just_pressed("jump"):
