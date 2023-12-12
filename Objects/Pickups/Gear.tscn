@@ -1,13 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddppnopenktf7"]
+[gd_scene load_steps=9 format=3 uid="uid://ddppnopenktf7"]
 
 [ext_resource type="Texture2D" uid="uid://c87yma35ntky1" path="res://Sprites/gear-1119298_1280.png" id="1_bl5j7"]
 [ext_resource type="Script" path="res://Objects/Pickups/Gear.gd" id="1_oou22"]
+[ext_resource type="Shader" path="res://Shaders/Sheen.gdshader" id="2_ow8ha"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gwrl"]
 radius = 6.08276
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wo1q1"]
 radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r65d0"]
+shader = ExtResource("2_ow8ha")
+shader_parameter/shine_color = Color(1, 1, 1, 1)
+shader_parameter/shine_progress = 0.5
+shader_parameter/shine_size = 0.1
+shader_parameter/shine_angle = 45.0
+
+[sub_resource type="Animation" id="Animation_t1gbu"]
+resource_name = "Shine"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D2/Area2D/CollisionShape2D/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D2/Area2D/CollisionShape2D/Sprite2D:material:shader_parameter/shine_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08epn"]
+_data = {
+"Shine": SubResource("Animation_t1gbu")
+}
 
 [node name="Gear" type="RigidBody2D"]
 collision_layer = 0
@@ -24,7 +64,16 @@ shape = SubResource("CircleShape2D_5gwrl")
 shape = SubResource("CircleShape2D_wo1q1")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D2/Area2D/CollisionShape2D"]
+material = SubResource("ShaderMaterial_r65d0")
+position = Vector2(0, -3)
 scale = Vector2(0.01, 0.01)
 texture = ExtResource("1_bl5j7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_08epn")
+}
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="CollisionShape2D2/Area2D" to="." method="_on_area_2d_body_entered"]

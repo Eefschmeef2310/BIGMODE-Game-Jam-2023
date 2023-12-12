@@ -121,7 +121,10 @@ func update_direction():
 
 func toggle(activate: bool):
 	visible = activate
-	set_physics_process(activate)
+	if activate:
+		process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 func toTank():
 	toTankControl.emit()
