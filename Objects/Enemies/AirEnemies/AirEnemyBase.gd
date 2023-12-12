@@ -12,7 +12,9 @@ var dead: bool = false
 var xPos: float
 var yPos: float
 
-@onready var _animated_sprite = $AnimatedSprite2D
+#TODO FIXME Make sure enemies follow inheritance! The script is used across ALL inherited classes
+#So something referencing specific sprites may not be present on children! - E
+@onready var _animated_sprite = $Sprite2D 
 
 
 func _ready():
@@ -22,9 +24,11 @@ func _ready():
 func _process(delta):
 	#for flipping sprite animations
 	var distance_to_tank = GameManager.tank_position.x - position.x
-	_animated_sprite.flip_h = 0
-	if distance_to_tank < 0:
-		_animated_sprite.flip_h = 1
+	
+	if _animated_sprite:
+		_animated_sprite.flip_h = 0
+		if distance_to_tank < 0:
+			_animated_sprite.flip_h = 1
 		
 	if !dead:
 		xPos = GameManager.tank_position.x

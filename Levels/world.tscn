@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=21 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="PackedScene" uid="uid://dj6curm4o8a0w" path="res://Objects/Environment/background.tscn" id="1_cxl0r"]
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cpbpujpdtw8ga" path="res://Scripts/DebugTools/nyan_debug_tools.tscn" id="10_epaai"]
 [ext_resource type="Script" path="res://Scripts/DebugTools/Freecam.gd" id="11_v8eno"]
 [ext_resource type="Script" path="res://Scripts/OnlineServices/Airtable.gd" id="15_y5w66"]
+[ext_resource type="PackedScene" uid="uid://biq18qtxqbqev" path="res://Objects/Enemies/AirEnemies/LakituEnemy.tscn" id="18_yk2vr"]
+[ext_resource type="PackedScene" uid="uid://cffpvw5cm4kv2" path="res://Objects/Enemies/AirEnemies/SwoopingEnemy.tscn" id="19_16jfj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
 size = Vector2(46, 962)
@@ -167,6 +169,12 @@ script = ExtResource("11_v8eno")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 script = ExtResource("15_y5w66")
+
+[node name="Lakitu" parent="." instance=ExtResource("18_yk2vr")]
+position = Vector2(3314, -268)
+
+[node name="Swooping" parent="." instance=ExtResource("19_16jfj")]
+position = Vector2(3574, -238)
 
 [connection signal="timeout" from="Timers/enemy_spawn_timer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="Timers/big_enemy_spawner" to="Enemies" method="_on_big_enemy_spawner_timeout"]
