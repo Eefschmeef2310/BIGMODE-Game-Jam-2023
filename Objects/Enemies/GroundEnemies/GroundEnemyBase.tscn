@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://byu8s5u0d52k2"]
+[gd_scene load_steps=11 format=3 uid="uid://byu8s5u0d52k2"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/GroundEnemies/GroundEnemyBase.gd" id="1_dpjwj"]
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="1_ieeiq"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="2_m0oqv"]
 [ext_resource type="Shader" path="res://Shaders/Corrosion.gdshader" id="2_rlg12"]
+[ext_resource type="Texture2D" uid="uid://rexgu3tkyk7t" path="res://Sprites/2302.i305.004.F.m005.c9.realistic glitter slime liquid black set.jpg" id="3_gjjrj"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_3v0ki"]
 
@@ -73,8 +74,8 @@ Wheels = [NodePath("PinJoint2D2"), NodePath("PinJoint2D3")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_1y0tv")
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_ieeiq")
+scale = Vector2(0.006, 0.006)
+texture = ExtResource("3_gjjrj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 

@@ -6,3 +6,6 @@ func _on_area_2d_body_entered(body):
 		queue_free()
 		
 
+func _on_timer_timeout():
+	$AnimationPlayer.play("Shine")
+	$Timer.start()
