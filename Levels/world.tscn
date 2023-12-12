@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=22 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="1_33unv"]
 [ext_resource type="Script" path="res://Levels/BackgroundParallaxStuff.gd" id="1_fxphu"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scripts/DebugTools/Freecam.gd" id="11_v8eno"]
 [ext_resource type="Script" path="res://Scripts/OnlineServices/Airtable.gd" id="15_y5w66"]
 [ext_resource type="PackedScene" uid="uid://cffpvw5cm4kv2" path="res://Objects/Enemies/AirEnemies/SwoopingEnemy.tscn" id="18_uh366"]
+[ext_resource type="PackedScene" uid="uid://ox6l51q21040" path="res://Objects/Enemies/GroundEnemies/SmallGroundEnemy.tscn" id="20_4y46q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
 size = Vector2(46, 962)
@@ -31,6 +32,12 @@ script = ExtResource("1_fxphu")
 [node name="Background" type="Sprite2D" parent="BackgroundParallaxStuff"]
 z_index = -1
 position = Vector2(4664, 792)
+scale = Vector2(-2.52, 2.52)
+texture = ExtResource("1_33unv")
+
+[node name="Background2" type="Sprite2D" parent="BackgroundParallaxStuff"]
+z_index = -1
+position = Vector2(14536, 792)
 scale = Vector2(2.52, 2.52)
 texture = ExtResource("1_33unv")
 
@@ -141,8 +148,13 @@ metadata/_edit_lock_ = true
 script = ExtResource("6_jebxi")
 metadata/_edit_lock_ = true
 
+[node name="SmallGroundEnemy" parent="Enemies" instance=ExtResource("20_4y46q")]
+position = Vector2(3528, -408)
+
 [node name="Swooping" parent="Enemies" instance=ExtResource("18_uh366")]
-position = Vector2(3112, -720)
+position = Vector2(3104, -688)
+rotation = 3.14159
+scale = Vector2(1, -1)
 
 [node name="Parallax" type="CanvasLayer" parent="."]
 visible = false
