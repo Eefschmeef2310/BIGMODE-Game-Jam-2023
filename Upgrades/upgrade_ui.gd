@@ -1,4 +1,4 @@
-extends NinePatchRect
+extends Control
 
 signal toUpgradeScreen(screenActive: bool)
 

@@ -41,7 +41,8 @@ func _physics_process(delta):
 		GameManager.tank_position = global_position
 		
 		#handle bullet firing
-		time_until_next_shot -= delta
+		if time_until_next_shot > 0:
+			time_until_next_shot -= delta
 		if time_until_next_shot <= 0.0 and Input.is_action_pressed("fire"):
 			time_until_next_shot = fire_rate
 			shoot()
