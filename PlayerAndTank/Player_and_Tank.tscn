@@ -27,6 +27,7 @@ offset_bottom = -297.355
 position = Vector2(102, 215)
 
 [node name="Player" parent="." instance=ExtResource("2_30v2w")]
+process_mode = 4
 position = Vector2(-36, -453)
 
 [connection signal="toPlayerControl" from="Tank" to="Tank/Camera2D" method="_on_tank_to_player_control"]
