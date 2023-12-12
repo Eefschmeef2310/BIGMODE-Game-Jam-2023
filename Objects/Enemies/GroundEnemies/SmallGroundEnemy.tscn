@@ -81,6 +81,7 @@ animations = [{
 }]
 
 [node name="SmallGroundEnemy" instance=ExtResource("1_oksde")]
+z_index = 1
 mass = 0.25
 SPEED = 300.0
 

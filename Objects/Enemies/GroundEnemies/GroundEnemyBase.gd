@@ -9,6 +9,8 @@ var WheelsRB : Array[RigidBody2D]
 var distance_to_tank
 var dead: bool = false
 
+@onready var _animated_sprite = $AnimatedSprite2D
+
 func _ready():
 	$HealthBar.max_value = health
 	$HealthBar.value = health
@@ -17,6 +19,12 @@ func _ready():
 		WheelsRB.push_back(Wheels[i].get_node("wheel"))
 	
 func _physics_process(delta):
+	#for flipping sprite animations
+	var distance_to_tank = GameManager.tank_position.x - position.x
+	_animated_sprite.flip_h = 0
+	if distance_to_tank < 0:
+		_animated_sprite.flip_h = 1
+		
 	if !dead:
 		distance_to_tank = GameManager.tank_position.x - position.x
 		var DIR = 1
