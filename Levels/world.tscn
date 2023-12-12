@@ -133,6 +133,7 @@ metadata/_edit_lock_ = true
 
 [node name="SmallGroundEnemy" parent="Enemies" instance=ExtResource("19_ncob4")]
 position = Vector2(3232, -56)
+SPEED = 350.0
 
 [node name="Swooping" parent="Enemies" instance=ExtResource("18_foelq")]
 position = Vector2(2872, -560)
