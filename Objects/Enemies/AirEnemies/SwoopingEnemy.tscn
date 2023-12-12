@@ -115,6 +115,6 @@ position = Vector2(12, 7)
 scale = Vector2(0.864109, 0.864109)
 sprite_frames = SubResource("SpriteFrames_2f7mj")
 autoplay = "default"
-frame_progress = 0.498412
+frame_progress = 0.346376
 
 [connection signal="timeout" from="SwoopTimer" to="SwoopTimer" method="_on_timeout"]
