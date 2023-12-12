@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://3ux5lcf5kbhs"]
+[gd_scene load_steps=5 format=3 uid="uid://3ux5lcf5kbhs"]
 
 [ext_resource type="PackedScene" uid="uid://b3e2ulqrvcf1q" path="res://PlayerAndTank/tank.tscn" id="1_4q17n"]
 [ext_resource type="PackedScene" uid="uid://c80x2lpbryx6j" path="res://PlayerAndTank/player.tscn" id="2_30v2w"]
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerCamera.gd" id="3_37i13"]
+[ext_resource type="PackedScene" uid="uid://irvh438hrwvk" path="res://Upgrades/upgrade_ui.tscn" id="4_dlss7"]
 
 [node name="Player_and_Tank" type="Node2D"]
 
@@ -11,13 +12,26 @@ metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="Tank"]
 zoom = Vector2(0.1, 0.1)
+position_smoothing_enabled = true
 script = ExtResource("3_37i13")
 metadata/_edit_lock_ = true
+
+[node name="Upgrade UI" parent="Tank" instance=ExtResource("4_dlss7")]
+visible = false
+offset_left = -311.539
+offset_top = -501.355
+offset_right = -171.539
+offset_bottom = -297.355
+
+[node name="UpgradeMarker" type="Marker2D" parent="Tank/Upgrade UI"]
+position = Vector2(102, 215)
 
 [node name="Player" parent="." instance=ExtResource("2_30v2w")]
 position = Vector2(-36, -453)
 
 [connection signal="toPlayerControl" from="Tank" to="Tank/Camera2D" method="_on_tank_to_player_control"]
+[connection signal="toUpgradeScreen" from="Tank/Upgrade UI" to="Tank/Camera2D" method="_on_upgrade_ui_to_upgrade_screen"]
+[connection signal="visibility_changed" from="Tank/Upgrade UI" to="Tank/Upgrade UI" method="_on_visibility_changed"]
 [connection signal="toTankControl" from="Player" to="Tank/Camera2D" method="_on_player_to_tank_control"]
 
 [editable path="Tank"]

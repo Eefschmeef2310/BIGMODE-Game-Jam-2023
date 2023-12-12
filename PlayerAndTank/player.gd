@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal toTankControl()
 
-@export var SPEED = 300.0
+var max_speed = 300.0
 @export var JUMP_VELOCITY = -600.0
 
 @export var midair_buffer = 100
@@ -43,7 +43,9 @@ func _process(_delta):
 					is_landing = false
 			elif not (is_landing):
 				_animated_sprite.play("idle")
-					
+				
+	$"../Tank/Upgrade UI".visible = global_position.distance_to($"../Tank/Upgrade UI/UpgradeMarker".global_position) < 150
+	
 func _on_animated_sprite_2d_animation_finished():
 	if (is_landing == true):
 		is_landing = false
@@ -63,7 +65,7 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction = Input.get_axis("left", "right")
-	velocity.x = direction * SPEED
+	velocity.x = direction * max_speed
 
 	move_and_slide()
 	

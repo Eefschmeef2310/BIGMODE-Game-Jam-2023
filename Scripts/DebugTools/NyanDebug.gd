@@ -5,7 +5,7 @@
 
 extends Node
 
-const VERSION = "0.4.1"
+const VERSION = "0.5"
 const HELP ="Available commands:
 help
 nya
@@ -15,13 +15,15 @@ stonks [amount] - adds [amount] to the plaeyers gears
 godmode - NOT YET IMPLEMENTED
 stuck - teleport the tank up to get it unstuck
 upgrade <name> - apply the supplied upgrade to the tank/player
-upload <username> <score> <version> - upload a record to the leaderboard"
+upload <username> <score> <version> - upload a record to the leaderboard
+reset - restarts the game"
 
 var active = false as bool
 @onready var inputBox : LineEdit = $CanvasLayer/LineEdit
 @onready var outputBox : TextEdit =  $CanvasLayer/TextEdit
 @export var freeCam : Camera2D
 @export var gameCam : Camera2D
+@export var spawnables : Array[PackedScene]
 #var lastCommand : String #redundant?
 var command : String
 
@@ -100,12 +102,14 @@ func _on_line_edit_text_submitted(new_text):
 				#teleport player up like 1 units or smething to get them unstuck
 				meow("door stuck!")
 				cmdStuck.emit()
-			"upgrade": #TODO xander implement upgrade command 
-				meow("NOT YET IMPLEMENTED") #remove this once you're done
+			"upgrade":
 				if argCount>1:
 					print(arg[1]) # arg[1] is the 1st argument of the command, in this case the upgrade name
 					cmdUpgrade.emit(arg[1]) #optonally use this signal!
-					pass # do whatever matching logic you want here 
+					
+					UpgradeManager.purchase_upgrade(arg[1].replace("_", " "))
+					meow(arg[1].replace("_", " ") + " upgrade attempted!")
+					
 				else:
 					meow("the name of an upgrade must be given!")
 					meow("usage: upgrade <name>")
@@ -117,7 +121,12 @@ func _on_line_edit_text_submitted(new_text):
 					meow("attempted to send data, make sure the arguments are correct")
 				else:
 					meow("too few arguments!")
-				
+			"reset":
+				get_tree().change_scene_to_file("res://Levels/world.tscn")
+			"spawn":
+				#spawn prefab from the spawnables array - enimies, gears, ect
+				meow("NOT YET IMPLEMENTED :(")
+				pass
 			_: #wildcard
 				meow("command: '" + command + "' not found" )
 	else:

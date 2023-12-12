@@ -1,0 +1,29 @@
+extends Node
+
+@export var health_values: Array[int]
+@export var extra_bullets_values: Array[int]
+@export var extra_bullet_angle_offset_values: Array[float]
+@export var fire_rate_values: Array[float]
+
+func _ready():
+	update_upgrades("")
+	UpgradeManager.upgrade_purchased.connect(update_upgrades)
+
+func update_upgrades(_upgrade):
+	var tank = get_parent()
+	var lvl = 0
+	
+	# Armor
+	lvl = UpgradeManager.get_upgrade_level("Armor")
+	var previous_max_health = tank.max_health
+	tank.max_health = health_values[lvl]
+	tank.health += tank.max_health - previous_max_health
+	
+	# Extra Artillery
+	lvl = UpgradeManager.get_upgrade_level("Extra Artillery")
+	tank.extra_bullets = extra_bullets_values[lvl]
+	tank.extra_bullet_angle_offset = extra_bullet_angle_offset_values[lvl]
+	
+	#Frequent Artillery
+	lvl = UpgradeManager.get_upgrade_level("Frequent Artillery")
+	tank.fire_rate = fire_rate_values[lvl]

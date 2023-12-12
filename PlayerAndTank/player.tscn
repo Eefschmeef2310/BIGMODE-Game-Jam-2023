@@ -1,11 +1,12 @@
-[gd_scene load_steps=36 format=3 uid="uid://c80x2lpbryx6j"]
+[gd_scene load_steps=37 format=3 uid="uid://c80x2lpbryx6j"]
 
-[ext_resource type="Script" path="res://PlayerAndTank/player.gd" id="1_8qa3g"]
+[ext_resource type="Script" path="res://PlayerAndTank/player_controller.gd" id="1_ln6dx"]
 [ext_resource type="Texture2D" uid="uid://22t5opnfvt4j" path="res://Sprites/Player.png" id="1_skamq"]
 [ext_resource type="Texture2D" uid="uid://bq34xje3bbnab" path="res://Sprites/spritesheets/player_idle.png" id="3_g2m7u"]
 [ext_resource type="Texture2D" uid="uid://bjgfejo5rs2rg" path="res://Sprites/spritesheets/player_jump.png" id="3_sit5u"]
 [ext_resource type="Texture2D" uid="uid://sduyag0qg1io" path="res://Sprites/spritesheets/player_land.png" id="4_clevi"]
 [ext_resource type="Texture2D" uid="uid://biuvrmgnhgt7u" path="res://Sprites/spritesheets/player_run.png" id="5_73v1f"]
+[ext_resource type="Script" path="res://Upgrades/upgrade_updater_player.gd" id="7_k7ho2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7diqr"]
 atlas = ExtResource("3_sit5u")
@@ -234,10 +235,9 @@ height = 94.0
 collision_layer = 64
 collision_mask = 25
 floor_max_angle = 0.872665
-script = ExtResource("1_8qa3g")
+script = ExtResource("1_ln6dx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0, -8)
 texture = ExtResource("1_skamq")
 
@@ -254,6 +254,11 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
 shape = SubResource("CapsuleShape2D_lvild")
 debug_color = Color(1, 0, 0.0784314, 0.419608)
+
+[node name="UpgradeUpdater" type="Node" parent="."]
+script = ExtResource("7_k7ho2")
+speed_values = Array[int]([300, 400, 500, 600])
+max_air_jumps_values = Array[int]([0, 1, 2, 3])
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="EnemyHitBox" to="." method="_on_enemy_hit_box_area_entered"]

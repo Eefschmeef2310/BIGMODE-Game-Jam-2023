@@ -1,5 +1,7 @@
 extends NinePatchRect
 
+signal toUpgradeScreen(screenActive: bool)
+
 @export var upgrade_scene: PackedScene
 
 var current_category: String = ""
@@ -31,3 +33,6 @@ func set_category(new_category: String):
 	$Category/Name.text = current_category
 	for button in $ScrollContainer/Upgrades.get_children():
 			button.set_visibility(current_category)
+
+func _on_visibility_changed():
+	toUpgradeScreen.emit(visible)
