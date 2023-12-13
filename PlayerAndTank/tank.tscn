@@ -138,6 +138,8 @@ health_values = Array[int]([100, 150, 200, 200])
 extra_bullets_values = Array[int]([0, 1, 2, 3])
 extra_bullet_angle_offset_values = Array[float]([0.0, 0.2, 0.15, 0.1])
 fire_rate_values = Array[float]([0.5, 0.3, 0.15, 0.05])
+has_rockets_values = Array[bool]([false, true, true, true])
+rocket_level_values = Array[int]([1, 1, 2, 3])
 
 [connection signal="toPlayerControl" from="." to="JumpInSprite" method="_on_tank_to_player_control"]
 [connection signal="body_entered" from="PlayerHatch" to="PlayerHatch" method="_on_body_entered"]

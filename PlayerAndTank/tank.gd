@@ -14,11 +14,20 @@ var health := max_health:
 		health = clamp(health, 0, max_health)
 
 @export var SPEED = 400.0
+
+# Bullets
 const bulletPath: PackedScene = preload("res://Objects/Projectiles/bullet.tscn")
 var extra_bullets: int = 0
 var extra_bullet_angle_offset = 0
 var fire_rate: float = 0.5
 var time_until_next_shot: float = 0.0
+
+# Rockets
+const rocket_path: PackedScene = preload("res://Objects/Projectiles/rocket.tscn")
+var rocket_fire_rate: float = 5
+var time_until_next_rocket: float = 0
+var has_rockets: bool = false
+var rocket_level: int = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -40,26 +49,6 @@ func _physics_process(delta):
 	if GameManager.tank_mode:
 		GameManager.tank_position = global_position
 		
-		#handle bullet firing
-		if time_until_next_shot > 0:
-			time_until_next_shot -= delta
-		if time_until_next_shot <= 0.0 and Input.is_action_pressed("fire"):
-			time_until_next_shot = fire_rate
-			shoot()
-		#region old_code
-		## Add the gravity.
-		#if not is_on_floor():
-			#velocity.y += gravity * delta
-		## Get the input direction and handle the movement/deceleration.
-		#var direction = Input.get_axis("left", "right")
-		#if direction:
-			#velocity.x = direction * SPEED
-		#else:
-			#velocity.x = move_toward(velocity.x, 0, SPEED)
-		#move_and_slide()
-		#endregion
-		#TODO ^remove
-		
 		var direction = Input.get_axis("left", "right") as float
 	
 		for i in range(0, WheelsRB.size()):
@@ -70,6 +59,21 @@ func _physics_process(delta):
 			else:
 				WheelsRB[i].lock_rotation = false
 				pass
+		
+		#handle bullet firing
+		if time_until_next_shot > 0:
+			time_until_next_shot -= delta
+		if time_until_next_shot <= 0.0 and Input.is_action_pressed("fire"):
+			time_until_next_shot = fire_rate
+			shoot()
+			
+		#handle rocket firing
+		if has_rockets:
+			if time_until_next_rocket > 0:
+				time_until_next_rocket -= delta
+			if time_until_next_rocket <= 0.0 and Input.is_action_just_pressed("secondary"):
+				time_until_next_rocket = rocket_fire_rate
+				shoot_rocket()
 		
 		#Toggle
 		if Input.is_action_just_pressed("swap_mode"):
@@ -99,6 +103,16 @@ func spawn_bullet(angle: float):
 	bullet.rotation_degrees = rad_to_deg(angle)
 	
 	addBullet.emit(bullet)
+
+func shoot_rocket():
+	var rocket = rocket_path.instantiate()
+	var angle = $Sprites/Turret.global_rotation
+	var direction = Vector2(cos(angle), sin(angle))
+	rocket.position = $Sprites/Turret/MuzzleMarker.global_position
+	rocket.direction = direction
+	rocket.rotation_degrees = rad_to_deg(angle)
+	rocket.rocket_level = rocket_level
+	addBullet.emit(rocket)
 #endregion
 
 #region healthAndDamage
