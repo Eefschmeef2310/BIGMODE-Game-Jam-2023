@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var speed = 400
+@export var speed = 2000
 @export var damage: float = 10
 var direction
 
