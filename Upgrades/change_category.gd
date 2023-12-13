@@ -10,6 +10,10 @@ var is_mouse_hovered = false
 
 signal scroll_category(direction: int)
 
+func _ready():
+	if scroll_direction == -1:
+		$Icon.flip_h = true
+
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		scroll_category.emit(scroll_direction)

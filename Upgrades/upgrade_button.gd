@@ -4,6 +4,9 @@ extends Control
 @export var texture_hover: Texture
 @export var texture_locked: Texture
 
+@export var texture_level_false: Texture
+@export var texture_level_true: Texture
+
 var is_mouse_hovered = false
 
 func _ready():
@@ -23,12 +26,20 @@ func set_data(upgrade):
 		get_node("Description").text = ""
 		get_node("Cost").text = ""
 	
-	if upgrade.level <= 0:
-		get_node("Level").text = "Level 1"
-	elif upgrade.level >= upgrade.costs.size():
-		get_node("Level").text = "MAX"
-	else:
-		get_node("Level").text = "Level " + str(upgrade.level + 1)
+	var current_level = 1
+	for circle in $Levels.get_children():
+		if current_level <= upgrade.level:
+			circle.texture = texture_level_true
+		else:
+			circle.texture = texture_level_false
+		current_level += 1
+	
+	#if upgrade.level <= 0:
+		#get_node("Level").text = "Level 1"
+	#elif upgrade.level >= upgrade.costs.size():
+		#get_node("Level").text = "MAX"
+	#else:
+		#get_node("Level").text = "Level " + str(upgrade.level + 1)
 
 func set_visibility(current_category: String):
 	var upgrade = UpgradeManager.get_upgrade($Name.text)

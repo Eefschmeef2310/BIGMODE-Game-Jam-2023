@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://irvh438hrwvk"]
 
-[ext_resource type="Texture2D" uid="uid://c3r5uye382dmr" path="res://Upgrades/nine_patch_frame.png" id="1_i6aaw"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_ui.gd" id="2_xi6ok"]
+[ext_resource type="Texture2D" uid="uid://dnirdri8itlpj" path="res://Sprites/ui_rect_default.png" id="3_5lgyx"]
 [ext_resource type="PackedScene" uid="uid://cq71qu21kneda" path="res://Upgrades/upgrade_button.tscn" id="3_yci1b"]
 [ext_resource type="PackedScene" uid="uid://6uqsv1wcbv5b" path="res://Upgrades/category_change.tscn" id="4_jxigx"]
 [ext_resource type="Shader" path="res://Shaders/GlitchShader.gdshader" id="5_bgf4m"]
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="6_big3t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f7flk"]
-font_size = 12
+font_size = 24
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1o53k"]
@@ -22,9 +22,8 @@ shader_parameter/shake_color_rate = 0.001
 [node name="Upgrade UI" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 236.0
-offset_bottom = 275.0
-scale = Vector2(1, 0.982456)
+offset_right = 580.0
+offset_bottom = 550.0
 script = ExtResource("2_xi6ok")
 upgrade_scene = ExtResource("3_yci1b")
 
@@ -35,27 +34,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_i6aaw")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+texture = ExtResource("3_5lgyx")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
 [node name="Category" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -83.0
-offset_top = 6.0
-offset_right = 83.0
-offset_bottom = 30.0
+offset_left = -224.0
+offset_top = 12.0
+offset_right = 224.0
+offset_bottom = 57.0
 grow_horizontal = 2
-texture = ExtResource("1_i6aaw")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+texture = ExtResource("3_5lgyx")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
 
 [node name="Name" type="Label" parent="Category"]
 layout_mode = 1
@@ -64,10 +63,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -6.0
-offset_right = 64.0
-offset_bottom = 6.0
+offset_left = -146.0
+offset_top = -8.5
+offset_right = 146.0
+offset_bottom = 8.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Tank"
@@ -75,22 +74,32 @@ label_settings = SubResource("LabelSettings_f7flk")
 horizontal_alignment = 1
 
 [node name="CategoryLeft" parent="." instance=ExtResource("4_jxigx")]
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 57.0
+offset_bottom = 57.0
 scroll_direction = -1
 
 [node name="CategoryRight" parent="." instance=ExtResource("4_jxigx")]
 layout_mode = 1
-offset_left = 206.0
-offset_right = 230.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -57.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 57.0
+grow_horizontal = 0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -112.0
-offset_top = 34.0
-offset_right = 112.0
-offset_bottom = 269.0
+offset_left = -277.0
+offset_top = 66.0
+offset_right = 277.0
+offset_bottom = 537.0
 grow_horizontal = 2
 vertical_scroll_mode = 3
 
@@ -98,6 +107,7 @@ vertical_scroll_mode = 3
 layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 12
 
 [node name="Gears" type="Label" parent="."]
 visible = false

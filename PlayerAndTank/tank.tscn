@@ -64,7 +64,7 @@ texture = ExtResource("6_xdfsf")
 
 [node name="Treads" type="CollisionPolygon2D" parent="."]
 position = Vector2(70.25, -126)
-polygon = PackedVector2Array(-256.25, -42, 276.75, -42, 136.463, 104.789, -392.565, 102.861)
+polygon = PackedVector2Array(-256.25, -42, 276.75, -42, 116.869, 126, -414.118, 126)
 one_way_collision = true
 
 [node name="Platform" parent="." instance=ExtResource("7_pntxg")]
@@ -118,12 +118,12 @@ wait_time = 0.2
 autostart = true
 
 [node name="PinJoint2D3" parent="." instance=ExtResource("7_pbp42")]
-position = Vector2(186.139, -12.5339)
+position = Vector2(186.139, -10)
 node_a = NodePath("..")
 softness = 1.0
 
 [node name="PinJoint2D4" parent="." instance=ExtResource("7_pbp42")]
-position = Vector2(-315.457, -9.64144)
+position = Vector2(-315.457, -10)
 node_a = NodePath("..")
 softness = 1.0
 
