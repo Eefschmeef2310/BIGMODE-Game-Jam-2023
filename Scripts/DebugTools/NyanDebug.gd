@@ -137,12 +137,12 @@ func meow(text):
 	outputBox.text += "\n" + text
 	outputBox.scroll_vertical = 9999
 
-func setDisplay(active):
-	inputBox.set_visible(active)
-	outputBox.set_visible(active)
+func setDisplay(isActive):
+	inputBox.set_visible(isActive)
+	outputBox.set_visible(isActive)
 	inputBox.clear()
 	inputBox.select()
-	if active:
+	if isActive:
 		inputBox.grab_focus()
 
 

@@ -41,7 +41,6 @@ position = Vector2(0, -196)
 texture = ExtResource("2_y3a5o")
 
 [node name="Turret" type="StaticBody2D" parent="Sprites"]
-z_index = -1
 position = Vector2(-34, -398)
 collision_layer = 16
 script = ExtResource("4_oud1o")
