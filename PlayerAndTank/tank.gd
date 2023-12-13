@@ -6,7 +6,7 @@ signal toPlayerControl()
 #endregion
 
 #region variables
-var max_health : int = 100
+var max_health : float = 100
 var health := max_health:
 	#introduce a setter that automatically clamps the health
 	set(value):

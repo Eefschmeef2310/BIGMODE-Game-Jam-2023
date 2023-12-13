@@ -1,7 +1,7 @@
 @tool
 extends Sprite2D
 
-func _process(delta):
+func _process(_delta):
 	zoom_changed()
 
 func _on_item_rect_changed():

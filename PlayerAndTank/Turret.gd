@@ -7,10 +7,10 @@ func _process(delta):
 		var angle = (get_global_mouse_position() - global_position).angle()
 		
 		if angle > 0:
-			if angle > PI/2 and angle < (11*PI)/12:
-				angle = (11*PI)/12
-			elif angle < PI/2 and angle > PI/12:
-				angle = PI/12
+			if angle > PI/2 and angle < (11*PI)/12: #left
+				rotation = (11*PI)/12
+			elif angle < PI/2 and angle > PI/12: #right
+				rotation = PI/12
 		
 		#if angle > 0:
 			#if angle > PI/2:

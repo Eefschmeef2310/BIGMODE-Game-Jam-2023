@@ -35,7 +35,7 @@ func _on_nyan_debug_cmd_upload(username, score, version):
 	Upload(username, score, version)
 	pass # Replace with function body.
 
-func _on_request_completed(result, response_code, headers, body):
+func _on_request_completed(_result, _response_code, _headers, body):
 	var json = JSON.parse_string(body.get_string_from_utf8())
 	print(JSON.stringify(json))
 	response.emit(JSON.stringify(json))

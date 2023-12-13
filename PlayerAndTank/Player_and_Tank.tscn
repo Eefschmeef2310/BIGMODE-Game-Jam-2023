@@ -17,6 +17,7 @@ script = ExtResource("3_37i13")
 metadata/_edit_lock_ = true
 
 [node name="Upgrade UI" parent="Tank" instance=ExtResource("4_dlss7")]
+visible = false
 offset_left = -562.337
 offset_top = -293.1
 offset_right = -326.337
