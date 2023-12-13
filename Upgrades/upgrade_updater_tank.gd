@@ -4,6 +4,8 @@ extends Node
 @export var extra_bullets_values: Array[int]
 @export var extra_bullet_angle_offset_values: Array[float]
 @export var fire_rate_values: Array[float]
+@export var has_rockets_values: Array[bool]
+@export var rocket_level_values: Array[int]
 
 func _ready():
 	update_upgrades("")
@@ -27,3 +29,8 @@ func update_upgrades(_upgrade):
 	#Frequent Artillery
 	lvl = UpgradeManager.get_upgrade_level("Frequent Artillery")
 	tank.fire_rate = fire_rate_values[lvl]
+	
+	# Explosive Artillery
+	lvl = UpgradeManager.get_upgrade_level("Explosive Artillery")
+	tank.has_rockets = has_rockets_values[lvl]
+	tank.rocket_level = rocket_level_values[lvl]

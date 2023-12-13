@@ -31,3 +31,12 @@ func deal_damage(damage):
 	health -= damage
 	update_health()
 #endregion
+
+
+func _on_body_entered(body): #tank tread hitbox
+	print(body.name)
+	if body.is_in_group("SmallEnemy"):
+		body.hit(999)
+	#if its the small enemy
+	#destroy them (hp = 0)
+	pass # Replace with function body.
