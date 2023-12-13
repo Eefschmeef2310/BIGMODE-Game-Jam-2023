@@ -1,8 +1,8 @@
 extends Area2D
 
-@export var speed = 800
+@export var speed = 1500
 @export var damage: float = 10
-@export var gravity_scale: float = 0.00075
+@export var gravity_scale: float = 0.001
 var direction
 
 var rocket_level = 1
@@ -11,6 +11,7 @@ var rocket_level = 1
 var gravity_float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
+	rotation = direction.angle()
 	position += direction * speed * delta
 	direction.y += gravity_float * delta * gravity_scale
 

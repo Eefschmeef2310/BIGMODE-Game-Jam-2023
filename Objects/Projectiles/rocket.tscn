@@ -1,13 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbmarmueny816"]
 
 [ext_resource type="Script" path="res://Objects/Projectiles/rocket.gd" id="1_cay8g"]
-[ext_resource type="Texture2D" uid="uid://ddpriv80tdk7j" path="res://Sprites/Bullet.png" id="2_k84mh"]
+[ext_resource type="Texture2D" uid="uid://dvk7e6ooyhwtk" path="res://Sprites/rocket.png" id="2_32fjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iv10m"]
 size = Vector2(4, 2)
 
 [node name="Rocket" type="Area2D"]
-scale = Vector2(20, 20)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_cay8g")
@@ -16,7 +15,7 @@ script = ExtResource("1_cay8g")
 shape = SubResource("RectangleShape2D_iv10m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_k84mh")
+texture = ExtResource("2_32fjl")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

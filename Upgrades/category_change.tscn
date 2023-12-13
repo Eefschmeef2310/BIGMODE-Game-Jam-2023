@@ -1,21 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://6uqsv1wcbv5b"]
+[gd_scene load_steps=6 format=3 uid="uid://6uqsv1wcbv5b"]
 
 [ext_resource type="Script" path="res://Upgrades/change_category.gd" id="1_f77mw"]
-[ext_resource type="Texture2D" uid="uid://c3r5uye382dmr" path="res://Upgrades/nine_patch_frame.png" id="2_gd4cx"]
-[ext_resource type="Texture2D" uid="uid://bjnd3jiqjdqw4" path="res://Upgrades/nine_patch_frame_hover.png" id="3_tg3ig"]
-[ext_resource type="Texture2D" uid="uid://8k2cay000iis" path="res://Upgrades/nine_patch_frame_locked.png" id="4_lai1u"]
+[ext_resource type="Texture2D" uid="uid://dnirdri8itlpj" path="res://Sprites/ui_rect_default.png" id="2_h0fr1"]
+[ext_resource type="Texture2D" uid="uid://cf2expaxj636t" path="res://Sprites/ui_rect_hover.png" id="3_yhxmf"]
+[ext_resource type="Texture2D" uid="uid://bemag4eck1s64" path="res://Sprites/ui_rect_locked.png" id="4_utdc7"]
+[ext_resource type="Texture2D" uid="uid://fs6dgfsaib5p" path="res://Sprites/category_switch_icon.png" id="5_3q6qq"]
 
 [node name="CategoryLeft" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 6.0
 offset_top = 6.0
-offset_right = 30.0
-offset_bottom = 30.0
+offset_right = 51.0
+offset_bottom = 51.0
 script = ExtResource("1_f77mw")
-texture_default = ExtResource("2_gd4cx")
-texture_hover = ExtResource("3_tg3ig")
-texture_locked = ExtResource("4_lai1u")
+texture_default = ExtResource("2_h0fr1")
+texture_hover = ExtResource("3_yhxmf")
+texture_locked = ExtResource("4_utdc7")
 
 [node name="bg" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -24,11 +25,20 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_gd4cx")
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+texture = ExtResource("2_h0fr1")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_3q6qq")
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
