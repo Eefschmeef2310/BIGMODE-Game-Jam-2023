@@ -6,20 +6,20 @@
 [ext_resource type="Texture2D" uid="uid://detf2j2fqxkmn" path="res://Sprites/upgrade_level_false.png" id="5_1kq6e"]
 [ext_resource type="Texture2D" uid="uid://dnirdri8itlpj" path="res://Sprites/ui_rect_default.png" id="5_krbgf"]
 [ext_resource type="Texture2D" uid="uid://ck001qop3fxvk" path="res://Sprites/upgrade_level_true.png" id="6_5ef1a"]
-[ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="7_4cppg"]
+[ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="7_ghyou"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_slaft"]
 line_spacing = 0.0
-font = ExtResource("7_4cppg")
+font = ExtResource("7_ghyou")
 font_size = 32
 
 [sub_resource type="LabelSettings" id="LabelSettings_3juat"]
 line_spacing = -1.0
 font_size = 24
 
-[sub_resource type="LabelSettings" id="LabelSettings_0gu3h"]
+[sub_resource type="LabelSettings" id="LabelSettings_4ymlu"]
 line_spacing = -1.0
-font = ExtResource("7_4cppg")
+font = ExtResource("7_ghyou")
 font_size = 32
 
 [node name="Upgrade" type="Control"]
@@ -75,13 +75,13 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -212.0
-offset_top = -45.0
+offset_top = -44.0
 offset_right = -15.0
-offset_bottom = -11.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "$10"
-label_settings = SubResource("LabelSettings_0gu3h")
+label_settings = SubResource("LabelSettings_4ymlu")
 horizontal_alignment = 2
 autowrap_mode = 2
 
