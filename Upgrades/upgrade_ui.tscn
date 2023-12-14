@@ -126,15 +126,14 @@ text = "Gears: 0"
 
 [node name="GlitchShader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_1o53k")
-position = Vector2(118, 137.473)
-scale = Vector2(1.84375, 2.14607)
+position = Vector2(290.5, 275.5)
+scale = Vector2(4.52344, 4.28906)
 texture = ExtResource("6_big3t")
-metadata/_edit_lock_ = true
 
 [node name="LineShader" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_i3gv1")
-position = Vector2(118.5, 136.964)
-scale = Vector2(1.85156, 2.15402)
+position = Vector2(290.5, 275.5)
+scale = Vector2(4.52344, 4.28906)
 texture = ExtResource("6_big3t")
 
 [connection signal="scroll_category" from="CategoryLeft" to="." method="scroll_category"]
