@@ -94,6 +94,9 @@ func _physics_process(delta):
 		hover_counter -= delta
 		if velocity.y > max_hover_velocity:
 			velocity.y = lerpf(velocity.y, max_hover_velocity, 0.1)
+		$HoverParticles.emitting = true
+	else:
+		$HoverParticles.emitting = false
 		
 	# Add the gravity.
 	if jump_is_held and velocity.y < 0:
