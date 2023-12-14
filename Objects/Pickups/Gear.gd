@@ -8,20 +8,43 @@ extends RigidBody2D
 	set(val):
 		value = val
 		change_texture()
+		
+var magnet_node: Node
+var magnet_radius: float
+@export var attract_speed: float = 3
 
 func _ready():
 	change_texture()
 	$AnimationPlayer.play("Shine")
 	$AnimationPlayer.seek(randf_range(0, 4))
 
+func _process(delta):
+	if magnet_node != null:
+		var dist = magnet_node.global_position.distance_to(global_position)
+		if dist < magnet_radius:
+			var vel = global_position.direction_to(magnet_node.global_position)
+			
+			var speed = magnet_radius - dist
+			speed = speed * attract_speed * delta
+			vel = vel * speed
+			
+			global_position += vel
+		else:
+			magnet_node = null
+
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("PlayerAndTank"):
 		GameManager.gears += value
 		queue_free()
 
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("Magnet"):
+		var player = area.get_parent()
+		magnet_node = player
+		magnet_radius = global_position.distance_to(magnet_node.global_position) + 5
+
 func change_texture():
 	if sprite:
-		print("yea")
 		match value:
 			5:
 				sprite.texture = texture_5
