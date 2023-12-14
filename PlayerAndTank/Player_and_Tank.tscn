@@ -25,7 +25,7 @@ offset_bottom = 256.9
 scale = Vector2(0.5, 0.5)
 
 [node name="UpgradeMarker" type="Marker2D" parent="Tank/Upgrade UI"]
-position = Vector2(736.72, 260.32)
+position = Vector2(609.363, 399.156)
 
 [node name="Player" parent="." instance=ExtResource("2_30v2w")]
 process_mode = 4

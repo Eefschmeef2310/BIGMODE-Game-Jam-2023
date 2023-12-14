@@ -138,6 +138,14 @@ func try_jump():
 		# Does not use air jump speed at all right now
 		velocity.y = jump_speed * jump_factor
 
+func force_jump():
+	coyote_counter = 0
+	jump_buffer_counter = 0
+	is_jumping = true
+	
+	# Does not use air jump speed at all right now
+	velocity.y = jump_speed * jump_factor
+
 func jump_release():
 	jump_is_held = false
 

@@ -9,6 +9,11 @@ var camera_outer_zoom := 0.1
 var camera_inner_zoom := 0.5
 var camera_target_zoom
 var smooth_zoom = 0.5
+var camera_move_speed = 3
+
+var cam_offset_tank = Vector2(750, -750)
+var cam_offset_player = Vector2(0, -100)
+var target_offset: Vector2
 
 @onready var tank = $".."
 @onready var player = $"../../Player"
@@ -16,6 +21,7 @@ var smooth_zoom = 0.5
 
 func _ready():
 	GameManager.camera = self
+	target_offset = cam_offset_tank
 
 func _process(delta):
 	if (!freecamActive):
@@ -24,6 +30,7 @@ func _process(delta):
 		camera_target_zoom = camera_outer_zoom
 	else:
 		camera_target_zoom = camera_inner_zoom
+	offset = lerp(offset, target_offset, camera_move_speed*delta)
 	zoom_camera(camera_target_zoom, delta)
 	position = Vector2.ZERO
 	
@@ -35,11 +42,11 @@ func zoom_camera(zoomTarget, delta):
 
 func _on_player_to_tank_control():
 	reparent(tank)
-	offset.y = -500
+	target_offset = cam_offset_tank
 
 func _on_tank_to_player_control():
 	reparent(player)
-	offset.y = 0
+	target_offset = cam_offset_player
 
 func _on_nyan_debug_cmd_freecam():
 	freecamActive = true

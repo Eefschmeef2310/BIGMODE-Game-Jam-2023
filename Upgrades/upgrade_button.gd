@@ -21,10 +21,12 @@ func set_data(upgrade):
 	get_node("Name").text = upgrade.name
 	if upgrade.level < upgrade.costs.size():
 		get_node("Description").text = upgrade.descriptions[upgrade.level]
-		get_node("Cost").text = "$" + str(upgrade.costs[upgrade.level])
+		get_node("Cost").text = str(upgrade.costs[upgrade.level])
+		get_node("GearIcon").visible = true
 	else:
 		get_node("Description").text = ""
 		get_node("Cost").text = ""
+		get_node("GearIcon").visible = false
 	
 	var current_level = 1
 	for circle in $Levels.get_children():

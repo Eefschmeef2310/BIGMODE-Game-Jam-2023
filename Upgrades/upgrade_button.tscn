@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cq71qu21kneda"]
+[gd_scene load_steps=12 format=3 uid="uid://cq71qu21kneda"]
 
 [ext_resource type="Script" path="res://Upgrades/upgrade_button.gd" id="2_tmi7p"]
 [ext_resource type="Texture2D" uid="uid://cf2expaxj636t" path="res://Sprites/ui_rect_hover.png" id="3_1hacr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dnirdri8itlpj" path="res://Sprites/ui_rect_default.png" id="5_krbgf"]
 [ext_resource type="Texture2D" uid="uid://ck001qop3fxvk" path="res://Sprites/upgrade_level_true.png" id="6_5ef1a"]
 [ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="7_ghyou"]
+[ext_resource type="Texture2D" uid="uid://cq6mlqs2tpv5x" path="res://Sprites/gear_1.png" id="8_p7pfk"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_slaft"]
 line_spacing = 0.0
@@ -67,22 +68,28 @@ text = "Upgrade description."
 label_settings = SubResource("LabelSettings_3juat")
 autowrap_mode = 2
 
+[node name="GearIcon" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 458.0
+offset_top = 116.0
+offset_right = 493.0
+offset_bottom = 151.0
+texture = ExtResource("8_p7pfk")
+expand_mode = 2
+stretch_mode = 5
+
 [node name="Cost" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -212.0
-offset_top = -44.0
-offset_right = -15.0
-offset_bottom = -10.0
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 2
+offset_left = 498.0
+offset_top = 121.0
+offset_right = 548.0
+offset_bottom = 153.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "$10"
+text = "90"
 label_settings = SubResource("LabelSettings_4ymlu")
-horizontal_alignment = 2
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Level" type="Label" parent="."]

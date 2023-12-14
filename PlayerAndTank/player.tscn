@@ -43,8 +43,8 @@ directional_velocity_min = 360.0
 directional_velocity_max = 360.0
 directional_velocity_curve = SubResource("CurveXYZTexture_dg1rd")
 gravity = Vector3(0, 0, 0)
-scale_min = 8.0
-scale_max = 15.0
+scale_min = 0.05
+scale_max = 0.1
 color_ramp = SubResource("GradientTexture1D_cwj6f")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7diqr"]

@@ -11,7 +11,10 @@ var tank_mode := true:
 var tank_position: Vector2
 var camera: Camera2D
 
-var gears: int = 50
+var gears: int = 50:
+	set(value):
+		gears = value
+		UpgradeManager.upgrade_purchased.emit(null)
 
 var game_paused : bool = false:
 	set(value):

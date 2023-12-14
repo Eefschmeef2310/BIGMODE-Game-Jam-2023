@@ -79,6 +79,10 @@ func _physics_process(delta):
 				time_until_next_rocket = rocket_fire_rate
 				shoot_rocket()
 		
+		# Move invisible player along for the ride
+		if player.visible == false:
+			player.global_position =  $PlayerHatch/PlayerSpawnPos.global_position
+		
 		#Toggle
 		if Input.is_action_just_pressed("swap_mode"):
 			GameManager.tank_mode = false
@@ -88,6 +92,7 @@ func _physics_process(delta):
 func createPlayer():
 	player.toggle(true)
 	player.global_position =  $PlayerHatch/PlayerSpawnPos.global_position
+	player.force_jump()
 
 #region shooting
 func shoot():

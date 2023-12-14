@@ -34,6 +34,8 @@ curve_y = SubResource("Curve_fhjbu")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_18ssv"]
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
 directional_velocity_min = 1.0
 directional_velocity_max = 200.0
 directional_velocity_curve = SubResource("CurveXYZTexture_4wyhh")
@@ -56,6 +58,8 @@ curve_y = SubResource("Curve_7punu")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h7rkp"]
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
 directional_velocity_min = -200.0
 directional_velocity_max = 1.0
 directional_velocity_curve = SubResource("CurveXYZTexture_7bxq3")
@@ -124,7 +128,7 @@ collision_mask = 64
 script = ExtResource("7_i8vdx")
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="PlayerHatch"]
-position = Vector2(224.347, -19.2833)
+position = Vector2(-3.88622e-05, -16.39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
 position = Vector2(0, -0.964142)

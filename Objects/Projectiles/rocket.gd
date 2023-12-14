@@ -13,6 +13,7 @@ var gravity_float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _physics_process(delta):
 	if shouldMove:
+		print("ayo")
 		rotation = direction.angle()
 		position += direction * speed * delta
 		direction.y += gravity_float * delta * gravity_scale

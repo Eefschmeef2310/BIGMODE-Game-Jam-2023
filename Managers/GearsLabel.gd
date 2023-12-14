@@ -1,4 +1,4 @@
 extends Label
 
 func _process(_delta):
-	text = "Gears: " + str(GameManager.gears)
+	text = str(GameManager.gears)

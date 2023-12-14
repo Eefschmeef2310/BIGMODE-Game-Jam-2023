@@ -18,3 +18,9 @@ func _process(delta):
 				angle = (-13*PI)/12
 		#rotation = rotate_toward(rotation, angle, rotation_speed * delta)
 		rotation = lerp(rotation, angle, rotation_speed * delta)
+		
+		# flip scale based on rotation (so you can walk on the other side)
+		if rad_to_deg(angle) >= -90:
+			scale.y = 1
+		else:
+			scale.y = -1
