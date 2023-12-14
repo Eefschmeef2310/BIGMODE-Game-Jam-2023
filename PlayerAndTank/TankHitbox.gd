@@ -30,6 +30,9 @@ func _on_regen_timer_timeout():
 func deal_damage(damage):
 	health -= damage
 	update_health()
+	
+	if health <= 0:
+		GameManager.game_over = true
 #endregion
 
 

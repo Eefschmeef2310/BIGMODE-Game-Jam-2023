@@ -208,7 +208,8 @@ shape = SubResource("CircleShape2D_jcmav")
 [node name="ExplosionTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Enemy"]]
+collision_mask = 65
 
 [node name="ExplosionHitbox" type="CollisionShape2D" parent="Area2D"]
 scale = Vector2(1e-05, 1e-05)

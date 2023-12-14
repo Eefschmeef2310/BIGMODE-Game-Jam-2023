@@ -8,6 +8,7 @@ var count : int
 var enemyCount : int
 @export var endNode : Node2D #HACK probably shouldnt reference it like this (module manager should be compeltely standalone)
 signal moduleGenerated
+@export var createEnemies: bool = true
 @export var enemyPrefabs : Array[PackedScene]
 
 # Called when the node enters the scene tree for the first time.
@@ -33,11 +34,12 @@ func GenerateNextModule(spawnPos:Vector2):
 		endNode.position = spawnPos
 
 func SpawnRandomEnemy(spawnPos:Vector2):
-	var selectedEnemy = randi_range(0, enemyCount-1) as int
-	var newEnemy = enemyPrefabs[selectedEnemy].instantiate()
-	newEnemy.global_position = spawnPos
-	newEnemy.global_position += Vector2(-50, -50)
-	add_child.call_deferred(newEnemy)
+	if createEnemies:
+		var selectedEnemy = randi_range(0, enemyCount-1) as int
+		var newEnemy = enemyPrefabs[selectedEnemy].instantiate()
+		newEnemy.global_position = spawnPos
+		newEnemy.global_position += Vector2(-50, -50)
+		add_child.call_deferred(newEnemy)
 	
 
 ### Module Manager Plan

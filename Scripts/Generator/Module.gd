@@ -15,8 +15,6 @@ func _ready():
 		GenNextModule()
 	spawnEnemies()
 	spawnPlatform()
-	
-	
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	GenNextModule()
@@ -37,5 +35,4 @@ func GenNextModule():
 func spawnEnemies():
 	
 	for n in randi_range(6, 10): 
-		print("Spawning enemy")
 		manager.SpawnRandomEnemy(connector.global_position)
