@@ -12,7 +12,7 @@ var relativeScreenCenter: Vector2
 func _ready():
 	$Area2D/ExplosionHitbox.visible = false
 	
-func _process(delta):
+func _process(_delta):
 	relativeScreenCenter = get_global_transform_with_canvas().origin / get_viewport_rect().size
 	relativeScreenCenter.x = (relativeScreenCenter.x - 0.5) * get_viewport_rect().size.aspect() + 0.5
 	#Set center of shader to normalized position in screenspace

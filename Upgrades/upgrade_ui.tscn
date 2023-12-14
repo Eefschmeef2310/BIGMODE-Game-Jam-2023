@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://irvh438hrwvk"]
+[gd_scene load_steps=11 format=3 uid="uid://irvh438hrwvk"]
 
 [ext_resource type="Texture2D" uid="uid://c3r5uye382dmr" path="res://Upgrades/nine_patch_frame.png" id="1_i6aaw"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_ui.gd" id="2_xi6ok"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://6uqsv1wcbv5b" path="res://Upgrades/category_change.tscn" id="4_jxigx"]
 [ext_resource type="Shader" path="res://Shaders/GlitchShader.gdshader" id="5_bgf4m"]
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="6_big3t"]
+[ext_resource type="Shader" path="res://Shaders/Hologram.gdshader" id="7_i478v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_f7flk"]
 font_size = 12
@@ -18,6 +19,11 @@ shader_parameter/shake_rate = 0.1
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.0
 shader_parameter/shake_color_rate = 0.001
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3gv1"]
+shader = ExtResource("7_i478v")
+shader_parameter/speed = 1.0
+shader_parameter/intensity = 1.0
 
 [node name="Upgrade UI" type="Control"]
 layout_mode = 3
@@ -114,6 +120,12 @@ position = Vector2(118, 137.473)
 scale = Vector2(1.84375, 2.14607)
 texture = ExtResource("6_big3t")
 metadata/_edit_lock_ = true
+
+[node name="LineShader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_i3gv1")
+position = Vector2(118.5, 136.964)
+scale = Vector2(1.85156, 2.15402)
+texture = ExtResource("6_big3t")
 
 [connection signal="scroll_category" from="CategoryLeft" to="." method="scroll_category"]
 [connection signal="scroll_category" from="CategoryRight" to="." method="scroll_category"]

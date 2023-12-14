@@ -13,7 +13,6 @@ func _ready():
 	
 	if($connector/VisibleOnScreenNotifier2D.is_on_screen()):
 		GenNextModule()
-	print("trying to spawn")
 	spawnEnemies()
 	spawnPlatform()
 	
