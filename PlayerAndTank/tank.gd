@@ -50,6 +50,10 @@ func _physics_process(delta):
 		GameManager.tank_position = global_position
 		
 		var direction = Input.get_axis("left", "right") as float
+		
+		#Set dust particles
+		$PinJoint2D3/Dust.emitting = direction == -1;
+		$PinJoint2D4/Dust.emitting = direction == 1;
 	
 		for i in range(0, WheelsRB.size()):
 			WheelsRB[i].apply_torque(direction * SPEED * delta * 10000)

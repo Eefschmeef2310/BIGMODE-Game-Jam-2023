@@ -15,6 +15,7 @@ func update_upgrades(_upgrade):
 	# Frictionless Soles
 	lvl = UpgradeManager.get_upgrade_level("Frictionless Soles")
 	player.max_speed = speed_values[lvl]
+	update_line(lvl)
 	
 	# Air Compressors
 	lvl = UpgradeManager.get_upgrade_level("Air Compressors")
@@ -23,3 +24,8 @@ func update_upgrades(_upgrade):
 	# Jetpack
 	lvl = UpgradeManager.get_upgrade_level("Jetpack")
 	player.max_hover_time = max_hover_time_values[lvl]
+
+func update_line(lvl):
+	if lvl > 0: #If speed is updated
+		#Turn on line
+		$"../Line2D".process_mode = Node.PROCESS_MODE_INHERIT

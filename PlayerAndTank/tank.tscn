@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=26 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://c4pdlov7yyjec" path="res://Sprites/dec6 assets/placeholder_tank_body.png" id="2_y3a5o"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://PlayerAndTank/TankHitbox.gd" id="9_1ogle"]
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="9_2iki1"]
 [ext_resource type="Script" path="res://PlayerAndTank/JumpInSprite.gd" id="10_6t4ks"]
+[ext_resource type="Texture2D" uid="uid://bomrhfgvlvle7" path="res://Sprites/explosion_atlas.png" id="13_w2g2w"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_updater_tank.gd" id="13_wspcb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
@@ -22,6 +23,50 @@ size = Vector2(171.5, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pocb"]
 size = Vector2(25.5, 106.5)
+
+[sub_resource type="Curve" id="Curve_weyrk"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_fhjbu"]
+max_value = 0.01
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_4wyhh"]
+curve_x = SubResource("Curve_weyrk")
+curve_y = SubResource("Curve_fhjbu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_18ssv"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+directional_velocity_min = 1.0
+directional_velocity_max = 200.0
+directional_velocity_curve = SubResource("CurveXYZTexture_4wyhh")
+gravity = Vector3(0, -98, 0)
+scale_min = 0.1
+scale_max = 0.15
+color = Color(0.415686, 0.313726, 0.270588, 1)
+
+[sub_resource type="Curve" id="Curve_fbftt"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_7punu"]
+max_value = 0.01
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_7bxq3"]
+curve_x = SubResource("Curve_fbftt")
+curve_y = SubResource("Curve_7punu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h7rkp"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+directional_velocity_min = -200.0
+directional_velocity_max = 1.0
+directional_velocity_curve = SubResource("CurveXYZTexture_7bxq3")
+gravity = Vector3(0, -98, 0)
+scale_min = 0.1
+scale_max = 0.15
+color = Color(0.415686, 0.313726, 0.270588, 1)
 
 [node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
 scale = Vector2(1.02074, 1.03719)
@@ -122,10 +167,18 @@ position = Vector2(186.139, -10)
 node_a = NodePath("..")
 softness = 1.0
 
+[node name="Dust" type="GPUParticles2D" parent="PinJoint2D3"]
+process_material = SubResource("ParticleProcessMaterial_18ssv")
+texture = ExtResource("13_w2g2w")
+
 [node name="PinJoint2D4" parent="." instance=ExtResource("7_pbp42")]
 position = Vector2(-315.457, -10)
 node_a = NodePath("..")
 softness = 1.0
+
+[node name="Dust" type="GPUParticles2D" parent="PinJoint2D4"]
+process_material = SubResource("ParticleProcessMaterial_h7rkp")
+texture = ExtResource("13_w2g2w")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(-39.7279, -401.263)

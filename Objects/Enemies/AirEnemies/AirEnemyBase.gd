@@ -42,7 +42,6 @@ func _process(delta):
 	
 #Apply damage on projectile hit
 func hit(damage):
-	print("bingus")
 	health -= damage
 	$HealthBar.value = health
 	

@@ -56,7 +56,7 @@ tracks/2/path = NodePath("Area2D/ExplosionHitbox:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.2, 2),
+"times": PackedFloat32Array(0, 0.2, 2),
 "transitions": PackedFloat32Array(0.3, -2, 0.5),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1, 1), Vector2(0, 0)]
@@ -150,14 +150,14 @@ _data = {
 _data = [Vector2(0.498721, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.00490677), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_thtqs"]
+[sub_resource type="CurveTexture" id="CurveTexture_clp5n"]
 curve = SubResource("Curve_qrk0r")
 
 [sub_resource type="Gradient" id="Gradient_bhw37"]
 offsets = PackedFloat32Array(0, 0.484848)
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7nuhh"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m3k4k"]
 gradient = SubResource("Gradient_bhw37")
 
 [sub_resource type="Curve" id="Curve_57pib"]
@@ -165,31 +165,31 @@ max_value = 100.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.786561, 74.2149), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_6c1ee"]
+[sub_resource type="CurveTexture" id="CurveTexture_rpjaj"]
 curve = SubResource("Curve_57pib")
 
 [sub_resource type="Curve" id="Curve_24ir7"]
 _data = [Vector2(0, 0.247934), 0.0, 0.0, 0, 0, Vector2(0.747036, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_kqqic"]
+[sub_resource type="CurveTexture" id="CurveTexture_fy33a"]
 curve = SubResource("Curve_24ir7")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oae27"]
 lifetime_randomness = 0.3
 direction = Vector3(0, -1, 0)
 spread = 180.0
-initial_velocity_min = 250.0
-initial_velocity_max = 250.0
+initial_velocity_min = 350.0
+initial_velocity_max = 350.0
 gravity = Vector3(0, 0, 0)
-damping_min = 21.429
-damping_max = 21.429
-damping_curve = SubResource("CurveTexture_6c1ee")
+damping_min = 50.0
+damping_max = 50.0
+damping_curve = SubResource("CurveTexture_rpjaj")
 scale_min = 0.1
 scale_max = 0.1
-scale_curve = SubResource("CurveTexture_kqqic")
-color_ramp = SubResource("GradientTexture1D_7nuhh")
-alpha_curve = SubResource("CurveTexture_thtqs")
+scale_curve = SubResource("CurveTexture_fy33a")
+color_ramp = SubResource("GradientTexture1D_m3k4k")
+alpha_curve = SubResource("CurveTexture_clp5n")
 
 [node name="LakituDrop" type="RigidBody2D"]
 collision_layer = 32
@@ -236,7 +236,6 @@ emitting = false
 amount = 32
 process_material = SubResource("ParticleProcessMaterial_oae27")
 texture = ExtResource("5_5dphp")
-lifetime = 2.0
 one_shot = true
 explosiveness = 0.78
 
