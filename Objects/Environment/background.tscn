@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj6curm4o8a0w"]
+
+[ext_resource type="Script" path="res://Levels/BackgroundParallaxStuff.gd" id="1_tfgqe"]
+[ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="2_885ws"]
+
+[node name="Background" type="Node2D"]
+script = ExtResource("1_tfgqe")
+
+[node name="Farground" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(3904, 648)
+scale = Vector2(-2.148, 2.148)
+texture = ExtResource("2_885ws")
+
+[node name="Farground2" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(12320, 648)
+scale = Vector2(2.148, 2.148)
+texture = ExtResource("2_885ws")

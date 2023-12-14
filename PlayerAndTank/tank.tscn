@@ -41,10 +41,10 @@ position = Vector2(0, -196)
 texture = ExtResource("2_y3a5o")
 
 [node name="Turret" type="StaticBody2D" parent="Sprites"]
-z_index = -1
 position = Vector2(-34, -398)
 collision_layer = 16
 script = ExtResource("4_oud1o")
+rotation_speed = 10.0
 
 [node name="Sprite" type="Sprite2D" parent="Sprites/Turret"]
 position = Vector2(181, -3.05176e-05)
@@ -82,7 +82,7 @@ collision_mask = 64
 script = ExtResource("7_i8vdx")
 
 [node name="PlayerSpawnPos" type="Marker2D" parent="PlayerHatch"]
-position = Vector2(-0.97972, -216.933)
+position = Vector2(224.347, -19.2833)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
 shape = SubResource("RectangleShape2D_kisji")

@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var manager : Node = $".." #every module must be child of the ModuleManager
-@onready var connector := $connector #every module must have a connector
+@onready var connector : Node2D= $connector #every module must have a connector
 var activated = false #prevent a connector from spawning more than 1 module if it appears on screen again
 
 var platform_scene: PackedScene = preload("res://Objects/Platforms/Floating.tscn")
@@ -13,7 +13,7 @@ func _ready():
 	
 	if($connector/VisibleOnScreenNotifier2D.is_on_screen()):
 		GenNextModule()
-		
+	spawnEnemies()
 	spawnPlatform()
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
@@ -31,3 +31,8 @@ func GenNextModule():
 	if (!activated):
 		manager.GenerateNextModule(connector.global_position)
 		activated = true
+
+func spawnEnemies():
+	
+	for n in randi_range(6, 10): 
+		manager.SpawnRandomEnemy(connector.global_position)

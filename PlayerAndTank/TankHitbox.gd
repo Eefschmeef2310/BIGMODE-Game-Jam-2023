@@ -30,4 +30,16 @@ func _on_regen_timer_timeout():
 func deal_damage(damage):
 	health -= damage
 	update_health()
+	
+	if health <= 0:
+		GameManager.game_over = true
 #endregion
+
+
+func _on_body_entered(body): #tank tread hitbox
+	print(body.name)
+	if body.is_in_group("SmallEnemy"):
+		body.hit(999)
+	#if its the small enemy
+	#destroy them (hp = 0)
+	pass # Replace with function body.

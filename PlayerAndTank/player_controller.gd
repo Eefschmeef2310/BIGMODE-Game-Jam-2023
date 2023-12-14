@@ -45,12 +45,15 @@ var is_falling = false
 var is_landing = true
 signal toTankControl()
 
+var killY = 9999
+
 func _ready():
 	toggle(false)
 
 func _process(_delta):
 	GameManager.tank_position = global_position
-	
+	if position.y > killY || GameManager.tank_position.y > killY:
+		GameManager.game_over = true
 	#Input
 	move_direction = Input.get_axis("left", "right")
 	if Input.is_action_just_pressed("jump"):
@@ -133,17 +136,15 @@ func update_direction():
 
 func toggle(activate: bool):
 	visible = activate
-	set_physics_process(activate)
+	if activate:
+		process_mode = Node.PROCESS_MODE_INHERIT
+	else:
+		process_mode = Node.PROCESS_MODE_DISABLED
 
 func toTank():
 	toTankControl.emit()
 	GameManager.tank_mode = true
 	toggle(false)
-
-#TODO So far, this is a single hit kill, and doesn't account for jumping on enemies (if we're going for that) - E
-func _on_enemy_hit_box_area_entered(area):
-	if area.is_in_group("Enemy"):
-		GameManager.game_over = true
 
 #handles all animations
 func handle_animations():

@@ -1,8 +1,68 @@
-[gd_scene load_steps=4 format=3 uid="uid://byu8s5u0d52k2"]
+[gd_scene load_steps=11 format=3 uid="uid://byu8s5u0d52k2"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/GroundEnemies/GroundEnemyBase.gd" id="1_dpjwj"]
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="1_ieeiq"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="2_m0oqv"]
+[ext_resource type="Shader" path="res://Shaders/Corrosion.gdshader" id="2_rlg12"]
+[ext_resource type="Texture2D" uid="uid://rexgu3tkyk7t" path="res://Sprites/2302.i305.004.F.m005.c9.realistic glitter slime liquid black set.jpg" id="3_gjjrj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3v0ki"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x3iy1"]
+noise = SubResource("FastNoiseLite_3v0ki")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1y0tv"]
+shader = ExtResource("2_rlg12")
+shader_parameter/fade_scale = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_x3iy1")
+shader_parameter/base_texture = ExtResource("1_ieeiq")
+
+[sub_resource type="Animation" id="Animation_xl3cy"]
+resource_name = "Death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/fade_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.35, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HealthBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yng8t"]
+_data = {
+"Death": SubResource("Animation_xl3cy")
+}
 
 [node name="EnemyBase" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
 collision_layer = 2
@@ -13,8 +73,9 @@ SPEED = 100.0
 Wheels = [NodePath("PinJoint2D2"), NodePath("PinJoint2D3")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_ieeiq")
+material = SubResource("ShaderMaterial_1y0tv")
+scale = Vector2(0.006, 0.006)
+texture = ExtResource("3_gjjrj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -35,11 +96,17 @@ node_a = NodePath("..")
 softness = 1.0
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -28.0
 offset_top = -28.0
 offset_right = 28.0
 offset_bottom = -23.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yng8t")
+}
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

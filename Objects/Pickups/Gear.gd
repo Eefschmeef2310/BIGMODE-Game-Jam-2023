@@ -4,3 +4,8 @@ func _on_area_2d_body_entered(body):
 	if body.is_in_group("PlayerAndTank"):
 		GameManager.gears += 1
 		queue_free()
+		
+
+func _on_timer_timeout():
+	$AnimationPlayer.play("Shine")
+	$Timer.start()

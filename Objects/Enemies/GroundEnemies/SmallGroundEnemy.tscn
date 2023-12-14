@@ -1,17 +1,108 @@
-[gd_scene load_steps=4 format=3 uid="uid://ox6l51q21040"]
+[gd_scene load_steps=15 format=3 uid="uid://ox6l51q21040"]
 
 [ext_resource type="PackedScene" uid="uid://byu8s5u0d52k2" path="res://Objects/Enemies/GroundEnemies/GroundEnemyBase.tscn" id="1_oksde"]
+[ext_resource type="Texture2D" uid="uid://c0tyk2344idoc" path="res://Sprites/spritesheets/wolf_run_sketch.png" id="2_5o81d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nvr3s"]
-radius = 19.0263
+radius = 67.6831
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ekdt4"]
-radius = 20.025
+radius = 71.2531
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6icis"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(0, 0, 624, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n76ay"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(624, 0, 624, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_embe2"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(1248, 0, 624, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_arxue"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(1872, 0, 624, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5k7s"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(2496, 0, 624, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7wdl"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(3120, 0, 624, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5ur5"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(3744, 0, 624, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs3cs"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(4368, 0, 624, 370)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ae6g"]
+atlas = ExtResource("2_5o81d")
+region = Rect2(4992, 0, 624, 370)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iy2a7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6icis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n76ay")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_embe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_arxue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5k7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7wdl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k5ur5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs3cs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ae6g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="SmallGroundEnemy" instance=ExtResource("1_oksde")]
+z_index = 1
+mass = 0.25
+SPEED = 300.0
+
+[node name="Sprite2D" parent="." index="0"]
+visible = false
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_nvr3s")
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource("CircleShape2D_ekdt4")
+
+[node name="PinJoint2D2" parent="." index="3"]
+position = Vector2(18, 72)
+
+[node name="PinJoint2D3" parent="." index="4"]
+position = Vector2(-18, 72)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="6"]
+position = Vector2(-17, 16)
+scale = Vector2(-0.43, 0.42)
+sprite_frames = SubResource("SpriteFrames_iy2a7")
+autoplay = "default"
+frame_progress = 0.744034

@@ -5,7 +5,7 @@
 
 extends Node
 
-const VERSION = "0.4.1"
+const VERSION = "0.5"
 const HELP ="Available commands:
 help
 nya
@@ -15,13 +15,15 @@ stonks [amount] - adds [amount] to the plaeyers gears
 godmode - NOT YET IMPLEMENTED
 stuck - teleport the tank up to get it unstuck
 upgrade <name> - apply the supplied upgrade to the tank/player
-upload <username> <score> <version> - upload a record to the leaderboard"
+upload <username> <score> <version> - upload a record to the leaderboard
+reset - restarts the game"
 
 var active = false as bool
 @onready var inputBox : LineEdit = $CanvasLayer/LineEdit
 @onready var outputBox : TextEdit =  $CanvasLayer/TextEdit
 @export var freeCam : Camera2D
 @export var gameCam : Camera2D
+@export var spawnables : Array[PackedScene]
 #var lastCommand : String #redundant?
 var command : String
 
@@ -119,7 +121,12 @@ func _on_line_edit_text_submitted(new_text):
 					meow("attempted to send data, make sure the arguments are correct")
 				else:
 					meow("too few arguments!")
-				
+			"reset":
+				get_tree().change_scene_to_file("res://Levels/world.tscn")
+			"spawn":
+				#spawn prefab from the spawnables array - enimies, gears, ect
+				meow("NOT YET IMPLEMENTED :(")
+				pass
 			_: #wildcard
 				meow("command: '" + command + "' not found" )
 	else:
@@ -130,12 +137,12 @@ func meow(text):
 	outputBox.text += "\n" + text
 	outputBox.scroll_vertical = 9999
 
-func setDisplay(active):
-	inputBox.set_visible(active)
-	outputBox.set_visible(active)
+func setDisplay(isActive):
+	inputBox.set_visible(isActive)
+	outputBox.set_visible(isActive)
 	inputBox.clear()
 	inputBox.select()
-	if active:
+	if isActive:
 		inputBox.grab_focus()
 
 
