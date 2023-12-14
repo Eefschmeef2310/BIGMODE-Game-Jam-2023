@@ -3,6 +3,7 @@ extends Node
 @export var speed_values: Array[int]
 @export var max_air_jumps_values: Array[int]
 @export var max_hover_time_values: Array[float]
+@export var magnet_radius_value: Array[float]
 
 func _ready():
 	update_upgrades("")
@@ -24,6 +25,11 @@ func update_upgrades(_upgrade):
 	# Jetpack
 	lvl = UpgradeManager.get_upgrade_level("Jetpack")
 	player.max_hover_time = max_hover_time_values[lvl]
+	
+	# Scrap Magnet
+	lvl = UpgradeManager.get_upgrade_level("Scrap Magnet")
+	print(magnet_radius_value[lvl])
+	player.magnet_radius = magnet_radius_value[lvl]
 
 func update_line(lvl):
 	if lvl > 0: #If speed is updated

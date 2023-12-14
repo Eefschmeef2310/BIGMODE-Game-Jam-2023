@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://c80x2lpbryx6j"]
+[gd_scene load_steps=44 format=3 uid="uid://c80x2lpbryx6j"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/player_controller.gd" id="1_ln6dx"]
 [ext_resource type="Texture2D" uid="uid://22t5opnfvt4j" path="res://Sprites/Player.png" id="1_skamq"]
@@ -270,6 +270,9 @@ height = 94.0
 radius = 24.0
 height = 94.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqfpw"]
+radius = 0.01
+
 [node name="Player" type="CharacterBody2D" groups=["Man", "PlayerAndTank"]]
 collision_layer = 64
 collision_mask = 25
@@ -290,6 +293,7 @@ end_cap_mode = 2
 script = ExtResource("10_5x1tt")
 
 [node name="HoverParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -47)
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_qph1n")
 texture = ExtResource("2_c2ip8")
@@ -297,17 +301,20 @@ lifetime = 0.5
 fixed_fps = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -55)
 texture = ExtResource("1_skamq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -47)
 sprite_frames = SubResource("SpriteFrames_y14qu")
 animation = &"falling"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -47)
 shape = SubResource("CapsuleShape2D_7qord")
 
 [node name="EnemyHitBox" type="Area2D" parent="."]
+position = Vector2(0, -47)
 collision_mask = 2
 script = ExtResource("7_5d82o")
 
@@ -315,10 +322,19 @@ script = ExtResource("7_5d82o")
 shape = SubResource("CapsuleShape2D_lvild")
 debug_color = Color(1, 0, 0.0784314, 0.419608)
 
+[node name="GearMagnet" type="Area2D" parent="." groups=["Magnet"]]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GearMagnet"]
+position = Vector2(0, -47)
+shape = SubResource("CircleShape2D_kqfpw")
+
 [node name="UpgradeUpdater" type="Node" parent="."]
 script = ExtResource("7_k7ho2")
 speed_values = Array[int]([300, 400, 500, 600])
 max_air_jumps_values = Array[int]([0, 1, 2, 3])
 max_hover_time_values = Array[float]([0.0, 0.75, 2.0, 3.5])
+magnet_radius_value = Array[float]([0.01, 250.0, 450.0, 650.0])
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

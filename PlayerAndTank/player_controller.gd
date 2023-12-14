@@ -27,6 +27,14 @@ var max_hover_velocity = 10
 var max_hover_time = 0
 var hover_counter = 0
 
+# Magnet params
+@onready var magnet_shape = $GearMagnet/CollisionShape2D
+var magnet_radius = 0:
+	set(value):
+		magnet_radius = value
+		if magnet_shape:
+			magnet_shape.shape.radius = value
+
 # Global movement scales
 var move_factor = 1
 var jump_factor = 1
