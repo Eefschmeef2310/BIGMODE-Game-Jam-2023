@@ -39,8 +39,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Magnet"):
-		var player = area.get_parent()
-		magnet_node = player
+		magnet_node = area
 		magnet_radius = global_position.distance_to(magnet_node.global_position) + 5
 
 func change_texture():
