@@ -9,7 +9,9 @@ var WheelsRB : Array[RigidBody2D]
 var distance_to_tank
 var dead: bool = false
 
-@onready var _animated_sprite = $AnimatedSprite2D
+#TODO FIXME Make sure enemies follow inheritance! The script is used across ALL inherited classes
+#So something referencing specific sprites may not be present on children! - E
+@onready var _animated_sprite = $Sprite2D
 
 func _ready():
 	$HealthBar.max_value = health
