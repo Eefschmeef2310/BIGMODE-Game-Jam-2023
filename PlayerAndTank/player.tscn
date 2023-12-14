@@ -270,23 +270,27 @@ floor_snap_length = 10.0
 script = ExtResource("1_ln6dx")
 
 [node name="HoverParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -47)
 amount = 20
 process_material = SubResource("ParticleProcessMaterial_qph1n")
 lifetime = 0.5
 fixed_fps = 60
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8)
+position = Vector2(0, -55)
 texture = ExtResource("1_skamq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -47)
 sprite_frames = SubResource("SpriteFrames_y14qu")
 animation = &"falling"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -47)
 shape = SubResource("CapsuleShape2D_7qord")
 
 [node name="EnemyHitBox" type="Area2D" parent="."]
+position = Vector2(0, -47)
 collision_mask = 2
 script = ExtResource("7_5d82o")
 

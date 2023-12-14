@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=15 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://c4pdlov7yyjec" path="res://Sprites/dec6 assets/placeholder_tank_body.png" id="2_y3a5o"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://y6gjks7e7g38" path="res://Sprites/dec6 assets/placeholder_wheels.png" id="6_xdfsf"]
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerHatch.gd" id="7_i8vdx"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="7_pbp42"]
-[ext_resource type="PackedScene" uid="uid://d2gg81spyrtbu" path="res://PlayerAndTank/smartPlatform.tscn" id="7_pntxg"]
 [ext_resource type="Script" path="res://PlayerAndTank/TankHitbox.gd" id="9_1ogle"]
 [ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="9_2iki1"]
 [ext_resource type="Script" path="res://PlayerAndTank/JumpInSprite.gd" id="10_6t4ks"]
@@ -18,10 +17,7 @@
 size = Vector2(362, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kisji"]
-size = Vector2(171.5, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pocb"]
-size = Vector2(25.5, 106.5)
+size = Vector2(171.5, 5.78485)
 
 [node name="Tank" type="RigidBody2D" node_paths=PackedStringArray("Wheels")]
 scale = Vector2(1.02074, 1.03719)
@@ -67,17 +63,18 @@ position = Vector2(70.25, -126)
 polygon = PackedVector2Array(-256.25, -42, 276.75, -42, 116.869, 126, -414.118, 126)
 one_way_collision = true
 
-[node name="Platform" parent="." instance=ExtResource("7_pntxg")]
-
-[node name="Platform2" parent="." instance=ExtResource("7_pntxg")]
-position = Vector2(-115.602, -225.61)
-
 [node name="HatchOuter" type="CollisionPolygon2D" parent="."]
 position = Vector2(-129, -355)
-polygon = PackedVector2Array(-10, -71, -27, -51, -27, -12, 0.661743, -56.6893, 177.004, -55.7252, 205, -12, 205, -50, 189, -70, 175, -75, 176.025, -59.5817, 2.6211, -60.5459, 3, -76)
+polygon = PackedVector2Array(-10, -71, -27, -51, -27, -12, 4.58047, -12.3387, 173.086, -12.3387, 205, -12, 205, -50, 189, -70, 175, -75, 175.045, -70.1873, 2.6211, -70.1873, 3, -76)
+one_way_collision = true
+
+[node name="MainBody" type="CollisionPolygon2D" parent="."]
+position = Vector2(70.25, -126)
+polygon = PackedVector2Array(-383.748, -166.135, 247.167, -166.135, 244.228, -159.387, -380.809, -159.387)
+one_way_collision = true
 
 [node name="PlayerHatch" type="Area2D" parent="."]
-position = Vector2(-40.1669, -426.151)
+position = Vector2(-40.1669, -427.116)
 collision_mask = 64
 script = ExtResource("7_i8vdx")
 
@@ -85,18 +82,18 @@ script = ExtResource("7_i8vdx")
 position = Vector2(224.347, -19.2833)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHatch"]
+position = Vector2(0, -0.964142)
 shape = SubResource("RectangleShape2D_kisji")
 debug_color = Color(0, 0.701961, 0.0431373, 0.419608)
 
 [node name="Hitbox" type="Area2D" parent="."]
+visible = false
 script = ExtResource("9_1ogle")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(274.311, -68.4542)
-rotation = 0.798195
-shape = SubResource("RectangleShape2D_0pocb")
-debug_color = Color(0.701961, 0.0431373, 0, 0.419608)
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hitbox"]
+position = Vector2(0, -149.442)
+polygon = PackedVector2Array(316.437, -142.693, 279.209, -18.3187, 335.051, -11.5697, 211.611, 149.442, -319.376, 148.478, -315.457, -145.586, -258.636, -144.622, -132.257, -282.494, 67.598, -281.53, 188.099, -144.622)
 
 [node name="healthbar" type="ProgressBar" parent="."]
 offset_left = -320.356

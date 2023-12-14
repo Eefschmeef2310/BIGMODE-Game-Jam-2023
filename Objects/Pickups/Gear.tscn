@@ -1,14 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddppnopenktf7"]
+[gd_scene load_steps=12 format=3 uid="uid://ddppnopenktf7"]
 
-[ext_resource type="Texture2D" uid="uid://c87yma35ntky1" path="res://Sprites/gear-1119298_1280.png" id="1_bl5j7"]
 [ext_resource type="Script" path="res://Objects/Pickups/Gear.gd" id="1_oou22"]
 [ext_resource type="Shader" path="res://Shaders/Sheen.gdshader" id="2_ow8ha"]
+[ext_resource type="Texture2D" uid="uid://dyetngq0c6bgx" path="res://Sprites/gear_5.png" id="3_vv2pj"]
+[ext_resource type="Texture2D" uid="uid://cq6mlqs2tpv5x" path="res://Sprites/gear_1.png" id="3_wgwjp"]
+[ext_resource type="Texture2D" uid="uid://cmeg7pmhsw3ay" path="res://Sprites/gear_10.png" id="4_m5n7q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5gwrl"]
-radius = 6.08276
+radius = 30.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wo1q1"]
-radius = 6.0
+radius = 30.0167
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r65d0"]
 shader = ExtResource("2_ow8ha")
@@ -19,34 +21,39 @@ shader_parameter/shine_angle = 45.0
 
 [sub_resource type="Animation" id="Animation_t1gbu"]
 resource_name = "Shine"
-length = 2.0
+length = 4.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D/CollisionShape2D/Sprite2D:position")
+tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
-"transitions": PackedFloat32Array(-2, -2, -1),
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(-1.2, -1.2, -1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+"values": [Vector2(0, 0), Vector2(0, -10), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Area2D/CollisionShape2D/Sprite2D:material:shader_parameter/shine_progress")
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/shine_progress")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0, 1.4, 2.6, 4),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0, 0.0, 1.0, 1.0]
 }
+
+[sub_resource type="Animation" id="Animation_ei5rq"]
+length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_08epn"]
 _data = {
+"RESET": SubResource("Animation_ei5rq"),
 "Shine": SubResource("Animation_t1gbu")
 }
 
@@ -54,31 +61,28 @@ _data = {
 collision_layer = 0
 collision_mask = 8
 script = ExtResource("1_oou22")
+texture_1 = ExtResource("3_wgwjp")
+texture_5 = ExtResource("3_vv2pj")
+texture_10 = ExtResource("4_m5n7q")
+value = 5
 
 [node name="FloorCollider" type="CollisionShape2D" parent="."]
-scale = Vector2(10, 10)
 shape = SubResource("CircleShape2D_5gwrl")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(10, 10)
 collision_layer = 0
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_wo1q1")
 
-[node name="Sprite2D" type="Sprite2D" parent="Area2D/CollisionShape2D"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_r65d0")
-scale = Vector2(0.01, 0.01)
-texture = ExtResource("1_bl5j7")
+texture = ExtResource("3_wgwjp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_08epn")
 }
 
-[node name="Timer" type="Timer" parent="."]
-autostart = true
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
