@@ -3,7 +3,7 @@ extends Node
 @export var speed_values: Array[int]
 @export var max_air_jumps_values: Array[int]
 @export var max_hover_time_values: Array[float]
-@export var magnet_radius_values: Array[float]
+@export var magnet_radius_value: Array[float]
 
 func _ready():
 	update_upgrades("")
@@ -27,4 +27,5 @@ func update_upgrades(_upgrade):
 	
 	# Scrap Magnet
 	lvl = UpgradeManager.get_upgrade_level("Scrap Magnet")
-	player.magnet_radius = magnet_radius_values[lvl]
+	print(magnet_radius_value[lvl])
+	player.magnet_radius = magnet_radius_value[lvl]
