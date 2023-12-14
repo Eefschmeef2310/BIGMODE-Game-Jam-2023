@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cq71qu21kneda"]
+[gd_scene load_steps=11 format=3 uid="uid://cq71qu21kneda"]
 
 [ext_resource type="Script" path="res://Upgrades/upgrade_button.gd" id="2_tmi7p"]
 [ext_resource type="Texture2D" uid="uid://cf2expaxj636t" path="res://Sprites/ui_rect_hover.png" id="3_1hacr"]
@@ -16,6 +16,11 @@ font_size = 32
 [sub_resource type="LabelSettings" id="LabelSettings_3juat"]
 line_spacing = -1.0
 font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_0gu3h"]
+line_spacing = -1.0
+font = ExtResource("7_4cppg")
+font_size = 32
 
 [node name="Upgrade" type="Control"]
 custom_minimum_size = Vector2(0, 160)
@@ -70,13 +75,13 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -212.0
-offset_top = -44.0
+offset_top = -45.0
 offset_right = -15.0
-offset_bottom = -10.0
+offset_bottom = -11.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "$10"
-label_settings = SubResource("LabelSettings_3juat")
+label_settings = SubResource("LabelSettings_0gu3h")
 horizontal_alignment = 2
 autowrap_mode = 2
 
