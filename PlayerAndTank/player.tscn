@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c80x2lpbryx6j"]
+[gd_scene load_steps=48 format=3 uid="uid://c80x2lpbryx6j"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/player_controller.gd" id="1_ln6dx"]
 [ext_resource type="Texture2D" uid="uid://22t5opnfvt4j" path="res://Sprites/Player.png" id="1_skamq"]
@@ -43,8 +43,8 @@ directional_velocity_min = 360.0
 directional_velocity_max = 360.0
 directional_velocity_curve = SubResource("CurveXYZTexture_dg1rd")
 gravity = Vector3(0, 0, 0)
-scale_min = 0.1
-scale_max = 0.1
+scale_min = 8.0
+scale_max = 15.0
 color_ramp = SubResource("GradientTexture1D_cwj6f")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7diqr"]

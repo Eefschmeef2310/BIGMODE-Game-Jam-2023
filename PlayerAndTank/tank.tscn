@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=24 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://c4pdlov7yyjec" path="res://Sprites/dec6 assets/placeholder_tank_body.png" id="2_y3a5o"]
@@ -18,10 +18,7 @@
 size = Vector2(362, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kisji"]
-size = Vector2(171.5, 10)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pocb"]
-size = Vector2(25.5, 106.5)
+size = Vector2(171.5, 5.78485)
 
 [sub_resource type="Curve" id="Curve_weyrk"]
 _data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
