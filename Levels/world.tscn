@@ -1,6 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=26 format=3 uid="uid://bea12rpy2tt50"]
 
-[ext_resource type="PackedScene" path="res://Objects/Environment/background.tscn" id="1_cxl0r"]
+[ext_resource type="PackedScene" uid="uid://dj6curm4o8a0w" path="res://Objects/Environment/background.tscn" id="1_cxl0r"]
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
 [ext_resource type="Texture2D" uid="uid://c3i8efnoj72m0" path="res://Sprites/dec6 assets/placeholder_floor.png" id="2_cnx4y"]
 [ext_resource type="PackedScene" uid="uid://3ux5lcf5kbhs" path="res://PlayerAndTank/Player_and_Tank.tscn" id="3_ha84d"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Levels/End.gd" id="4_hwmng"]
 [ext_resource type="Script" path="res://Levels/UI.gd" id="4_y20df"]
 [ext_resource type="Script" path="res://Managers/Projectiles.gd" id="5_k70kx"]
+[ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="6_d8aol"]
 [ext_resource type="Script" path="res://Managers/EnemySpawner.gd" id="6_jebxi"]
 [ext_resource type="Texture2D" uid="uid://cqxji5svxqxq6" path="res://Sprites/wave-pattern-desert-landscape--oman-886145780-5c45542046e0fb00012ebabf.jpg" id="7_7kt0t"]
 [ext_resource type="Script" path="res://Scripts/GuideArrow.gd" id="7_12rob"]
@@ -19,12 +20,15 @@
 [ext_resource type="Script" path="res://Scripts/OnlineServices/Airtable.gd" id="15_y5w66"]
 [ext_resource type="PackedScene" uid="uid://rusm5eikvl1j" path="res://Objects/Enemies/GroundEnemies/BigGroundEnemy.tscn" id="16_g12d7"]
 [ext_resource type="PackedScene" uid="uid://ox6l51q21040" path="res://Objects/Enemies/GroundEnemies/SmallGroundEnemy.tscn" id="17_kpgvk"]
-[ext_resource type="PackedScene" path="res://Objects/Environment/kill_wall.tscn" id="18_nxorp"]
+[ext_resource type="PackedScene" uid="uid://df43pp3ygidg6" path="res://Objects/Environment/kill_wall.tscn" id="18_nxorp"]
 [ext_resource type="PackedScene" uid="uid://biq18qtxqbqev" path="res://Objects/Enemies/AirEnemies/LakituEnemy.tscn" id="18_yk2vr"]
 [ext_resource type="PackedScene" uid="uid://cffpvw5cm4kv2" path="res://Objects/Enemies/AirEnemies/SwoopingEnemy.tscn" id="19_16jfj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
 size = Vector2(46, 962)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kwtow"]
+font = ExtResource("6_d8aol")
 
 [node name="World" type="Node2D"]
 
@@ -108,10 +112,12 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="GearsLabel" type="Label" parent="UI"]
+offset_left = 8.0
 offset_top = 23.0
-offset_right = 40.0
+offset_right = 88.0
 offset_bottom = 46.0
 text = "Gears: 0"
+label_settings = SubResource("LabelSettings_kwtow")
 script = ExtResource("4_36cw3")
 metadata/_edit_use_anchors_ = true
 
