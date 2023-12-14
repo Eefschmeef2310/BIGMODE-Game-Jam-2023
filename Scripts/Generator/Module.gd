@@ -13,11 +13,8 @@ func _ready():
 	
 	if($connector/VisibleOnScreenNotifier2D.is_on_screen()):
 		GenNextModule()
-	print("trying to spawn")
 	spawnEnemies()
 	spawnPlatform()
-	
-	
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	GenNextModule()
@@ -38,5 +35,4 @@ func GenNextModule():
 func spawnEnemies():
 	
 	for n in randi_range(6, 10): 
-		print("Spawning enemy")
 		manager.SpawnRandomEnemy(connector.global_position)

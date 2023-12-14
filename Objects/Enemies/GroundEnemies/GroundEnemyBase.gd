@@ -20,7 +20,7 @@ func _ready():
 	
 func _physics_process(delta):
 	#for flipping sprite animations
-	var distance_to_tank = GameManager.tank_position.x - position.x
+	distance_to_tank = GameManager.tank_position.x - position.x
 	_animated_sprite.flip_h = 0
 	if distance_to_tank < 0:
 		_animated_sprite.flip_h = 1

@@ -3,12 +3,12 @@ extends Node
 @export var modules: Array[PackedScene]
 @export var fullGenerate : bool = false 
 @export var maxModules: int = 999
-@export var DEBUGdisableEnemySpawns = false
 var currrentModules: int = 0
 var count : int
 var enemyCount : int
 @export var endNode : Node2D #HACK probably shouldnt reference it like this (module manager should be compeltely standalone)
 signal moduleGenerated
+@export var createEnemies: bool = true
 @export var enemyPrefabs : Array[PackedScene]
 
 # Called when the node enters the scene tree for the first time.
@@ -34,7 +34,7 @@ func GenerateNextModule(spawnPos:Vector2):
 		endNode.position = spawnPos
 
 func SpawnRandomEnemy(spawnPos:Vector2):
-	if (!DEBUGdisableEnemySpawns):
+	if createEnemies:
 		var selectedEnemy = randi_range(0, enemyCount-1) as int
 		var newEnemy = enemyPrefabs[selectedEnemy].instantiate()
 		newEnemy.global_position = spawnPos
