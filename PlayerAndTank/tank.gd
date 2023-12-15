@@ -109,7 +109,7 @@ func _physics_process(delta):
 func createPlayer():
 	player.toggle(true)
 	player.global_position =  $PlayerHatch/PlayerSpawnPos.global_position
-	player.force_jump()
+	player.velocity.y = -1000
 
 #region shooting
 func shoot():

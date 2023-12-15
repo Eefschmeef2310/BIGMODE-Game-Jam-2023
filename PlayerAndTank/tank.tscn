@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=34 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://b065su18ox61p" path="res://Sprites/dec6 assets/tank_body.png" id="3_0l4ke"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c3wpkx68adbuv" path="res://Sprites/dec6 assets/placeholder_gun.png" id="5_3jgrq"]
 [ext_resource type="Texture2D" uid="uid://4wyc645oirc2" path="res://Sprites/spritesheets/tank_treads.png" id="6_wxvft"]
 [ext_resource type="Texture2D" uid="uid://y6gjks7e7g38" path="res://Sprites/dec6 assets/placeholder_wheels.png" id="6_xdfsf"]
+[ext_resource type="Texture2D" uid="uid://b8pqvof0maces" path="res://Sprites/tank_spikes.png" id="6_xt1k3"]
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerHatch.gd" id="7_i8vdx"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="7_pbp42"]
 [ext_resource type="Texture2D" uid="uid://ck5s6l078cn2w" path="res://Sprites/dec6 assets/tank_wheels.png" id="8_sehic"]
@@ -155,6 +156,10 @@ position = Vector2(362, -3.05176e-05)
 position = Vector2(181, -3.05176e-05)
 shape = SubResource("RectangleShape2D_yy0e3")
 one_way_collision = true
+
+[node name="TankSpikes" type="Sprite2D" parent="Sprites"]
+position = Vector2(301.742, -159.084)
+texture = ExtResource("6_xt1k3")
 
 [node name="TankTreads" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(0, -84)
