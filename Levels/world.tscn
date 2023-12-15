@@ -219,9 +219,6 @@ value = 5
 position = Vector2(3041, 98)
 value = 10
 
-[node name="Swooping" parent="." instance=ExtResource("19_16jfj")]
-position = Vector2(3192, -520)
-
 [node name="Cliff" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(1873, -1082)
