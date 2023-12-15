@@ -1,19 +1,67 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj6curm4o8a0w"]
+[gd_scene load_steps=4 format=3 uid="uid://dj6curm4o8a0w"]
 
 [ext_resource type="Script" path="res://Levels/BackgroundParallaxStuff.gd" id="1_tfgqe"]
 [ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="2_885ws"]
+[ext_resource type="Texture2D" uid="uid://bl6ltnjxbm5ba" path="res://Sprites/background_mountains.png" id="3_v2lks"]
 
 [node name="Background" type="Node2D"]
 script = ExtResource("1_tfgqe")
 
-[node name="Farground" type="Sprite2D" parent="."]
+[node name="Farground" type="Node2D" parent="."]
+
+[node name="Farground1" type="Sprite2D" parent="Farground"]
 z_index = -1
 position = Vector2(3904, 648)
-scale = Vector2(-2.148, 2.148)
+rotation = 3.14159
+scale = Vector2(2.148, -2.148)
 texture = ExtResource("2_885ws")
 
-[node name="Farground2" type="Sprite2D" parent="."]
+[node name="Farground2" type="Sprite2D" parent="Farground"]
 z_index = -1
 position = Vector2(12320, 648)
 scale = Vector2(2.148, 2.148)
 texture = ExtResource("2_885ws")
+
+[node name="Farground3" type="Sprite2D" parent="Farground"]
+z_index = -1
+position = Vector2(20740, 648)
+scale = Vector2(-2.148, 2.148)
+texture = ExtResource("2_885ws")
+
+[node name="Mountains" type="Node2D" parent="."]
+
+[node name="BackgroundMountains" type="Sprite2D" parent="Mountains"]
+position = Vector2(1661, 531)
+texture = ExtResource("3_v2lks")
+
+[node name="BackgroundMountains2" type="Sprite2D" parent="Mountains"]
+position = Vector2(5575, 531)
+texture = ExtResource("3_v2lks")
+
+[node name="BackgroundMountains3" type="Sprite2D" parent="Mountains"]
+position = Vector2(9322, 531)
+texture = ExtResource("3_v2lks")
+
+[node name="BackgroundMountains4" type="Sprite2D" parent="Mountains"]
+position = Vector2(13240, 531)
+texture = ExtResource("3_v2lks")
+
+[node name="BackgroundMountains5" type="Sprite2D" parent="Mountains"]
+position = Vector2(17130, 531)
+texture = ExtResource("3_v2lks")
+
+[node name="BackgroundMountains6" type="Sprite2D" parent="Mountains"]
+position = Vector2(21026, 531)
+texture = ExtResource("3_v2lks")
+
+[node name="BackgroundMountains7" type="Sprite2D" parent="Mountains"]
+position = Vector2(24933, 531)
+texture = ExtResource("3_v2lks")
+
+[node name="BackgroundMountains8" type="Sprite2D" parent="Mountains"]
+position = Vector2(28841, 531)
+texture = ExtResource("3_v2lks")
+
+[node name="BackgroundMountains9" type="Sprite2D" parent="Mountains"]
+position = Vector2(32757, 531)
+texture = ExtResource("3_v2lks")

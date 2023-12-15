@@ -1,6 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://rusm5eikvl1j"]
+[gd_scene load_steps=8 format=3 uid="uid://rusm5eikvl1j"]
 
 [ext_resource type="PackedScene" uid="uid://byu8s5u0d52k2" path="res://Objects/Enemies/GroundEnemies/GroundEnemyBase.tscn" id="1_ardkj"]
+[ext_resource type="Shader" path="res://Shaders/Corrosion.gdshader" id="2_sm5ob"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s2i64"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iemdk"]
+noise = SubResource("FastNoiseLite_s2i64")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ity1r"]
+resource_local_to_scene = true
+shader = ExtResource("2_sm5ob")
+shader_parameter/fade_scale = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_iemdk")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jhl4n"]
 radius = 63.1269
@@ -12,6 +24,9 @@ radius = 63.1981
 SPEED = 50.0
 health = 40
 tank_damage = 20.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+material = SubResource("ShaderMaterial_ity1r")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_jhl4n")
