@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerHatch.gd" id="7_i8vdx"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="7_pbp42"]
 [ext_resource type="Script" path="res://PlayerAndTank/TankHitbox.gd" id="9_1ogle"]
-[ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="9_2iki1"]
+[ext_resource type="Texture2D" uid="uid://djxcxlo164pdh" path="res://Sprites/dec6 assets/placeholder_lid.png" id="9_323a3"]
 [ext_resource type="Script" path="res://PlayerAndTank/JumpInSprite.gd" id="10_6t4ks"]
 [ext_resource type="Texture2D" uid="uid://bomrhfgvlvle7" path="res://Sprites/explosion_atlas.png" id="13_w2g2w"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_updater_tank.gd" id="13_wspcb"]
@@ -86,6 +86,7 @@ position = Vector2(0, -196)
 texture = ExtResource("2_y3a5o")
 
 [node name="Turret" type="StaticBody2D" parent="Sprites"]
+z_index = -1
 position = Vector2(-34, -398)
 collision_layer = 16
 script = ExtResource("4_oud1o")
@@ -153,10 +154,9 @@ scale = Vector2(7.00508, 3.12247)
 show_percentage = false
 
 [node name="JumpInSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-37.2279, -463.753)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("9_2iki1")
+position = Vector2(-125.399, -429.044)
+texture = ExtResource("9_323a3")
+offset = Vector2(86.775, -13.825)
 script = ExtResource("10_6t4ks")
 
 [node name="regen_timer" type="Timer" parent="."]

@@ -5,14 +5,14 @@ var freecamActive = false
 
 #variables for handling the smooth zooming in/out
 var camera_zoom_speed := 2.0
-var camera_outer_zoom := 0.1
+var camera_outer_zoom := 0.15
 var camera_inner_zoom := 0.5
 var camera_target_zoom
 var smooth_zoom = 0.5
 var camera_move_speed = 3
 
-var cam_offset_tank = Vector2(750, -750)
-var cam_offset_player = Vector2(0, -100)
+var cam_offset_tank = Vector2(350, -450)
+var cam_offset_player = Vector2(0, -90)
 var target_offset: Vector2
 
 @onready var tank = $".."
@@ -32,7 +32,7 @@ func _process(delta):
 		camera_target_zoom = camera_inner_zoom
 	offset = lerp(offset, target_offset, camera_move_speed*delta)
 	zoom_camera(camera_target_zoom, delta)
-	position = Vector2.ZERO
+	
 	
 #function for camera zoom lerp
 func zoom_camera(zoomTarget, delta):
@@ -43,10 +43,12 @@ func zoom_camera(zoomTarget, delta):
 func _on_player_to_tank_control():
 	reparent(tank)
 	target_offset = cam_offset_tank
+	position = Vector2.ZERO
 
 func _on_tank_to_player_control():
 	reparent(player)
 	target_offset = cam_offset_player
+	position = Vector2.ZERO
 
 func _on_nyan_debug_cmd_freecam():
 	freecamActive = true
@@ -57,5 +59,9 @@ func _on_nyan_debug_cmd_gamecam():
 func _on_upgrade_ui_to_upgrade_screen(screenActive):
 	if screenActive:
 		reparent(upgrade)
+		target_offset = cam_offset_player
+		position = Vector2.ZERO
 	else:
 		reparent(player)
+		target_offset = cam_offset_player
+		position = Vector2.ZERO

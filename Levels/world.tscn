@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Managers/EnemySpawner.gd" id="6_jebxi"]
 [ext_resource type="Texture2D" uid="uid://cqxji5svxqxq6" path="res://Sprites/wave-pattern-desert-landscape--oman-886145780-5c45542046e0fb00012ebabf.jpg" id="7_7kt0t"]
 [ext_resource type="Script" path="res://Scripts/GuideArrow.gd" id="7_12rob"]
-[ext_resource type="Texture2D" uid="uid://22t5opnfvt4j" path="res://Sprites/Player.png" id="7_y2w45"]
+[ext_resource type="Texture2D" uid="uid://bihlxdvpdbhyo" path="res://Sprites/Arrow.png" id="8_0eo2s"]
 [ext_resource type="Script" path="res://Scripts/Generator/ModuleManager.gd" id="8_0xg68"]
 [ext_resource type="PackedScene" uid="uid://crb14fbsx1j3x" path="res://Objects/Environment/LevelGenParts/baseModule.tscn" id="8_xfebb"]
 [ext_resource type="PackedScene" uid="uid://cpbpujpdtw8ga" path="res://Scripts/DebugTools/nyan_debug_tools.tscn" id="10_epaai"]
@@ -129,7 +129,9 @@ script = ExtResource("4_36cw3")
 metadata/_edit_use_anchors_ = true
 
 [node name="GuideArrow" type="Sprite2D" parent="UI"]
-texture = ExtResource("7_y2w45")
+position = Vector2(11, 10.5)
+scale = Vector2(0.5, 0.637931)
+texture = ExtResource("8_0eo2s")
 script = ExtResource("7_12rob")
 
 [node name="TextureRect" type="TextureRect" parent="UI"]
@@ -186,6 +188,9 @@ position = Vector2(-354, 196)
 
 [node name="Player_and_Tank" parent="." instance=ExtResource("3_ha84d")]
 position = Vector2(2176, 128)
+
+[node name="Camera2D" parent="Player_and_Tank/Tank" index="13"]
+position_smoothing_speed = 4.0
 
 [node name="NyanDebug" parent="." node_paths=PackedStringArray("freeCam") instance=ExtResource("10_epaai")]
 freeCam = NodePath("../Freecam Camera")
