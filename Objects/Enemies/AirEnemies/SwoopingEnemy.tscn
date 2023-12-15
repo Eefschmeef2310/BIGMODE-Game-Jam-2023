@@ -1,8 +1,20 @@
-[gd_scene load_steps=17 format=3 uid="uid://cffpvw5cm4kv2"]
+[gd_scene load_steps=21 format=3 uid="uid://cffpvw5cm4kv2"]
 
 [ext_resource type="PackedScene" uid="uid://buxhim8gwxlt6" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.tscn" id="1_bg1r0"]
+[ext_resource type="Shader" path="res://Shaders/Corrosion.gdshader" id="2_a88oe"]
 [ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/SwoopTimer.gd" id="3_ajncj"]
 [ext_resource type="Texture2D" uid="uid://c0chgdk0tamor" path="res://Sprites/spritesheets/flying_sketch.png" id="4_g6kbv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2bgf3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vp3xn"]
+noise = SubResource("FastNoiseLite_2bgf3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buxyg"]
+resource_local_to_scene = true
+shader = ExtResource("2_a88oe")
+shader_parameter/fade_scale = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_vp3xn")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_auhng"]
 atlas = ExtResource("4_g6kbv")
@@ -97,6 +109,7 @@ z_index = 1
 scale = Vector2(-1, 1)
 
 [node name="Frames" parent="." index="0"]
+material = SubResource("ShaderMaterial_buxyg")
 sprite_frames = SubResource("SpriteFrames_kclr5")
 autoplay = "default"
 

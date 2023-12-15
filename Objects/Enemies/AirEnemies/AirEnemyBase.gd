@@ -47,6 +47,7 @@ func hit(damage):
 	
 	if(health <= 0):
 		dead = true
+		ScoreManager.enemiesKilled += 1
 		$AnimationPlayer.play("Death")
 
 func _on_drop_timer_add_item(item):

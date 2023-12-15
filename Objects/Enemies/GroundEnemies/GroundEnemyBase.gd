@@ -55,6 +55,7 @@ func hit(damage):
 		#gear.position = global_position
 		#get_parent().call_deferred("add_child", gear)
 		dead = true
+		ScoreManager.enemiesKilled += 1
 		$AnimationPlayer.play("Death")
 
 func _on_hitbox_area_entered(area):

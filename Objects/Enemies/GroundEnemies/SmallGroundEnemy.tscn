@@ -10,6 +10,7 @@
 noise = SubResource("FastNoiseLite_s2i64")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lyryl"]
+resource_local_to_scene = true
 shader = ExtResource("2_3b7il")
 shader_parameter/fade_scale = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_iemdk")
@@ -95,7 +96,6 @@ position = Vector2(-17, 16)
 scale = Vector2(-0.43, 0.42)
 sprite_frames = SubResource("SpriteFrames_1gnkj")
 autoplay = "default"
-speed_scale = 1.0
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_nvr3s")

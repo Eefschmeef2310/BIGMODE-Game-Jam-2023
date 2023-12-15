@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ces021b5bqip4"]
+
+[ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="1_s6who"]
+
+[resource]
+Button/fonts/font = ExtResource("1_s6who")
+Label/fonts/font = ExtResource("1_s6who")
