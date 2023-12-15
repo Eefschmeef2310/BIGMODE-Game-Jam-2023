@@ -9,7 +9,6 @@ var relative_y = 0
 
 func _ready():
 	viewport_size = get_viewport().size
-	MusicManager.play_menu_music()
 
 func _input(event):
 	if event is InputEventMouseMotion:

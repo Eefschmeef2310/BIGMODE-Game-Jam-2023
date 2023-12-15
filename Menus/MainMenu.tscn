@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://05e866evj8us"]
+[gd_scene load_steps=15 format=3 uid="uid://05e866evj8us"]
 
 [ext_resource type="Script" path="res://Menus/ParallaxBackground.gd" id="1_wsvfp"]
 [ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="2_gskdv"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="5_cjvxw"]
 [ext_resource type="Theme" uid="uid://ces021b5bqip4" path="res://Themes/UITheme.tres" id="5_pybf0"]
 [ext_resource type="Shader" path="res://Shaders/GlitchShader.gdshader" id="9_0kh05"]
+[ext_resource type="Script" path="res://Menus/MenuMusic.gd" id="11_okekg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ljw5q"]
 shader = ExtResource("4_x7m7q")
@@ -97,6 +98,9 @@ material = SubResource("ShaderMaterial_qsywh")
 position = Vector2(241, 138.5)
 scale = Vector2(0.751852, 0.797619)
 texture = ExtResource("3_clkky")
+
+[node name="MenuMusic" type="Node" parent="."]
+script = ExtResource("11_okekg")
 
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer3/QuitButton" to="ParallaxBackground/ParallaxLayer3/QuitButton" method="_on_pressed"]
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer3/PlayButton" to="ParallaxBackground/ParallaxLayer3/PlayButton" method="_on_pressed"]

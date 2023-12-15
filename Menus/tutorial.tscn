@@ -1,0 +1,135 @@
+[gd_scene load_steps=9 format=3 uid="uid://un38bshwlloi"]
+
+[ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="1_bmsk7"]
+[ext_resource type="Texture2D" uid="uid://bihlxdvpdbhyo" path="res://Sprites/Arrow.png" id="1_uc4d4"]
+[ext_resource type="Script" path="res://Menus/tutorial.gd" id="1_wowuv"]
+[ext_resource type="Script" path="res://Menus/ParallaxBackground.gd" id="2_gmxip"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1pt5"]
+bg_color = Color(0, 0, 0, 0.47451)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_pwh0j"]
+font_size = 32
+
+[sub_resource type="SystemFont" id="SystemFont_d1aav"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a0lg3"]
+line_spacing = 0.0
+font = SubResource("SystemFont_d1aav")
+font_size = 10
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -480.0
+offset_bottom = -270.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_gmxip")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(239, 129)
+scale = Vector2(0.126531, 0.108462)
+texture = ExtResource("1_bmsk7")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="PanelContainer" type="PanelContainer" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = 45.0
+offset_top = 25.0
+offset_right = 195.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o1pt5")
+
+[node name="MarginContainer" type="MarginContainer" parent="ParallaxBackground/ParallaxLayer2/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParallaxBackground/ParallaxLayer2/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ParallaxBackground/ParallaxLayer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "TANK MODE"
+label_settings = SubResource("LabelSettings_pwh0j")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Desc" type="Label" parent="ParallaxBackground/ParallaxLayer2/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Use your tank to defeat enemies and escape the acid rain! If your tank is destroyed, you lose!"
+label_settings = SubResource("LabelSettings_a0lg3")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = 287.0
+offset_top = 25.0
+offset_right = 437.0
+offset_bottom = 195.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_o1pt5")
+
+[node name="MarginContainer" type="MarginContainer" parent="ParallaxBackground/ParallaxLayer2/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParallaxBackground/ParallaxLayer2/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ParallaxBackground/ParallaxLayer2/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "MAN MODE"
+label_settings = SubResource("LabelSettings_pwh0j")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Desc" type="Label" parent="ParallaxBackground/ParallaxLayer2/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Press SPACE to exit your tank to collect scrap and buy upgrades. Be careful, you'll die in one hit!"
+label_settings = SubResource("LabelSettings_a0lg3")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = 270.0
+offset_top = 57.0
+offset_right = 314.0
+offset_bottom = 115.0
+rotation = 1.5708
+texture = ExtResource("1_uc4d4")
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = 211.0
+offset_top = 153.0
+offset_right = 255.0
+offset_bottom = 211.0
+rotation = -1.5708
+texture = ExtResource("1_uc4d4")
+
+[node name="PlayButton" type="Button" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = 171.0
+offset_top = 211.0
+offset_right = 307.0
+offset_bottom = 242.0
+text = "Play"
+script = ExtResource("1_wowuv")
+
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/PlayButton" to="ParallaxBackground/ParallaxLayer2/PlayButton" method="_on_pressed"]

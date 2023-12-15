@@ -1,4 +1,4 @@
 extends Button
 
 func _on_pressed():
-	GameManager.start_game()
+	get_tree().change_scene_to_file("res://Menus/tutorial.tscn")

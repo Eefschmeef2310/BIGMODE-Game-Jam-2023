@@ -92,13 +92,11 @@ size = Vector2(262, 170)
 size = Vector2(734, 406)
 
 [node name="EnemyBase" instance=ExtResource("1_ardkj")]
-SPEED = 50.0
 health = 50
 tank_damage = 35.0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_ity1r")
-scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_mjwhi")
 autoplay = "default"
 
@@ -131,12 +129,10 @@ shape = SubResource("RectangleShape2D_svghw")
 debug_color = Color(0.701961, 0.054902, 0, 0.419608)
 
 [node name="PinJoint2D2" parent="." index="5"]
-position = Vector2(461, 222)
-scale = Vector2(15, 15)
+position = Vector2(155, 276)
 
 [node name="PinJoint2D3" parent="." index="6"]
-position = Vector2(-429, 221)
-scale = Vector2(15, 15)
+position = Vector2(-342, 273)
 
 [node name="HealthBar" parent="." index="7"]
 offset_left = -246.0
