@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=47 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://b065su18ox61p" path="res://Sprites/dec6 assets/tank_body.png" id="3_0l4ke"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://PlayerAndTank/JumpInSprite.gd" id="10_6t4ks"]
 [ext_resource type="Texture2D" uid="uid://bomrhfgvlvle7" path="res://Sprites/explosion_atlas.png" id="13_w2g2w"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_updater_tank.gd" id="13_wspcb"]
+[ext_resource type="Theme" uid="uid://rv4pwmc3jw1u" path="res://Themes/TankHealthBar.tres" id="15_hthyx"]
+[ext_resource type="Theme" uid="uid://bdylmejrnim6g" path="res://Themes/RocketCooldown.tres" id="16_sew5u"]
 
 [sub_resource type="Animation" id="Animation_cuvr1"]
 length = 0.001
@@ -355,10 +357,21 @@ polygon = PackedVector2Array(316.437, -142.693, 279.209, -18.3187, 335.051, -11.
 
 [node name="healthbar" type="ProgressBar" parent="."]
 offset_left = -320.356
-offset_top = -486.627
-offset_right = -224.356
-offset_bottom = -482.627
-scale = Vector2(7.00508, 3.12247)
+offset_top = -538.956
+offset_right = 309.644
+offset_bottom = -518.956
+theme = ExtResource("15_hthyx")
+value = 100.0
+show_percentage = false
+
+[node name="RocketCooldown" type="ProgressBar" parent="."]
+visible = false
+offset_left = -320.356
+offset_top = -502.319
+offset_right = 309.644
+offset_bottom = -482.319
+theme = ExtResource("16_sew5u")
+value = 100.0
 show_percentage = false
 
 [node name="JumpInSprite" type="Sprite2D" parent="."]

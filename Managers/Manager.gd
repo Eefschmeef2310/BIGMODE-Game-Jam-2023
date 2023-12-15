@@ -72,7 +72,8 @@ func drop_gears(pos: Vector2, amount: int):
 		gear.value = values[randi_range(0, values.size() - 1)]
 		gear.position = pos
 		gear.position.x += randf() * 50
-		get_tree().get_root().add_child(gear)
+		get_tree().get_root().call_deferred("add_child", gear)
+		
 
 #var current_module_count: int = 0
 #var max_module_count: int = 5

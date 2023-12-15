@@ -4,6 +4,7 @@ extends Node
 @export var max_air_jumps_values: Array[int]
 @export var max_hover_time_values: Array[float]
 @export var magnet_radius_value: Array[float]
+@export var max_invis_time_values: Array[float]
 
 func _ready():
 	update_upgrades("")
@@ -28,8 +29,12 @@ func update_upgrades(_upgrade):
 	
 	# Scrap Magnet
 	lvl = UpgradeManager.get_upgrade_level("Scrap Magnet")
-	print(magnet_radius_value[lvl])
 	player.magnet_radius = magnet_radius_value[lvl]
+	
+	# Invisibility Cloak
+	lvl = UpgradeManager.get_upgrade_level("Invisibility Cloak")
+	player.max_invis_time = max_invis_time_values[lvl]
+	player.invis_recovering = true
 
 func update_line(lvl):
 	if lvl > 0: #If speed is updated

@@ -26,7 +26,7 @@ var time_until_next_shot: float = 0.0
 
 # Rockets
 const rocket_path: PackedScene = preload("res://Objects/Projectiles/rocket.tscn")
-var rocket_fire_rate: float = 5
+var rocket_fire_rate: float = 7.5
 var time_until_next_rocket: float = 0
 var has_rockets: bool = false
 var rocket_level: int = 1
@@ -89,6 +89,10 @@ func _physics_process(delta):
 		if has_rockets:
 			if time_until_next_rocket > 0:
 				time_until_next_rocket -= delta
+				$RocketCooldown.value = 100 * (1 - (time_until_next_rocket / rocket_fire_rate))
+				$RocketCooldown.visible = true
+			else:
+				$RocketCooldown.visible = false
 			if time_until_next_rocket <= 0.0 and Input.is_action_just_pressed("secondary"):
 				time_until_next_rocket = rocket_fire_rate
 				shoot_rocket()

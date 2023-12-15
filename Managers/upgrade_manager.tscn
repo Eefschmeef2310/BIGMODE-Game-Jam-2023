@@ -77,9 +77,9 @@ level = 0
 
 [sub_resource type="Resource" id="Resource_fp6bg"]
 script = ExtResource("2_aqrcm")
-name = "Defensive Shockwave"
+name = "Invisibility Cloak"
 category = "Man"
-descriptions = PackedStringArray("Click to knock enemies back.", "Further knockback.", "Even further knockback.")
+descriptions = PackedStringArray("Right-click to go invisible temporarily.", "Be invisible for longer.", "Be invisible for even longer")
 costs = Array[int]([15, 20, 30])
 level = 0
 

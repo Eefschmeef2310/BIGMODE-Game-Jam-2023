@@ -194,7 +194,6 @@ script = ExtResource("8_0xg68")
 modules = Array[PackedScene]([ExtResource("8_xfebb")])
 maxModules = 20
 endNode = NodePath("../End")
-createEnemies = false
 enemyPrefabs = Array[PackedScene]([ExtResource("18_yk2vr"), ExtResource("19_16jfj"), ExtResource("16_g12d7"), ExtResource("17_kpgvk")])
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]
@@ -203,7 +202,7 @@ position = Vector2(0, 196)
 [node name="Player_and_Tank" parent="." instance=ExtResource("3_ha84d")]
 position = Vector2(2176, 128)
 
-[node name="Camera2D" parent="Player_and_Tank/Tank" index="13"]
+[node name="Camera2D" parent="Player_and_Tank/Tank" index="14"]
 position_smoothing_speed = 4.0
 
 [node name="NyanDebug" parent="." node_paths=PackedStringArray("freeCam") instance=ExtResource("10_epaai")]

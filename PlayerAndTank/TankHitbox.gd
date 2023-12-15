@@ -1,15 +1,19 @@
 extends Area2D
 
 #region variables
+var max_health := 100
 var health := 100:
 	#introduce a setter that automatically clamps the health
 	set(value):
 		health = value
-		health = clamp(health, 0, 100)
+		health = clamp(health, 0, max_health)
 		
 @onready var healthbar = $"../healthbar"
 
 func _ready():
+	update_health()
+
+func _process(delta):
 	update_health()
 
 #region healthAndDamage

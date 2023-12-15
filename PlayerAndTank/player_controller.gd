@@ -26,6 +26,7 @@ var hover_factor = 0.1
 var max_hover_velocity = 10
 var max_hover_time = 0
 var hover_counter = 0
+var hover_recover_rate = 1.5
 
 # Magnet params
 @onready var magnet_shape = $GearMagnet/CollisionShape2D
@@ -34,6 +35,17 @@ var magnet_radius = 0:
 		magnet_radius = value
 		if magnet_shape:
 			magnet_shape.shape.radius = value
+
+# Invisibility params
+var max_invis_time = 3.0:
+	set(value):
+		max_invis_time = value
+		invis_counter = value
+		invis_recovering = false
+var invis_counter = max_invis_time
+var invis_cooldown_rate = 0.5
+var invis_recovering = false
+var is_invisible = false
 
 # Global movement scales
 var move_factor = 1
@@ -59,9 +71,12 @@ func _ready():
 	toggle(false)
 
 func _process(_delta):
-	GameManager.tank_position = global_position
+	if !is_invisible:
+		GameManager.tank_position = global_position
+	
 	if position.y > killY || GameManager.tank_position.y > killY:
 		GameManager.game_over = true
+		
 	#Input
 	move_direction = Input.get_axis("left", "right")
 	if Input.is_action_just_pressed("jump"):
@@ -88,8 +103,11 @@ func _physics_process(delta):
 	if is_on_floor():
 		jump_phase = 0
 		coyote_counter = coyote_time
-		hover_counter = max_hover_time
 		is_jumping = false
+		if hover_counter < max_hover_time:
+			hover_counter += hover_recover_rate * delta
+		else:
+			hover_counter = max_hover_time
 	else:
 		coyote_counter -= delta
 	
@@ -105,6 +123,30 @@ func _physics_process(delta):
 		$HoverParticles.emitting = true
 	else:
 		$HoverParticles.emitting = false
+	
+	# Handle invisibility
+	if is_invisible:
+		invis_counter -= delta
+		if invis_counter <= 0:
+			is_invisible = false
+			invis_recovering = true
+	if invis_recovering:
+		if invis_counter < max_invis_time:
+			invis_counter += invis_cooldown_rate * delta
+		else:
+			invis_counter = max_invis_time
+			invis_recovering = false
+	else:
+		if Input.is_action_just_pressed("secondary") and max_invis_time > 0:
+			is_invisible = true
+	
+	# Hover meter
+	$Bars/HoverCooldown.value = 100 * (hover_counter / max_hover_time)
+	$Bars/HoverCooldown.visible = max_hover_time > 0 and $Bars/HoverCooldown.value < 100
+	
+	# Invis meter
+	$Bars/InvisCooldown.value = 100 * (invis_counter / max_invis_time)
+	$Bars/InvisCooldown.visible = max_invis_time > 0 and $Bars/InvisCooldown.value < 100
 		
 	# Add the gravity.
 	if jump_is_held and velocity.y < 0:
@@ -151,10 +193,12 @@ func jump_release():
 
 func update_direction():
 	if move_direction != 0:
-		scale.x = scale.y * sign(move_direction)
+		$AnimatedSprite2D.flip_h = move_direction < 0
 
 func toggle(activate: bool):
 	visible = activate
+	hover_counter = max_hover_time
+	invis_counter = 0
 	if activate:
 		process_mode = Node.PROCESS_MODE_INHERIT
 	else:

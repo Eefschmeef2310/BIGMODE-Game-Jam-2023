@@ -36,10 +36,10 @@ func explode():
 		var a = -90 - asplit
 		for n in 3:
 			var rocket = rocket_scene.instantiate()
-			var direction = Vector2(cos(deg_to_rad(a + (n*asplit))), sin(deg_to_rad(a + (n*asplit))))
+			var dir = Vector2(cos(deg_to_rad(a + (n*asplit))), sin(deg_to_rad(a + (n*asplit))))
 			rocket.position = global_position
 			rocket.position.y -= 20
-			rocket.direction = direction
+			rocket.direction = dir
 			rocket.rotation_degrees = rad_to_deg(a)
 			rocket.rocket_level = 1
 			rocket.gravity_scale *= 2
