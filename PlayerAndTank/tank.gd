@@ -114,7 +114,8 @@ func createPlayer():
 #region shooting
 func shoot():
 	var middle_angle = $Sprites/Turret.global_rotation
-	spawn_bullet(middle_angle)
+	if extra_bullets % 2 == 1:
+		spawn_bullet(middle_angle)
 	for i in extra_bullets:
 		print(i)
 		spawn_bullet(middle_angle + (extra_bullet_angle_offset * (i + 1)))

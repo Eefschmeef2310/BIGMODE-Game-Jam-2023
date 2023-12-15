@@ -1,8 +1,10 @@
-[gd_scene load_steps=36 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=45 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://b065su18ox61p" path="res://Sprites/dec6 assets/tank_body.png" id="3_0l4ke"]
+[ext_resource type="Script" path="res://PlayerAndTank/tank_rotary_system.gd" id="3_f10xu"]
 [ext_resource type="Texture2D" uid="uid://dbf4o8dq6hmig" path="res://Sprites/dec6 assets/placeholder_tank_top.png" id="3_ii4us"]
+[ext_resource type="Texture2D" uid="uid://bp5nwmhjeggqw" path="res://Sprites/tank_rotaryblade.png" id="4_dxbd7"]
 [ext_resource type="Script" path="res://PlayerAndTank/Turret.gd" id="4_oud1o"]
 [ext_resource type="Texture2D" uid="uid://c3wpkx68adbuv" path="res://Sprites/dec6 assets/placeholder_gun.png" id="5_3jgrq"]
 [ext_resource type="Script" path="res://PlayerAndTank/tank_spikes.gd" id="6_kss8q"]
@@ -17,6 +19,85 @@
 [ext_resource type="Script" path="res://PlayerAndTank/JumpInSprite.gd" id="10_6t4ks"]
 [ext_resource type="Texture2D" uid="uid://bomrhfgvlvle7" path="res://Sprites/explosion_atlas.png" id="13_w2g2w"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_updater_tank.gd" id="13_wspcb"]
+
+[sub_resource type="Animation" id="Animation_6qqxh"]
+resource_name = "rotate"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/RotarySystem:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(-3, -3, 1),
+"update": 0,
+"values": [0.174533, -3.31613, 0.174533]
+}
+
+[sub_resource type="Animation" id="Animation_cuvr1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/RotarySystem:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ye511"]
+_data = {
+"RESET": SubResource("Animation_cuvr1"),
+"rotate": SubResource("Animation_6qqxh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrpjd"]
+radius = 94.1728
+
+[sub_resource type="Animation" id="Animation_rr56g"]
+resource_name = "spin"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BladeSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_y0tyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BladeSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8xe3"]
+_data = {
+"RESET": SubResource("Animation_y0tyy"),
+"spin": SubResource("Animation_rr56g")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
 size = Vector2(362, 24)
@@ -137,6 +218,38 @@ Wheels = [NodePath("PinJoint2D3"), NodePath("PinJoint2D4")]
 position = Vector2(-40, -373)
 texture = ExtResource("3_ii4us")
 metadata/_edit_lock_ = true
+
+[node name="RotarySystem" type="Node2D" parent="Sprites"]
+position = Vector2(-21.553, -180.295)
+rotation = 0.174533
+script = ExtResource("3_f10xu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/RotarySystem"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_ye511")
+}
+
+[node name="StickSprite" type="Sprite2D" parent="Sprites/RotarySystem"]
+position = Vector2(261.611, -0.115234)
+scale = Vector2(1.5, 1)
+texture = ExtResource("5_3jgrq")
+
+[node name="Blade" type="Area2D" parent="Sprites/RotarySystem"]
+position = Vector2(521.292, 0.109793)
+collision_layer = 3
+collision_mask = 3
+
+[node name="BladeSprite" type="Sprite2D" parent="Sprites/RotarySystem/Blade"]
+texture = ExtResource("4_dxbd7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/RotarySystem/Blade"]
+shape = SubResource("CircleShape2D_vrpjd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/RotarySystem/Blade"]
+libraries = {
+"": SubResource("AnimationLibrary_b8xe3")
+}
 
 [node name="Tank" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, -196)
@@ -293,6 +406,8 @@ has_rockets_values = Array[bool]([false, true, true, true])
 rocket_level_values = Array[int]([1, 1, 2, 3])
 
 [connection signal="toPlayerControl" from="." to="JumpInSprite" method="_on_tank_to_player_control"]
+[connection signal="area_entered" from="Sprites/RotarySystem/Blade" to="Sprites/RotarySystem" method="_on_blade_area_entered"]
+[connection signal="body_entered" from="Sprites/RotarySystem/Blade" to="Sprites/RotarySystem" method="_on_blade_body_entered"]
 [connection signal="area_entered" from="Sprites/FrontSpikes" to="Sprites/FrontSpikes" method="_on_area_entered"]
 [connection signal="body_entered" from="Sprites/FrontSpikes" to="Sprites/FrontSpikes" method="_on_body_entered"]
 [connection signal="body_entered" from="PlayerHatch" to="PlayerHatch" method="_on_body_entered"]

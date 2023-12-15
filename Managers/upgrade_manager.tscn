@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b3ts1cd21cchf"]
+[gd_scene load_steps=13 format=3 uid="uid://b3ts1cd21cchf"]
 
 [ext_resource type="Script" path="res://Managers/UpgradeManager.gd" id="1_1qutk"]
 [ext_resource type="Script" path="res://Upgrades/Upgrade.gd" id="2_aqrcm"]
@@ -39,15 +39,7 @@ level = 0
 script = ExtResource("2_aqrcm")
 name = "Ramming Artillery"
 category = "Tank"
-descriptions = PackedStringArray("Add spikes to the front of the tank.", "Add rotary blades to the front of the tank.", "Rotary blades keep spinning in Man Mode.")
-costs = Array[int]([10, 15, 20])
-level = 0
-
-[sub_resource type="Resource" id="Resource_hq80k"]
-script = ExtResource("2_aqrcm")
-name = "Extra Footing"
-category = "Tank"
-descriptions = PackedStringArray("Add extra platforms above the tank.", "More platforms.", "Even more platforms.")
+descriptions = PackedStringArray("Add spikes to the front of the tank.", "Add a rotary blade that orbits the tank.", "Rotary blades keep spinning in Man Mode.")
 costs = Array[int]([10, 15, 20])
 level = 0
 
@@ -91,14 +83,6 @@ descriptions = PackedStringArray("Click to knock enemies back.", "Further knockb
 costs = Array[int]([10, 15, 20])
 level = 0
 
-[sub_resource type="Resource" id="Resource_3ry55"]
-script = ExtResource("2_aqrcm")
-name = "Invisibility Cloak"
-category = "Man"
-descriptions = PackedStringArray("Either invisibility or decoy.", "We haven\'t decided yet.", "We should probably decide very soon.")
-costs = Array[int]([10, 15, 20])
-level = 0
-
 [node name="UpgradeManager" type="Node2D"]
 script = ExtResource("1_1qutk")
-upgrades = Array[ExtResource("2_aqrcm")]([SubResource("Resource_cjetl"), SubResource("Resource_g23me"), SubResource("Resource_g1j5o"), SubResource("Resource_mxlkd"), SubResource("Resource_3h1mr"), SubResource("Resource_hq80k"), SubResource("Resource_ggh3g"), SubResource("Resource_olqn2"), SubResource("Resource_78wkc"), SubResource("Resource_pbui3"), SubResource("Resource_fp6bg"), SubResource("Resource_3ry55")])
+upgrades = Array[ExtResource("2_aqrcm")]([SubResource("Resource_cjetl"), SubResource("Resource_g23me"), SubResource("Resource_g1j5o"), SubResource("Resource_mxlkd"), SubResource("Resource_3h1mr"), SubResource("Resource_ggh3g"), SubResource("Resource_olqn2"), SubResource("Resource_78wkc"), SubResource("Resource_pbui3"), SubResource("Resource_fp6bg")])

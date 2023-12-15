@@ -1,7 +1,15 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ces021b5bqip4"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ces021b5bqip4"]
 
 [ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="1_s6who"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j8g3a"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [resource]
 Button/fonts/font = ExtResource("1_s6who")
 Label/fonts/font = ExtResource("1_s6who")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_j8g3a")

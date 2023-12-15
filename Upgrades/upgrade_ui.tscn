@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://irvh438hrwvk"]
+[gd_scene load_steps=13 format=3 uid="uid://irvh438hrwvk"]
 
 [ext_resource type="Script" path="res://Upgrades/upgrade_ui.gd" id="2_xi6ok"]
 [ext_resource type="Texture2D" uid="uid://dnirdri8itlpj" path="res://Sprites/ui_rect_default.png" id="3_5lgyx"]
@@ -12,6 +12,9 @@
 [sub_resource type="LabelSettings" id="LabelSettings_f7flk"]
 font = ExtResource("4_v34no")
 font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rgwq"]
+content_margin_right = 12.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1o53k"]
 shader = ExtResource("5_bgf4m")
@@ -109,7 +112,8 @@ offset_top = 86.0
 offset_right = 277.0
 offset_bottom = 537.0
 grow_horizontal = 2
-vertical_scroll_mode = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0rgwq")
+vertical_scroll_mode = 2
 
 [node name="Upgrades" type="VBoxContainer" parent="ScrollContainer"]
 layout_direction = 1

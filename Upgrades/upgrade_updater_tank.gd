@@ -37,7 +37,12 @@ func update_upgrades(_upgrade):
 	
 	# Ramming Artillery
 	lvl = UpgradeManager.get_upgrade_level("Ramming Artillery")
-	if lvl > 0:
+	tank.get_node("Sprites/FrontSpikes").visible = false
+	tank.get_node("Sprites/RotarySystem").visible = false
+	tank.get_node("Sprites/RotarySystem").active_in_player_mode = false
+	if lvl >= 1:
 		tank.get_node("Sprites/FrontSpikes").visible = true
-	else:
-		tank.get_node("Sprites/FrontSpikes").visible = false
+		if lvl >= 2:
+			tank.get_node("Sprites/RotarySystem").visible = true
+			if lvl >= 3:
+				tank.get_node("Sprites/RotarySystem").active_in_player_mode = true
