@@ -28,4 +28,5 @@ func _on_game_over():
 
 func _on_end_reached():
 	win_screen = win_screen_scene.instantiate()
+	ScoreManager.calculateScore()
 	add_child(win_screen)

@@ -3,8 +3,8 @@ shader_type canvas_item;
 uniform sampler2D SCREEN_TEXTURE: hint_screen_texture;
 
 // Uniforms
-uniform float speed = 1.0;
-uniform float intensity = 1.0;
+uniform float speed = 0.3;
+uniform float intensity = 0.06;
 
 void fragment() {
     // Calculate the position of the lines based on the y coordinate
@@ -20,12 +20,12 @@ void fragment() {
     //// Output the final color
     //COLOR = col;
 	
-	float sineBrightness = abs(sin(UV.y + TIME * speed)) - 0.1;
+	float sineBrightness = abs(sin(10.0 * (UV.y + TIME * speed))) - 0.1;
 	float totalBrightness = (1.0 - sineBrightness) * intensity;
 	
 	vec2 modUV = vec2(UV.x, mod(UV.y + TIME * speed, 1.0));
 	
-	vec4 tex = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 tex = texture(TEXTURE, UV);
 	
-	COLOR = tex * vec4(totalBrightness);
+	COLOR = tex + vec4(totalBrightness);
 }

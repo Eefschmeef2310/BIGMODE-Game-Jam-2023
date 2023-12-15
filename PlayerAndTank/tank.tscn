@@ -245,6 +245,7 @@ node_a = NodePath("..")
 softness = 1.0
 
 [node name="Dust" type="GPUParticles2D" parent="PinJoint2D3"]
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_18ssv")
 texture = ExtResource("13_w2g2w")
 
@@ -254,6 +255,7 @@ node_a = NodePath("..")
 softness = 1.0
 
 [node name="Dust" type="GPUParticles2D" parent="PinJoint2D4"]
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_h7rkp")
 texture = ExtResource("13_w2g2w")
 

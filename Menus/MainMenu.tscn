@@ -1,18 +1,34 @@
-[gd_scene load_steps=9 format=3 uid="uid://05e866evj8us"]
+[gd_scene load_steps=14 format=3 uid="uid://05e866evj8us"]
 
 [ext_resource type="Texture2D" uid="uid://cqxji5svxqxq6" path="res://Sprites/wave-pattern-desert-landscape--oman-886145780-5c45542046e0fb00012ebabf.jpg" id="1_gjvdv"]
 [ext_resource type="Script" path="res://Menus/ParallaxBackground.gd" id="1_wsvfp"]
 [ext_resource type="Texture2D" uid="uid://blagxwi1ira48" path="res://Sprites/23461859b0e66a4.png" id="3_clkky"]
 [ext_resource type="Script" path="res://Menus/QuitButton.gd" id="4_u3smh"]
 [ext_resource type="Texture2D" uid="uid://dnirdri8itlpj" path="res://Sprites/ui_rect_default.png" id="4_x7giq"]
+[ext_resource type="Shader" path="res://Shaders/Hologram.gdshader" id="4_x7m7q"]
 [ext_resource type="Script" path="res://Menus/PlayButton.gd" id="5_64wgw"]
 [ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="5_cjvxw"]
+[ext_resource type="Theme" uid="uid://ces021b5bqip4" path="res://UITheme.tres" id="5_pybf0"]
+[ext_resource type="Shader" path="res://Shaders/GlitchShader.gdshader" id="9_0kh05"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ljw5q"]
+shader = ExtResource("4_x7m7q")
+shader_parameter/speed = 0.3
+shader_parameter/intensity = 0.06
 
 [sub_resource type="LabelSettings" id="LabelSettings_pcef6"]
 font = ExtResource("5_cjvxw")
 font_size = 52
 outline_size = 12
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsywh"]
+shader = ExtResource("9_0kh05")
+shader_parameter/shake_power = 0.001
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.001
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -33,12 +49,8 @@ texture = ExtResource("1_gjvdv")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-visible = false
-position = Vector2(242, 141)
-texture = ExtResource("3_clkky")
-
 [node name="NinePatchRect" type="NinePatchRect" parent="ParallaxBackground/ParallaxLayer2"]
+material = SubResource("ShaderMaterial_ljw5q")
 offset_left = 38.0
 offset_top = 38.0
 offset_right = 444.0
@@ -56,8 +68,9 @@ offset_left = 58.0
 offset_top = 73.0
 offset_right = 424.0
 offset_bottom = 125.0
+theme = ExtResource("5_pybf0")
 theme_override_font_sizes/font_size = 100
-text = "tankman"
+text = "tank"
 label_settings = SubResource("LabelSettings_pcef6")
 horizontal_alignment = 1
 
@@ -76,6 +89,12 @@ offset_right = 307.0
 offset_bottom = 173.0
 text = "Play"
 script = ExtResource("5_64wgw")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+material = SubResource("ShaderMaterial_qsywh")
+position = Vector2(241, 138.5)
+scale = Vector2(0.751852, 0.797619)
+texture = ExtResource("3_clkky")
 
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer3/QuitButton" to="ParallaxBackground/ParallaxLayer3/QuitButton" method="_on_pressed"]
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer3/PlayButton" to="ParallaxBackground/ParallaxLayer3/PlayButton" method="_on_pressed"]
