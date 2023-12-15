@@ -57,7 +57,7 @@ lifetime_randomness = 0.3
 direction = Vector3(0, -1, 0)
 spread = 180.0
 initial_velocity_min = 700.0
-initial_velocity_max = 700.0
+initial_velocity_max = 1000.0
 gravity = Vector3(0, 0, 0)
 damping_min = 200.0
 damping_max = 200.0
@@ -73,7 +73,7 @@ radius = 22.0
 height = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_emeeb"]
-radius = 118.0
+radius = 220.0
 
 [sub_resource type="Animation" id="Animation_wcte8"]
 length = 0.001
@@ -96,6 +96,18 @@ tracks/1/path = NodePath("Trail:emitting")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:shouldMove")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -187,10 +199,8 @@ _data = {
 }
 
 [node name="Rocket" type="Area2D"]
-collision_layer = 3
 collision_mask = 10
 script = ExtResource("1_cay8g")
-shouldMove = false
 
 [node name="Trail" type="GPUParticles2D" parent="."]
 position = Vector2(-46, 0)
