@@ -18,6 +18,8 @@ func _ready():
 		
 	print(str_u)
 	print(str_c)
+	#var goose = upgrade_state() # TODO remove
+	#print(goose)
 
 func purchase_upgrade(upgrade_name: String):
 	for upgrade in upgrades:
@@ -49,3 +51,11 @@ func reset_upgrades():
 	for upgrade in upgrades:
 		upgrade.level = 0
 	upgrade_purchased.emit("")
+	
+func upgrade_state(): #method for use by airtable system
+	var state : String = ""
+	for upgrade in upgrades:
+		state += upgrade.name + "(" + str(upgrade.level) + ")\n"
+		#print(upgrade.name + "(" + str(upgrade.level) + ")")
+		
+	return state

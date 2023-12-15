@@ -148,3 +148,4 @@ func setDisplay(isActive):
 
 func _on_http_request_response(string):
 	meow("Uplaod response: " + string)
+	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://05e866evj8us"]
 
-[ext_resource type="Texture2D" uid="uid://cqxji5svxqxq6" path="res://Sprites/wave-pattern-desert-landscape--oman-886145780-5c45542046e0fb00012ebabf.jpg" id="1_gjvdv"]
 [ext_resource type="Script" path="res://Menus/ParallaxBackground.gd" id="1_wsvfp"]
+[ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="2_gskdv"]
 [ext_resource type="Texture2D" uid="uid://blagxwi1ira48" path="res://Sprites/23461859b0e66a4.png" id="3_clkky"]
 [ext_resource type="Script" path="res://Menus/QuitButton.gd" id="4_u3smh"]
 [ext_resource type="Texture2D" uid="uid://dnirdri8itlpj" path="res://Sprites/ui_rect_default.png" id="4_x7giq"]
@@ -45,7 +45,9 @@ script = ExtResource("1_wsvfp")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture = ExtResource("1_gjvdv")
+position = Vector2(241, 137)
+scale = Vector2(0.126531, 0.108462)
+texture = ExtResource("2_gskdv")
 
 [node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
 
@@ -70,7 +72,7 @@ offset_right = 424.0
 offset_bottom = 125.0
 theme = ExtResource("5_pybf0")
 theme_override_font_sizes/font_size = 100
-text = "tank"
+text = "tank blitz"
 label_settings = SubResource("LabelSettings_pcef6")
 horizontal_alignment = 1
 

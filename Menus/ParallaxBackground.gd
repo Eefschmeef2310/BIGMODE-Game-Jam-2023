@@ -1,17 +1,14 @@
 extends ParallaxBackground
 
 var viewport_size
-var relative_x
-var relative_y
+var relative_x = 0
+var relative_y = 0
 
 @export var initial_speed := 4
 @export var layer_speed := 1.6
 
 func _ready():
 	viewport_size = get_viewport().size
-	relative_x = 0
-	relative_y = 0
-	
 	MusicManager.play_menu_music()
 
 func _input(event):

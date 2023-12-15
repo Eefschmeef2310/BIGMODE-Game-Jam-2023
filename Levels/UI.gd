@@ -20,6 +20,7 @@ func _on_game_paused(isPaused):
 		pause_screen = pause_screen_scene.instantiate()
 		add_child(pause_screen)
 	elif pause_screen:
+		ScoreManager.countTime = true
 		pause_screen.queue_free()
 
 func _on_game_over():
