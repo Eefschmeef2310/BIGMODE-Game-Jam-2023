@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://rusm5eikvl1j"]
+[gd_scene load_steps=20 format=3 uid="uid://rusm5eikvl1j"]
 
 [ext_resource type="PackedScene" uid="uid://byu8s5u0d52k2" path="res://Objects/Enemies/GroundEnemies/GroundEnemyBase.tscn" id="1_ardkj"]
 [ext_resource type="Shader" path="res://Shaders/Corrosion.gdshader" id="2_sm5ob"]
+[ext_resource type="Texture2D" uid="uid://t5dptu805nic" path="res://Sprites/spritesheets/medium_walk.png" id="3_klo8s"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_s2i64"]
 
@@ -14,28 +15,131 @@ shader = ExtResource("2_sm5ob")
 shader_parameter/fade_scale = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_iemdk")
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jhl4n"]
-radius = 63.1269
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5wyy"]
+atlas = ExtResource("3_klo8s")
+region = Rect2(0, 0, 1201, 585)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jvw14"]
-radius = 63.1981
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebhn6"]
+atlas = ExtResource("3_klo8s")
+region = Rect2(1201, 0, 1201, 585)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34blv"]
+atlas = ExtResource("3_klo8s")
+region = Rect2(2402, 0, 1201, 585)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8keag"]
+atlas = ExtResource("3_klo8s")
+region = Rect2(3603, 0, 1201, 585)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6pbl"]
+atlas = ExtResource("3_klo8s")
+region = Rect2(4804, 0, 1201, 585)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqu5x"]
+atlas = ExtResource("3_klo8s")
+region = Rect2(6005, 0, 1201, 585)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eshjp"]
+atlas = ExtResource("3_klo8s")
+region = Rect2(7206, 0, 1201, 585)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkvdd"]
+atlas = ExtResource("3_klo8s")
+region = Rect2(8407, 0, 1201, 585)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjwhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5wyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebhn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34blv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8keag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6pbl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqu5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eshjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkvdd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bct18"]
+size = Vector2(702, 376)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7clv"]
+size = Vector2(466, 252)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_svghw"]
+size = Vector2(262, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aki6y"]
+size = Vector2(734, 406)
 
 [node name="EnemyBase" instance=ExtResource("1_ardkj")]
 SPEED = 50.0
-health = 40
-tank_damage = 20.0
+health = 50
+tank_damage = 35.0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 material = SubResource("ShaderMaterial_ity1r")
+scale = Vector2(-1, 1)
+sprite_frames = SubResource("SpriteFrames_mjwhi")
+autoplay = "default"
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CircleShape2D_jhl4n")
+position = Vector2(16, 78)
+shape = SubResource("RectangleShape2D_bct18")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(362, -161)
+shape = SubResource("RectangleShape2D_f7clv")
+debug_color = Color(0.701961, 0.054902, 0, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="3"]
+position = Vector2(-472, 104)
+shape = SubResource("RectangleShape2D_svghw")
+debug_color = Color(0.701961, 0.054902, 0, 0.419608)
 
 [node name="CollisionShape2D" parent="Hitbox" index="0"]
-shape = SubResource("CircleShape2D_jvw14")
+position = Vector2(16, 77)
+shape = SubResource("RectangleShape2D_aki6y")
 
-[node name="PinJoint2D2" parent="." index="3"]
-position = Vector2(63, 63)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" index="1"]
+position = Vector2(362, -161)
+shape = SubResource("RectangleShape2D_f7clv")
+debug_color = Color(0.701961, 0.054902, 0, 0.419608)
 
-[node name="PinJoint2D3" parent="." index="4"]
-position = Vector2(-63, 63)
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" index="2"]
+position = Vector2(-472, 104)
+shape = SubResource("RectangleShape2D_svghw")
+debug_color = Color(0.701961, 0.054902, 0, 0.419608)
+
+[node name="PinJoint2D2" parent="." index="5"]
+position = Vector2(461, 222)
+scale = Vector2(15, 15)
+
+[node name="PinJoint2D3" parent="." index="6"]
+position = Vector2(-429, 221)
+scale = Vector2(15, 15)
+
+[node name="HealthBar" parent="." index="7"]
+offset_left = -246.0
+offset_top = -329.0
+offset_right = 254.0
+offset_bottom = -314.0
