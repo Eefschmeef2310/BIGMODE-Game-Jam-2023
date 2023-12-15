@@ -20,6 +20,21 @@
 [ext_resource type="Texture2D" uid="uid://bomrhfgvlvle7" path="res://Sprites/explosion_atlas.png" id="13_w2g2w"]
 [ext_resource type="Script" path="res://Upgrades/upgrade_updater_tank.gd" id="13_wspcb"]
 
+[sub_resource type="Animation" id="Animation_cuvr1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/RotarySystem:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.174533]
+}
+
 [sub_resource type="Animation" id="Animation_6qqxh"]
 resource_name = "rotate"
 length = 4.0
@@ -37,21 +52,6 @@ tracks/0/keys = {
 "values": [0.174533, -3.31613, 0.174533]
 }
 
-[sub_resource type="Animation" id="Animation_cuvr1"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprites/RotarySystem:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.174533]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ye511"]
 _data = {
 "RESET": SubResource("Animation_cuvr1"),
@@ -60,6 +60,21 @@ _data = {
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vrpjd"]
 radius = 94.1728
+
+[sub_resource type="Animation" id="Animation_y0tyy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BladeSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_rr56g"]
 resource_name = "spin"
@@ -76,21 +91,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_y0tyy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("BladeSprite:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b8xe3"]
@@ -237,8 +237,8 @@ texture = ExtResource("5_3jgrq")
 
 [node name="Blade" type="Area2D" parent="Sprites/RotarySystem"]
 position = Vector2(521.292, 0.109793)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 0
+collision_mask = 2
 
 [node name="BladeSprite" type="Sprite2D" parent="Sprites/RotarySystem/Blade"]
 texture = ExtResource("4_dxbd7")
@@ -400,7 +400,8 @@ metadata/_edit_lock_ = true
 script = ExtResource("13_wspcb")
 health_values = Array[int]([100, 150, 200, 200])
 extra_bullets_values = Array[int]([0, 1, 2, 3])
-extra_bullet_angle_offset_values = Array[float]([0.0, 0.1, 0.05, 0.02])
+extra_bullet_angle_offset_values = Array[float]([0.0, 0.15, 0.1, 0.05])
+bullet_damage_values = Array[float]([10.0, 8.0, 5.0, 5.0])
 fire_rate_values = Array[float]([0.5, 0.3, 0.15, 0.05])
 has_rockets_values = Array[bool]([false, true, true, true])
 rocket_level_values = Array[int]([1, 1, 2, 3])

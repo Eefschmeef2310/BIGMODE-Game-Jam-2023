@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://biq18qtxqbqev"]
+[gd_scene load_steps=10 format=3 uid="uid://biq18qtxqbqev"]
 
 [ext_resource type="PackedScene" uid="uid://buxhim8gwxlt6" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.tscn" id="1_p31vu"]
 [ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/DropTimer.gd" id="2_t13ko"]
 [ext_resource type="Shader" path="res://Shaders/Corrosion.gdshader" id="2_ty7ei"]
+[ext_resource type="Texture2D" uid="uid://dqgbksjoliri2" path="res://Sprites/b9e8ae5957995b3ecf206d863ec4c7ed.jpg" id="3_8ayhc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2bgf3"]
 
@@ -16,6 +17,15 @@ shader_parameter/fade_scale = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_vp3xn")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cpw8v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8ayhc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2cvw0"]
 radius = 27.0185
@@ -25,6 +35,7 @@ collision_mask = 0
 
 [node name="Frames" parent="." index="0"]
 material = SubResource("ShaderMaterial_fxxkw")
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_cpw8v")
 
 [node name="CollisionShape2D" parent="." index="1"]

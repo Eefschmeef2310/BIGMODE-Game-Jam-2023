@@ -7,9 +7,12 @@ var activated = false #prevent a connector from spawning more than 1 module if i
 var platform_scene: PackedScene = preload("res://Objects/Platforms/Floating.tscn")
 
 var number_of_enemies_to_spawn = 0
+var module_width: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	module_width = connector.position.x
+	
 	if(manager.fullGenerate):
 		GenNextModule()
 	
@@ -42,7 +45,7 @@ func GenNextModule():
 
 func spawnEnemies():
 	var progress = manager.get_child_count() - 1
-	number_of_enemies_to_spawn = (2 * progress) - 1
+	number_of_enemies_to_spawn = progress
 	_on_spawn_enemy_timer_timeout()
 
 func _on_spawn_enemy_timer_timeout():

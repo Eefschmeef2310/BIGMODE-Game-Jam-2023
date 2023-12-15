@@ -19,6 +19,7 @@ var health := max_health:
 const bulletPath: PackedScene = preload("res://Objects/Projectiles/bullet.tscn")
 var extra_bullets: int = 0
 var extra_bullet_angle_offset = 0
+var bullet_damage = 10
 var fire_rate: float = 0.5
 var time_until_next_shot: float = 0.0
 
@@ -114,10 +115,8 @@ func createPlayer():
 #region shooting
 func shoot():
 	var middle_angle = $Sprites/Turret.global_rotation
-	if extra_bullets % 2 == 1:
-		spawn_bullet(middle_angle)
+	spawn_bullet(middle_angle)
 	for i in extra_bullets:
-		print(i)
 		spawn_bullet(middle_angle + (extra_bullet_angle_offset * (i + 1)))
 		spawn_bullet(middle_angle - (extra_bullet_angle_offset * (i + 1))) 
 
@@ -128,6 +127,7 @@ func spawn_bullet(angle: float):
 	bullet.position = $Sprites/Turret/MuzzleMarker.global_position
 	bullet.direction = direction
 	bullet.rotation_degrees = rad_to_deg(angle)
+	bullet.damage = bullet_damage
 	
 	addBullet.emit(bullet)
 

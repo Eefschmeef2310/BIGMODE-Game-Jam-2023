@@ -182,7 +182,7 @@ endNode = NodePath("../End")
 enemyPrefabs = Array[PackedScene]([ExtResource("18_yk2vr"), ExtResource("19_16jfj"), ExtResource("16_g12d7"), ExtResource("17_kpgvk")])
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]
-position = Vector2(-354, 196)
+position = Vector2(0, 196)
 
 [node name="Player_and_Tank" parent="." instance=ExtResource("3_ha84d")]
 position = Vector2(2176, 128)

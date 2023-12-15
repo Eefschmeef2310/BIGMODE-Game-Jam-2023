@@ -10,11 +10,14 @@ var enemyCount : int
 signal moduleGenerated
 @export var createEnemies: bool = true
 @export var enemyPrefabs : Array[PackedScene]
+@onready var end_node: Node = $"../End"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	count = modules.size()
 	enemyCount = enemyPrefabs.size()
+	end_node.position.x = ($Module.module_width) * (maxModules - 1)
+	print(end_node.position.x)
 
 func GenerateNextModule(spawnPos:Vector2):
 	if currrentModules <= maxModules:

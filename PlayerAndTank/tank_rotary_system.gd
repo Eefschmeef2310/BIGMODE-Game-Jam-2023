@@ -7,7 +7,7 @@ func _ready():
 	$AnimationPlayer.play("rotate")
 	$Blade/AnimationPlayer.play("spin")
 
-func _process(delta):
+func _process(_delta):
 	if GameManager.tank_mode == false and !active_in_player_mode:
 		$AnimationPlayer.pause()
 		$Blade/AnimationPlayer.pause()
@@ -16,11 +16,9 @@ func _process(delta):
 		$Blade/AnimationPlayer.play()
 
 func _on_blade_body_entered(body):
-	print("touched")
 	if visible and $Blade/AnimationPlayer.is_playing() and "hit" in body:
 		body.hit(damage)
 
 func _on_blade_area_entered(area):
-	print("touched")
 	if visible and $Blade/AnimationPlayer.is_playing() and "hit" in area:
 		area.hit(damage)
