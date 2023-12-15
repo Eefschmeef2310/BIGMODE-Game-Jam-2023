@@ -8,7 +8,8 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vp3xn"]
 noise = SubResource("FastNoiseLite_2bgf3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdeuc"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sig1u"]
+resource_local_to_scene = true
 shader = ExtResource("2_vuytx")
 shader_parameter/fade_scale = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_vp3xn")
@@ -105,11 +106,12 @@ collision_layer = 2
 script = ExtResource("1_rbcr8")
 
 [node name="Frames" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_pdeuc")
+material = SubResource("ShaderMaterial_sig1u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
 offset_left = -28.0
 offset_top = -28.0
 offset_right = 28.0

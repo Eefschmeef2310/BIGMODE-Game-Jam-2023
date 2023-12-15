@@ -28,9 +28,10 @@ shader_parameter/intensity = 1.0
 
 [node name="Upgrade UI" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 580.0
-offset_bottom = 550.0
+anchor_right = 1.208
+anchor_bottom = 2.037
+offset_right = 0.159973
+offset_bottom = 0.00994873
 script = ExtResource("2_xi6ok")
 upgrade_scene = ExtResource("3_yci1b")
 
@@ -132,6 +133,7 @@ scale = Vector2(4.53125, 4.2959)
 texture = ExtResource("6_big3t")
 
 [node name="LineShader" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_i3gv1")
 position = Vector2(290, 274.553)
 scale = Vector2(4.53125, 4.30385)

@@ -13,6 +13,8 @@ var camera: Camera2D
 
 var gears: int = 50:
 	set(value):
+		if gears + value < gears: #gears have been spent
+			ScoreManager.gearsSpent += value
 		gears = value
 		UpgradeManager.upgrade_purchased.emit(null)
 
