@@ -53,6 +53,13 @@ func _input(_event):
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+func start_game():
+	reset_gears()
+	UpgradeManager.reset_upgrades()
+	get_tree().change_scene_to_file("res://Levels/world.tscn")
+	ScoreManager.countTime = true
+	ScoreManager.elapsedTime = 0.0
+
 func reset_gears():
 	gears = 0
 	ScoreManager.gearsSpent = 0

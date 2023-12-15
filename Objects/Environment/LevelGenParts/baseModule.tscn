@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://crb14fbsx1j3x"]
+[gd_scene load_steps=15 format=3 uid="uid://crb14fbsx1j3x"]
 
 [ext_resource type="Script" path="res://Scripts/Generator/Module.gd" id="1_pdoht"]
+[ext_resource type="PackedScene" uid="uid://82dky6mc6iq2" path="res://Objects/Platforms/Floating.tscn" id="2_5l0xc"]
+[ext_resource type="Texture2D" uid="uid://int5cddpdamq" path="res://Sprites/cliff_edge.png" id="2_54agy"]
 [ext_resource type="Shader" path="res://Shaders/SubtleWind.gdshader" id="2_ocqxp"]
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="2_pt7k0"]
-[ext_resource type="Texture2D" uid="uid://c08dykmyoledn" path="res://Sprites/dec6 assets/bush_placeholder.png" id="3_2dpv5"]
+[ext_resource type="Texture2D" uid="uid://4q17av16ghlr" path="res://Sprites/png_bush_1_by_moonglowlilly_d5tk4qh-pre.png" id="3_3cpvb"]
 [ext_resource type="Shader" path="res://Shaders/ReflectiveWater.gdshader" id="3_5p6y3"]
+[ext_resource type="Texture2D" uid="uid://cu871vwlfwgj2" path="res://Sprites/cliff_middle.png" id="3_mjt4q"]
 [ext_resource type="Texture2D" uid="uid://bvfuot44bh2xt" path="res://Sprites/1dne7ik888g6snqjerjcspngp5.png" id="4_klab8"]
 [ext_resource type="Script" path="res://Objects/Environment/LevelGenParts/WaterShader.gd" id="5_i4dsy"]
 
@@ -29,7 +32,7 @@ noise = SubResource("FastNoiseLite_x0lx1")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1u84"]
 shader = ExtResource("3_5p6y3")
 shader_parameter/scale = Vector2(2.76865, 1.27318)
-shader_parameter/y_zoom = 0.31498
+shader_parameter/y_zoom = 0.210224
 shader_parameter/water_color = Color(0, 0.278431, 0.478431, 0.8)
 shader_parameter/distortion_scale = Vector2(0.05, 0.4)
 shader_parameter/intensity = 0.01
@@ -42,6 +45,332 @@ shader_parameter/noise = SubResource("NoiseTexture2D_80f5k")
 [node name="Module" type="Node2D"]
 script = ExtResource("1_pdoht")
 
+[node name="Cliff" type="Node2D" parent="."]
+z_index = -2
+
+[node name="PlatformPresets" type="Node2D" parent="Cliff"]
+
+[node name="Preset1" type="Node2D" parent="Cliff/PlatformPresets"]
+
+[node name="Floating" parent="Cliff/PlatformPresets/Preset1" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1028, -727)
+
+[node name="Floating2" parent="Cliff/PlatformPresets/Preset1" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1487, -874)
+
+[node name="Floating3" parent="Cliff/PlatformPresets/Preset1" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1810, -615)
+
+[node name="Floating4" parent="Cliff/PlatformPresets/Preset1" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2152, -755)
+
+[node name="Floating5" parent="Cliff/PlatformPresets/Preset1" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1939, -989)
+
+[node name="Floating6" parent="Cliff/PlatformPresets/Preset1" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2558, -915)
+
+[node name="Floating7" parent="Cliff/PlatformPresets/Preset1" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2728, -617)
+
+[node name="Floating8" parent="Cliff/PlatformPresets/Preset1" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(3174, -711)
+
+[node name="Preset2" type="Node2D" parent="Cliff/PlatformPresets"]
+
+[node name="Floating" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2144, -533)
+
+[node name="Floating2" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1809, -641)
+
+[node name="Floating3" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1481, -767)
+
+[node name="Floating4" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1796, -901)
+
+[node name="Floating5" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2146, -901)
+
+[node name="Floating6" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2489, -904)
+
+[node name="Floating7" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2479, -644)
+
+[node name="Floating8" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2797, -765)
+
+[node name="Floating9" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(3345, -537)
+
+[node name="Floating10" parent="Cliff/PlatformPresets/Preset2" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(765, -501)
+
+[node name="Preset3" type="Node2D" parent="Cliff/PlatformPresets"]
+
+[node name="Floating" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(916, -559)
+
+[node name="Floating2" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1260, -659)
+
+[node name="Floating3" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1544, -771)
+
+[node name="Floating4" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1804, -887)
+
+[node name="Floating5" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2064, -999)
+
+[node name="Floating6" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2316, -759)
+
+[node name="Floating7" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2632, -639)
+
+[node name="Floating8" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2436, -899)
+
+[node name="Floating9" parent="Cliff/PlatformPresets/Preset3" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2944, -503)
+
+[node name="Preset4" type="Node2D" parent="Cliff/PlatformPresets"]
+
+[node name="Floating" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1660, -596)
+
+[node name="Floating2" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1462, -754)
+
+[node name="Floating3" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1456, -907)
+
+[node name="Floating4" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2047, -596)
+
+[node name="Floating5" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2055, -754)
+
+[node name="Floating6" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2047, -907)
+
+[node name="Floating7" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2417, -593)
+
+[node name="Floating8" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2635, -747)
+
+[node name="Floating9" parent="Cliff/PlatformPresets/Preset4" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2633, -909)
+
+[node name="Preset5" type="Node2D" parent="Cliff/PlatformPresets"]
+
+[node name="Floating" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2101, -835)
+
+[node name="Floating2" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1849, -715)
+
+[node name="Floating3" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1618, -565)
+
+[node name="Floating4" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2337, -709)
+
+[node name="Floating5" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2529, -556)
+
+[node name="Floating6" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2322, -976)
+
+[node name="Floating7" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2631, -976)
+
+[node name="Floating8" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1855, -976)
+
+[node name="Floating9" parent="Cliff/PlatformPresets/Preset5" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1576, -982)
+
+[node name="Preset6" type="Node2D" parent="Cliff/PlatformPresets"]
+
+[node name="Floating" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2113, -568)
+
+[node name="Floating2" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2113, -727)
+
+[node name="Floating3" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2113, -892)
+
+[node name="Floating4" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1849, -997)
+
+[node name="Floating5" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1525, -1000)
+
+[node name="Floating6" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2397, -994)
+
+[node name="Floating7" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2745, -994)
+
+[node name="Floating8" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1250, -565)
+
+[node name="Floating9" parent="Cliff/PlatformPresets/Preset6" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(3120, -562)
+
+[node name="Preset7" type="Node2D" parent="Cliff/PlatformPresets"]
+
+[node name="Floating" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1666, -1003)
+
+[node name="Floating2" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1660, -847)
+
+[node name="Floating3" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1660, -652)
+
+[node name="Floating4" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1921, -532)
+
+[node name="Floating5" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1981, -925)
+
+[node name="Floating6" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2257, -721)
+
+[node name="Floating7" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2539, -820)
+
+[node name="Floating8" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2767, -964)
+
+[node name="Floating9" parent="Cliff/PlatformPresets/Preset7" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1302, -760)
+
+[node name="Preset8" type="Node2D" parent="Cliff/PlatformPresets"]
+
+[node name="Floating" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1669, -1010)
+
+[node name="Floating2" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1739, -851)
+
+[node name="Floating3" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1606, -699)
+
+[node name="Floating4" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1777, -534)
+
+[node name="Floating5" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2018, -658)
+
+[node name="Floating6" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2269, -779)
+
+[node name="Floating7" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2475, -658)
+
+[node name="Floating8" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2723, -791)
+
+[node name="Floating9" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(2491, -931)
+
+[node name="Floating10" parent="Cliff/PlatformPresets/Preset8" instance=ExtResource("2_5l0xc")]
+z_index = 2
+position = Vector2(1285, -807)
+
+[node name="CliffEdge" type="Sprite2D" parent="Cliff"]
+position = Vector2(702, -551)
+texture = ExtResource("2_54agy")
+flip_h = true
+
+[node name="CliffMiddle" type="Sprite2D" parent="Cliff"]
+position = Vector2(2107, -614)
+texture = ExtResource("3_mjt4q")
+
+[node name="CliffEdge2" type="Sprite2D" parent="Cliff"]
+position = Vector2(3512, -550)
+texture = ExtResource("2_54agy")
+
 [node name="connector" type="Node2D" parent="."]
 position = Vector2(3920, 0)
 
@@ -52,7 +381,7 @@ z_index = -1
 material = SubResource("ShaderMaterial_0qttc")
 position = Vector2(2669, -49)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_2dpv5")
+texture = ExtResource("3_3cpvb")
 
 [node name="Floor" parent="." instance=ExtResource("2_pt7k0")]
 position = Vector2(1960, 768)

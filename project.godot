@@ -21,6 +21,7 @@ GameManager="*res://Managers/Manager.gd"
 UpgradeManager="*res://Managers/upgrade_manager.tscn"
 ScoreManager="*res://Managers/ScoreManager.gd"
 AirtableManager="*res://Scripts/OnlineServices/Airtable.gd"
+MusicManager="*res://Managers/music_manager.tscn"
 
 [display]
 

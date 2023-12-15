@@ -8,7 +8,7 @@ script = ExtResource("2_aqrcm")
 name = "Armor"
 category = "Tank"
 descriptions = PackedStringArray("Greater durability.", "Even greater durability.", "Indestructable from the front.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_g23me"]
@@ -16,7 +16,7 @@ script = ExtResource("2_aqrcm")
 name = "Extra Artillery"
 category = "Tank"
 descriptions = PackedStringArray("Shoot 3 bullets at once.", "Shoot 5 bullets at once.", "Shoot 7 bullets at once.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_g1j5o"]
@@ -24,7 +24,7 @@ script = ExtResource("2_aqrcm")
 name = "Frequent Artillery"
 category = "Tank"
 descriptions = PackedStringArray("Shoot faster.", "Shoot even faster.", "Aerospray fire rate.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_mxlkd"]
@@ -32,7 +32,7 @@ script = ExtResource("2_aqrcm")
 name = "Explosive Artillery"
 category = "Tank"
 descriptions = PackedStringArray("Right click for explosive rockets.", "Bigger explosions.", "Explosions explode upon explosion.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_3h1mr"]
@@ -40,7 +40,7 @@ script = ExtResource("2_aqrcm")
 name = "Ramming Artillery"
 category = "Tank"
 descriptions = PackedStringArray("Add spikes to the front of the tank.", "Add a rotary blade that orbits the tank.", "Rotary blades keep spinning in Man Mode.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_ggh3g"]
@@ -48,7 +48,7 @@ script = ExtResource("2_aqrcm")
 name = "Frictionless Soles"
 category = "Man"
 descriptions = PackedStringArray("Move faster.", "Move even faster.", "Move blazing fast.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_olqn2"]
@@ -56,7 +56,7 @@ script = ExtResource("2_aqrcm")
 name = "Air Compressors"
 category = "Man"
 descriptions = PackedStringArray("Get 1 midair jump.", "Get 2 midair jumps.", "Get 3 midair jumps.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_78wkc"]
@@ -64,7 +64,7 @@ script = ExtResource("2_aqrcm")
 name = "Jetpack"
 category = "Man"
 descriptions = PackedStringArray("Hold jump to hover.", "Hover for longer.", "Hover for even longer.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_pbui3"]
@@ -72,7 +72,7 @@ script = ExtResource("2_aqrcm")
 name = "Scrap Magnet"
 category = "Man"
 descriptions = PackedStringArray("Attract nearby scrap.", "Bigger magnet range.", "Even bigger magnet range.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [sub_resource type="Resource" id="Resource_fp6bg"]
@@ -80,7 +80,7 @@ script = ExtResource("2_aqrcm")
 name = "Defensive Shockwave"
 category = "Man"
 descriptions = PackedStringArray("Click to knock enemies back.", "Further knockback.", "Even further knockback.")
-costs = Array[int]([10, 15, 20])
+costs = Array[int]([15, 20, 30])
 level = 0
 
 [node name="UpgradeManager" type="Node2D"]

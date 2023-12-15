@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbhm00ysa50fm"]
+
+[ext_resource type="Script" path="res://Managers/music_manager.gd" id="1_t8fa5"]
+[ext_resource type="AudioStream" uid="uid://bu3xnjos8kbs0" path="res://Audio/Music/music_menu.ogg" id="2_5gxej"]
+[ext_resource type="AudioStream" uid="uid://c2sng1onyqkbx" path="res://Audio/Music/music_tank.ogg" id="2_s372o"]
+[ext_resource type="AudioStream" uid="uid://bic268kexxlsa" path="res://Audio/Music/music_man.ogg" id="3_144hg"]
+[ext_resource type="AudioStream" uid="uid://dl2mi45c61fnh" path="res://Audio/Music/music_upgrade.ogg" id="4_sw48n"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_t8fa5")
+
+[node name="MainStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5gxej")
+
+[node name="TankStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_s372o")
+bus = &"Music"
+
+[node name="ManStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_144hg")
+volume_db = -80.0
+bus = &"Music"
+
+[node name="UpgradeStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sw48n")
+volume_db = -80.0
+bus = &"Music"

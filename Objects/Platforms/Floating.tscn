@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://82dky6mc6iq2"]
 
-[ext_resource type="Texture2D" uid="uid://blagxwi1ira48" path="res://Sprites/23461859b0e66a4.png" id="1_di5hm"]
 [ext_resource type="Script" path="res://Objects/Platforms/FloatingPlatform.gd" id="1_qshq8"]
+[ext_resource type="Texture2D" uid="uid://d1hdksn58cb3t" path="res://Sprites/cliff_platform.png" id="2_h3qdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3qt7"]
-size = Vector2(54, 25)
+size = Vector2(21.8, 3.2)
 
 [node name="Floating" type="StaticBody2D"]
 editor_description = "Just needs to be thinner"
@@ -15,9 +15,10 @@ script = ExtResource("1_qshq8")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 0.5)
 scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_di5hm")
+texture = ExtResource("2_h3qdb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_n3qt7")
 one_way_collision = true
