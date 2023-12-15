@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Generator/Module.gd" id="1_pdoht"]
 [ext_resource type="Shader" path="res://Shaders/SubtleWind.gdshader" id="2_ocqxp"]
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="2_pt7k0"]
-[ext_resource type="Texture2D" uid="uid://4q17av16ghlr" path="res://Sprites/png_bush_1_by_moonglowlilly_d5tk4qh-pre.png" id="3_3cpvb"]
+[ext_resource type="Texture2D" uid="uid://c08dykmyoledn" path="res://Sprites/dec6 assets/bush_placeholder.png" id="3_2dpv5"]
 [ext_resource type="Shader" path="res://Shaders/ReflectiveWater.gdshader" id="3_5p6y3"]
 [ext_resource type="Texture2D" uid="uid://bvfuot44bh2xt" path="res://Sprites/1dne7ik888g6snqjerjcspngp5.png" id="4_klab8"]
 [ext_resource type="Script" path="res://Objects/Environment/LevelGenParts/WaterShader.gd" id="5_i4dsy"]
@@ -29,7 +29,7 @@ noise = SubResource("FastNoiseLite_x0lx1")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_n1u84"]
 shader = ExtResource("3_5p6y3")
 shader_parameter/scale = Vector2(2.76865, 1.27318)
-shader_parameter/y_zoom = 0.280616
+shader_parameter/y_zoom = 0.0294961
 shader_parameter/water_color = Color(0, 0.278431, 0.478431, 0.8)
 shader_parameter/distortion_scale = Vector2(0.05, 0.4)
 shader_parameter/intensity = 0.01
@@ -52,7 +52,7 @@ z_index = -1
 material = SubResource("ShaderMaterial_0qttc")
 position = Vector2(2669, -49)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_3cpvb")
+texture = ExtResource("3_2dpv5")
 
 [node name="Floor" parent="." instance=ExtResource("2_pt7k0")]
 position = Vector2(1960, 768)
