@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=29 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="PackedScene" uid="uid://dj6curm4o8a0w" path="res://Objects/Environment/background.tscn" id="1_cxl0r"]
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
@@ -25,9 +25,10 @@
 [ext_resource type="PackedScene" uid="uid://biq18qtxqbqev" path="res://Objects/Enemies/AirEnemies/LakituEnemy.tscn" id="18_yk2vr"]
 [ext_resource type="PackedScene" uid="uid://cffpvw5cm4kv2" path="res://Objects/Enemies/AirEnemies/SwoopingEnemy.tscn" id="19_16jfj"]
 [ext_resource type="PackedScene" uid="uid://ddppnopenktf7" path="res://Objects/Pickups/Gear.tscn" id="24_34yo8"]
+[ext_resource type="Texture2D" uid="uid://cdm45u6kt3y08" path="res://Sprites/cliff.png" id="26_yvuan"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
-size = Vector2(46, 962)
+size = Vector2(45, 2689)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kwtow"]
 font = ExtResource("6_d8aol")
@@ -35,6 +36,7 @@ font = ExtResource("6_d8aol")
 [node name="World" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource("1_cxl0r")]
+z_index = -3
 
 [node name="Floor Pieces" type="Node2D" parent="."]
 process_mode = 4
@@ -95,7 +97,7 @@ position = Vector2(10569, 0)
 position = Vector2(1736, 152)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Wall 1"]
-position = Vector2(33, -375)
+position = Vector2(33.5, -1238.5)
 shape = SubResource("RectangleShape2D_af7rv")
 
 [node name="End" type="Marker2D" parent="."]
@@ -218,6 +220,14 @@ value = 5
 [node name="Gear3" parent="." instance=ExtResource("24_34yo8")]
 position = Vector2(3041, 98)
 value = 10
+
+[node name="Swooping" parent="." instance=ExtResource("19_16jfj")]
+position = Vector2(3192, -520)
+
+[node name="Cliff" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(1873, -1082)
+texture = ExtResource("26_yvuan")
 
 [connection signal="timeout" from="Timers/enemy_spawn_timer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="Timers/big_enemy_spawner" to="Enemies" method="_on_big_enemy_spawner_timeout"]

@@ -1,8 +1,18 @@
-[gd_scene load_steps=17 format=3 uid="uid://cffpvw5cm4kv2"]
+[gd_scene load_steps=25 format=3 uid="uid://cffpvw5cm4kv2"]
 
 [ext_resource type="PackedScene" uid="uid://buxhim8gwxlt6" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.tscn" id="1_bg1r0"]
+[ext_resource type="Texture2D" uid="uid://cjw0ffrv8jbn2" path="res://Sprites/spritesheets/swooping_animatoin.png" id="2_3hm00"]
 [ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/SwoopTimer.gd" id="3_ajncj"]
 [ext_resource type="Texture2D" uid="uid://c0chgdk0tamor" path="res://Sprites/spritesheets/flying_sketch.png" id="4_g6kbv"]
+[ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/SwoopingAnimation.gd" id="4_rdypr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jve7a"]
+atlas = ExtResource("2_3hm00")
+region = Rect2(1539, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44q0h"]
+atlas = ExtResource("2_3hm00")
+region = Rect2(2052, 0, 513, 437)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_auhng"]
 atlas = ExtResource("4_g6kbv")
@@ -48,8 +58,38 @@ region = Rect2(4617, 0, 513, 437)
 atlas = ExtResource("4_g6kbv")
 region = Rect2(5130, 0, 513, 437)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuu74"]
+atlas = ExtResource("2_3hm00")
+region = Rect2(0, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n74bh"]
+atlas = ExtResource("2_3hm00")
+region = Rect2(513, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwhgt"]
+atlas = ExtResource("2_3hm00")
+region = Rect2(1026, 0, 513, 437)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yve0d"]
+atlas = ExtResource("2_3hm00")
+region = Rect2(2565, 0, 513, 437)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kclr5"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jve7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jve7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44q0h")
+}],
+"loop": false,
+"name": &"climbing",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_auhng")
@@ -85,8 +125,42 @@ animations = [{
 "texture": SubResource("AtlasTexture_03jd3")
 }],
 "loop": true,
-"name": &"default",
+"name": &"flying",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuu74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuu74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n74bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwhgt")
+}],
+"loop": false,
+"name": &"swoop down",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yve0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yve0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yve0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yve0d")
+}],
+"loop": true,
+"name": &"transition",
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ixjm"]
@@ -98,7 +172,9 @@ scale = Vector2(-1, 1)
 
 [node name="Frames" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_kclr5")
-autoplay = "default"
+animation = &"transition"
+autoplay = "flying"
+script = ExtResource("4_rdypr")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("CircleShape2D_8ixjm")
@@ -110,6 +186,7 @@ autostart = true
 script = ExtResource("3_ajncj")
 
 [node name="HealthBar" parent="." index="3"]
+visible = false
 offset_left = 134.0
 offset_top = -178.0
 offset_right = 190.0
