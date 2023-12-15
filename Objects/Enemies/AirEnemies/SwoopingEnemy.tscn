@@ -181,6 +181,7 @@ radius = 149.003
 [node name="Swooping" instance=ExtResource("1_bg1r0")]
 z_index = 1
 scale = Vector2(-1, 1)
+SPEED = 150.0
 
 [node name="Frames" parent="." index="0"]
 material = SubResource("ShaderMaterial_21kif")
