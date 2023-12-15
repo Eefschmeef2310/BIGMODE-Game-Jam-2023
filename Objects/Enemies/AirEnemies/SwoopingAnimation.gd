@@ -17,12 +17,8 @@ func _process(delta):
 	calculatedYVelocity = (lastPosition-enemy.position.y)/delta
 	#print("calculated y velocity is: (" + str(lastPosition) + "-" + str(enemy.position.y) + ")/" + str(delta) + " = " + str(calculatedYVelocity))
 	lastPosition = enemy.position.y
-	
-	if (calculatedYVelocity < -100) and (state == "idle"):
-		state = "swooping"
-		#print("swooping")
-		_animated_sprite.play("swoop down")
-	elif (calculatedYVelocity > 0) and (state == "swooping"):
+	#if (calculatedYVelocity < -100) and (state == "idle"):
+	if (calculatedYVelocity > 0) and (state == "swooping"):
 		state = "climbing"
 		#print("climbing")
 		_animated_sprite.play("climbing")
@@ -40,3 +36,10 @@ func _process(delta):
 	
 	#print(delta)
 	#print(calculatedYVelocity)
+
+
+func _on_swoop_timer_timeout():
+		state = "swooping"
+		#print("swooping")
+		_animated_sprite.play("swoop down")
+	 	# Replace with function body.
