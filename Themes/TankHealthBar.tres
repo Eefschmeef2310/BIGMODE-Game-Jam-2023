@@ -4,7 +4,7 @@
 bg_color = Color(0, 0, 0, 0.235294)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd7pi"]
-bg_color = Color(1, 0, 0, 1)
+bg_color = Color(0, 0.639216, 0.34902, 1)
 
 [resource]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_ygo1e")

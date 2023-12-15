@@ -5,6 +5,7 @@ var max_health := 100.0:
 	set(value):
 		if value > max_health:
 			health += value - max_health
+			print("+" + str(value - max_health))
 		max_health = value
 var health := 100.0:
 	#introduce a setter that automatically clamps the health
@@ -24,7 +25,6 @@ func _process(delta):
 #updates the health to the health bar
 func update_health():
 	healthbar.value = 100 * (health / max_health)
-	print(health / max_health)
 	#hides the healthbar if at 100%
 	healthbar.visible = health < max_health
 
