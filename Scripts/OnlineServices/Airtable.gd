@@ -30,6 +30,9 @@ func Upload(username, score, version):
 		print("data sent!")
 	pass
 
+func UploadRun(distance : float):
+	pass
+
 
 func _on_nyan_debug_cmd_upload(username, score, version):
 	Upload(username, score, version)
@@ -40,3 +43,14 @@ func _on_request_completed(_result, _response_code, _headers, body):
 	print(JSON.stringify(json))
 	response.emit(JSON.stringify(json))
 	#print(str(json[1]))
+
+
+
+
+## Final data to send
+# - Run id (autonumber)
+# - distance travelled
+# - gears
+# - gears spent
+# - upgrades purchased
+# - game time 

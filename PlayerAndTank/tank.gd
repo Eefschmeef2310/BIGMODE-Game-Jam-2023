@@ -60,8 +60,8 @@ func _physics_process(delta):
 		var direction = Input.get_axis("left", "right") as float
 		
 		#for wheel animations
-		rotate_speed = (SPEED / 200) * direction
-		
+		#rotate_speed = (SPEED / 200) * direction
+		rotate_speed = (linear_velocity.x / 125) #Upgraded so its based on the tanks velocity instead, looks smoother
 		
 		#Set dust particles
 		$PinJoint2D3/Dust.emitting = direction == -1;
