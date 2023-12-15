@@ -22,6 +22,7 @@
 size = Vector2(362, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oabf0"]
+size = Vector2(86.015, 282.486)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfaaj"]
 atlas = ExtResource("6_wxvft")
@@ -170,6 +171,8 @@ script = ExtResource("6_kss8q")
 texture = ExtResource("6_xt1k3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/FrontSpikes"]
+position = Vector2(8.21765, 10.3076)
+rotation = 0.314159
 shape = SubResource("RectangleShape2D_oabf0")
 
 [node name="TankTreads" type="AnimatedSprite2D" parent="Sprites"]

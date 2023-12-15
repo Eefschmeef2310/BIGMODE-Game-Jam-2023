@@ -43,5 +43,9 @@ func _input(_event):
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
+func reset_gears():
+	gears = 0
+	ScoreManager.gearsSpent = 0
+
 #var current_module_count: int = 0
 #var max_module_count: int = 5

@@ -34,3 +34,10 @@ func update_upgrades(_upgrade):
 	lvl = UpgradeManager.get_upgrade_level("Explosive Artillery")
 	tank.has_rockets = has_rockets_values[lvl]
 	tank.rocket_level = rocket_level_values[lvl]
+	
+	# Ramming Artillery
+	lvl = UpgradeManager.get_upgrade_level("Ramming Artillery")
+	if lvl > 0:
+		tank.get_node("Sprites/FrontSpikes").visible = true
+	else:
+		tank.get_node("Sprites/FrontSpikes").visible = false
