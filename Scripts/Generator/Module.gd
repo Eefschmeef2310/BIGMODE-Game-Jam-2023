@@ -6,6 +6,8 @@ var activated = false #prevent a connector from spawning more than 1 module if i
 
 var platform_scene: PackedScene = preload("res://Objects/Platforms/Floating.tscn")
 
+var number_of_enemies_to_spawn = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if(manager.fullGenerate):
@@ -13,7 +15,13 @@ func _ready():
 	
 	if($connector/VisibleOnScreenNotifier2D.is_on_screen()):
 		GenNextModule()
-	spawnEnemies()
+		
+	var mods = manager.get_children()
+	if !mods.is_empty():
+		var i = mods.find(self)
+		if i != -1 and i > 1:
+			spawnEnemies()
+		
 	spawnPlatform()
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
@@ -33,6 +41,12 @@ func GenNextModule():
 		activated = true
 
 func spawnEnemies():
-	
-	for n in randi_range(6, 10): 
-		manager.SpawnRandomEnemy(connector.global_position)
+	var progress = manager.get_child_count() - 1
+	number_of_enemies_to_spawn = (2 * progress) - 1
+	_on_spawn_enemy_timer_timeout()
+
+func _on_spawn_enemy_timer_timeout():
+	manager.SpawnRandomEnemy(connector.global_position)
+	number_of_enemies_to_spawn -= 1
+	if number_of_enemies_to_spawn > 0:
+		$SpawnEnemyTimer.start()

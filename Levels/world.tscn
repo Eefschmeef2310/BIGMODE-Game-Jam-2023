@@ -177,10 +177,8 @@ metadata/_edit_lock_ = true
 [node name="ModuleManager" type="Node" parent="." node_paths=PackedStringArray("endNode")]
 script = ExtResource("8_0xg68")
 modules = Array[PackedScene]([ExtResource("8_xfebb")])
-fullGenerate = true
 maxModules = 10
 endNode = NodePath("../End")
-createEnemies = false
 enemyPrefabs = Array[PackedScene]([ExtResource("18_yk2vr"), ExtResource("19_16jfj"), ExtResource("16_g12d7"), ExtResource("17_kpgvk")])
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]

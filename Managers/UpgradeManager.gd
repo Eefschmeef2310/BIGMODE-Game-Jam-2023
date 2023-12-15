@@ -44,3 +44,8 @@ func get_upgrade(upgrade_name: String):
 		if upgrade.name == upgrade_name:
 			return upgrade
 	return null
+
+func reset_upgrades():
+	for upgrade in upgrades:
+		upgrade.level = 0
+	upgrade_purchased.emit("")
