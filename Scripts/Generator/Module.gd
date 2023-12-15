@@ -18,7 +18,12 @@ func _ready():
 	
 	if($connector/VisibleOnScreenNotifier2D.is_on_screen()):
 		GenNextModule()
-		
+	
+	#Water and bushes
+	var randomX = randf_range(global_position.x + $Floor/CollisionShape2D.shape.get_rect().size.x/2, global_position.x + $Floor/CollisionShape2D.shape.get_rect().size.x)
+	$WaterShader.position.x = randomX
+	
+	# Spawn enemies and cliff
 	var mods = manager.get_children()
 	if !mods.is_empty():
 		var i = mods.find(self)

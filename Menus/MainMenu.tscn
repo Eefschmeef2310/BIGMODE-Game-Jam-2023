@@ -8,7 +8,7 @@
 [ext_resource type="Shader" path="res://Shaders/Hologram.gdshader" id="4_x7m7q"]
 [ext_resource type="Script" path="res://Menus/PlayButton.gd" id="5_64wgw"]
 [ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="5_cjvxw"]
-[ext_resource type="Theme" uid="uid://ces021b5bqip4" path="res://UITheme.tres" id="5_pybf0"]
+[ext_resource type="Theme" uid="uid://ces021b5bqip4" path="res://Themes/UITheme.tres" id="5_pybf0"]
 [ext_resource type="Shader" path="res://Shaders/GlitchShader.gdshader" id="9_0kh05"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ljw5q"]

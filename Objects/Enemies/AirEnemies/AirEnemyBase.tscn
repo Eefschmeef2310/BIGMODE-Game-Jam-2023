@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://buxhim8gwxlt6"]
+[gd_scene load_steps=10 format=3 uid="uid://buxhim8gwxlt6"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.gd" id="1_rbcr8"]
 [ext_resource type="Shader" path="res://Shaders/Corrosion.gdshader" id="2_vuytx"]
+[ext_resource type="Theme" uid="uid://nrue5qnc1ls1" path="res://Themes/EnemyHealthBar.tres" id="3_gv3su"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_2bgf3"]
 
@@ -111,11 +112,12 @@ material = SubResource("ShaderMaterial_sig1u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-visible = false
 offset_left = -28.0
 offset_top = -28.0
 offset_right = 28.0
 offset_bottom = -23.0
+theme = ExtResource("3_gv3su")
+value = 100.0
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 

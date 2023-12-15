@@ -20,6 +20,7 @@ var yPos: float
 func _ready():
 	$HealthBar.max_value = health
 	$HealthBar.value = health
+	$HealthBar.visible = false
 
 func _process(delta):
 	#for flipping sprite animations
@@ -44,6 +45,7 @@ func _process(delta):
 func hit(damage):
 	health -= damage
 	$HealthBar.value = health
+	$HealthBar.visible = true
 	
 	if(health <= 0) and dead == false:
 		dead = true

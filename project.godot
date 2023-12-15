@@ -13,6 +13,8 @@ config_version=5
 config/name="BIGMODE Game Jam 2023"
 run/main_scene="res://Levels/world.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Sprites/SteamTingrayGradient.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -21,6 +23,7 @@ GameManager="*res://Managers/Manager.gd"
 UpgradeManager="*res://Managers/upgrade_manager.tscn"
 ScoreManager="*res://Managers/ScoreManager.gd"
 MusicManager="*res://Managers/music_manager.tscn"
+AirtableManager="*res://Scripts/OnlineServices/Airtable.gd"
 
 [display]
 
@@ -52,7 +55,7 @@ folder_colors={
 
 [gui]
 
-theme/custom="res://UITheme.tres"
+theme/custom="res://Themes/UITheme.tres"
 
 [input]
 
@@ -113,3 +116,4 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+anti_aliasing/quality/msaa_2d=3

@@ -16,6 +16,7 @@ var dead: bool = false
 func _ready():
 	$HealthBar.max_value = health
 	$HealthBar.value = health
+	$HealthBar.visible = false
 	
 	for i in range(0, Wheels.size()): #get the actual rigidbody of each wheel
 		WheelsRB.push_back(Wheels[i].get_node("wheel"))
@@ -48,6 +49,7 @@ func _physics_process(delta):
 func hit(damage):
 	health -= damage
 	$HealthBar.value = health
+	$HealthBar.visible = true
 	
 	if(health <= 0) and dead == false:
 		#Create a gear
