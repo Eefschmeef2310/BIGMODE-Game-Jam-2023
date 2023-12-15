@@ -9,6 +9,7 @@ var tank_mode := true:
 		return tank_mode
 
 var tank_position: Vector2
+
 var camera: Camera2D
 
 var gears: int = 50:
@@ -26,15 +27,22 @@ var game_paused : bool = false:
 		
 var game_over : bool = false:
 	set(value):
+		AirtableManager.PullAndUpload()
+		#await get_tree().create_timer(1.0).timeout
+		#await AirtableManager.PullAndUpload()._on_request_completed
+		
 		game_over = value
 		get_tree().paused = game_over
 		game_over_signal.emit()
+		
 
 var end_reached : bool = false:
 	set(value):
 		end_reached = value
+		AirtableManager.PullAndUpload()
 		get_tree().paused = end_reached
 		end_reached_signal.emit()
+		
 
 func _input(_event):
 	if Input.is_action_just_pressed("pause") and !game_over:

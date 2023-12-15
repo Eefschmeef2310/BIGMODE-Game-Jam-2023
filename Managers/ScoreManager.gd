@@ -17,3 +17,4 @@ func calculateScore():
 	#Time, enemies killed, gears collected
 	countTime = false
 	score = int(totalTime - elapsedTime) + enemiesKilled + gearsSpent
+	return score
