@@ -11,6 +11,7 @@ script = ExtResource("1_t8fa5")
 
 [node name="MainStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_5gxej")
+bus = &"Music"
 
 [node name="TankStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_s372o")

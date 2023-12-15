@@ -1,4 +1,5 @@
 extends Node
 
 func _ready():
-	MusicManager.play_menu_music()
+	if !MusicManager.get_node("MainStream").playing:
+		MusicManager.play_menu_music()

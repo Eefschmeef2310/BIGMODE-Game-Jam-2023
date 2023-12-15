@@ -1,10 +1,135 @@
-[gd_scene load_steps=4 format=3 uid="uid://y102nq6jucyq"]
+[gd_scene load_steps=12 format=3 uid="uid://y102nq6jucyq"]
 
 [ext_resource type="Script" path="res://Objects/Projectiles/bullet.gd" id="1_02o6i"]
 [ext_resource type="Texture2D" uid="uid://c2tkxqii14slq" path="res://Sprites/bullet_sprite.png" id="2_bc220"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iv10m"]
 size = Vector2(4, 2)
+
+[sub_resource type="Gradient" id="Gradient_enxvi"]
+offsets = PackedFloat32Array(0, 0.379791, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7rcwf"]
+gradient = SubResource("Gradient_enxvi")
+
+[sub_resource type="Curve" id="Curve_r1yvy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.215873, 1), 0.0, 0.0, 0, 0, Vector2(0.336508, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_1hs4c"]
+curve = SubResource("Curve_r1yvy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r7puv"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 60.0
+initial_velocity_min = 200.0
+initial_velocity_max = 500.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_1hs4c")
+color_ramp = SubResource("GradientTexture1D_7rcwf")
+
+[sub_resource type="Animation" id="Animation_mvy71"]
+resource_name = "hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yfkpt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GPUParticles2D:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_706qu"]
+_data = {
+"RESET": SubResource("Animation_yfkpt"),
+"hit": SubResource("Animation_mvy71")
+}
 
 [node name="Bullet" type="Area2D"]
 collision_mask = 2
@@ -15,6 +140,19 @@ shape = SubResource("RectangleShape2D_iv10m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_bc220")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_r7puv")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_706qu")
+}
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

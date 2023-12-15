@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://05e866evj8us"]
+[gd_scene load_steps=16 format=3 uid="uid://05e866evj8us"]
 
 [ext_resource type="Script" path="res://Menus/ParallaxBackground.gd" id="1_wsvfp"]
 [ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="2_gskdv"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Menus/PlayButton.gd" id="5_64wgw"]
 [ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="5_cjvxw"]
 [ext_resource type="Theme" uid="uid://ces021b5bqip4" path="res://Themes/UITheme.tres" id="5_pybf0"]
+[ext_resource type="Script" path="res://Menus/CreditsButton.gd" id="8_1b4ua"]
 [ext_resource type="Shader" path="res://Shaders/GlitchShader.gdshader" id="9_0kh05"]
 [ext_resource type="Script" path="res://Menus/MenuMusic.gd" id="11_okekg"]
 
@@ -77,21 +78,29 @@ text = "tank blitz"
 label_settings = SubResource("LabelSettings_pcef6")
 horizontal_alignment = 1
 
-[node name="QuitButton" type="Button" parent="ParallaxBackground/ParallaxLayer3"]
-offset_left = 171.0
-offset_top = 181.0
-offset_right = 307.0
-offset_bottom = 212.0
-text = "Quit"
-script = ExtResource("4_u3smh")
-
 [node name="PlayButton" type="Button" parent="ParallaxBackground/ParallaxLayer3"]
 offset_left = 171.0
-offset_top = 142.0
-offset_right = 307.0
-offset_bottom = 173.0
+offset_top = 138.0
+offset_right = 291.0
+offset_bottom = 163.0
 text = "Play"
 script = ExtResource("5_64wgw")
+
+[node name="CreditsButton" type="Button" parent="ParallaxBackground/ParallaxLayer3"]
+offset_left = 172.0
+offset_top = 168.0
+offset_right = 292.0
+offset_bottom = 193.0
+text = "Credits"
+script = ExtResource("8_1b4ua")
+
+[node name="QuitButton" type="Button" parent="ParallaxBackground/ParallaxLayer3"]
+offset_left = 171.0
+offset_top = 198.0
+offset_right = 291.0
+offset_bottom = 223.0
+text = "Quit"
+script = ExtResource("4_u3smh")
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
 material = SubResource("ShaderMaterial_qsywh")
@@ -102,5 +111,6 @@ texture = ExtResource("3_clkky")
 [node name="MenuMusic" type="Node" parent="."]
 script = ExtResource("11_okekg")
 
-[connection signal="pressed" from="ParallaxBackground/ParallaxLayer3/QuitButton" to="ParallaxBackground/ParallaxLayer3/QuitButton" method="_on_pressed"]
 [connection signal="pressed" from="ParallaxBackground/ParallaxLayer3/PlayButton" to="ParallaxBackground/ParallaxLayer3/PlayButton" method="_on_pressed"]
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer3/CreditsButton" to="ParallaxBackground/ParallaxLayer3/CreditsButton" method="_on_pressed"]
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer3/QuitButton" to="ParallaxBackground/ParallaxLayer3/QuitButton" method="_on_pressed"]

@@ -148,14 +148,14 @@ func shoot_rocket():
 	addBullet.emit(rocket)
 #endregion
 
-#region healthAndDamage
-#updates the health to the health bar
-func update_health():
-	healthbar.value = health / max_health
-	#hides the healthbar if at 100%
-	healthbar.visible = health < max_health
-	if health <= 0:
-		GameManager.game_over = true
+##region healthAndDamage
+##updates the health to the health bar
+#func update_health():
+	#healthbar.value = health / max_health
+	##hides the healthbar if at 100%
+	#healthbar.visible = health < max_health
+	#if health <= 0:
+		#GameManager.game_over = true
 
 #there is a timer attached to the tank, everytime it times out, decrease/increase health
 func _on_regen_timer_timeout():

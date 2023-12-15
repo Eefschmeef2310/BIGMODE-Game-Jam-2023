@@ -20,6 +20,7 @@ corner_radius_bottom_left = 10
 font_size = 32
 
 [sub_resource type="SystemFont" id="SystemFont_d1aav"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_a0lg3"]
 line_spacing = 0.0

@@ -35,7 +35,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("PlayerAndTank"):
 		GameManager.gears += value
-		queue_free()
+		$AnimationPlayer.play("pickup")
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Magnet"):

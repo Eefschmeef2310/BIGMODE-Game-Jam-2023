@@ -19,9 +19,7 @@ func update_upgrades(_upgrade):
 	
 	# Armor
 	lvl = UpgradeManager.get_upgrade_level("Armor")
-	var previous_max_health = tank.max_health
 	tank.get_node("Hitbox").max_health = health_values[lvl]
-	tank.get_node("Hitbox").health += tank.max_health - previous_max_health
 	
 	# Extra Artillery
 	lvl = UpgradeManager.get_upgrade_level("Extra Artillery")

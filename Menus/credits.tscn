@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5myf0iqvqie6"]
+
+[ext_resource type="Script" path="res://Menus/ParallaxBackground.gd" id="1_0uw0t"]
+[ext_resource type="Texture2D" uid="uid://c3gle1p4e0xx2" path="res://Sprites/Background.png" id="2_6hlxb"]
+[ext_resource type="Texture2D" uid="uid://bd8e87qt6kxv" path="res://Sprites/SteamTingrayGradient.png" id="3_8cy5y"]
+[ext_resource type="Script" path="res://Menus/HomeButton.gd" id="3_dbuyx"]
+
+[node name="Tutorial" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -480.0
+offset_bottom = -270.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("1_0uw0t")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(239, 129)
+scale = Vector2(0.126531, 0.108462)
+texture = ExtResource("2_6hlxb")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="SteamTingrayGradient" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(139, 106)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_8cy5y")
+
+[node name="Label" type="Label" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = 257.0
+offset_top = 88.0
+offset_right = 439.0
+offset_bottom = 161.0
+text = "Ethan Lucas
+Xander Akkari
+Lauren Szmandiuk
+Tom Howarth"
+
+[node name="PlayButton" type="Button" parent="ParallaxBackground/ParallaxLayer2"]
+offset_left = 171.0
+offset_top = 211.0
+offset_right = 307.0
+offset_bottom = 242.0
+text = "Back"
+script = ExtResource("3_dbuyx")
+
+[connection signal="pressed" from="ParallaxBackground/ParallaxLayer2/PlayButton" to="ParallaxBackground/ParallaxLayer2/PlayButton" method="_on_pressed"]

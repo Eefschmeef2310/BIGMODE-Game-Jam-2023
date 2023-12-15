@@ -7,7 +7,7 @@
 script = ExtResource("2_aqrcm")
 name = "Armor"
 category = "Tank"
-descriptions = PackedStringArray("Greater durability.", "Even greater durability.", "Indestructable from the front.")
+descriptions = PackedStringArray("Greater durability.", "Even greater durability.", "Plenty of health to spare.")
 costs = Array[int]([15, 20, 30])
 level = 0
 
