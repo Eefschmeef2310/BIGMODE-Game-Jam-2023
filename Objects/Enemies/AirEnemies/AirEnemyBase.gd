@@ -45,14 +45,15 @@ func hit(damage):
 	health -= damage
 	$HealthBar.value = health
 	
-	if(health <= 0):
+	if(health <= 0) and dead == false:
 		dead = true
 		ScoreManager.enemiesKilled += 1
+		GameManager.drop_gears(global_position, 3)
 		$AnimationPlayer.play("Death")
 
 func _on_drop_timer_add_item(item):
 	get_parent().add_child(item)
 
 func _on_area_entered(area):
-	if "deal_damage" in area:
+	if !dead and "deal_damage" in area:
 		area.deal_damage(tank_damage)

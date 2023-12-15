@@ -11,7 +11,7 @@ var tank_mode := true:
 var tank_position: Vector2
 var camera: Camera2D
 
-var gears: int = 50:
+var gears: int = 0:
 	set(value):
 		if gears + value < gears: #gears have been spent
 			ScoreManager.gearsSpent += value
@@ -53,6 +53,16 @@ func start_game():
 func reset_gears():
 	gears = 0
 	ScoreManager.gearsSpent = 0
+
+func drop_gears(pos: Vector2, amount: int):
+	var values = [1,1,1,5,10]
+	var gear_scene = load("res://Objects/Pickups/Gear.tscn")
+	for n in amount:
+		var gear = gear_scene.instantiate()
+		gear.value = values[randi_range(0, values.size() - 1)]
+		gear.position = pos
+		gear.position.x += randf() * 50
+		get_tree().get_root().add_child(gear)
 
 #var current_module_count: int = 0
 #var max_module_count: int = 5
