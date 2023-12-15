@@ -1,13 +1,15 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=33 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://c4pdlov7yyjec" path="res://Sprites/dec6 assets/placeholder_tank_body.png" id="2_y3a5o"]
 [ext_resource type="Texture2D" uid="uid://dbf4o8dq6hmig" path="res://Sprites/dec6 assets/placeholder_tank_top.png" id="3_ii4us"]
 [ext_resource type="Script" path="res://PlayerAndTank/Turret.gd" id="4_oud1o"]
 [ext_resource type="Texture2D" uid="uid://c3wpkx68adbuv" path="res://Sprites/dec6 assets/placeholder_gun.png" id="5_3jgrq"]
+[ext_resource type="Texture2D" uid="uid://4wyc645oirc2" path="res://Sprites/spritesheets/tank_treads.png" id="6_wxvft"]
 [ext_resource type="Texture2D" uid="uid://y6gjks7e7g38" path="res://Sprites/dec6 assets/placeholder_wheels.png" id="6_xdfsf"]
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerHatch.gd" id="7_i8vdx"]
 [ext_resource type="PackedScene" uid="uid://cf25cujj5q7ot" path="res://TankParts/Wheel.tscn" id="7_pbp42"]
+[ext_resource type="Texture2D" uid="uid://ck5s6l078cn2w" path="res://Sprites/dec6 assets/tank_wheels.png" id="8_sehic"]
 [ext_resource type="Script" path="res://PlayerAndTank/TankHitbox.gd" id="9_1ogle"]
 [ext_resource type="Texture2D" uid="uid://djxcxlo164pdh" path="res://Sprites/dec6 assets/placeholder_lid.png" id="9_323a3"]
 [ext_resource type="Script" path="res://PlayerAndTank/JumpInSprite.gd" id="10_6t4ks"]
@@ -16,6 +18,56 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
 size = Vector2(362, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfaaj"]
+atlas = ExtResource("6_wxvft")
+region = Rect2(0, 0, 645, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4e3n"]
+atlas = ExtResource("6_wxvft")
+region = Rect2(645, 0, 645, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqrwk"]
+atlas = ExtResource("6_wxvft")
+region = Rect2(1290, 0, 645, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5vji"]
+atlas = ExtResource("6_wxvft")
+region = Rect2(1935, 0, 645, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paxmw"]
+atlas = ExtResource("6_wxvft")
+region = Rect2(2580, 0, 645, 171)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lhdgw"]
+atlas = ExtResource("6_wxvft")
+region = Rect2(3225, 0, 645, 171)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b5hhx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfaaj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4e3n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqrwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5vji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paxmw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lhdgw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kisji"]
 size = Vector2(171.5, 5.78485)
@@ -104,11 +156,36 @@ position = Vector2(181, -3.05176e-05)
 shape = SubResource("RectangleShape2D_yy0e3")
 one_way_collision = true
 
-[node name="Wheels" type="Sprite2D" parent="Sprites"]
+[node name="TankTreads" type="AnimatedSprite2D" parent="Sprites"]
+position = Vector2(0, -84)
+sprite_frames = SubResource("SpriteFrames_b5hhx")
+autoplay = "default"
+frame_progress = 0.669459
+
+[node name="tankTreadsOld" type="Sprite2D" parent="Sprites"]
+visible = false
 position = Vector2(0, -84)
 texture = ExtResource("6_xdfsf")
 
+[node name="TankWheel1" type="Sprite2D" parent="Sprites"]
+position = Vector2(0, -84)
+rotation = 0.383972
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("8_sehic")
+
+[node name="TankWheel2" type="Sprite2D" parent="Sprites"]
+position = Vector2(139.115, -82.9163)
+rotation = 0.785398
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("8_sehic")
+
+[node name="TankWheel3" type="Sprite2D" parent="Sprites"]
+position = Vector2(-141.074, -83.8805)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("8_sehic")
+
 [node name="Treads" type="CollisionPolygon2D" parent="."]
+visible = false
 position = Vector2(70.25, -126)
 polygon = PackedVector2Array(-256.25, -42, 276.75, -42, 116.869, 126, -414.118, 126)
 one_way_collision = true

@@ -39,6 +39,13 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var WheelsRB : Array[RigidBody2D]
 #endregion
 
+#referenced for animating the tank treads
+@onready var treads = $Sprites/TankTreads
+@onready var wheel1 = $Sprites/TankWheel1
+@onready var wheel2 = $Sprites/TankWheel2
+@onready var wheel3 = $Sprites/TankWheel3
+var rotate_speed = 2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.tank_mode = true
@@ -50,6 +57,10 @@ func _physics_process(delta):
 		GameManager.tank_position = global_position
 		
 		var direction = Input.get_axis("left", "right") as float
+		
+		#for wheel animations
+		rotate_speed = (SPEED / 200) * direction
+		
 		
 		#Set dust particles
 		$PinJoint2D3/Dust.emitting = direction == -1;
@@ -88,7 +99,13 @@ func _physics_process(delta):
 			GameManager.tank_mode = false
 			toPlayerControl.emit()
 			createPlayer()
-			
+	else:
+		rotate_speed = 0
+	treads.speed_scale = rotate_speed
+	wheel1.rotation_degrees += rotate_speed
+	wheel2.rotation_degrees += rotate_speed
+	wheel3.rotation_degrees += rotate_speed
+				
 func createPlayer():
 	player.toggle(true)
 	player.global_position =  $PlayerHatch/PlayerSpawnPos.global_position
