@@ -205,4 +205,5 @@ offset_right = 190.0
 offset_bottom = -173.0
 scale = Vector2(-4.8, 1)
 
+[connection signal="timeout" from="SwoopTimer" to="Frames" method="_on_swoop_timer_timeout"]
 [connection signal="timeout" from="SwoopTimer" to="SwoopTimer" method="_on_timeout"]
