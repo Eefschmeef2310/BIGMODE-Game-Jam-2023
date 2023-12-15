@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://b3e2ulqrvcf1q"]
+[gd_scene load_steps=36 format=3 uid="uid://b3e2ulqrvcf1q"]
 
 [ext_resource type="Script" path="res://PlayerAndTank/tank.gd" id="1_6erhe"]
 [ext_resource type="Texture2D" uid="uid://b065su18ox61p" path="res://Sprites/dec6 assets/tank_body.png" id="3_0l4ke"]
 [ext_resource type="Texture2D" uid="uid://dbf4o8dq6hmig" path="res://Sprites/dec6 assets/placeholder_tank_top.png" id="3_ii4us"]
 [ext_resource type="Script" path="res://PlayerAndTank/Turret.gd" id="4_oud1o"]
 [ext_resource type="Texture2D" uid="uid://c3wpkx68adbuv" path="res://Sprites/dec6 assets/placeholder_gun.png" id="5_3jgrq"]
+[ext_resource type="Script" path="res://PlayerAndTank/tank_spikes.gd" id="6_kss8q"]
 [ext_resource type="Texture2D" uid="uid://4wyc645oirc2" path="res://Sprites/spritesheets/tank_treads.png" id="6_wxvft"]
 [ext_resource type="Texture2D" uid="uid://y6gjks7e7g38" path="res://Sprites/dec6 assets/placeholder_wheels.png" id="6_xdfsf"]
 [ext_resource type="Texture2D" uid="uid://b8pqvof0maces" path="res://Sprites/tank_spikes.png" id="6_xt1k3"]
@@ -19,6 +20,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yy0e3"]
 size = Vector2(362, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oabf0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfaaj"]
 atlas = ExtResource("6_wxvft")
@@ -157,9 +160,17 @@ position = Vector2(181, -3.05176e-05)
 shape = SubResource("RectangleShape2D_yy0e3")
 one_way_collision = true
 
-[node name="TankSpikes" type="Sprite2D" parent="Sprites"]
-position = Vector2(301.742, -159.084)
+[node name="FrontSpikes" type="Area2D" parent="Sprites"]
+position = Vector2(302.722, -159.084)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("6_kss8q")
+
+[node name="TankSpikes" type="Sprite2D" parent="Sprites/FrontSpikes"]
 texture = ExtResource("6_xt1k3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprites/FrontSpikes"]
+shape = SubResource("RectangleShape2D_oabf0")
 
 [node name="TankTreads" type="AnimatedSprite2D" parent="Sprites"]
 position = Vector2(0, -84)
@@ -277,5 +288,7 @@ has_rockets_values = Array[bool]([false, true, true, true])
 rocket_level_values = Array[int]([1, 1, 2, 3])
 
 [connection signal="toPlayerControl" from="." to="JumpInSprite" method="_on_tank_to_player_control"]
+[connection signal="area_entered" from="Sprites/FrontSpikes" to="Sprites/FrontSpikes" method="_on_area_entered"]
+[connection signal="body_entered" from="Sprites/FrontSpikes" to="Sprites/FrontSpikes" method="_on_body_entered"]
 [connection signal="body_entered" from="PlayerHatch" to="PlayerHatch" method="_on_body_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

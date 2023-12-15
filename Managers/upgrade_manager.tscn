@@ -39,7 +39,7 @@ level = 0
 script = ExtResource("2_aqrcm")
 name = "Ramming Artillery"
 category = "Tank"
-descriptions = PackedStringArray("Add spikes to the front of the tank.", "Add rotary blades to the front of the tank.", "Add a vaccuum to the front of the tank.")
+descriptions = PackedStringArray("Add spikes to the front of the tank.", "Add rotary blades to the front of the tank.", "Rotary blades keep spinning in Man Mode.")
 costs = Array[int]([10, 15, 20])
 level = 0
 
