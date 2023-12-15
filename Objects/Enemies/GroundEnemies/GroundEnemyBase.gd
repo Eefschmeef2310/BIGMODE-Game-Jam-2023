@@ -13,6 +13,7 @@ var dead: bool = false
 #So something referencing specific sprites may not be present on children! - E
 @onready var _animated_sprite = $AnimatedSprite2D
 
+
 func _ready():
 	$HealthBar.max_value = health
 	$HealthBar.value = health
@@ -24,9 +25,10 @@ func _ready():
 func _physics_process(delta):
 	#for flipping sprite animations
 	distance_to_tank = GameManager.tank_position.x - position.x
-	_animated_sprite.flip_h = 0
+	_animated_sprite.flip_h = 1
 	if distance_to_tank < 0:
-		_animated_sprite.flip_h = 1
+		_animated_sprite.flip_h = 0
+		
 		
 	if !dead:
 		distance_to_tank = GameManager.tank_position.x - position.x

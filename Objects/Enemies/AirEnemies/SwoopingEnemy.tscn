@@ -188,7 +188,7 @@ lerp_speed = 0.4
 [node name="Frames" parent="." index="0"]
 material = SubResource("ShaderMaterial_21kif")
 sprite_frames = SubResource("SpriteFrames_kclr5")
-animation = &"transition"
+animation = &"flying"
 autoplay = "flying"
 script = ExtResource("4_rdypr")
 
@@ -202,6 +202,7 @@ autostart = true
 script = ExtResource("3_ajncj")
 
 [node name="HealthBar" parent="." index="3"]
+z_index = 2
 offset_left = 134.0
 offset_top = -178.0
 offset_right = 190.0

@@ -42,6 +42,9 @@ sprite_frames = SubResource("SpriteFrames_cpw8v")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_ui5r3")
 
+[node name="HealthBar" parent="." index="2"]
+z_index = 2
+
 [node name="DropMarker" type="Marker2D" parent="." index="3"]
 position = Vector2(0, 28)
 

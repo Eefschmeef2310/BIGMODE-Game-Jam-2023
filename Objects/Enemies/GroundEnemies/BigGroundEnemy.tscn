@@ -76,17 +76,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bct18"]
 size = Vector2(702, 376)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f7clv"]
-size = Vector2(466, 252)
+size = Vector2(394.5, 174)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_svghw"]
-size = Vector2(262, 170)
+size = Vector2(262, 126)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aki6y"]
 size = Vector2(734, 406)
@@ -99,18 +99,19 @@ tank_damage = 35.0
 material = SubResource("ShaderMaterial_ity1r")
 sprite_frames = SubResource("SpriteFrames_mjwhi")
 autoplay = "default"
+frame_progress = 0.477341
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(16, 78)
 shape = SubResource("RectangleShape2D_bct18")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="2"]
-position = Vector2(362, -161)
+position = Vector2(-361.75, -161)
 shape = SubResource("RectangleShape2D_f7clv")
 debug_color = Color(0.701961, 0.054902, 0, 0.419608)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="3"]
-position = Vector2(-472, 104)
+position = Vector2(513, 68)
 shape = SubResource("RectangleShape2D_svghw")
 debug_color = Color(0.701961, 0.054902, 0, 0.419608)
 
@@ -119,12 +120,12 @@ position = Vector2(16, 77)
 shape = SubResource("RectangleShape2D_aki6y")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox" index="1"]
-position = Vector2(362, -161)
+position = Vector2(-360, -150)
 shape = SubResource("RectangleShape2D_f7clv")
 debug_color = Color(0.701961, 0.054902, 0, 0.419608)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Hitbox" index="2"]
-position = Vector2(-472, 104)
+position = Vector2(511, 77)
 shape = SubResource("RectangleShape2D_svghw")
 debug_color = Color(0.701961, 0.054902, 0, 0.419608)
 
@@ -135,6 +136,7 @@ position = Vector2(155, 276)
 position = Vector2(-342, 273)
 
 [node name="HealthBar" parent="." index="7"]
+z_index = 2
 offset_left = -246.0
 offset_top = -329.0
 offset_right = 254.0

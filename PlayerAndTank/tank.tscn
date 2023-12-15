@@ -233,6 +233,7 @@ libraries = {
 }
 
 [node name="StickSprite" type="Sprite2D" parent="Sprites/RotarySystem"]
+z_index = -1
 position = Vector2(261.611, -0.115234)
 scale = Vector2(1.5, 1)
 texture = ExtResource("5_3jgrq")
@@ -356,6 +357,7 @@ position = Vector2(0, -149.442)
 polygon = PackedVector2Array(316.437, -142.693, 279.209, -18.3187, 335.051, -11.5697, 211.611, 149.442, -319.376, 148.478, -315.457, -145.586, -258.636, -144.622, -132.257, -282.494, 67.598, -281.53, 188.099, -144.622)
 
 [node name="healthbar" type="ProgressBar" parent="."]
+z_index = 2
 offset_left = -320.356
 offset_top = -538.956
 offset_right = 309.644
