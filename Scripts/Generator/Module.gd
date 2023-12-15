@@ -38,6 +38,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered():
 func spawnPlatforms():
 	var presets = $Cliff/PlatformPresets.get_children()
 	var chosen_preset = presets[randi_range(0, presets.size() - 1)]
+	print(chosen_preset)
 	for preset in presets:
 		if preset != chosen_preset:
 			preset.queue_free()
@@ -57,7 +58,7 @@ func GenNextModule():
 
 func spawnEnemies():
 	var progress = manager.get_child_count() - 1
-	number_of_enemies_to_spawn = progress
+	number_of_enemies_to_spawn = (progress * 2) - 1
 	_on_spawn_enemy_timer_timeout()
 
 func _on_spawn_enemy_timer_timeout():

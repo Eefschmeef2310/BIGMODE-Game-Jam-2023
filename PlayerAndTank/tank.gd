@@ -21,6 +21,7 @@ var extra_bullets: int = 0
 var extra_bullet_angle_offset = 0
 var bullet_damage = 10
 var fire_rate: float = 0.5
+var damage_scale: float = 1.0
 var time_until_next_shot: float = 0.0
 
 # Rockets
@@ -128,7 +129,7 @@ func spawn_bullet(angle: float):
 	bullet.position = $Sprites/Turret/MuzzleMarker.global_position
 	bullet.direction = direction
 	bullet.rotation_degrees = rad_to_deg(angle)
-	bullet.damage = bullet_damage
+	bullet.damage = bullet_damage * damage_scale
 	
 	addBullet.emit(bullet)
 

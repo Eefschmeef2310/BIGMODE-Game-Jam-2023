@@ -5,6 +5,7 @@ extends Node
 @export var extra_bullet_angle_offset_values: Array[float]
 @export var bullet_damage_values: Array[float]
 @export var fire_rate_values: Array[float]
+@export var damage_scale_values: Array[float]
 @export var has_rockets_values: Array[bool]
 @export var rocket_level_values: Array[int]
 
