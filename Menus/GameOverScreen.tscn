@@ -23,11 +23,12 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -46.0
-offset_right = 46.0
-offset_bottom = 23.0
+offset_left = -198.0
+offset_top = 24.0
+offset_right = 198.0
+offset_bottom = 84.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 60
 text = "GAME OVER"
 
 [node name="RestartButton" type="Button" parent="."]
@@ -55,7 +56,7 @@ anchor_bottom = 0.5
 offset_left = -32.5
 offset_top = 33.475
 offset_right = 32.5
-offset_bottom = 64.475
+offset_bottom = 57.475
 grow_horizontal = 2
 grow_vertical = 2
 text = "Menu

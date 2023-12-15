@@ -180,6 +180,7 @@ script = ExtResource("8_0xg68")
 modules = Array[PackedScene]([ExtResource("8_xfebb")])
 maxModules = 10
 endNode = NodePath("../End")
+createEnemies = false
 enemyPrefabs = Array[PackedScene]([ExtResource("18_yk2vr"), ExtResource("19_16jfj"), ExtResource("16_g12d7"), ExtResource("17_kpgvk")])
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]

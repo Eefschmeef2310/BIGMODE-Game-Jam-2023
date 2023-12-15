@@ -10,10 +10,12 @@ config_version=5
 
 [application]
 
-config/name="BIGMODE Game Jam 2023"
-run/main_scene="res://Levels/world.tscn"
+config/name="Tank Blitz"
+run/main_scene="res://Menus/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Sprites/SteamTingrayGradient.png"
+config/icon="res://Sprites/game_icon.png"
 
 [autoload]
 
@@ -27,6 +29,7 @@ MusicManager="*res://Managers/music_manager.tscn"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
+window/size/mode=3
 window/size/always_on_top=true
 window/size/window_width_override=960
 window/size/window_height_override=540
@@ -114,3 +117,4 @@ pause={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+anti_aliasing/quality/msaa_2d=3
