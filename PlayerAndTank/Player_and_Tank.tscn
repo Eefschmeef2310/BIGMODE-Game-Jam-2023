@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://3ux5lcf5kbhs"]
+[gd_scene load_steps=8 format=3 uid="uid://3ux5lcf5kbhs"]
 
 [ext_resource type="PackedScene" uid="uid://b3e2ulqrvcf1q" path="res://PlayerAndTank/tank.tscn" id="1_4q17n"]
 [ext_resource type="PackedScene" uid="uid://c80x2lpbryx6j" path="res://PlayerAndTank/player.tscn" id="2_30v2w"]
 [ext_resource type="Script" path="res://PlayerAndTank/PlayerCamera.gd" id="3_37i13"]
+[ext_resource type="Texture2D" uid="uid://d4l1bdi4yr28j" path="res://Sprites/upgrade_circle.png" id="3_l82kq"]
 [ext_resource type="PackedScene" uid="uid://irvh438hrwvk" path="res://Upgrades/upgrade_ui.tscn" id="4_dlss7"]
+[ext_resource type="Script" path="res://PlayerAndTank/upgrade_circle.gd" id="4_icpbb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_22eac"]
+font_size = 20
 
 [node name="Player_and_Tank" type="Node2D"]
 
@@ -15,6 +20,21 @@ zoom = Vector2(0.1, 0.1)
 position_smoothing_enabled = true
 script = ExtResource("3_37i13")
 metadata/_edit_lock_ = true
+
+[node name="UpgradeCircle" type="Sprite2D" parent="Tank"]
+position = Vector2(-248.839, -162.94)
+scale = Vector2(0.6, 0.591)
+texture = ExtResource("3_l82kq")
+script = ExtResource("4_icpbb")
+
+[node name="UpgradeLabel" type="Label" parent="Tank"]
+offset_left = -351.706
+offset_top = -230.43
+offset_right = -140.706
+offset_bottom = -194.43
+text = "UPGRADES"
+label_settings = SubResource("LabelSettings_22eac")
+horizontal_alignment = 1
 
 [node name="Upgrade UI" parent="Tank" instance=ExtResource("4_dlss7")]
 visible = false

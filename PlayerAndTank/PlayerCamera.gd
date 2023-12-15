@@ -6,7 +6,8 @@ var freecamActive = false
 #variables for handling the smooth zooming in/out
 var camera_zoom_speed := 2.0
 var camera_outer_zoom := 0.15
-var camera_inner_zoom := 0.5
+var camera_inner_zoom := 0.4
+var camera_upgrade_zoom := 0.5
 var camera_target_zoom
 var smooth_zoom = 0.5
 var camera_move_speed = 10
@@ -25,14 +26,11 @@ func _ready():
 	GameManager.camera = self
 	target_node = tank
 	target_offset = cam_offset_tank
+	camera_target_zoom = camera_outer_zoom
 
 func _process(delta):
 	if (!freecamActive):
 		make_current()
-	if GameManager.tank_mode:
-		camera_target_zoom = camera_outer_zoom
-	else:
-		camera_target_zoom = camera_inner_zoom
 		
 	if target_node:
 		global_position = lerp(global_position, target_node.global_position, camera_move_speed*delta)
@@ -49,12 +47,14 @@ func zoom_camera(zoomTarget, delta):
 func _on_player_to_tank_control():
 	target_node = tank
 	target_offset = cam_offset_tank
+	camera_target_zoom = camera_outer_zoom
 	MusicManager.switch_to_tank()
 	# position = Vector2.ZERO
 
 func _on_tank_to_player_control():
 	target_node = player
 	target_offset = cam_offset_player
+	camera_target_zoom = camera_inner_zoom
 	MusicManager.switch_to_man()
 	# position = Vector2.ZERO
 
@@ -67,11 +67,13 @@ func _on_nyan_debug_cmd_gamecam():
 func _on_upgrade_ui_to_upgrade_screen(screenActive):
 	if screenActive:
 		target_node = upgrade
+		camera_target_zoom = camera_upgrade_zoom
 		target_offset = cam_offset_player
 		MusicManager.switch_to_upgrade()
 		# position = Vector2.ZERO
 	else:
 		target_node = player
+		camera_target_zoom = camera_inner_zoom
 		target_offset = cam_offset_player
 		MusicManager.switch_to_man()
 		# position = Vector2.ZERO
