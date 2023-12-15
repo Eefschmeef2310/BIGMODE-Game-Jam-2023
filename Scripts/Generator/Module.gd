@@ -29,8 +29,6 @@ func _ready():
 			spawnPlatforms()
 		else:
 			$Cliff.queue_free()
-		
-	spawnPlatforms()
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	GenNextModule()
@@ -42,6 +40,9 @@ func spawnPlatforms():
 	for preset in presets:
 		if preset != chosen_preset:
 			preset.queue_free()
+		else:
+			preset.visible = true
+			print("I'm here!")
 		
 	
 	#var platform = platform_scene.instantiate()

@@ -56,11 +56,11 @@ curve = SubResource("Curve_pq8np")
 lifetime_randomness = 0.3
 direction = Vector3(0, -1, 0)
 spread = 180.0
-initial_velocity_min = 350.0
-initial_velocity_max = 350.0
+initial_velocity_min = 700.0
+initial_velocity_max = 700.0
 gravity = Vector3(0, 0, 0)
-damping_min = 50.0
-damping_max = 50.0
+damping_min = 200.0
+damping_max = 200.0
 damping_curve = SubResource("CurveTexture_6c1ee")
 scale_min = 0.1
 scale_max = 0.1
@@ -190,6 +190,7 @@ _data = {
 collision_layer = 3
 collision_mask = 10
 script = ExtResource("1_cay8g")
+shouldMove = false
 
 [node name="Trail" type="GPUParticles2D" parent="."]
 position = Vector2(-46, 0)
@@ -203,7 +204,7 @@ amount = 256
 process_material = SubResource("ParticleProcessMaterial_hqx4d")
 texture = ExtResource("3_7f4k8")
 one_shot = true
-explosiveness = 0.78
+explosiveness = 0.9
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_32fjl")
