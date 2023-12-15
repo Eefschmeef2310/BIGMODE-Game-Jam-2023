@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=28 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="PackedScene" uid="uid://dj6curm4o8a0w" path="res://Objects/Environment/background.tscn" id="1_cxl0r"]
 [ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://df43pp3ygidg6" path="res://Objects/Environment/kill_wall.tscn" id="18_nxorp"]
 [ext_resource type="PackedScene" uid="uid://biq18qtxqbqev" path="res://Objects/Enemies/AirEnemies/LakituEnemy.tscn" id="18_yk2vr"]
 [ext_resource type="PackedScene" uid="uid://cffpvw5cm4kv2" path="res://Objects/Enemies/AirEnemies/SwoopingEnemy.tscn" id="19_16jfj"]
-[ext_resource type="PackedScene" uid="uid://ddppnopenktf7" path="res://Objects/Pickups/Gear.tscn" id="24_34yo8"]
 [ext_resource type="Texture2D" uid="uid://cdm45u6kt3y08" path="res://Sprites/cliff.png" id="26_yvuan"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_af7rv"]
@@ -207,20 +206,6 @@ process_mode = 4
 visible = false
 position = Vector2(476, -341)
 camera = NodePath("../Player_and_Tank/Tank/Camera2D")
-
-[node name="Gear" parent="." instance=ExtResource("24_34yo8")]
-position = Vector2(2921, 46)
-
-[node name="Gear2" parent="." instance=ExtResource("24_34yo8")]
-position = Vector2(3001, 16)
-value = 5
-
-[node name="Gear3" parent="." instance=ExtResource("24_34yo8")]
-position = Vector2(3041, 98)
-value = 10
-
-[node name="Swooping" parent="." instance=ExtResource("19_16jfj")]
-position = Vector2(3192, -520)
 
 [node name="Cliff" type="Sprite2D" parent="."]
 z_index = -1

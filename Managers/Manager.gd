@@ -46,7 +46,6 @@ func _ready():
 func start_game():
 	reset_gears()
 	UpgradeManager.reset_upgrades()
-	MusicManager.play_game_music()
 	get_tree().change_scene_to_file("res://Levels/world.tscn")
 	ScoreManager.countTime = true
 	ScoreManager.elapsedTime = 0.0

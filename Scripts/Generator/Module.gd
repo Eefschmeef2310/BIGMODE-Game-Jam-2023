@@ -24,19 +24,31 @@ func _ready():
 		var i = mods.find(self)
 		if i != -1 and i > 1:
 			spawnEnemies()
+		print(i % 2)
+		if i % 2 == 1:
+			spawnPlatforms()
+		else:
+			$Cliff.queue_free()
 		
-	spawnPlatform()
+	spawnPlatforms()
 
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	GenNextModule()
 		
-func spawnPlatform():
-	var platform = platform_scene.instantiate()
+func spawnPlatforms():
+	var presets = $Cliff/PlatformPresets.get_children()
+	var chosen_preset = presets[randi_range(0, presets.size() - 1)]
+	for preset in presets:
+		if preset != chosen_preset:
+			preset.queue_free()
+		
 	
-	var randomX = randf_range(-$Floor/CollisionShape2D.shape.get_rect().size.x/2, $Floor/CollisionShape2D.shape.get_rect().size.x/2)
-	#TODO HACK may need to change y value - E
-	platform.position = Vector2(randomX, -600)
-	add_child(platform)
+	#var platform = platform_scene.instantiate()
+	#
+	#var randomX = randf_range(-$Floor/CollisionShape2D.shape.get_rect().size.x/2, $Floor/CollisionShape2D.shape.get_rect().size.x/2)
+	##TODO HACK may need to change y value - E
+	#platform.position = Vector2(randomX, -600)
+	#add_child(platform)
 	
 func GenNextModule():
 	if (!activated):
