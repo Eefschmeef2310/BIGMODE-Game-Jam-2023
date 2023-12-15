@@ -11,7 +11,7 @@ var tank_mode := true:
 var tank_position: Vector2
 var camera: Camera2D
 
-var gears: int = 0:
+var gears: int = 999:
 	set(value):
 		if gears + value < gears: #gears have been spent
 			ScoreManager.gearsSpent += value
