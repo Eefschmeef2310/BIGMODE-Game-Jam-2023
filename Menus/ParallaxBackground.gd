@@ -11,6 +11,8 @@ func _ready():
 	viewport_size = get_viewport().size
 	relative_x = 0
 	relative_y = 0
+	
+	MusicManager.play_menu_music()
 
 func _input(event):
 	if event is InputEventMouseMotion:

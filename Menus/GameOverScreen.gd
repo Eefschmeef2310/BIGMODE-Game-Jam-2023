@@ -6,15 +6,9 @@ func _ready():
 
 func _on_restart_button_pressed():
 	GameManager.game_over = false
-	UpgradeManager.reset_upgrades()
-	GameManager.reset_gears()
-	get_tree().change_scene_to_file("res://Levels/world.tscn")
-	ScoreManager.countTime = true
-	ScoreManager.elapsedTime = 0.0
+	GameManager.start_game()
 
 func _on_menu_button_pressed():
 	GameManager.game_over = false
-	UpgradeManager.reset_upgrades()
-	GameManager.reset_gears()
 	get_tree().change_scene_to_file("res://Menus/MainMenu.tscn")
 	ScoreManager.countTime = false

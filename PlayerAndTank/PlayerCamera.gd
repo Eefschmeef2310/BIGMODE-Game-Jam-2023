@@ -49,11 +49,13 @@ func zoom_camera(zoomTarget, delta):
 func _on_player_to_tank_control():
 	target_node = tank
 	target_offset = cam_offset_tank
+	MusicManager.switch_to_tank()
 	# position = Vector2.ZERO
 
 func _on_tank_to_player_control():
 	target_node = player
 	target_offset = cam_offset_player
+	MusicManager.switch_to_man()
 	# position = Vector2.ZERO
 
 func _on_nyan_debug_cmd_freecam():
@@ -66,8 +68,10 @@ func _on_upgrade_ui_to_upgrade_screen(screenActive):
 	if screenActive:
 		target_node = upgrade
 		target_offset = cam_offset_player
+		MusicManager.switch_to_upgrade()
 		# position = Vector2.ZERO
 	else:
 		target_node = player
 		target_offset = cam_offset_player
+		MusicManager.switch_to_man()
 		# position = Vector2.ZERO
