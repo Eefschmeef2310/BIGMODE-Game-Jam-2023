@@ -14,7 +14,7 @@ var yPos: float
 
 #TODO FIXME Make sure enemies follow inheritance! The script is used across ALL inherited classes
 #So something referencing specific sprites may not be present on children! - E
-@onready var _animated_sprite = $Sprite2D 
+@onready var _animated_sprite = $Frames
 
 
 func _ready():

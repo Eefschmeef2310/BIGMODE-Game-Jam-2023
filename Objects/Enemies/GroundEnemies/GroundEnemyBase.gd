@@ -11,7 +11,7 @@ var dead: bool = false
 
 #TODO FIXME Make sure enemies follow inheritance! The script is used across ALL inherited classes
 #So something referencing specific sprites may not be present on children! - E
-@onready var _animated_sprite = $Sprite2D
+@onready var _animated_sprite = $AnimatedSprite2D
 
 func _ready():
 	$HealthBar.max_value = health
@@ -54,7 +54,6 @@ func hit(damage):
 		#var gear = gear_scene.instantiate()
 		#gear.position = global_position
 		#get_parent().call_deferred("add_child", gear)
-		
 		dead = true
 		$AnimationPlayer.play("Death")
 

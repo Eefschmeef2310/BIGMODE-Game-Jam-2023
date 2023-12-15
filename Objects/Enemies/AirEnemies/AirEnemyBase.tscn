@@ -1,42 +1,28 @@
 [gd_scene load_steps=9 format=3 uid="uid://buxhim8gwxlt6"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/AirEnemyBase.gd" id="1_rbcr8"]
-[ext_resource type="Texture2D" uid="uid://dqgbksjoliri2" path="res://Sprites/b9e8ae5957995b3ecf206d863ec4c7ed.jpg" id="1_v3kpo"]
 [ext_resource type="Shader" path="res://Shaders/Corrosion.gdshader" id="2_vuytx"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_m8gb2"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_2bgf3"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wnbcc"]
-noise = SubResource("FastNoiseLite_m8gb2")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vp3xn"]
+noise = SubResource("FastNoiseLite_2bgf3")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4h0h0"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pdeuc"]
 shader = ExtResource("2_vuytx")
 shader_parameter/fade_scale = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_wnbcc")
-shader_parameter/base_texture = ExtResource("1_v3kpo")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_vp3xn")
 
 [sub_resource type="Animation" id="Animation_xl3cy"]
 resource_name = "Death"
 length = 0.5
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/fade_scale")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(0.35, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -44,37 +30,86 @@ tracks/1/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HealthBar:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HealthBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Frames:speed_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Frames:material:shader_parameter/fade_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 0.5),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_6xusd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Frames:material:shader_parameter/fade_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Frames:speed_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yng8t"]
 _data = {
-"Death": SubResource("Animation_xl3cy")
+"Death": SubResource("Animation_xl3cy"),
+"RESET": SubResource("Animation_6xusd")
 }
 
 [node name="AirEnemyBase" type="Area2D" groups=["Enemy"]]
 collision_layer = 2
 script = ExtResource("1_rbcr8")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_4h0h0")
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_v3kpo")
+[node name="Frames" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_pdeuc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
-visible = false
 offset_left = -28.0
 offset_top = -28.0
 offset_right = 28.0
