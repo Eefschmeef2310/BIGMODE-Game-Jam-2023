@@ -9,13 +9,7 @@ var relative_y = 0
 
 func _ready():
 	viewport_size = get_viewport().size
-<<<<<<< Updated upstream
-	relative_x = 0
-	relative_y = 0
-	
 	MusicManager.play_menu_music()
-=======
->>>>>>> Stashed changes
 
 func _input(event):
 	if event is InputEventMouseMotion:

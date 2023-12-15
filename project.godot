@@ -29,7 +29,6 @@ MusicManager="*res://Managers/music_manager.tscn"
 
 window/size/viewport_width=480
 window/size/viewport_height=270
-window/size/mode=3
 window/size/always_on_top=true
 window/size/window_width_override=960
 window/size/window_height_override=540

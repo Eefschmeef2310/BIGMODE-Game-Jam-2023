@@ -14,9 +14,6 @@ func _ready():
 	#Upload()
 	pass # Replace with function body.
 
-func _process(delta):
-	pass
-
 func Upload(username, score, version): #DEPRECIAETD
 	print("atempting")
 	var url = "https://api.airtable.com/v0/appyatJwaYPKtsdCM/Table%201"
