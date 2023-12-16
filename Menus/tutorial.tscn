@@ -74,7 +74,7 @@ autowrap_mode = 2
 
 [node name="Desc" type="Label" parent="ParallaxBackground/ParallaxLayer2/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Use your tank to defeat enemies and escape the acid rain! If your tank is destroyed, you lose!"
+text = "Use your tank to defeat enemies by firing with left click! If your tank is destroyed, you lose!"
 label_settings = SubResource("LabelSettings_a0lg3")
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -104,7 +104,7 @@ autowrap_mode = 2
 
 [node name="Desc" type="Label" parent="ParallaxBackground/ParallaxLayer2/PanelContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Press SPACE to exit your tank to collect scrap and buy upgrades. Be careful, you'll die in one hit!"
+text = "Press SPACE to exit your tank to collect gear and buy upgrades. Be careful, you'll die in one hit!"
 label_settings = SubResource("LabelSettings_a0lg3")
 horizontal_alignment = 1
 autowrap_mode = 2

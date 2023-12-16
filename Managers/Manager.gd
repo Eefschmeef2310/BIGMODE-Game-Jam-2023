@@ -12,9 +12,8 @@ var tank_position: Vector2
 
 var camera: Camera2D
 
-var gears: int = 999:
+var gears: int = 0:
 	set(value):
-		print(str(value))
 		if value < gears: #gears have been spent
 			ScoreManager.gearsSpent += gears-value
 			#print("GEARS SPENT")
@@ -48,7 +47,10 @@ var end_reached : bool = false:
 
 func _input(_event):
 	if Input.is_action_just_pressed("pause") and !game_over:
-		game_paused = !game_paused
+		if get_tree().current_scene.name == "World":
+			game_paused = !game_paused
+		else:
+			get_tree().quit()
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS

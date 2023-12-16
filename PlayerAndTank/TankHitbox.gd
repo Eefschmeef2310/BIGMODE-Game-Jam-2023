@@ -5,7 +5,6 @@ var max_health := 100.0:
 	set(value):
 		if value > max_health:
 			health += value - max_health
-			print("+" + str(value - max_health))
 		max_health = value
 var health := 100.0:
 	#introduce a setter that automatically clamps the health
@@ -18,7 +17,7 @@ var health := 100.0:
 func _ready():
 	update_health()
 
-func _process(delta):
+func _process(_delta):
 	update_health()
 
 #region healthAndDamage
@@ -43,12 +42,3 @@ func deal_damage(damage):
 	if health <= 0:
 		GameManager.game_over = true
 #endregion
-
-
-func _on_body_entered(body): #tank tread hitbox
-	print(body.name)
-	if body.is_in_group("SmallEnemy"):
-		body.hit(999)
-	#if its the small enemy
-	#destroy them (hp = 0)
-	pass # Replace with function body.

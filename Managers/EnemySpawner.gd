@@ -19,7 +19,7 @@ func spawn_enemy_small():
 		enemy_small_spawn_position = 120
 		if GameManager.tank_position.x < 616:
 			enemy_small_spawn_position = GameManager.tank_position.x + distance_from_tank
-	print("Spawned enemy at " + str(enemy_small_spawn_position))
+	#print("Spawned enemy at " + str(enemy_small_spawn_position))
 	enemy_small.position.x = enemy_small_spawn_position
 	enemy_small.position.y = GameManager.tank_position.y - 5
 	
@@ -39,7 +39,7 @@ func spawn_enemy_big():
 		enemy_big_spawn_position = 120
 		if GameManager.tank_position.x < 616:
 			enemy_big_spawn_position = GameManager.tank_position.x + distance_from_tank
-	print("Spawned big enemy at " + str(enemy_big_spawn_position))
+	#print("Spawned big enemy at " + str(enemy_big_spawn_position))
 	enemy_big.position.x = enemy_big_spawn_position
 	enemy_big.position.y = GameManager.tank_position.y - 5
 

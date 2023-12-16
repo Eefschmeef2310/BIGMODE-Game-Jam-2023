@@ -29,7 +29,7 @@ func _ready():
 		var i = mods.find(self)
 		if i != -1 and i > 1:
 			spawnEnemies()
-		print(i % 2)
+		#print(i % 2)
 		if i % 2 == 1:
 			spawnPlatforms()
 		else:
@@ -41,13 +41,12 @@ func _on_visible_on_screen_notifier_2d_screen_entered():
 func spawnPlatforms():
 	var presets = $Cliff/PlatformPresets.get_children()
 	var chosen_preset = presets[randi_range(0, presets.size() - 1)]
-	print(chosen_preset)
+	#print(chosen_preset)
 	for preset in presets:
 		if preset != chosen_preset:
 			preset.queue_free()
 		else:
 			preset.visible = true
-			print("I'm here!")
 		
 	
 	#var platform = platform_scene.instantiate()

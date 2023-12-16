@@ -16,7 +16,6 @@ func _physics_process(delta):
 	if rocket_level >= 2:
 		scale = Vector2(2, 2)
 	if shouldMove:
-		print("ayo")
 		rotation = direction.angle()
 		position += direction * speed * delta
 		direction.y += gravity_float * delta * gravity_scale
@@ -24,7 +23,7 @@ func _physics_process(delta):
 func _on_body_entered(_body):
 	explode()
 
-func _on_area_entered(area):
+func _on_area_entered(_area):
 	explode()
 
 func explode():
