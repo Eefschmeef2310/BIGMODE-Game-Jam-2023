@@ -217,7 +217,6 @@ script = ExtResource("15_y5w66")
 
 [node name="killWall" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("18_nxorp")]
 process_mode = 4
-visible = false
 position = Vector2(476, -341)
 camera = NodePath("../Player_and_Tank/Tank/Camera2D")
 
@@ -227,7 +226,7 @@ position = Vector2(1873, -1082)
 texture = ExtResource("26_yvuan")
 
 [node name="EnemyBase" parent="." instance=ExtResource("16_g12d7")]
-position = Vector2(3851, -233)
+position = Vector2(4604, -550)
 
 [connection signal="timeout" from="Timers/enemy_spawn_timer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
 [connection signal="timeout" from="Timers/big_enemy_spawner" to="Enemies" method="_on_big_enemy_spawner_timeout"]

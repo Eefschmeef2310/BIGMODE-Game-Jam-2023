@@ -127,18 +127,24 @@ func _physics_process(delta):
 	# Handle invisibility
 	if is_invisible:
 		invis_counter -= delta
-		if invis_counter <= 0:
+		if invis_counter <= 0 or Input.is_action_just_pressed("secondary"):
 			is_invisible = false
+			$AnimationPlayer.play("outInvisibility");
 			invis_recovering = true
-	if invis_recovering:
+	elif invis_recovering:
 		if invis_counter < max_invis_time:
 			invis_counter += invis_cooldown_rate * delta
 		else:
 			invis_counter = max_invis_time
 			invis_recovering = false
+			
+		if Input.is_action_just_pressed("secondary") and max_invis_time > 0:
+			is_invisible = true
+			$AnimationPlayer.play("toInvisibility");
 	else:
 		if Input.is_action_just_pressed("secondary") and max_invis_time > 0:
 			is_invisible = true
+			$AnimationPlayer.play("toInvisibility");
 	
 	# Hover meter
 	$Bars/HoverCooldown.value = 100 * (hover_counter / max_hover_time)
@@ -201,6 +207,7 @@ func toggle(activate: bool):
 	invis_counter = 0
 	if activate:
 		process_mode = Node.PROCESS_MODE_INHERIT
+		$Line2D.curve.clear_points()
 	else:
 		process_mode = Node.PROCESS_MODE_DISABLED
 
