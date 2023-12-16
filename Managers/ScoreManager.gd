@@ -19,5 +19,5 @@ func _process(delta):
 func calculateScore():
 	#Time, enemies killed, gears collected
 	countTime = false
-	score = int(totalTime - elapsedTime) + enemiesKilled + gearsSpent
+	score = int(totalTime - elapsedTime) + enemiesKilled + GameManager.gears
 	return score
