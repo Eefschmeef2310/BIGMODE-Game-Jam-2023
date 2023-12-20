@@ -25,7 +25,8 @@ var game_paused : bool = false:
 		
 var game_over : bool = false:
 	set(value):
-		AirtableManager.PullAndUpload()
+		if value:
+			AirtableManager.PullAndUpload()
 		#await get_tree().create_timer(1.0).timeout
 		#await AirtableManager.PullAndUpload()._on_request_completed
 		
