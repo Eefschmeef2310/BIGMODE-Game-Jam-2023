@@ -14,9 +14,6 @@ var camera: Camera2D
 
 var gears: int = 0:
 	set(value):
-		if value < gears: #gears have been spent
-			ScoreManager.gearsSpent += gears-value
-			#print("GEARS SPENT")
 		gears = value
 		UpgradeManager.upgrade_purchased.emit(null)
 
@@ -59,12 +56,9 @@ func start_game():
 	reset_gears()
 	UpgradeManager.reset_upgrades()
 	get_tree().change_scene_to_file("res://Levels/world.tscn")
-	ScoreManager.countTime = true
-	ScoreManager.elapsedTime = 0.0
 
 func reset_gears():
 	gears = 0
-	ScoreManager.gearsSpent = 0
 
 func drop_gears(pos: Vector2, amount: int):
 	var values = [1,1,1,5,10]

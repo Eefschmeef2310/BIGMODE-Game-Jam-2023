@@ -1,24 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://cj6tyoaigotbh"]
+[gd_scene load_steps=19 format=3 uid="uid://cj6tyoaigotbh"]
 
 [ext_resource type="Script" path="res://Objects/Enemies/AirEnemies/LakituDrop.gd" id="1_btj23"]
 [ext_resource type="Texture2D" uid="uid://bsxhakw6qp6ac" path="res://Sprites/explosive-bomb-black-png.png" id="1_pc8jj"]
-[ext_resource type="Shader" path="res://Shaders/Impact.gdshader" id="3_xye8s"]
-[ext_resource type="Texture2D" uid="uid://c4icc4rr6oks2" path="res://icon.svg" id="4_5r35i"]
 [ext_resource type="Texture2D" uid="uid://bomrhfgvlvle7" path="res://Sprites/explosion_atlas.png" id="5_5dphp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jcmav"]
 radius = 39.0512
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bawh1"]
-radius = 58.1378
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nllm1"]
-shader = ExtResource("3_xye8s")
-shader_parameter/center = Vector2(0.5, 0.5)
-shader_parameter/force = 1.0
-shader_parameter/size = 0.05
-shader_parameter/thickness = -0.1
-shader_parameter/abberation_strength = 0.2
+radius = 140.0
 
 [sub_resource type="Animation" id="Animation_ia6sa"]
 resource_name = "Explosion"
@@ -63,47 +53,23 @@ tracks/2/keys = {
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("ImpulseShader:material:shader_parameter/force")
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(0.3, 35.2698),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/path = NodePath("ImpulseShader:material:shader_parameter/thickness")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.2, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.01, -0.1]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("GPUParticles2D:emitting")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GPUParticles2D:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -231,14 +197,6 @@ scale = Vector2(1e-05, 1e-05)
 shape = SubResource("CircleShape2D_bawh1")
 debug_color = Color(0.701961, 0.054902, 0, 0.419608)
 
-[node name="ImpulseShader" type="Sprite2D" parent="."]
-visible = false
-material = SubResource("ShaderMaterial_nllm1")
-position = Vector2(-1.43051e-06, -3.8147e-06)
-scale = Vector2(10.1563, 9.14063)
-texture = ExtResource("4_5r35i")
-metadata/_edit_lock_ = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_up7yg")
@@ -246,9 +204,9 @@ libraries = {
 autoplay = "Startup"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-scale = Vector2(0.58, 0.58)
+scale = Vector2(1.42, 1.42)
 emitting = false
-amount = 32
+amount = 64
 process_material = SubResource("ParticleProcessMaterial_oae27")
 texture = ExtResource("5_5dphp")
 one_shot = true
