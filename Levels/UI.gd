@@ -15,12 +15,13 @@ func _ready():
 	GameManager.connect("game_over_signal", _on_game_over)
 	GameManager.connect("end_reached_signal", _on_end_reached)
 	
+	ScoreManager.progress_bar = $ProgressBar
+	
 func _on_game_paused(isPaused):
 	if isPaused:
 		pause_screen = pause_screen_scene.instantiate()
 		add_child(pause_screen)
 	elif pause_screen:
-		ScoreManager.countTime = true
 		pause_screen.queue_free()
 
 func _on_game_over():

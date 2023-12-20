@@ -51,6 +51,7 @@ var rotate_speed = 2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.tank_mode = true
+	
 	MusicManager.play_game_music()
 	for i in range(0, Wheels.size()): #get the actual rigidbody of each wheel
 		WheelsRB.push_back(Wheels[i].get_node("wheel"))

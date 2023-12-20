@@ -36,16 +36,15 @@ func Upload(username, score, version): #DEPRECIAETD
 func PullAndUpload():
 	var distance = GameManager.tank_position.x
 	var gears = GameManager.gears
-	var gearsSpent = ScoreManager.gearsSpent
 	var upgradeState = UpgradeManager.upgrade_state()
 	var score = ScoreManager.calculateScore()
 	var enimiesKilled = ScoreManager.enemiesKilled
-	var gameTime = ScoreManager.elapsedTime
+	var progressScore = ScoreManager.progress_score
 	var endReached = GameManager.end_reached
-	UploadRun(score, distance, gears, gearsSpent, upgradeState, gameTime, enimiesKilled, endReached)
+	UploadRun(score, distance, gears, upgradeState, progressScore, enimiesKilled, endReached)
 	pass
 
-func UploadRun(score : int, distance : float, gears : int, gearsSpent : int, upgradeState : String, gameTime : float, enimiesKilled : int, endReached : bool):
+func UploadRun(score : int, distance : float, gears : int, upgradeState : String, gameTime : float, enimiesKilled : int, endReached : bool):
 	print("Uploading Run")
 	var url = "https://api.airtable.com/v0/appyatJwaYPKtsdCM/Play%20Data"
 	var data = {"records": [
@@ -54,8 +53,6 @@ func UploadRun(score : int, distance : float, gears : int, gearsSpent : int, upg
 		"Score" : int(score),
 		"Distance": float(distance - 2175.98), #im sorry T_T
 		"Gears": int(gears),
-		"Gears Spent": int(gearsSpent),
-		"Total Gears": int(gears + gearsSpent),
 		"Upgrade State": String(upgradeState),
 		"Game Time": float(gameTime),
 		"Enimies Killed" : int(enimiesKilled),

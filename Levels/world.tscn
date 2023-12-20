@@ -1,8 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://bea12rpy2tt50"]
+[gd_scene load_steps=27 format=3 uid="uid://bea12rpy2tt50"]
 
 [ext_resource type="PackedScene" uid="uid://dj6curm4o8a0w" path="res://Objects/Environment/background.tscn" id="1_cxl0r"]
-[ext_resource type="PackedScene" uid="uid://cjqjkw2sayu38" path="res://Objects/Environment/floor.tscn" id="1_ksgnp"]
-[ext_resource type="Texture2D" uid="uid://c3i8efnoj72m0" path="res://Sprites/dec6 assets/placeholder_floor.png" id="2_cnx4y"]
 [ext_resource type="PackedScene" uid="uid://3ux5lcf5kbhs" path="res://PlayerAndTank/Player_and_Tank.tscn" id="3_ha84d"]
 [ext_resource type="Script" path="res://Managers/GearsLabel.gd" id="4_36cw3"]
 [ext_resource type="Script" path="res://Levels/End.gd" id="4_hwmng"]
@@ -12,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cstkufun6cfs8" path="res://Sprites/end-front.png" id="6_2uwue"]
 [ext_resource type="FontFile" uid="uid://bfewqu3tmoyim" path="res://Fonts/Heavitas.ttf" id="6_d8aol"]
 [ext_resource type="Script" path="res://Managers/EnemySpawner.gd" id="6_jebxi"]
-[ext_resource type="Texture2D" uid="uid://cqxji5svxqxq6" path="res://Sprites/wave-pattern-desert-landscape--oman-886145780-5c45542046e0fb00012ebabf.jpg" id="7_7kt0t"]
 [ext_resource type="Script" path="res://Scripts/GuideArrow.gd" id="7_12rob"]
 [ext_resource type="Texture2D" uid="uid://bihlxdvpdbhyo" path="res://Sprites/Arrow.png" id="8_0eo2s"]
 [ext_resource type="Script" path="res://Scripts/Generator/ModuleManager.gd" id="8_0xg68"]
@@ -39,83 +36,25 @@ font = ExtResource("6_d8aol")
 [node name="Background" parent="." instance=ExtResource("1_cxl0r")]
 z_index = -3
 
-[node name="Floor Pieces" type="Node2D" parent="."]
-process_mode = 4
-visible = false
-position = Vector2(-1, 320)
-
-[node name="Floor" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-
-[node name="Floor2" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(705, 0)
-
-[node name="Floor3" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(1411, 0)
-
-[node name="Floor4" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(2117, 0)
-
-[node name="Floor5" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(2823, 0)
-
-[node name="Floor6" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(3529, 0)
-
-[node name="Floor7" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(4233, 0)
-
-[node name="Floor8" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(4937, 0)
-
-[node name="Floor9" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(5641, 0)
-
-[node name="Floor10" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(6345, 0)
-
-[node name="Sprite2D2" type="Sprite2D" parent="Floor Pieces/Floor10"]
-texture = ExtResource("2_cnx4y")
-
-[node name="Floor11" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(7049, 0)
-
-[node name="Floor12" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(7753, 0)
-
-[node name="Floor13" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(8457, 0)
-
-[node name="Floor14" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(9161, 0)
-
-[node name="Floor15" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(9865, 0)
-
-[node name="Floor16" parent="Floor Pieces" instance=ExtResource("1_ksgnp")]
-position = Vector2(10569, 0)
-
-[node name="Invisible Wall 1" type="StaticBody2D" parent="."]
+[node name="Left Wall" type="StaticBody2D" parent="."]
 position = Vector2(1736, 152)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Invisible Wall 1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Wall"]
 position = Vector2(33.5, -1238.5)
 shape = SubResource("RectangleShape2D_af7rv")
 
-[node name="End" type="Marker2D" parent="."]
-position = Vector2(14240, 176)
-script = ExtResource("4_hwmng")
-
-[node name="End-back" type="Sprite2D" parent="End"]
+[node name="Cliff" type="Sprite2D" parent="Left Wall"]
 z_index = -1
-position = Vector2(374.75, -356)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("5_elif7")
+position = Vector2(137, -1234)
+texture = ExtResource("26_yvuan")
 
-[node name="End-front" type="Sprite2D" parent="End"]
-z_index = 3
-position = Vector2(1054, -323.5)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("6_2uwue")
+[node name="Projectiles" type="Node2D" parent="."]
+script = ExtResource("5_k70kx")
+metadata/_edit_lock_ = true
+
+[node name="Enemies" type="Node2D" parent="."]
+script = ExtResource("6_jebxi")
+metadata/_edit_lock_ = true
 
 [node name="UI" type="CanvasLayer" parent="."]
 script = ExtResource("4_y20df")
@@ -149,7 +88,7 @@ scale = Vector2(0.5, 0.637931)
 texture = ExtResource("8_0eo2s")
 script = ExtResource("7_12rob")
 
-[node name="TextureRect" type="TextureRect" parent="UI"]
+[node name="GearsIcon" type="TextureRect" parent="UI"]
 offset_left = 6.0
 offset_top = 22.0
 offset_right = 29.0
@@ -158,46 +97,32 @@ texture = ExtResource("10_q4koa")
 expand_mode = 3
 stretch_mode = 5
 
-[node name="Timers" type="Node" parent="."]
-
-[node name="enemy_spawn_timer" type="Timer" parent="Timers"]
-
-[node name="big_enemy_spawner" type="Timer" parent="Timers"]
-wait_time = 20.0
-
-[node name="Projectiles" type="Node2D" parent="."]
-script = ExtResource("5_k70kx")
-metadata/_edit_lock_ = true
-
-[node name="Enemies" type="Node2D" parent="."]
-script = ExtResource("6_jebxi")
-metadata/_edit_lock_ = true
-
-[node name="Parallax" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Parallax"]
-visible = false
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax/ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(1500, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxBackground/ParallaxLayer"]
-position = Vector2(4913, -1543)
-scale = Vector2(6.91067, 4.626)
-texture = ExtResource("7_7kt0t")
-metadata/_edit_lock_ = true
-
 [node name="ModuleManager" type="Node" parent="." node_paths=PackedStringArray("endNode")]
 script = ExtResource("8_0xg68")
 modules = Array[PackedScene]([ExtResource("8_xfebb")])
-maxModules = 10
+maxModules = 3
 endNode = NodePath("../End")
+createEnemies = false
 enemyPrefabs = Array[PackedScene]([ExtResource("18_yk2vr"), ExtResource("19_16jfj"), ExtResource("16_g12d7"), ExtResource("17_kpgvk")])
 
 [node name="Module" parent="ModuleManager" instance=ExtResource("8_xfebb")]
 position = Vector2(0, 196)
+
+[node name="End" type="Marker2D" parent="."]
+position = Vector2(14240, 176)
+script = ExtResource("4_hwmng")
+
+[node name="End-back" type="Sprite2D" parent="End"]
+z_index = -1
+position = Vector2(374.75, -356)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("5_elif7")
+
+[node name="End-front" type="Sprite2D" parent="End"]
+z_index = 3
+position = Vector2(1054, -323.5)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("6_2uwue")
 
 [node name="Player_and_Tank" parent="." instance=ExtResource("3_ha84d")]
 position = Vector2(2176, 128)
@@ -213,6 +138,7 @@ process_mode = 4
 script = ExtResource("11_v8eno")
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+process_mode = 4
 script = ExtResource("15_y5w66")
 
 [node name="killWall" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("18_nxorp")]
@@ -221,13 +147,6 @@ visible = false
 position = Vector2(476, -341)
 camera = NodePath("../Player_and_Tank/Tank/Camera2D")
 
-[node name="Cliff" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(1873, -1082)
-texture = ExtResource("26_yvuan")
-
-[connection signal="timeout" from="Timers/enemy_spawn_timer" to="Enemies" method="_on_enemy_spawn_timer_timeout"]
-[connection signal="timeout" from="Timers/big_enemy_spawner" to="Enemies" method="_on_big_enemy_spawner_timeout"]
 [connection signal="addBullet" from="Player_and_Tank/Tank" to="Projectiles" method="_on_tank_add_bullet"]
 [connection signal="visibility_changed" from="Player_and_Tank/Tank" to="Player_and_Tank/Tank/JumpInSprite" method="_on_tank_visibility_changed"]
 [connection signal="screen_entered" from="Player_and_Tank/Tank/VisibleOnScreenNotifier2D" to="UI/GuideArrow" method="_on_visible_on_screen_notifier_2d_screen_entered"]
