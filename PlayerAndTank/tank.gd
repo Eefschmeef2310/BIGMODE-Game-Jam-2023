@@ -88,12 +88,10 @@ func _physics_process(delta):
 			
 		#handle rocket firing
 		if has_rockets:
+			$RocketCooldown.visible = true
 			if time_until_next_rocket > 0:
 				time_until_next_rocket -= delta
 				$RocketCooldown.value = 100 * (1 - (time_until_next_rocket / rocket_fire_rate))
-				$RocketCooldown.visible = true
-			else:
-				$RocketCooldown.visible = false
 			if time_until_next_rocket <= 0.0 and Input.is_action_just_pressed("secondary"):
 				time_until_next_rocket = rocket_fire_rate
 				shoot_rocket()

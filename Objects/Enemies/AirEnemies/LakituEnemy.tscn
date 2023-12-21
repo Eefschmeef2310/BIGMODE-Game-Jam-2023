@@ -27,8 +27,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ui5r3"]
-size = Vector2(268, 71)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gm7kg"]
+radius = 35.0
+height = 200.0
 
 [node name="Lakitu" instance=ExtResource("1_p31vu")]
 collision_mask = 0
@@ -40,7 +41,8 @@ sprite_frames = SubResource("SpriteFrames_cpw8v")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(0, 0.5)
-shape = SubResource("RectangleShape2D_ui5r3")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_gm7kg")
 
 [node name="HealthBar" parent="." index="2"]
 z_index = 2

@@ -176,7 +176,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8ixjm"]
-radius = 149.003
+radius = 100.0
 
 [node name="Swooping" instance=ExtResource("1_bg1r0")]
 z_index = 1
@@ -188,8 +188,10 @@ lerp_speed = 0.4
 [node name="Frames" parent="." index="0"]
 material = SubResource("ShaderMaterial_21kif")
 sprite_frames = SubResource("SpriteFrames_kclr5")
-animation = &"flying"
+animation = &"climbing"
 autoplay = "flying"
+frame = 2
+frame_progress = 1.0
 script = ExtResource("4_rdypr")
 
 [node name="CollisionShape2D" parent="." index="1"]

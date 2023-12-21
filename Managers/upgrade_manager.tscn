@@ -16,7 +16,7 @@ script = ExtResource("2_aqrcm")
 name = "Extra Artillery"
 category = "Tank"
 descriptions = PackedStringArray("Shoot 3 bullets at once.", "Shoot 5 bullets at once.", "Shoot 7 bullets at once.")
-costs = Array[int]([15, 20, 30])
+costs = Array[int]([30, 40, 60])
 level = 0
 
 [sub_resource type="Resource" id="Resource_g1j5o"]
@@ -24,7 +24,7 @@ script = ExtResource("2_aqrcm")
 name = "Frequent Artillery"
 category = "Tank"
 descriptions = PackedStringArray("Shoot faster.", "Shoot even faster.", "Aerospray fire rate.")
-costs = Array[int]([15, 20, 30])
+costs = Array[int]([30, 40, 60])
 level = 0
 
 [sub_resource type="Resource" id="Resource_mxlkd"]

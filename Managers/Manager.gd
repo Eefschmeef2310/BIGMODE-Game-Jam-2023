@@ -12,7 +12,7 @@ var tank_position: Vector2
 
 var camera: Camera2D
 
-var gears: int = 0:
+var gears: int = 99:
 	set(value):
 		gears = value
 		UpgradeManager.upgrade_purchased.emit(null)

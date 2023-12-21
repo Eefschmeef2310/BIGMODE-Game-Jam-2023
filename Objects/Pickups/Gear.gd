@@ -19,7 +19,7 @@ func _ready():
 	$AnimationPlayer.seek(randf_range(0, 4))
 
 func _process(delta):
-	if magnet_node != null:
+	if magnet_node != null and !GameManager.tank_mode:
 		var dist = magnet_node.global_position.distance_to(global_position)
 		if dist < magnet_radius:
 			var vel = global_position.direction_to(magnet_node.global_position)

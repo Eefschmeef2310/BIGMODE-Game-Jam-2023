@@ -27,7 +27,6 @@ func _on_area_entered(_area):
 	explode()
 
 func explode():
-	$AnimationPlayer.play("RocketExplosion")
 	if rocket_level >= 3 and !has_split:
 		has_split = true
 		var rocket_scene = load("res://Objects/Projectiles/rocket.tscn")
@@ -42,8 +41,8 @@ func explode():
 			rocket.rotation_degrees = rad_to_deg(a)
 			rocket.rocket_level = 1
 			rocket.gravity_scale *= 2
-			get_parent().add_child(rocket)
-	
+			get_tree().get_root().add_child.call_deferred(rocket)
+	$AnimationPlayer.play("RocketExplosion")
 
 func _on_aoe_area_entered(area):
 	if "hit" in area:
