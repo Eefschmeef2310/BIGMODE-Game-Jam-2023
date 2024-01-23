@@ -12,12 +12,8 @@ var tank_position: Vector2
 
 var camera: Camera2D
 
-var gears: int = 999:
+var gears: int = 0:
 	set(value):
-		print(str(value))
-		if value < gears: #gears have been spent
-			ScoreManager.gearsSpent += gears-value
-			#print("GEARS SPENT")
 		gears = value
 		UpgradeManager.upgrade_purchased.emit(null)
 
@@ -29,7 +25,8 @@ var game_paused : bool = false:
 		
 var game_over : bool = false:
 	set(value):
-		AirtableManager.PullAndUpload()
+		if value:
+			AirtableManager.PullAndUpload()
 		#await get_tree().create_timer(1.0).timeout
 		#await AirtableManager.PullAndUpload()._on_request_completed
 		
@@ -48,7 +45,10 @@ var end_reached : bool = false:
 
 func _input(_event):
 	if Input.is_action_just_pressed("pause") and !game_over:
-		game_paused = !game_paused
+		if get_tree().current_scene.name == "World":
+			game_paused = !game_paused
+		else:
+			get_tree().quit()
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -57,12 +57,9 @@ func start_game():
 	reset_gears()
 	UpgradeManager.reset_upgrades()
 	get_tree().change_scene_to_file("res://Levels/world.tscn")
-	ScoreManager.countTime = true
-	ScoreManager.elapsedTime = 0.0
 
 func reset_gears():
 	gears = 0
-	ScoreManager.gearsSpent = 0
 
 func drop_gears(pos: Vector2, amount: int):
 	var values = [1,1,1,5,10]

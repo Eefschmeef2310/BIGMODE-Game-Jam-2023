@@ -60,7 +60,7 @@ var can_change_direction: bool = true
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # Lauren variables
-@onready var _animated_sprite = $AnimatedSprite2D
+@onready var sprite_animator = $SpriteAnimator
 var is_falling = false
 var is_landing = true
 signal toTankControl()
@@ -127,18 +127,24 @@ func _physics_process(delta):
 	# Handle invisibility
 	if is_invisible:
 		invis_counter -= delta
-		if invis_counter <= 0:
+		if invis_counter <= 0 or Input.is_action_just_pressed("secondary"):
 			is_invisible = false
+			$ShaderAnimator.play("outInvisibility");
 			invis_recovering = true
-	if invis_recovering:
+	elif invis_recovering:
 		if invis_counter < max_invis_time:
 			invis_counter += invis_cooldown_rate * delta
 		else:
 			invis_counter = max_invis_time
 			invis_recovering = false
+			
+		if Input.is_action_just_pressed("secondary") and max_invis_time > 0:
+			is_invisible = true
+			$ShaderAnimator.play("toInvisibility");
 	else:
 		if Input.is_action_just_pressed("secondary") and max_invis_time > 0:
 			is_invisible = true
+			$ShaderAnimator.play("toInvisibility");
 	
 	# Hover meter
 	$Bars/HoverCooldown.value = 100 * (hover_counter / max_hover_time)
@@ -201,6 +207,7 @@ func toggle(activate: bool):
 	invis_counter = 0
 	if activate:
 		process_mode = Node.PROCESS_MODE_INHERIT
+		$Line2D.curve.clear_points()
 	else:
 		process_mode = Node.PROCESS_MODE_DISABLED
 
@@ -212,28 +219,33 @@ func toTank():
 #handles all animations
 func handle_animations():
 	#jumping animations
+	
 	if not is_on_floor():
 		if (velocity.y < 0):
-			_animated_sprite.play("jumping")
+			sprite_animator.play("Jump")
 		elif (velocity.y > 0):
-			_animated_sprite.play("falling")
+			sprite_animator.play("Falling")
 			is_falling = true
 		else:
-			_animated_sprite.play("midair")
+			sprite_animator.play("midair")
 	else:
 		if (is_falling == true):
 			is_falling = false
 			is_landing = true
-			_animated_sprite.play("land")
+			sprite_animator.play("Land")
 		else:
 			if move_direction != 0:
-					_animated_sprite.play("run")
+					sprite_animator.play("Run")
 					is_landing = false
 			elif not (is_landing):
-				_animated_sprite.play("idle")
+				sprite_animator.play("Idle")
 				
 	$"../Tank/Upgrade UI".visible = global_position.distance_to($"../Tank/Upgrade UI/UpgradeMarker".global_position) < 150
 
 func _on_animated_sprite_2d_animation_finished():
 	if (is_landing == true):
 		is_landing = false
+
+
+func _on_sprite_animator_current_animation_changed(_name):
+	$Resetter.play("RESET")

@@ -16,8 +16,8 @@ func _ready():
 			str_c += upgrade.category + ", "
 		str_u += upgrade.name + ", "
 		
-	print(str_u)
-	print(str_c)
+	#print(str_u)
+	#print(str_c)
 	#var goose = upgrade_state() # TODO remove
 	#print(goose)
 

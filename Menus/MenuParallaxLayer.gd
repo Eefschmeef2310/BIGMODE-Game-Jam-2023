@@ -8,7 +8,6 @@ func _input(event):
 		var viewport = get_viewport().size
 		
 		var relative_x = (mouse_pos.x - (viewport.x/2)) / (viewport.x/2)
-		print(relative_x)
 		var relative_y = (mouse_pos.y - (viewport.y/2)) / (viewport.y/2)
 		
 		motion_offset.x = parallax_speed * relative_x

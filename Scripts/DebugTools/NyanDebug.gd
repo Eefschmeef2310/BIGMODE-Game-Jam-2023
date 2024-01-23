@@ -104,7 +104,7 @@ func _on_line_edit_text_submitted(new_text):
 				cmdStuck.emit()
 			"upgrade":
 				if argCount>1:
-					print(arg[1]) # arg[1] is the 1st argument of the command, in this case the upgrade name
+					#print(arg[1]) # arg[1] is the 1st argument of the command, in this case the upgrade name
 					cmdUpgrade.emit(arg[1]) #optonally use this signal!
 					
 					UpgradeManager.purchase_upgrade(arg[1].replace("_", " "))
